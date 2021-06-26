@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="2.0">
+  <Application id="Application_Desktop" screenid="Desktop_screen">
+    <Layout>
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" width="1920" height="935">
+        <VFrameSet id="VFrameSet00">
+          <Frames>
+            <HFrameSet id="HFrameSet00" separatesize="250">
+              <Frames>
+                <ChildFrame id="Left_Frame" formurl="" showtitlebar="false"/>
+                <VFrameSet id="VFrameSet00" separatesize="50,50,0,*,0">
+                  <Frames>
+                    <ChildFrame id="Top_Frame" formurl="" showtitlebar="false"/>
+                    <ChildFrame id="Mid_Frame" formurl="" showtitlebar="false"/>
+                    <ChildFrame id="Main_Frame" formurl="Base::hello.xfdl" showtitlebar="false"/>
+                    <FrameSet id="WorkFrame">
+                      <Frames/>
+                    </FrameSet>
+                    <ChildFrame id="Login_Frame" formurl="" showtitlebar="false"/>
+                  </Frames>
+                </VFrameSet>
+              </Frames>
+            </HFrameSet>
+          </Frames>
+        </VFrameSet>
+      </MainFrame>
+    </Layout>
+  </Application>
+</ADL>
