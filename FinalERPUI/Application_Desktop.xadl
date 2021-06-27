@@ -16,7 +16,7 @@
                     <FrameSet id="WorkFrame">
                       <Frames/>
                     </FrameSet>
-                    <ChildFrame id="Login_Frame" formurl="Base::hello.xfdl" showtitlebar="false"/>
+                    <ChildFrame id="Login_Frame" formurl="Base::Login_Form.xfdl" showtitlebar="false"/>
                   </Frames>
                 </VFrameSet>
               </Frames>
@@ -53,10 +53,8 @@ this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventIn
 }
 
 this.fn_init = function (){
-	this.HFrameSet00.set_separatesize("0,*");
-	this.VFrameSet01.set_separatesize("0,0,0,0,*");
+// 	this.HFrameSet00.set_separatesize("0,*");
+// 	this.VFrameSet01.set_separatesize("0,0,0,0,*");
 }
-
-
 ]]></Script>
 </ADL>
