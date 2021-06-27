@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_TA_Mgt" width="1670" height="835" titletext="New Form">
+  <Form id="M_TA_Mgt" width="1670" height="835" titletext="New Form" background="skyblue">
     <Layouts>
       <Layout height="835" width="1670"/>
     </Layouts>

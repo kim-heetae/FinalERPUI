@@ -34,6 +34,28 @@ this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fn_logout();
 };
-]]></Script>
+
+/**
+* Function Name : fn_closeMain
+* Description   : 메인화면 감추기
+* Arguments     : none
+* Return        : none
+*/
+this.fn_closeMain = function()
+{
+	var objVFrame02 = this.application.VFrameSet01;
+	objVFrame02.set_separatesize("50,50,0,*,0");
+};
+
+this.fn_openMain = function()
+{
+	var objVFrame01 = this.application.VFrameSet01;
+	
+	objVFrame01.set_separatesize("50,0,*,0,0");
+	
+	var objMainFrame = this.application.Main_Frame;
+	
+	/*objMainFrame.form.fn_createDataList();*/
+};]]></Script>
   </Form>
 </FDL>
