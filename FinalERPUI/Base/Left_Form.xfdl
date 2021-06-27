@@ -1,23 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Left_Form" width="250" height="720" titletext="New Form">
+  <Form id="Left_Form" width="250" height="935" titletext="New Form">
     <Layouts>
-      <Layout height="720" width="250">
+      <Layout height="935" width="250">
         <ImageViewer id="iv_logo" taborder="0" left="0" top="0" width="250" height="100" image="url('imagerc::FinalProjectLogo-removebg-preview.png')" background="none" border="0px none"/>
         <Button id="btnMenuAll" taborder="1" text="전체메뉴" left="0" top="118" width="115" height="42" enable="false" onclick="btnMenuAll_onclick" cssclass="btn_LF_menu" background="black" color="white" font="16px/normal &quot;나눔바른펜&quot;" cursor="pointer" border="0px none"/>
         <Static id="Static00_01" taborder="2" left="115" top="118" width="20" height="42" cssclass="sta_LF_division" background="#333333" borderRadius="0px none"/>
         <Button id="btnMenuFav" taborder="3" text="즐겨찾기" left="135" top="118" width="115" height="42" onclick="btnMenuFav_onclick" cssclass="btn_LF_favorite" cursor="pointer" font="16px/normal &quot;나눔바른펜&quot;" background="#333333" color="white" border="0px none"/>
-        <Grid id="gr_menu" taborder="4" left="0" top="160" width="250" height="560" binddataset="DS_SideMenu" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" treeuseimage="true" treeuseline="false">
+        <Grid id="gr_menu" taborder="4" left="0" top="160" width="250" height="760" binddataset="DS_SideMenu" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" treeuseimage="true" treeuseline="true" treeuseexpandkey="true">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="240"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="42"/>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
               </Rows>
+              <Band id="head">
+                <Cell text="전체메뉴" font="18px/normal &quot;나눔바른펜&quot;&#9;" textAlign="left"/>
+              </Band>
               <Band id="body">
-                <Cell text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LVL" border="0px none" color="#101010" cursor="pointer" treestate="bind:MENU_MN"/>
+                <Cell text="bind:MENU_MN" font="13px/normal &quot;나눔바른펜&quot;" treelevel="bind:MENU_LEV" treestate="bind:MENU_LEV" displaytype="treeitemcontrol" edittype="tree"/>
               </Band>
             </Format>
           </Formats>
@@ -38,21 +42,16 @@
       <Dataset id="DS_SideMenu">
         <ColumnInfo>
           <Column id="MENU_CD" type="STRING" size="256"/>
-          <Column id="UP_MENU_CD" type="STRING" size="256"/>
           <Column id="MENU_MN" type="STRING" size="256"/>
           <Column id="MENU_LEV" type="STRING" size="256"/>
           <Column id="PGM_PATH" type="STRING" size="256"/>
           <Column id="PGM_ID" type="STRING" size="256"/>
-          <Column id="FAV_CHECK" type="STRING" size="256"/>
-          <Column id="POP_CHECK" type="STRING" size="256"/>
-          <Column id="MENU_AUTH" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
             <Col id="MENU_CD">0001</Col>
             <Col id="MENU_MN">마이페이지</Col>
             <Col id="MENU_LEV">0</Col>
-            <Col id="UP_MENU_CD">0001</Col>
           </Row>
           <Row>
             <Col id="MENU_CD">0011</Col>
