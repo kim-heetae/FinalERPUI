@@ -8,11 +8,11 @@
             <HFrameSet id="HFrameSet00" separatesize="250">
               <Frames>
                 <ChildFrame id="Left_Frame" formurl="Base::Left_Form.xfdl" showtitlebar="false"/>
-                <VFrameSet id="VFrameSet01" separatesize="50,50,0,*,0">
+                <VFrameSet id="VFrameSet01" separatesize="50,50,*,0,0">
                   <Frames>
                     <ChildFrame id="Top_Frame" formurl="Base::Top_Form.xfdl" showtitlebar="false"/>
                     <ChildFrame id="Mid_Frame" formurl="Base::Mid_Form.xfdl" showtitlebar="false"/>
-                    <ChildFrame id="Main_Frame" showtitlebar="false"/>
+                    <ChildFrame id="Main_Frame" showtitlebar="false" formurl="MainFrame::My_Page.xfdl"/>
                     <FrameSet id="WorkFrame">
                       <Frames/>
                     </FrameSet>
