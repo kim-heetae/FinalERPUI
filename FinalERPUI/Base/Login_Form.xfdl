@@ -2,7 +2,15 @@
 <FDL version="2.1">
   <Form id="Login_Form" width="1920" height="935" titletext="New Form">
     <Layouts>
-      <Layout height="935" mobileorientation="landscape" width="1920"/>
+      <Layout height="935" mobileorientation="landscape" width="1920">
+        <ImageViewer id="iv_logo" taborder="0" left="825" top="145" width="270" height="270" image="url('imagerc::FinalProjectLogo-removebg-preview.png')" stretch="fit" background="none" border="0px none"/>
+        <ImageViewer id="iv_id" taborder="1" left="670" top="386" width="60" height="60" image="url('imagerc::user-circle.png')" stretch="fit"/>
+        <Edit id="ed_id" taborder="2" left="730" top="386" width="490" height="60" font="28px/normal &quot;나눔바른펜&quot;" displaynulltext="사원번호를 입력해주세요."/>
+        <ImageViewer id="iv_pw" taborder="3" left="670" top="460" width="60" height="60" image="url('imagerc::lock.png')" stretch="fit"/>
+        <Edit id="ed_pw" taborder="4" left="730" top="460" width="490" height="60" font="28px/normal &quot;나눔바른펜&quot;" displaynulltext="비밀번호를 입력해주세요." password="true"/>
+        <Button id="btn_login" taborder="5" text="Login" left="670" top="540" width="550" height="60" font="bold 30px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btn_fgpw" taborder="6" text="Forget Your Passward?" left="1050" top="620" width="170" height="50" font="18px/normal &quot;나눔바른펜&quot;" background="none" border="0px none" cursor="pointer"/>
+      </Layout>
     </Layouts>
   </Form>
 </FDL>
