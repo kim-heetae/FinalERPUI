@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="AC_AccountSel" width="550" height="400" titletext="New Form">
+    <Layouts>
+      <Layout height="400" width="550"/>
+    </Layouts>
+  </Form>
+</FDL>

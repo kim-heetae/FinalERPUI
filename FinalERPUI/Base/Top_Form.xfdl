@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Top_Form" width="1920" height="50" titletext="New Form">
+    <Layouts>
+      <Layout height="50" width="1920">
+        <Button id="btn_logout" taborder="0" text="로그아웃" left="1477" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;&#9;" color="black" cursor="pointer"/>
+        <Button id="btn_myInfo" taborder="1" text="내정보" left="1327" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer"/>
+        <Static id="lb_topTitle" taborder="2" text="님 환영합니다." left="1157" top="0" width="120" height="50" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center" textDecoration="none" wordSpacing="4px"/>
+        <Edit id="ed_name" taborder="3" left="1040" top="4" width="127" height="40" background="none" font="16px/normal &quot;나눔바른펜&quot;" border="0px none"/>
+        <Edit id="ed_no" taborder="4" left="899" top="3" width="127" height="40" background="none" font="16px/normal &quot;나눔바른펜&quot;" border="0px none"/>
+        <Button id="btn_myPage" taborder="5" text="마이페이지" left="26" top="3" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
+        <Button id="btn_HR" taborder="6" text="인사" left="180" top="2" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
+        <Button id="btn_AC" taborder="7" text="회계" left="334" top="2" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="ed_no" propid="value" datasetid="DS_MemberInfo" columnid="e_no"/>
+      <BindItem id="item1" compid="ed_name" propid="value" datasetid="DS_MemberInfo" columnid="e_name"/>
+    </Bind>
+  </Form>
+</FDL>

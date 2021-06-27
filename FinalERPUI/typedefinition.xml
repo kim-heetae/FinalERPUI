@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <TypeDefinition version="2.3">
   <Modules>
     <Module url="CompBase.json"/>
@@ -38,7 +38,10 @@
     <Service prefixid="xcssrc" type="resource" url="./_resource_/_xcss_/" version="0" cachelevel="session" include_subdir="false"/>
     <Service prefixid="imagerc" type="resource" url="./_resource_/_images_/" version="0" cachelevel="session" include_subdir="true"/>
     <Service prefixid="font" type="resource" url="./_resource_/_font_/" version="0" cachelevel="session" include_subdir="false"/>
-	<Service prefixid="Base" type="form" url="./Base/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="Base" type="form" url="./Base/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="MainFrame" type="form" url="./MainFrame/" version="0" cachelevel="session" include_subdir="true" communicationversion="0"/>
+    <Service prefixid="ModalFrame" type="form" url="./ModalFrame/" version="0" cachelevel="session" include_subdir="true" communicationversion="0"/>
+    <Service prefixid="SubModalFrame" type="form" url="./SubModalFrame/" version="0" cachelevel="session" include_subdir="true" communicationversion="0"/>
   </Services>
   <Protocols/>
   <DeviceAdaptors/>
