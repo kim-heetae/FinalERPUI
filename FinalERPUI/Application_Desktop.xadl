@@ -12,7 +12,7 @@
                   <Frames>
                     <ChildFrame id="Top_Frame" formurl="Base::Top_Form.xfdl" showtitlebar="false"/>
                     <ChildFrame id="Mid_Frame" formurl="Base::Mid_Form.xfdl" showtitlebar="false"/>
-                    <ChildFrame id="Main_Frame" showtitlebar="false" formurl="Base::MainPage_Form.xfdl"/>
+                    <ChildFrame id="Main_Frame" showtitlebar="false" formurl="MainFrame::My_Page.xfdl"/>
                     <FrameSet id="WorkFrame">
                       <Frames/>
                     </FrameSet>
