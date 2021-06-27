@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="AC_Pay_Mgr" width="1670" height="835" titletext="New Form">
+    <Layouts>
+      <Layout height="835" width="1670"/>
+    </Layouts>
+  </Form>
+</FDL>
