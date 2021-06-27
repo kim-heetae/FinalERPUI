@@ -2,7 +2,132 @@
 <FDL version="2.1">
   <Form id="MainPage_Form" width="1670" height="835" titletext="New Form" background="green">
     <Layouts>
-      <Layout height="835" mobileorientation="landscape" width="1670"/>
+      <Layout height="835" mobileorientation="landscape" width="1670">
+        <Edit id="ed_content" taborder="0" left="1134" top="99" width="300" height="40" displaynulltext="내용을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btn_sel" taborder="1" text="조회" left="1451" top="99" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Tab id="tb_work" taborder="2" tabindex="0" left="180" top="149" width="1352" height="521" font="bold 25px/normal &quot;나눔바른펜&quot;" onchanged="Tab00_onchanged" border="1px solid #c7c7c7px">
+          <Tabpages>
+            <Tabpage id="tb_info" text="공지 게시판" border="1px solid #c7c7c7px" left="0" top="43" width="1272" height="382">
+              <Layouts>
+                <Layout>
+                  <Grid id="gr_info" taborder="0" left="-1" top="-1" width="1348" height="468" binddataset="DS_INFO" autofittype="col" border="1px solid #c7c7c7" background="#ffffff">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="60"/>
+                          <Column size="500"/>
+                          <Column size="80"/>
+                          <Column size="150"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="순서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="1" text="제목" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="2" text="작성자" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="3" text="작성일" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="4" text="조회수" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:bn_no"/>
+                          <Cell col="1" text="bind:bn_content"/>
+                          <Cell col="2" text="bind:bn_name"/>
+                          <Cell col="3" text="bind:bn_date"/>
+                          <Cell col="4" text="bind:bn_hit"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tb_work" text="업무 게시판" background="#ffffff" border="1px solid #c7c7c7px" left="0" top="43" width="1272" height="382">
+              <Layouts>
+                <Layout>
+                  <Grid id="gr_work" taborder="0" left="0" top="-1" width="1348" height="468" binddataset="DS_WORK" autofittype="col" border="1px solid #c7c7c7" background="#ffffff">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="60"/>
+                          <Column size="500"/>
+                          <Column size="80"/>
+                          <Column size="150"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="순서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="1" text="제목" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="2" text="작성자" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="3" text="작성일" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="4" text="조회수" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:bw_no" font="20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="1" text="bind:bw_content" font="20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="2" text="bind:bw_name" font="20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="3" text="bind:bw_date" font="20px/normal &quot;나눔바른펜&quot;"/>
+                          <Cell col="4" text="bind:bw_hit" font="20px/normal &quot;나눔바른펜&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Button id="btn_write" taborder="3" text="작성글" left="1451" top="690" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btn_ins" taborder="4" text="입력" left="1350" top="690" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Combo id="cb_dept" taborder="5" text="부서목록" left="965" top="99" width="150" height="40" font="20px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="dept">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">부서목록</Col>
+                <Col id="codecolumn">dept</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+                <Col id="codecolumn">HR</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">회계팀</Col>
+                <Col id="codecolumn">AC</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+      </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="DS_INFO">
+        <ColumnInfo>
+          <Column id="bn_no" type="STRING" size="256"/>
+          <Column id="bn_name" type="STRING" size="256"/>
+          <Column id="bn_content" type="STRING" size="256"/>
+          <Column id="bn_date" type="STRING" size="256"/>
+          <Column id="bn_hit" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="DS_WORK">
+        <ColumnInfo>
+          <Column id="bw_no" type="STRING" size="256"/>
+          <Column id="bw_name" type="STRING" size="256"/>
+          <Column id="bw_content" type="STRING" size="256"/>
+          <Column id="bw_date" type="STRING" size="256"/>
+          <Column id="bw_hit" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>
