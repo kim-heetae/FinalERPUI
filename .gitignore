@@ -1,7 +1,5 @@
 $Geninfo$.geninfo
 output
 $Application_Desktop.xadl$
-Application_Desktop.xadl
 $temporary$
-appvariables.xml
-environment.xml
+$appvariables.xml$
