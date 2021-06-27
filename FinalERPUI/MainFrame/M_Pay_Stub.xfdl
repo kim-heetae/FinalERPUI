@@ -2,7 +2,21 @@
 <FDL version="2.1">
   <Form id="M_Pay_Stub" width="1670" height="835" titletext="New Form">
     <Layouts>
-      <Layout height="835" width="1670"/>
+      <Layout height="835" mobileorientation="landscape" width="1670">
+        <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Grid id="Grid00" taborder="1" left="30" top="200" width="1500" height="400"/>
+        <Button id="btn_sel" taborder="2" text="발급" left="1454" top="640" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
+        <Button id="btn_sel00" taborder="3" text="공제액 조회" left="1287" top="640" width="100" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_sel01" taborder="4" text="급여 조회" left="1120" top="640" width="100" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="Static01" taborder="5" text="마이페이지 &gt; 급여명세서 발급" left="1320" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+      </Layout>
     </Layouts>
+    <Objects/>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
   </Form>
 </FDL>

@@ -2,7 +2,14 @@
 <FDL version="2.1">
   <Form id="M_Pay_Issue" width="550" height="400" titletext="New Form">
     <Layouts>
-      <Layout height="400" mobileorientation="landscape" width="550"/>
+      <Layout height="400" mobileorientation="landscape" width="550">
+        <Static id="Static00" taborder="0" text="급여명세서 발급" left="165" top="38" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="Static01" taborder="1" left="75" top="130" width="400" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="Static02" taborder="2" text="이메일" left="75" top="131" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="Edit00" taborder="3" left="174" top="132" width="300" height="28" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="Button00" taborder="4" text="Button00" left="160" top="242" width="76" height="36"/>
+        <Button id="Button00_00" taborder="5" text="Button00" left="480" top="132" width="70" height="28"/>
+      </Layout>
     </Layouts>
   </Form>
 </FDL>
