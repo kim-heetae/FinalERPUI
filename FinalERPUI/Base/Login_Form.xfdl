@@ -1,8 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Login_Form" width="1920" height="935" titletext="New Form">
+  <Form id="Login_Form" width="1920" height="935" titletext="New Form" onload="Login_Form_onload">
     <Layouts>
       <Layout height="935" mobileorientation="landscape" width="1920"/>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.application = null;
+
+this.Login_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	
+	/*this.fn_setSize(this.divLayer);*/
+	this.fn_trans_commonCode();
+};
+
+this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objHFrameSet00 = this.application.HFrameSet00;
+	var objVFrameSet01 = this.application.VFrameSet01;
+	
+	objHFrameSet00.set_separatesize("250,*");
+	objVFrameSet01.set_separatesize("50,50,*,0,0");
+	
+	var objLeft_Frame = this.application.Left_Frame;
+	objLeft_Frame.form.fn_initLeftMenu();
+	/*this.fn_workframe();*/
+}
+
+
+// this.fn_workframe = function(){
+// 	var objChildFrame = new ChildFrame();
+// 	objChildFrame.init("childFrame", 0, 0, null, null, 0, 0);
+// 	
+// 	var objWorkFrame = this.application.WorkFrame;
+// 	objWorkFrame.addChild(objChildFrame.name, objChildFrame);
+// 	objChildFrame.set_resizable(true);
+// 	objChildFrame.set_showtitlebar(false);
+//  	objChildFrame.set_openstatus("maximize");
+// 	objChildFrame.set_formurl("MainFrame::My_Page.xfdl");
+// 	objChildFrame.show();
+// }]]></Script>
   </Form>
 </FDL>

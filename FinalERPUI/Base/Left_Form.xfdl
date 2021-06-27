@@ -167,5 +167,63 @@
         </Rows>
       </Dataset>
     </Objects>
+    <Script type="xscript5.1"><![CDATA[this.application = null;
+
+this.Left_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	/*this.fn_workframe();*/
+	/*this.application.gvToday = this.gfnGetToDay();*/
+	
+};
+
+
+// this.fn_initLeftMenu = function()
+// {
+// 	var sLoginId = this.application.gvLoginId;
+// 	var objMenuDs = this.application.gdsLeftMenu;
+// 	
+// 	var objTopFrame = this.application.TopFrame;
+// 	objTopFrame.form.fn_initPopupMenu(sLoginId);	
+// 	
+// 	objMenuDs.set_enableevent(false);
+// 	this.dsFavMenu.set_enableevent(false);	
+// 	
+// 	this.dsFavMenu.copyData(objMenuDs);
+// 	
+// 	var sFilter = "FAV_CHECK==1";
+// 	var sMenuFilter = "";
+// 	if(sLoginId != "accout")
+// 	{
+// 		sMenuFilter = "MENU_AUTH=='all'";
+// 		sFilter += "&& MENU_AUTH=='all'";
+// 	}
+// 	
+// 	objMenuDs.set_filterstr(sMenuFilter);
+// 	this.dsFavMenu.set_filterstr(sFilter);
+// 	
+// 	objMenuDs.set_enableevent(true);
+// 	this.dsFavMenu.set_enableevent(true);
+// 	
+// 	//account change
+// 	if(this.application.gvLoginId == "accout")
+// 	{
+// 		this.stBackImg.set_cssclass( "sta_LF_img2");
+// 		this.stUserName.set_text("판매자");		
+// 	}
+// 	else if(this.application.gvLoginId == "purchase")
+// 	{
+// 		this.stBackImg.set_cssclass( "sta_LF_img1");
+// 		this.stUserName.set_text("매입처");
+// 	}
+// 	else if(this.application.gvLoginId == "sales")
+// 	{
+// 		this.stBackImg.set_cssclass( "sta_LF_img3");
+// 		this.stUserName.set_text("매출처");
+// 	}
+// }
+
+
+]]></Script>
   </Form>
 </FDL>
