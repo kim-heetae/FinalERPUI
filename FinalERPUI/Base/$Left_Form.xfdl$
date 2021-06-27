@@ -44,6 +44,8 @@
             <Col id="MENU_CD">0011</Col>
             <Col id="MENU_MN">신청현황</Col>
             <Col id="MENU_LEV">1</Col>
+            <Col id="PGM_PATH">MainFrame</Col>
+            <Col id="PGM_ID">M_HR_St.xfdl</Col>
           </Row>
           <Row>
             <Col id="MENU_MN">인사 신청현황</Col>
