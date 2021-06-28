@@ -1,8 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="AC_St" width="1670" height="835" titletext="New Form">
+  <Form id="hr_ap_main" width="1670" height="835" titletext="New Form">
     <Layouts>
-      <Layout height="835" width="1670"/>
+      <Layout height="835" mobileorientation="landscape" width="1670">
+        <Tab id="tb_ac_ap" taborder="0" tabindex="0" left="80" top="130" width="920" height="340" onchanged="Tab00_onchanged">
+          <Tabpages>
+            <Tabpage id="Tabpage2" text="전자결재"/>
+            <Tabpage id="Tabpage3" text="이체요청" formscrolltype="none">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage4" text="계좌정보변경">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage5" text="경조비">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Edit id="Edit00" taborder="1" left="655" top="75" width="225" height="30" displaynulltext="사원번호를 입력해주세요"/>
+        <Button id="Button00" taborder="2" text="조회" left="920" top="70" width="80" height="40" borderRadius="10px" border="1px groove"/>
+        <Static id="Static00" taborder="3" text="회계팀 신청 현황" left="84" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
+        <Grid id="Grid00" taborder="4" left="81" top="156" width="919" height="314" autofittype="col" binddataset="">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="94"/>
+                <Column size="123"/>
+                <Column size="389"/>
+                <Column size="122"/>
+                <Column size="109"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO"/>
+                <Cell col="1" text="유형"/>
+                <Cell col="2" text="사원번호"/>
+                <Cell col="3" text="제목"/>
+                <Cell col="4" text="신청일"/>
+                <Cell col="5" text="상태"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:fi_no"/>
+                <Cell col="1" text="bind:ft_type"/>
+                <Cell col="2" text="bind:e_no"/>
+                <Cell col="3" text="bind:fi_name"/>
+                <Cell col="4" text="bind:fi_date"/>
+                <Cell col="5" text="bind:fi_state"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Tab00_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_ac_ap">
+        <ColumnInfo>
+          <Column id="fi_no" type="STRING" size="256"/>
+          <Column id="ft_type" type="STRING" size="256"/>
+          <Column id="e_no" type="STRING" size="256"/>
+          <Column id="fi_name" type="STRING" size="256"/>
+          <Column id="fi_date" type="STRING" size="256"/>
+          <Column id="fi_state" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

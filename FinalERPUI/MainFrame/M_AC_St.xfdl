@@ -1,8 +1,180 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_St" width="1670" height="835" titletext="New Form">
+  <Form id="main_my_ap_hr" width="1670" height="835" titletext="New Form" borderRadius="10px">
     <Layouts>
-      <Layout height="835" width="1670"/>
+      <Layout height="835" mobileorientation="landscape" width="1670">
+        <Static id="lb_my_ap_ac" taborder="0" text="나의 신청 현황" left="84" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
+        <Combo id="cb_my_ap_ac" taborder="1" text="신청서 종류" left="699" top="75" width="171" height="30" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="10pt &quot;나눔바른펜&quot;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">신청서 종류</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">전자결재</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">이체요청</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">계좌정보</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">경조비</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Button id="btn_my_ap_ac_view" taborder="2" text="조회" left="924" top="70" width="80" height="40" borderRadius="10px" border="1px groove" font="10pt &quot;나눔바른펜&quot;"/>
+        <Grid id="gr_my_ap_ac" taborder="3" left="84" top="130" width="920" height="300" binddataset="Dataset00" autofittype="col" font="10pt &quot;나눔바른펜&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="108"/>
+                <Column size="425"/>
+                <Column size="100"/>
+                <Column size="111"/>
+                <Column size="102"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO"/>
+                <Cell col="1" text="유형"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="담당부서"/>
+                <Cell col="4" text="날짜"/>
+                <Cell col="5" text="상태"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:no"/>
+                <Cell col="1" text="bind:type"/>
+                <Cell col="2" text="bind:title"/>
+                <Cell col="3" text="bind:dept"/>
+                <Cell col="4" text="bind:date"/>
+                <Cell col="5" text="bind:state"/>
+                <Cell row="1"/>
+                <Cell row="1" col="1"/>
+                <Cell row="1" col="2"/>
+                <Cell row="1" col="3"/>
+                <Cell row="1" col="4"/>
+                <Cell row="1" col="5"/>
+                <Cell row="2"/>
+                <Cell row="2" col="1"/>
+                <Cell row="2" col="2"/>
+                <Cell row="2" col="3"/>
+                <Cell row="2" col="4"/>
+                <Cell row="2" col="5"/>
+                <Cell row="3"/>
+                <Cell row="3" col="1"/>
+                <Cell row="3" col="2"/>
+                <Cell row="3" col="3"/>
+                <Cell row="3" col="4"/>
+                <Cell row="3" col="5"/>
+                <Cell row="4"/>
+                <Cell row="4" col="1"/>
+                <Cell row="4" col="2"/>
+                <Cell row="4" col="3"/>
+                <Cell row="4" col="4"/>
+                <Cell row="4" col="5"/>
+                <Cell row="5"/>
+                <Cell row="5" col="1"/>
+                <Cell row="5" col="2"/>
+                <Cell row="5" col="3"/>
+                <Cell row="5" col="4"/>
+                <Cell row="5" col="5"/>
+                <Cell row="6"/>
+                <Cell row="6" col="1"/>
+                <Cell row="6" col="2"/>
+                <Cell row="6" col="3"/>
+                <Cell row="6" col="4"/>
+                <Cell row="6" col="5"/>
+                <Cell row="7"/>
+                <Cell row="7" col="1"/>
+                <Cell row="7" col="2"/>
+                <Cell row="7" col="3"/>
+                <Cell row="7" col="4"/>
+                <Cell row="7" col="5"/>
+                <Cell row="8"/>
+                <Cell row="8" col="1"/>
+                <Cell row="8" col="2"/>
+                <Cell row="8" col="3"/>
+                <Cell row="8" col="4"/>
+                <Cell row="8" col="5"/>
+                <Cell row="9"/>
+                <Cell row="9" col="1"/>
+                <Cell row="9" col="2"/>
+                <Cell row="9" col="3"/>
+                <Cell row="9" col="4"/>
+                <Cell row="9" col="5"/>
+                <Cell row="10"/>
+                <Cell row="10" col="1"/>
+                <Cell row="10" col="2"/>
+                <Cell row="10" col="3"/>
+                <Cell row="10" col="4"/>
+                <Cell row="10" col="5"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_my_ap_ac_apply" taborder="4" text="신청" left="924" top="480" width="80" height="40" borderRadius="10px" border="1px groove" font="10pt &quot;나눔바른펜&quot;" onclick="Button00_00_00_onclick"/>
+      </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	
+};
+
+this.ListBox00_onitemchanged = function(obj:nexacro.ListBox,e:nexacro.ItemChangeEventInfo)
+{
+	
+};
+
+this.Button00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	  var objHFrameset = new HFrameSet();  
+    objHFrameset.init("hframesetNew", 30, 90, 550, 400);
+    this.addChild("hframesetNew", objHFrameset);
+    objHFrameset.set_border("1px solid #999999");
+    objHFrameset.show();
+        
+    var objChildFrame = new ChildFrame();  
+    objChildFrame.init("TEST", 0, 0, 0, 0);
+    objHFrameset.addChild("TEST", objChildFrame);
+    objChildFrame.set_border("1px solid #999999");
+    objChildFrame.set_formurl("FrameBase::my_ap_hr_md.xfdl");
+    objChildFrame.show();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_my_ap_ac">
+        <ColumnInfo>
+          <Column id="fi_no" type="STRING" size="256"/>
+          <Column id="ft_type" type="STRING" size="256"/>
+          <Column id="fi_name" type="STRING" size="256"/>
+          <Column id="d_name" type="STRING" size="256"/>
+          <Column id="fi_date" type="STRING" size="256"/>
+          <Column id="fi_state" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>
