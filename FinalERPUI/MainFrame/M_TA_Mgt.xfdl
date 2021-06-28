@@ -2,7 +2,78 @@
 <FDL version="2.1">
   <Form id="M_TA_Mgt" width="1670" height="835" titletext="New Form" background="skyblue">
     <Layouts>
-      <Layout height="835" width="1670"/>
+      <Layout height="835" width="1670">
+        <Static id="lb_title" taborder="0" text="근태관리" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Grid id="gr_MTA" taborder="1" left="150" top="200" width="1370" height="400" border="1px solid #c7c7c7" binddataset="M_TA_Mgt" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="날짜" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="출근시간" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="퇴근시간" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="외출" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="조퇴" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="외근" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="6" text="지각" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="7" text="휴가" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:w_date" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="bind:w_attend" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="bind:w_leave" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="bind:w_out" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="bind:w_early_leave" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="bind:w_work_out" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="6" text="bind:w_late" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="7" text="bind:w_vacation" font="20px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_out" taborder="2" left="1137" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외출" cursor="pointer"/>
+        <Button id="btn_lev" taborder="3" left="1321" top="130" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="퇴근" cursor="pointer"/>
+        <Button id="btn_att" taborder="4" left="1203" top="130" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="출근" cursor="pointer"/>
+        <Button id="btn_earlylev" taborder="5" left="1439" top="130" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조퇴" cursor="pointer"/>
+        <Button id="btn_outIn" taborder="6" left="1237" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외출복귀" cursor="pointer"/>
+        <Button id="btn_workoutIn" taborder="7" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외근복귀" cursor="pointer"/>
+        <Button id="btn_workOut" taborder="8" left="1337" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외근" cursor="pointer"/>
+        <Static id="lb_M_TA_Mgt" taborder="9" text="마이페이지 &gt; 근태관리" left="1369" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <Static id="Static00" taborder="10" text="&lt;" left="630" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00" taborder="11" text="1" left="695" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00" taborder="12" text="2" left="760" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00" taborder="13" text="3" left="825" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00_00" taborder="14" text="4" left="890" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00_00_00" taborder="15" text="5" left="955" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00_00_00_00" taborder="16" text="&gt;" left="1020" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+      </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="M_TA_Mgt">
+        <ColumnInfo>
+          <Column id="w_date" type="STRING" size="256"/>
+          <Column id="w_attend" type="STRING" size="256"/>
+          <Column id="w_late" type="STRING" size="256"/>
+          <Column id="w_out" type="STRING" size="256"/>
+          <Column id="w_work_out" type="STRING" size="256"/>
+          <Column id="w_early_leave" type="STRING" size="256"/>
+          <Column id="w_leave" type="STRING" size="256"/>
+          <Column id="w_vacation" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>
