@@ -1,8 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Retire_Issue" width="550" height="400" titletext="New Form">
+  <Form id="Retire_Issue" width="550" height="500" titletext="New Form">
     <Layouts>
-      <Layout height="400" width="550"/>
+      <Layout height="500" width="550">
+        <Static id="lb_bg1" taborder="0" left="1" top="87" width="549" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="1" text="사원번호" left="1" top="88" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_bg2" taborder="2" left="1" top="126" width="549" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept" taborder="3" text="입사일" left="0" top="167" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_name" taborder="4" left="80" top="127" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Static id="lb_file00" taborder="5" text="은행명" left="276" top="167" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg2_01" taborder="6" left="0" top="205" width="550" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01" taborder="7" text="퇴사일" left="0" top="206" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_file01" taborder="8" text="계좌번호" left="275" top="206" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_dept00" taborder="9" text="사원명" left="0" top="127" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Calendar id="Calendar00" taborder="10" left="80" top="166" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
+        <Static id="lb_empno00" taborder="11" text="직급" left="276" top="87" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_empno00_00" taborder="12" text="부서" left="275" top="126" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_dept" taborder="13" left="355" top="127" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Edit id="ed_empno00_01_00" taborder="14" left="355" top="206" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Static id="lb_bg2_01_00" taborder="15" left="0" top="244" width="550" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_file01_00" taborder="16" text="근속년수" left="275" top="245" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_empno00_01_00_00" taborder="17" left="354" top="245" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Static id="lb_dept01_00" taborder="18" text="퇴직금" left="0" top="246" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Button id="btn_confirm" taborder="19" left="202" top="430" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="발급" cursor="pointer"/>
+        <Button id="btn_cancel" taborder="20" left="318" top="430" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="취소" cursor="pointer"/>
+        <Static id="lb_title" taborder="21" text="퇴직급여 관리" left="185" top="10" width="180" height="60" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Edit id="ed_no" taborder="22" left="80" top="88" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Edit id="ed_lev" taborder="23" left="355" top="88" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Edit id="ed_dept00" taborder="24" left="355" top="166" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Calendar id="Calendar00_00_00" taborder="25" left="80" top="206" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
+        <Edit id="ed_name00" taborder="26" left="80" top="245" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Static id="lb_company" taborder="27" text="회사명 : 어디든지문    (인)" left="180" top="305" width="250" height="45" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" color="black"/>
+        <ImageViewer id="ImageViewer00" taborder="28" left="351" top="302" width="66" height="54" background="none" image="url('imagerc::FPsignature.png')" stretch="fit" border="0px none"/>
+        <Grid id="gr_today" taborder="29" left="197" top="356" width="203" height="36" background="none" border="0px none" font="bold 20px/normal &quot;나눔바른펜&quot;" binddataset="DS_date">
+          <Formats>
+            <Format id="default"/>
+          </Formats>
+        </Grid>
+      </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="DS_date">
+        <ColumnInfo>
+          <Column id="date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

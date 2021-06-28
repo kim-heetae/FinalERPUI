@@ -2,7 +2,124 @@
 <FDL version="2.1">
   <Form id="HR_Appt_Pers" width="1670" height="835" titletext="New Form">
     <Layouts>
-      <Layout height="835" width="1670"/>
+      <Layout height="835" width="1670">
+        <Static id="lb_title" taborder="0" text="인사발령" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Static id="lb_subtitle" taborder="1" text="인사 &gt; 인사발령" left="1369" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <Static id="lb_bg1" taborder="2" left="150" top="162" width="1367" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept" taborder="3" text="부서" left="150" top="165" width="186" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_lev" taborder="4" text="직급" left="507" top="164" width="186" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Combo id="cb_dept" taborder="5" text="부서전체" left="336" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" value="" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">부서전체</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">회계팀</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="cb_dept00" taborder="6" text="직급 전체" left="693" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">직급 전체</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">사장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">부장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">차장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">과장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">대리</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">사원</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="Edit00" taborder="7" left="863" top="164" width="574" height="36" displaynulltext="내용을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btn_Sel" taborder="8" left="1437" top="164" width="80" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조회" cursor="pointer"/>
+        <Button id="btn_Ins" taborder="9" left="1337" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="발령" cursor="pointer"/>
+        <Button id="btn_Del" taborder="10" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="삭제" cursor="pointer"/>
+        <Static id="Static00" taborder="11" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00" taborder="12" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00" taborder="13" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00" taborder="14" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00_00" taborder="15" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00_00_00" taborder="16" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00_00_00_00" taborder="17" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Grid id="gr_HRAppt" taborder="18" left="150" top="200" width="1367" height="400" border="1px solid #c7c7c7" binddataset="DS_HR_Appt_Pers" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="사원명" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="이전부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="변경부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="이전직급" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="변경직급" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="6" text="변경일" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:e_no" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="bind:e_name" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="bind:edh_dept_pre" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="bind:edh_dept_aft" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="bind:edh_pos_pre" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="bind:edh_pos_aft" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="6" text="bind:dc_date" font="20px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="DS_HR_Appt_Pers">
+        <ColumnInfo>
+          <Column id="e_no" type="STRING" size="256"/>
+          <Column id="e_name" type="STRING" size="256"/>
+          <Column id="edh_dept_pre" type="STRING" size="256"/>
+          <Column id="edh_dept_aft" type="STRING" size="256"/>
+          <Column id="edh_pos_pre" type="STRING" size="256"/>
+          <Column id="edh_pos_aft" type="STRING" size="256"/>
+          <Column id="dc_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>
