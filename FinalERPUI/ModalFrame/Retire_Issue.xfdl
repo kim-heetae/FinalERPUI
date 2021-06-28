@@ -22,7 +22,7 @@
         <Static id="lb_file01_00" taborder="16" text="근속년수" left="275" top="245" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_empno00_01_00_00" taborder="17" left="354" top="245" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
         <Static id="lb_dept01_00" taborder="18" text="퇴직금" left="0" top="246" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Button id="btn_confirm" taborder="19" left="202" top="430" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="등록" cursor="pointer"/>
+        <Button id="btn_confirm" taborder="19" left="202" top="430" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="발급" cursor="pointer"/>
         <Button id="btn_cancel" taborder="20" left="318" top="430" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="취소" cursor="pointer"/>
         <Static id="lb_title" taborder="21" text="퇴직급여 관리" left="185" top="10" width="180" height="60" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
         <Edit id="ed_no" taborder="22" left="80" top="88" width="195" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
