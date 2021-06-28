@@ -3,7 +3,7 @@
   <Form id="hr_ap_main" width="1670" height="835" titletext="New Form">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Tab id="tb_ac_retire" taborder="0" tabindex="0" left="80" top="130" width="920" height="340" onchanged="Tab00_onchanged">
+        <Tab id="tb_ac_retire" taborder="0" tabindex="0" left="150" top="200" width="1370" height="400" onchanged="Tab00_onchanged">
           <Tabpages>
             <Tabpage id="tb_hr_att" text="근태사유서">
               <Layouts>
@@ -33,9 +33,9 @@
           </Tabpages>
         </Tab>
         <Edit id="Edit00" taborder="1" left="655" top="75" width="225" height="30" displaynulltext="사원번호를 입력해주세요"/>
-        <Static id="Static00" taborder="2" text="인사팀 신청 현황" left="84" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
+        <Static id="Static00" taborder="2" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
         <Button id="Button00" taborder="3" text="조회" left="920" top="70" width="80" height="40" borderRadius="10px" border="1px groove"/>
-        <Grid id="Grid00" taborder="4" left="80" top="155" width="920" height="315" autofittype="col" binddataset="ds_hr_ap">
+        <Grid id="Grid00" taborder="4" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_hr_ap">
           <Formats>
             <Format id="default">
               <Columns>
@@ -69,6 +69,7 @@
             </Format>
           </Formats>
         </Grid>
+        <Static id="lb_route" taborder="5" text="인사 &gt; 신청현황" left="1438" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

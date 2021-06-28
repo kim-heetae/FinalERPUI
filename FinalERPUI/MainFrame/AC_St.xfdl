@@ -3,7 +3,7 @@
   <Form id="hr_ap_main" width="1670" height="835" titletext="New Form">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Tab id="tb_ac_ap" taborder="0" tabindex="0" left="80" top="130" width="920" height="340" onchanged="Tab00_onchanged">
+        <Tab id="tb_ac_ap" taborder="0" tabindex="0" left="150" top="200" width="1370" height="400" onchanged="Tab00_onchanged">
           <Tabpages>
             <Tabpage id="Tabpage2" text="전자결재"/>
             <Tabpage id="Tabpage3" text="이체요청" formscrolltype="none">
@@ -24,9 +24,8 @@
           </Tabpages>
         </Tab>
         <Edit id="Edit00" taborder="1" left="655" top="75" width="225" height="30" displaynulltext="사원번호를 입력해주세요"/>
-        <Button id="Button00" taborder="2" text="조회" left="920" top="70" width="80" height="40" borderRadius="10px" border="1px groove"/>
-        <Static id="Static00" taborder="3" text="회계팀 신청 현황" left="84" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
-        <Grid id="Grid00" taborder="4" left="81" top="156" width="919" height="314" autofittype="col" binddataset="">
+        <Static id="Static00" taborder="2" text="회계 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
+        <Grid id="Grid00" taborder="3" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="">
           <Formats>
             <Format id="default">
               <Columns>
@@ -60,6 +59,7 @@
             </Format>
           </Formats>
         </Grid>
+        <Static id="Static01" taborder="4" text="회계 &gt; 신청 현황" left="1433" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

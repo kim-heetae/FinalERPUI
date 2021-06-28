@@ -3,7 +3,7 @@
   <Form id="main_my_ap_hr" width="1670" height="835" titletext="New Form" borderRadius="10px">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Static id="lb_my_ap_ac" taborder="0" text="나의 신청 현황" left="84" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
+        <Static id="lb_my_ap_ac" taborder="0" text="회계 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
         <Combo id="cb_my_ap_ac" taborder="1" text="신청서 종류" left="699" top="75" width="171" height="30" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="10pt &quot;나눔바른펜&quot;">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -29,8 +29,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btn_my_ap_ac_view" taborder="2" text="조회" left="924" top="70" width="80" height="40" borderRadius="10px" border="1px groove" font="10pt &quot;나눔바른펜&quot;"/>
-        <Grid id="gr_my_ap_ac" taborder="3" left="84" top="130" width="920" height="300" binddataset="Dataset00" autofittype="col" font="10pt &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_ap_ac" taborder="2" left="150" top="200" width="1370" height="400" binddataset="Dataset00" autofittype="col" font="10pt &quot;나눔바른펜&quot;">
           <Formats>
             <Format id="default">
               <Columns>
@@ -134,7 +133,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_my_ap_ac_apply" taborder="4" text="신청" left="924" top="480" width="80" height="40" borderRadius="10px" border="1px groove" font="10pt &quot;나눔바른펜&quot;" onclick="Button00_00_00_onclick"/>
+        <Button id="btn_my_ap_ac_apply" taborder="3" text="신청" left="924" top="480" width="80" height="40" borderRadius="10px" border="1px groove" font="10pt &quot;나눔바른펜&quot;" onclick="Button00_00_00_onclick"/>
+        <Static id="Static01" taborder="4" text="마이페이지 &gt; 회계 신청 현황" left="1373" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
