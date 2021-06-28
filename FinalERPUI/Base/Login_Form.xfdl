@@ -36,11 +36,12 @@ this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	var param;
 	
-	var objgdsLogin = this.application.gdsLogin;
+	var objgdsLogin = this.application.objgdsLogin;
 	
+	/*var imsi=1;*/
 	
 	//아이디와 비밀번호를 모두 입력했을때
-	if(!this.gfn_isNull(this.ed_id) && !this.gfn_isNull(this.ed_pw)){
+	if(!this.gfn_isNull(ed_id) && !this.gfn_isNull(ed_pw)){
 		param += " e_no=" + ed_id;
 		param += " e_pw=" + ed_pw;
 		this.transaction("svcSelect"
@@ -48,19 +49,19 @@ this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 			,""
 			,"objgdsLogin=out_test"
 			,param
-			,"fn_callback");
+			,"fn_loginback");
 			
-		window.alert(objgdsLogin.getColumn(0,"result"));
-		//로그인 성공
-		if(objgdsLogin.getColumn(0, "RESULT") === "1"){
-			objHFrameSet00.set_separatesize("250,*");
-			objVFrameSet01.set_separatesize("50,50,*,0,0");
-		
-			var objLeft_Frame = this.application.Left_Frame;
-		}
-		else{
-			this.alert("아이디와 비밀번호를 확인해주세요.");
-		}
+// 		window.alert(objgdsLogin.getColumn(0,"RESULT"));
+// 		//로그인 성공
+// 		if(objgdsLogin.getColumn(0, "RESULT") === "1"){
+// 			objHFrameSet00.set_separatesize("250,*");
+// 			objVFrameSet01.set_separatesize("50,50,*,0,0");
+// 		
+// 			var objLeft_Frame = this.application.Left_Frame;
+// 		}
+// 		else{
+// 			this.alert("아이디와 비밀번호를 확인해주세요.");
+// 		}
 	
 	}
 	else{
@@ -68,6 +69,28 @@ this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 	/*objLeft_Frame.form.fn_initLeftMenu();*/
 	/*this.fn_workframe();*/
+// 	if(this.imsi<2){
+// 		this.btn_login_onclick();
+// 		this.imsi++;
+// 		window.alert(this.imsi);
+// 	}
+}
+
+this.fn_loginback = function(){
+	var objHFrameSet00 = this.application.HFrameSet00;
+	var objVFrameSet01 = this.application.VFrameSet01;
+	var objgdsLogin = this.application.objgdsLogin;
+	/*window.alert(objgdsLogin.getColumn(0,"RESULT"));*/
+		//로그인 성공
+		if(objgdsLogin.getColumn(0, "RESULT") === "1"){
+			objHFrameSet00.set_separatesize("250,*");
+			objVFrameSet01.set_separatesize("50,0,*,0,0");
+		
+			var objLeft_Frame = this.application.Left_Frame;
+		}
+		else{
+			this.alert("아이디와 비밀번호를 확인해주세요.");
+		}
 }
 
 this.fn_callback = function(svcID, errCD, errMSG)
@@ -96,7 +119,7 @@ this.fn_callback = function(svcID, errCD, errMSG)
 // 	objChildFrame.show();
 // }]]></Script>
     <Objects>
-      <Dataset id="Dataset00">
+      <Dataset id="Dataset00" useclientlayout="true">
         <ColumnInfo>
           <Column id="MESSAGE" type="STRING" size="256"/>
           <Column id="RESULT" type="STRING" size="256"/>

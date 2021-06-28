@@ -142,9 +142,12 @@
     </Dataset>
     <Dataset id="gdsLogin">
       <ColumnInfo>
-        <Column id="MESSAGE" type="STRING" size="256"/>
-        <Column id="RESULT" type="STRING" size="256"/>
+        <Column id="MESSAGE" type="STRING" size="256" prop=""/>
+        <Column id="RESULT" type="STRING" size="256" prop=""/>
       </ColumnInfo>
+      <Rows>
+        <Row/>
+      </Rows>
     </Dataset>
     <Dataset id="gdsLoginInfo">
       <ColumnInfo>

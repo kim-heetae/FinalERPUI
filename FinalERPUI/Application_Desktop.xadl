@@ -36,6 +36,8 @@ this.Main_Frame;
 this.WorkFrame;
 this.Login_Frame;
 
+this.objgdsLogin;
+
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
 {
 	//frame 정의
@@ -48,6 +50,9 @@ this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventIn
 	this.Main_Frame = this.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.Main_Frame;
 	this.WorkFrame = this.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.WorkFrame;
 	this.Login_Frame = this.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.Login_Frame;
+	
+	this.objgdsLogin = this.gdsLogin;
+	
 	//로그인 화면 Sigit ze Setting
 	this.fn_init();
 }

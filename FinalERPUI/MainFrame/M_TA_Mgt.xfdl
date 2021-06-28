@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_TA_Mgt" width="1670" height="835" titletext="New Form" background="skyblue">
+  <Form id="M_TA_Mgt" width="1670" height="835" titletext="New Form">
     <Layouts>
       <Layout height="835" width="1670">
         <Static id="lb_title" taborder="0" text="근태관리" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="MainPage_Form" width="1670" height="835" titletext="New Form" background="green">
+  <Form id="MainPage_Form" width="1670" height="835" titletext="New Form">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Edit id="ed_content" taborder="0" left="1134" top="99" width="300" height="40" displaynulltext="내용을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
