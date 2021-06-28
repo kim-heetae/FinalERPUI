@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Top_Form" width="1920" height="50" titletext="New Form">
+  <Form id="Top_Form" width="1920" height="50" titletext="New Form" onload="Top_Form_onload" scrolltype="none">
     <Layouts>
       <Layout height="50" width="1920">
-        <Button id="btn_logout" taborder="0" text="로그아웃" left="1477" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;&#9;" color="black" cursor="pointer"/>
+        <Button id="btn_logout" taborder="0" text="로그아웃" left="1477" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;&#9;" color="black" cursor="pointer" onclick="btn_logout_onclick"/>
         <Button id="btn_myInfo" taborder="1" text="내정보" left="1327" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer"/>
         <Static id="lb_topTitle" taborder="2" text="님 환영합니다." left="1157" top="0" width="120" height="50" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center" textDecoration="none" wordSpacing="4px"/>
         <Edit id="ed_name" taborder="3" left="1040" top="4" width="127" height="40" background="none" font="16px/normal &quot;나눔바른펜&quot;" border="0px none"/>
@@ -17,5 +17,45 @@
       <BindItem id="item0" compid="ed_no" propid="value" datasetid="DS_MemberInfo" columnid="e_no"/>
       <BindItem id="item1" compid="ed_name" propid="value" datasetid="DS_MemberInfo" columnid="e_name"/>
     </Bind>
+    <Script type="xscript5.1"><![CDATA[this.application = null;
+
+this.Top_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+};
+
+this.fn_logout = function()
+{
+	window.location.reload(true);
+	//런타임은 this.application.exit() 실행 후 어플리케이션 재실행
+};
+
+this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fn_logout();
+};
+
+/**
+* Function Name : fn_closeMain
+* Description   : 메인화면 감추기
+* Arguments     : none
+* Return        : none
+*/
+this.fn_closeMain = function()
+{
+	var objVFrame02 = this.application.VFrameSet01;
+	objVFrame02.set_separatesize("50,50,0,*,0");
+};
+
+this.fn_openMain = function()
+{
+	var objVFrame01 = this.application.VFrameSet01;
+	
+	objVFrame01.set_separatesize("50,0,*,0,0");
+	
+	var objMainFrame = this.application.Main_Frame;
+	
+	/*objMainFrame.form.fn_createDataList();*/
+};]]></Script>
   </Form>
 </FDL>

@@ -44,6 +44,8 @@
     <Service prefixid="MainFrame" type="form" url="./MainFrame/" version="0" cachelevel="session" include_subdir="true" communicationversion="0"/>
     <Service prefixid="ModalFrame" type="form" url="./ModalFrame/" version="0" cachelevel="session" include_subdir="true" communicationversion="0"/>
     <Service prefixid="SubModalFrame" type="form" url="./SubModalFrame/" version="0" cachelevel="session" include_subdir="true" communicationversion="0"/>
+    <Service prefixid="lib" type="file" url="./lib/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="SvcURL" type="JSP" version="0" cachelevel="session" include_subdir="false" communicationversion="0" url="http://localhost:9000/"/>
   </Services>
   <Protocols/>
   <DeviceAdaptors/>

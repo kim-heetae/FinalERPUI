@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script version="1.0" type="xscript5.1"><![CDATA[/**
+* Function Name : gfn_isNull
+* Description   : 입력값 Null 체크 함수
+* Arguments     : pvVal – 입력값
+* Return        : true/false 값이 Null일 경우 true
+*/
+this.gfn_isNull = function (pvVal)
+{
+	if (new String(pvVal).valueOf() == "undefined") 
+	{
+		return true;
+	}
+	if (pvVal == null) 
+	{
+		return true;
+	}
+	if (("x" + pvVal == "xNaN") && (new String(pvVal.length).valueOf() == "undefined")) 
+	{
+		return true;
+	}
+	if (pvVal.length == 0) 
+	{
+		return true;
+	}
+
+	return false;
+}
+
+/**
+* Function Name : gfn_showModal
+* Description   : popup open (show modal)
+* Arguments     : sPopupId – 팝업명, arrArguments - 전달값, sPopupUrl - 팝업 화면 주소, popupCallback - 팝업 콜백, obj - this,
+*				  nPopupWidth - 팝업 넓이, nPopupHeight - 팝업 높이, bShowFrameTitle - frametitle 사용유무, bShowFrameStatus - frame status 값 사용 유무, sAlignType - 팝업 align
+* Return        : callback function
+*/
+this.gfn_showModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, obj, nPopupWidth, nPopupHeight, bShowFrameTitle, bShowFrameStatus, sAlignType)
+{
+	// 현재 구동되는 정보를 업데이트 한다.
+	var childFrame = new ChildFrame();
+	var parentFrame = obj.getOwnerFrame();
+	
+	var sOpenAlignType = "center middle";
+
+	// TO-DO 팝업사이즈 미지정 시 디폴트 값 적용
+	if (this.gfn_isNull(nPopupWidth)) 
+	{
+		nPopupWidth = obj.confing.popupWidth;
+	}
+
+	if (this.gfn_isNull(nPopupHeight)) 
+	{
+		nPopupHeight = obj.confing.popupHeight;
+	}
+
+	var sShowStatus;
+	if (this.gfn_isNull(bShowFrameStatus) || bShowFrameStatus == false) 
+	{
+		sShowStatus = false;
+	}
+	else if (bShowFrameStatus == true) 
+	{
+		sShowStatus = true;
+	}
+	
+	if (!this.gfn_isNull(sAlignType)) 
+	{
+		sOpenAlignType = sAlignType;
+	}
+
+	var nPopupLeft = "";
+	var nPopupTop = "";
+
+	// 팝업 포지션 값 위치 설정
+	nPopupLeft = 0;
+	nPopupTop = 0;
+	
+	/* ===== Statusbar 옵션 추가 - Start ===== */
+	if (sShowStatus == true) 
+	{
+		childFrame.init(sPopupId, nPopupLeft, nPopupTop, nexacro.toNumber(nPopupWidth) + 4, nexacro.toNumber(nPopupHeight) + 20 + 4 + 25, null, null, sPopupUrl);
+		childFrame.set_statusbarheight(25);
+		childFrame.set_showstatusbar(true);
+	}
+	else 
+	{
+		childFrame.init(sPopupId, nPopupLeft, nPopupTop, nexacro.toNumber(nPopupWidth) + 4, nexacro.toNumber(nPopupHeight) + 20 + 4, null, null, sPopupUrl);
+	}
+	
+	/* ===== Statusbar 옵션 추가 - End   ===== */
+	childFrame.set_openalign(sOpenAlignType);
+	childFrame.set_autosize(false);	
+	childFrame.set_dragmovetype("normal");
+
+	if (this.gfn_isNull(bShowFrameTitle) || bShowFrameTitle == true) 
+	{
+		childFrame.set_showtitlebar(true);
+		childFrame.set_border("3 solid #351b6f");
+		childFrame.set_border("normal");
+	}else{
+		childFrame.set_showtitlebar(false);
+	}
+	
+	// 동적으로 생성한 ChildFrame을 Modal Dialog로 보여줌.
+	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);
+};
+
+/**
+* Function Name : gfn_setGridSize
+* Description   : grid resize (폼 리사이즈 시 그리드 포맷 변경)
+* Arguments     : objGrid - grid
+* Return        : none
+*/
+this.gfn_setGridSize = function(objGrid)
+{
+	if(this.width < 1400)
+	{
+		objGrid.set_formatid("default");
+	}
+	else
+	{
+		objGrid.set_formatid("middle");
+	}
+}
+
+/**
+* Function Name : gfn_validCheck
+* Description	: validation check (필수 입력 값 확인)
+* Arguments		: arrList - component list
+*         		  objDs   - Dataset
+* Return 		: true/false (null is false)
+*/
+this.gfn_validCheck = function(arrList,objDs)
+{
+	var nRow = 0;
+	var sBindId = "";
+	var svalues;
+	
+	for(var i=0; i<arrList.length; i++)
+	{
+		obj = arrList[i];
+		sBindId = this.gfn_findBindColumnId(obj.name);
+		
+		for(var k=0; k<objDs.getRowCount(); k++)
+		{
+			svalues = objDs.getColumn(k,sBindId);
+			
+			if(this.gfn_isNull(svalues))
+			{
+				var objStatic = this.components["sta" + obj.name];
+				var sNamed = objStatic.text;
+				
+				var strReturn = "";
+				if(!this.gfn_isNull(sNamed))
+				{
+					strReturn = "'"+sNamed+"' ";
+				}
+				
+				alert(strReturn+"필수 입력값을 확인하세요");
+				obj.setFocus();
+				
+				objDs.set_rowposition(k);
+				return false;
+			}
+		}
+	}
+	
+	return true;
+}
+
+/**
+* Function Name : gfn_findBindColumnId
+* Description	: find bind dataset column id (컴포넌트에 연결 된 바인드 컬럼 아이디 찾기)
+* Arguments		: id - component name
+* Return 		: rtn - column id
+*/
+this.gfn_findBindColumnId = function(id)
+{
+	var rtn;
+	for(var i=0; i < this.binds.length; i++ )
+	{
+		if( this.binds[i].compid == id )
+		{
+			rtn = this.binds[i].columnid;
+			return rtn;
+		}
+	}
+}
+
+/**
+* Function Name : gfn_makePhoneNumMask
+* Description	: tel number set maskformat (전화번호 값 마스크 포맷 적용)
+* Arguments		: objMsk - maskedit component
+*         		  sValue - post edit value
+* Return 		: none
+*/
+this.gfn_makePhoneNumMask = function(objMsk, sValue)
+{
+	var sReplaceValue;
+	
+	var sMask = "@@@-@@@@-@@@@";
+	
+	if(sValue.substr(0, 2)=="02")
+	{
+		sReplaceValue = nexacro.replaceAll(sValue, " ", "");
+		
+		if(sReplaceValue.length==9)
+		{
+			sMask = "@@-@@@-@@@@";
+		}else
+		{
+			sMask = "@@-@@@@-@@@@";
+		}
+	}
+	else
+	{
+		sReplaceValue = nexacro.replaceAll(sValue, " ", "");
+		if(sReplaceValue.length==10)
+		{
+			sMask = "@@@-@@@-@@@@";
+		}else
+		{
+			sMask = "@@@-@@@@-@@@@";
+		}
+	}
+	
+	objMsk.set_format(sMask);
+}
+
+/**
+* Function Name : gfn_setCellTelMaskFormat
+* Description	: tel number return maskformat (전화번호 값 마스크 포맷 리턴 : 그리드 expr용)
+* Arguments		: sValue - post edit value
+* Return 		: sMask - mask format
+*/
+this.gfn_setCellTelMaskFormat = function(sValue)
+{
+	if(this.gfn_isNull(sValue))
+	{
+		return "@@@-@@@@-@@@@";
+	}	
+	
+	var sReplaceValue;
+	
+	var sMask = "";
+	
+	if(sValue.substr(0, 2)=="02")
+	{
+		sReplaceValue = nexacro.replaceAll(sValue, " ", "");
+		
+		if(sReplaceValue.length==9)
+		{
+			sMask = "@@-@@@-@@@@";
+		}else
+		{
+			sMask = "@@-@@@@-@@@@";
+		}
+	}
+	else
+	{
+		sReplaceValue = nexacro.replaceAll(sValue, " ", "");
+		if(sReplaceValue.length==10)
+		{
+			sMask = "@@@-@@@-@@@@";
+		}else
+		{
+			sMask = "@@@-@@@@-@@@@";
+		}
+	}
+	
+	return sMask;
+};]]></Script>
