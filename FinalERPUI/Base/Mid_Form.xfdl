@@ -9,6 +9,7 @@
             <Tabpage id="Tabpage1" text="Tabpage1"/>
           </Tabpages>
         </Tab>
+        <Button id="btnCloseAll" taborder="2" top="0" width="50" height="50" right="0" onclick="btnCloseAll_onclick" background="" fittocontents="none" icon="url('..\images\btn_mdi_close2.png')"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.application = null;
@@ -128,6 +129,32 @@ this.tabMdi_onextrabuttonclick = function(obj:nexacro.Tab,e:nexacro.TabMouseEven
 	this.application.WorkFrame[sWinId].form.close();
 
 	this.application.Left_Frame.form.fn_DelOpenMenu(sWinId);
+};
+
+/**
+ * @description btnCloseAll onclick event : 전체닫기 (오른쪽 X) 버튼 클릭 - 열린 화면 모두 닫기 후 메인화면 활성화
+ */
+this.btnCloseAll_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var WorkFrame = this.application.WorkFrame.all;
+	
+	for(var i=WorkFrame.length-1; i>=0; i--) 
+	{		
+		WorkFrame[i].form.close();
+		this.tabMdi.removeTabpage(i);
+		
+		if(i < 1)
+		{
+			this.application.Top_Frame.form.fn_openMain();
+		}
+	}	
+	
+	var WorkFrame = this.application.WorkFrame.all;
+	for(var i=WorkFrame.length-1; i>=0; i--) 
+	{
+		WorkFrame[i].form.close();
+		this.tabMdi.removeTabpage(i);
+	}
 };]]></Script>
   </Form>
 </FDL>

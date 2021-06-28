@@ -245,7 +245,7 @@ this.fn_openMenu = function(sMenuId)
 
 	if (this.gfn_isNull(sPGMID))
 	{
-		alert("Menu가 존재하지 않습니다.");
+		/*alert("Menu가 존재하지 않습니다.");*/
 		return;
 	}
 	else if(this.gfn_isNull(sPGMPATH)==true)

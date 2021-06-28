@@ -12,7 +12,10 @@
         <Button id="btn_fgpw" taborder="6" text="Forget Your Passward?" left="1050" top="620" width="170" height="50" font="18px/normal &quot;나눔바른펜&quot;" background="none" border="0px none" cursor="pointer"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
 this.application = null;
 
 this.Login_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -28,13 +31,56 @@ this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var objHFrameSet00 = this.application.HFrameSet00;
 	var objVFrameSet01 = this.application.VFrameSet01;
 	
-	objHFrameSet00.set_separatesize("250,*");
-	objVFrameSet01.set_separatesize("50,50,*,0,0");
+	var ed_id = this.ed_id.value;
+	var ed_pw = this.ed_pw.value;
 	
-	var objLeft_Frame = this.application.Left_Frame;
+	var param;
+	
+	var objgdsLogin = this.application.gdsLogin;
+	
+	
+	//아이디와 비밀번호를 모두 입력했을때
+	if(!this.gfn_isNull(this.ed_id) && !this.gfn_isNull(this.ed_pw)){
+		param += " e_no=" + ed_id;
+		param += " e_pw=" + ed_pw;
+		this.transaction("svcSelect"
+			,"SvcURL::getLoginForm.lg"
+			,""
+			,"objgdsLogin=out_test"
+			,param
+			,"fn_callback");
+			
+		window.alert(objgdsLogin.getColumn(0,"result"));
+		//로그인 성공
+		if(objgdsLogin.getColumn(0, "RESULT") === "1"){
+			objHFrameSet00.set_separatesize("250,*");
+			objVFrameSet01.set_separatesize("50,50,*,0,0");
+		
+			var objLeft_Frame = this.application.Left_Frame;
+		}
+		else{
+			this.alert("아이디와 비밀번호를 확인해주세요.");
+		}
+	
+	}
+	else{
+		this.alert("아이디와 비밀번호를 입력해주세요");
+	}
 	/*objLeft_Frame.form.fn_initLeftMenu();*/
 	/*this.fn_workframe();*/
 }
+
+this.fn_callback = function(svcID, errCD, errMSG)
+{
+	alert("fn_callback 호출 성공");
+	if(errCD < 0){
+		this.alert("Error: " + errMSG);
+		return;
+	}
+	if(svcID == "svcSelect"){
+		this.alert("Retrieve Success!!!");
+	}
+};
 
 
 // this.fn_workframe = function(){
@@ -49,5 +95,13 @@ this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 	objChildFrame.set_formurl("MainFrame::My_Page.xfdl");
 // 	objChildFrame.show();
 // }]]></Script>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="MESSAGE" type="STRING" size="256"/>
+          <Column id="RESULT" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>
