@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Top_Form" width="1920" height="50" titletext="New Form" onload="Top_Form_onload">
+  <Form id="Top_Form" width="1920" height="50" titletext="New Form" onload="Top_Form_onload" scrolltype="none">
     <Layouts>
       <Layout height="50" width="1920">
         <Button id="btn_logout" taborder="0" text="로그아웃" left="1477" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;&#9;" color="black" cursor="pointer" onclick="btn_logout_onclick"/>
