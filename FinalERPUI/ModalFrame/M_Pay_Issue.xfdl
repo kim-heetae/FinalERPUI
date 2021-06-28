@@ -3,13 +3,13 @@
   <Form id="M_Pay_Issue" width="550" height="300" titletext="New Form" color="#000000">
     <Layouts>
       <Layout height="300" mobileorientation="landscape" width="550">
-        <Static id="Static00" taborder="0" text="급여명세서 발급" left="165" top="38" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_pay_stub" taborder="0" text="급여명세서 발급" left="165" top="38" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
         <Static id="Static01" taborder="1" left="75" top="130" width="400" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="Static02" taborder="2" text="이메일" left="75" top="131" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="Edit00" taborder="3" left="175" top="132" width="120" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
-        <Button id="Button00" taborder="4" text="전송" left="175" top="220" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
-        <Static id="Static03" taborder="5" text="@" left="298" top="132" width="24" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" textAlign="center"/>
-        <Combo id="Combo00" taborder="6" left="324" top="132" width="151" height="36" displaynulltext="선택" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" border="1px solid #999999" text="" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Static id="lb_email" taborder="2" text="이메일" left="75" top="131" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_id" taborder="3" left="175" top="132" width="120" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
+        <Button id="btn_send" taborder="4" text="전송" left="175" top="220" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
+        <Static id="lb_at" taborder="5" text="@" left="298" top="132" width="24" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" textAlign="center"/>
+        <Combo id="cb_domain" taborder="6" left="324" top="132" width="151" height="36" displaynulltext="선택" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" border="1px solid #999999" text="" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -34,7 +34,7 @@
               </Row>
               <Row>
                 <Col id="datacolumn">hotmail.com</Col>
-                <Col id="codecolumn">hotmail.com</Col>
+                <Col id="codecolumn">hotmail</Col>
               </Row>
               <Row>
                 <Col id="codecolumn">nate</Col>
@@ -43,7 +43,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="Button00_00" taborder="7" text="취소" left="294" top="220" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
+        <Button id="btn_cancel" taborder="7" text="취소" left="294" top="220" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

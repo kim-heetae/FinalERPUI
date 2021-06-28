@@ -3,7 +3,7 @@
   <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Static id="Static00" taborder="0" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick"/>
+        <Static id="lb_title" taborder="0" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick"/>
         <Combo id="cb_type" taborder="1" text="신청서 종류" left="1241" top="160" width="200" height="40" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="20px/normal &quot;나눔바른펜&quot;&#9;">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -135,7 +135,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static01" taborder="3" text="마이페이지 &gt; 인사 신청 현황" left="1373" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static01_onclick"/>
+        <Static id="lb_route" taborder="3" text="마이페이지 &gt; 인사 신청 현황" left="1373" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static01_onclick"/>
         <Button id="btn_apply" taborder="4" text="신청" left="1440" top="630" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
         <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
         <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
