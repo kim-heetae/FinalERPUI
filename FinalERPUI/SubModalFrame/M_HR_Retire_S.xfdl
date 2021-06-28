@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_Approve" width="550" height="501" titletext="New Form" border="1px solid #999999">
+  <Form id="M_AC_Approve" width="550" height="550" titletext="New Form" border="1px solid #999999" onclick="M_AC_Approve_onclick">
     <Layouts>
-      <Layout height="501" width="550">
-        <Static id="lb_title_m" taborder="0" text="퇴직서 제출" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+      <Layout height="550" width="550">
+        <Static id="lb_title_m" taborder="0" text="퇴직서 제출내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
         <Static id="lb_bg1" taborder="1" left="25" top="100" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="101" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="3" left="144" top="102" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
@@ -30,17 +30,16 @@
         </Combo>
         <Edit id="ed_date" taborder="8" left="390" top="102" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_date_retire" taborder="9" text="희망퇴직일" left="269" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_title" taborder="10" left="144" top="180" width="381" height="37" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
-        <TextArea id="ta_content" taborder="11" left="25" top="255" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <Edit id="ed_title" taborder="10" left="144" top="180" width="381" height="37" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
+        <TextArea id="ta_content" taborder="11" left="25" top="255" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
         <Static id="lb_title" taborder="12" text="제목" left="25" top="179" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_content" taborder="13" text="내용" left="25" top="218" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Button id="btn_cancel" taborder="14" left="449" top="437" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소"/>
-        <Button id="btn_confirm" taborder="15" left="312" top="437" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인"/>
-        <Edit id="ed__date_retire" taborder="16" left="390" top="141" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Static id="lb_content00" taborder="17" left="144" top="218" width="381" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_bg3" taborder="18" left="25" top="374" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" background="#f7f7f7"/>
-        <Static id="lb_contact" taborder="19" text="연락처" left="25" top="375" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Combo id="cb_contact_first" taborder="20" text="" left="144" top="376" width="106" height="36" onitemchanged="Combo00_onitemchanged" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" color="#000000" displaynulltext="010" enable="true">
+        <Button id="btn_ok" taborder="14" left="449" top="489" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인"/>
+        <Edit id="ed__date_retire" taborder="15" left="390" top="141" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_bg3" taborder="16" left="25" top="374" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" background="#f7f7f7"/>
+        <Static id="lb_contact" taborder="17" text="연락처" left="25" top="375" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_content00" taborder="18" left="144" top="218" width="381" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Combo id="cb_contact_first" taborder="19" text="" left="144" top="376" width="106" height="36" onitemchanged="Combo00_onitemchanged" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" color="#000000" displaynulltext="010" enable="false">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -122,10 +121,14 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static00" taborder="21" text="-" left="263" top="377" width="14" height="35" textAlign="center"/>
-        <Edit id="ed_contact_middle" taborder="22" left="288" top="376" width="100" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true" height="36"/>
-        <Static id="Static00_00" taborder="23" text="-" left="400" top="377" width="14" height="35" textAlign="center"/>
-        <Edit id="ed_contact_last" taborder="24" left="425" top="376" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true" height="36" width="100"/>
+        <Static id="Static00" taborder="20" text="-" left="263" top="377" width="14" height="35" textAlign="center"/>
+        <Edit id="ed_contact_middle" taborder="21" left="288" top="376" width="100" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36"/>
+        <Static id="Static00_00" taborder="22" text="-" left="400" top="377" width="14" height="35" textAlign="center"/>
+        <Edit id="ed_contact_last" taborder="23" left="425" top="376" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36" width="100"/>
+        <Static id="lb_bg3_00" taborder="24" left="25" top="413" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_state" taborder="25" text="상태" left="25" top="414" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_state" taborder="26" left="144" top="415" width="106" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36"/>
+        <Static id="lb_state00" taborder="27" left="250" top="414" width="275" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -145,6 +148,11 @@ this.Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEven
 };
 
 this.Common_onchanged = function(obj:nexacro.TextArea,e:nexacro.ChangeEventInfo)
+{
+	
+};
+
+this.M_AC_Approve_onclick = function(obj:nexacro.Form,e:nexacro.ClickEventInfo)
 {
 	
 };

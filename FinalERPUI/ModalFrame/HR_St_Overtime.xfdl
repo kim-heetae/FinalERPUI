@@ -9,11 +9,11 @@
         <Edit id="ed_empno" taborder="3" left="144" top="102" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg2" taborder="4" left="25" top="139" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_date" taborder="5" text="신청일" left="269" top="101" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_date" taborder="6" left="390" top="102" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_date_start" taborder="7" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7" text="휴가시작일"/>
-        <Edit id="ed_date_start" taborder="8" left="144" top="141" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_date_end" taborder="9" text="휴가종료일" left="269" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_date_end" taborder="10" left="390" top="141" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_date_work" taborder="6" text="근무날짜" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_date" taborder="7" left="390" top="102" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_time_work" taborder="8" text="근무시간" left="269" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_date_work" taborder="9" left="144" top="141" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Edit id="ed_time_work" taborder="10" left="390" top="141" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg2_00" taborder="11" left="270" top="214" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Edit id="ed_title" taborder="12" left="144" top="180" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
         <TextArea id="ta_content" taborder="13" left="25" top="253" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>

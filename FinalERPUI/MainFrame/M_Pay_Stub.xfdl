@@ -4,14 +4,70 @@
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
-        <Grid id="Grid00" taborder="1" left="30" top="200" width="1500" height="400"/>
-        <Button id="btn_sel" taborder="2" text="발급" left="1454" top="640" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
-        <Button id="btn_sel00" taborder="3" text="공제액 조회" left="1287" top="640" width="100" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_sel01" taborder="4" text="급여 조회" left="1120" top="640" width="100" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Static id="Static01" taborder="5" text="마이페이지 &gt; 급여명세서 발급" left="1320" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Grid id="Grid00" taborder="1" left="150" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="121"/>
+                <Column size="117"/>
+                <Column size="115"/>
+                <Column size="113"/>
+                <Column size="119"/>
+                <Column size="136"/>
+                <Column size="133"/>
+                <Column size="141"/>
+                <Column size="128"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호"/>
+                <Cell col="1" text="사원명"/>
+                <Cell col="2" text="부서명"/>
+                <Cell col="3" text="직급"/>
+                <Cell col="4" text="지급날짜"/>
+                <Cell col="5" text="급여"/>
+                <Cell col="6" text="공제액"/>
+                <Cell col="7" text="실수령액"/>
+                <Cell col="8" text="지급상태"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:e_no"/>
+                <Cell col="1" text="bind:e_name"/>
+                <Cell col="2" text="bind:d_name"/>
+                <Cell col="3" text="bind:e_pos"/>
+                <Cell col="4" text="bind:sb_date"/>
+                <Cell col="5" text="bind:ss_basic"/>
+                <Cell col="6" text="bind:ss_duc"/>
+                <Cell col="7" text="bind:ss_real"/>
+                <Cell col="8" text="bind:ss_state"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_sel" taborder="2" text="발급" left="1444" top="640" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
+        <Button id="btn_sel00" taborder="3" text="공제액 조회" left="1277" top="640" width="100" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_sel01" taborder="4" text="급여 조회" left="1110" top="640" width="100" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="Static01" taborder="5" text="마이페이지 &gt; 급여명세서 발급" left="1363" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
       </Layout>
     </Layouts>
-    <Objects/>
+    <Objects>
+      <Dataset id="ds_pay_stub">
+        <ColumnInfo>
+          <Column id="e_no" type="STRING" size="256"/>
+          <Column id="e_name" type="STRING" size="256"/>
+          <Column id="d_name" type="STRING" size="256"/>
+          <Column id="e_pos" type="STRING" size="256"/>
+          <Column id="sb_date" type="STRING" size="256"/>
+          <Column id="ss_basic" type="STRING" size="256"/>
+          <Column id="ss_duc" type="STRING" size="256"/>
+          <Column id="ss_real" type="STRING" size="256"/>
+          <Column id="ss_state" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
     <Script type="xscript5.1"><![CDATA[
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {

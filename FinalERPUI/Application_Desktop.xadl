@@ -7,16 +7,16 @@
           <Frames>
             <HFrameSet id="HFrameSet00" separatesize="250">
               <Frames>
-                <ChildFrame id="Left_Frame" formurl="" showtitlebar="false"/>
-                <VFrameSet id="VFrameSet01" separatesize="50,50,0,*,0">
+                <ChildFrame id="Left_Frame" formurl="Base::Left_Form.xfdl" showtitlebar="false"/>
+                <VFrameSet id="VFrameSet01" separatesize="50,50,*,0,0">
                   <Frames>
-                    <ChildFrame id="Top_Frame" formurl="" showtitlebar="false"/>
-                    <ChildFrame id="Mid_Frame" formurl="" showtitlebar="false"/>
-                    <ChildFrame id="Main_Frame" showtitlebar="false"/>
+                    <ChildFrame id="Top_Frame" formurl="Base::Top_Form.xfdl" showtitlebar="false"/>
+                    <ChildFrame id="Mid_Frame" formurl="Base::Mid_Form.xfdl" showtitlebar="false"/>
+                    <ChildFrame id="Main_Frame" showtitlebar="false" formurl="Base::MainPage_Form.xfdl"/>
                     <FrameSet id="WorkFrame">
                       <Frames/>
                     </FrameSet>
-                    <ChildFrame id="Login_Frame" formurl="Base::hello.xfdl" showtitlebar="false"/>
+                    <ChildFrame id="Login_Frame" formurl="Base::Login_Form.xfdl" showtitlebar="false"/>
                   </Frames>
                 </VFrameSet>
               </Frames>
@@ -53,8 +53,8 @@ this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventIn
 }
 
 this.fn_init = function (){
-	this.HFrameSet00.set_separatesize("0,*");
-	this.VFrameSet01.set_separatesize("0,0,0,0,*");
+// 	this.HFrameSet00.set_separatesize("0,*");
+// 	this.VFrameSet01.set_separatesize("0,0,0,0,*");
 }
 ]]></Script>
 </ADL>
