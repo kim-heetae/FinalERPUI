@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="hr_ap_main" width="1670" height="835" titletext="New Form">
+  <Form id="HR_St" width="1670" height="835" titletext="New Form">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Tab id="tb_ac_retire" taborder="0" tabindex="0" left="150" top="200" width="1370" height="400" onchanged="Tab00_onchanged">
+        <Tab id="tb_hr_apply" taborder="0" tabindex="0" left="150" top="163" width="1370" height="400" onchanged="Tab00_onchanged" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;">
           <Tabpages>
             <Tabpage id="tb_hr_att" text="근태사유서">
               <Layouts>
@@ -32,31 +32,39 @@
             </Tabpage>
           </Tabpages>
         </Tab>
-        <Edit id="Edit00" taborder="1" left="655" top="75" width="225" height="30" displaynulltext="사원번호를 입력해주세요"/>
-        <Static id="Static00" taborder="2" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
-        <Button id="Button00" taborder="3" text="조회" left="920" top="70" width="80" height="40" borderRadius="10px" border="1px groove"/>
-        <Grid id="Grid00" taborder="4" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_hr_ap">
+        <Edit id="ed_enpmo" taborder="1" left="1241" top="160" width="200" height="40" displaynulltext="사원번호를 입력해주세요" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="lb_title" taborder="2" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
+        <Grid id="gr_hr_apply" taborder="3" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_hr_ap" font="20px/normal &quot;나눔바른펜&quot;">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="99"/>
-                <Column size="118"/>
-                <Column size="145"/>
-                <Column size="320"/>
-                <Column size="137"/>
-                <Column size="104"/>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="140"/>
+                <Column size="450"/>
+                <Column size="140"/>
+                <Column size="120"/>
               </Columns>
               <Rows>
-                <Row size="24" band="head"/>
-                <Row size="24"/>
+                <Row size="35" band="head"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
               </Rows>
               <Band id="head">
-                <Cell text="NO"/>
-                <Cell col="1" text="유형"/>
-                <Cell col="2" text="사원번호"/>
-                <Cell col="3" text="제목"/>
-                <Cell col="4" text="날짜"/>
-                <Cell col="5" text="상태"/>
+                <Cell text="NO" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="1" text="유형" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="2" text="사원번호" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="3" text="제목" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="4" text="날짜" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="5" text="상태" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:fi_no"/>
@@ -65,11 +73,73 @@
                 <Cell col="3" text="bind:fi_name"/>
                 <Cell col="4" text="bind:fi_date"/>
                 <Cell col="5" text="bind:fi_state"/>
+                <Cell row="1"/>
+                <Cell row="1" col="1"/>
+                <Cell row="1" col="2"/>
+                <Cell row="1" col="3"/>
+                <Cell row="1" col="4"/>
+                <Cell row="1" col="5"/>
+                <Cell row="2"/>
+                <Cell row="2" col="1"/>
+                <Cell row="2" col="2"/>
+                <Cell row="2" col="3"/>
+                <Cell row="2" col="4"/>
+                <Cell row="2" col="5"/>
+                <Cell row="3"/>
+                <Cell row="3" col="1"/>
+                <Cell row="3" col="2"/>
+                <Cell row="3" col="3"/>
+                <Cell row="3" col="4"/>
+                <Cell row="3" col="5"/>
+                <Cell row="4"/>
+                <Cell row="4" col="1"/>
+                <Cell row="4" col="2"/>
+                <Cell row="4" col="3"/>
+                <Cell row="4" col="4"/>
+                <Cell row="4" col="5"/>
+                <Cell row="5"/>
+                <Cell row="5" col="1"/>
+                <Cell row="5" col="2"/>
+                <Cell row="5" col="3"/>
+                <Cell row="5" col="4"/>
+                <Cell row="5" col="5"/>
+                <Cell row="6"/>
+                <Cell row="6" col="1"/>
+                <Cell row="6" col="2"/>
+                <Cell row="6" col="3"/>
+                <Cell row="6" col="4"/>
+                <Cell row="6" col="5"/>
+                <Cell row="7"/>
+                <Cell row="7" col="1"/>
+                <Cell row="7" col="2"/>
+                <Cell row="7" col="3"/>
+                <Cell row="7" col="4"/>
+                <Cell row="7" col="5"/>
+                <Cell row="8"/>
+                <Cell row="8" col="1"/>
+                <Cell row="8" col="2"/>
+                <Cell row="8" col="3"/>
+                <Cell row="8" col="4"/>
+                <Cell row="8" col="5"/>
+                <Cell row="9"/>
+                <Cell row="9" col="1"/>
+                <Cell row="9" col="2"/>
+                <Cell row="9" col="3"/>
+                <Cell row="9" col="4"/>
+                <Cell row="9" col="5"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="lb_route" taborder="5" text="인사 &gt; 신청현황" left="1438" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="lb_route" taborder="4" text="인사 &gt; 신청현황" left="1438" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
+        <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_3" taborder="9" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_4" taborder="10" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_5" taborder="11" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
