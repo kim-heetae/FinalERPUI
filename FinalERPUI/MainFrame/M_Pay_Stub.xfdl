@@ -3,7 +3,7 @@
   <Form id="M_Pay_Stub" width="1670" height="835" titletext="New Form">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="240" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
         <Grid id="Grid00" taborder="1" left="30" top="200" width="1500" height="400"/>
         <Button id="btn_sel" taborder="2" text="발급" left="1454" top="640" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
         <Button id="btn_sel00" taborder="3" text="공제액 조회" left="1287" top="640" width="100" height="36" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>

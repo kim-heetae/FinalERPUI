@@ -3,7 +3,7 @@
   <Form id="HR_Appt_Pers_Ins" width="1670" height="835" titletext="New Form">
     <Layouts>
       <Layout height="835" width="1670">
-        <Static id="lb_title" taborder="0" text="인사발령 등록" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Static id="lb_title" taborder="0" text="인사발령 등록" left="30" top="40" width="200" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
         <Static id="lb_myPage" taborder="1" text="인사 &gt; 인사발령 &gt; 인사발령 등록" left="1317" top="49" width="200" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
         <Button id="btn_Com" taborder="2" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="완료" cursor="pointer"/>
         <Static id="lb_bg1" taborder="3" left="154" top="162" width="646" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
