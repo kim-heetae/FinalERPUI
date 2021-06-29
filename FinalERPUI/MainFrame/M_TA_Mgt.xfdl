@@ -77,6 +77,8 @@
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.application = null;
 
+this.transactionCount = 0;
+
 this.M_TA_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
@@ -86,16 +88,22 @@ this.M_TA_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 //근태정보 가져오기
 this.mta_board_load = function(){
-	var mtaparam = " bm_no=" + 0;
-	this.transaction("mtaSelect"
-	,"SvcURL:://main/getTASel.mpg"
+	var objgsdLoginInfo = this.application.objgdsLoginInfo;
+	var mtaparam = " e_no=" + objgsdLoginInfo.getColumn(0,"E_NO");
+	var idCount = this.transactionCount++;
+	var svcID = "mtaSel" + idCount;
+	
+	this.transaction(svcID
+	,"SvcURL::/mypage/getTASel.mpg?no=" + idCount
 	,""
 	,"M_TA_MGT=out_test"
-	
 	,mtaparam
 	,"");
 }
 
+this.mygeuntae = function(){
+
+}
 
 
 //출근 버튼 클릭 시 이벤트 처리
