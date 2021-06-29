@@ -36,7 +36,7 @@ this.Main_Frame;
 this.WorkFrame;
 this.Login_Frame;
 
-this.objgdsLogin;
+this.objgdsLoginInfo;
 
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
 {
@@ -51,7 +51,7 @@ this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventIn
 	this.WorkFrame = this.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.WorkFrame;
 	this.Login_Frame = this.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.Login_Frame;
 	
-	this.objgdsLogin = this.gdsLogin;
+	this.objgdsLoginInfo = this.gdsLoginInfo;
 	
 	//로그인 화면 Sigit ze Setting
 	this.fn_init();

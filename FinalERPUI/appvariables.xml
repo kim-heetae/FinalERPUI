@@ -151,10 +151,12 @@
     </Dataset>
     <Dataset id="gdsLoginInfo">
       <ColumnInfo>
-        <Column id="LOGINID" type="STRING" size="256"/>
-        <Column id="LOGINDEPTNO" type="STRING" size="256"/>
-        <Column id="LOGINEPOS" type="STRING" size="256"/>
-        <Column id="LOGINAUTH" type="STRING" size="256"/>
+        <Column id="E_NO" type="STRING" size="256"/>
+        <Column id="E_NAME" type="STRING" size="256"/>
+        <Column id="D_NO" type="STRING" size="256"/>
+        <Column id="D_NAME" type="STRING" size="256"/>
+        <Column id="PA_AUTH" type="STRING" size="256"/>
+        <Column id="E_POS" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
   </Datasets>
