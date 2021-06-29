@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="main_my_ap_hr" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000">
+  <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Static id="Static00" taborder="0" text="나의 신청 현황" left="84" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick"/>
-        <Combo id="Combo00" taborder="1" text="신청서 종류" left="709" top="75" width="171" height="30" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="10pt &quot;나눔바른펜&quot;">
+        <Static id="lb_title" taborder="0" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick"/>
+        <Combo id="cb_type" taborder="1" text="신청서 종류" left="1241" top="160" width="200" height="40" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="20px/normal &quot;나눔바른펜&quot;&#9;">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -13,58 +13,62 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">신청서 종류</Col>
+                <Col id="codecolumn">type</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">근태사유서</Col>
+                <Col id="codecolumn">attend</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">연장근무</Col>
+                <Col id="codecolumn">overtime</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">전자결재</Col>
+                <Col id="codecolumn">approve</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">휴가</Col>
+                <Col id="codecolumn">vacation</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">퇴직</Col>
+                <Col id="codecolumn">retire</Col>
               </Row>
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="Button00" taborder="2" text="조회" left="924" top="70" width="80" height="40" borderRadius="10px" border="1px groove" font="10pt &quot;나눔바른펜&quot;"/>
-        <Grid id="gr_my_ap_hr" taborder="3" left="84" top="130" width="920" height="300" binddataset="Dataset00" autofittype="col" font="10pt &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="Dataset00" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="80"/>
-                <Column size="108"/>
-                <Column size="425"/>
                 <Column size="100"/>
-                <Column size="111"/>
-                <Column size="102"/>
+                <Column size="120"/>
+                <Column size="450"/>
+                <Column size="120"/>
+                <Column size="140"/>
+                <Column size="120"/>
               </Columns>
               <Rows>
-                <Row size="24" band="head"/>
-                <Row size="24"/>
-                <Row size="24"/>
-                <Row size="24"/>
-                <Row size="24"/>
-                <Row size="24"/>
-                <Row size="24"/>
-                <Row size="24"/>
-                <Row size="24"/>
-                <Row size="24"/>
-                <Row size="24"/>
-                <Row size="24"/>
+                <Row size="35" band="head"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
               </Rows>
               <Band id="head">
-                <Cell text="NO"/>
-                <Cell col="1" text="유형"/>
-                <Cell col="2" text="제목"/>
-                <Cell col="3" text="담당부서"/>
-                <Cell col="4" text="날짜"/>
-                <Cell col="5" text="상태"/>
+                <Cell text="NO" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="유형" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="제목" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="담당부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="날짜" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="상태" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:no"/>
@@ -127,17 +131,20 @@
                 <Cell row="9" col="3"/>
                 <Cell row="9" col="4"/>
                 <Cell row="9" col="5"/>
-                <Cell row="10"/>
-                <Cell row="10" col="1"/>
-                <Cell row="10" col="2"/>
-                <Cell row="10" col="3"/>
-                <Cell row="10" col="4"/>
-                <Cell row="10" col="5"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button00_00_00" taborder="4" text="신청" left="924" top="480" width="80" height="40" borderRadius="10px" border="1px groove" font="10pt &quot;나눔바른펜&quot;" onclick="Button00_00_00_onclick"/>
+        <Static id="lb_route" taborder="3" text="마이페이지 &gt; 인사 신청 현황" left="1373" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static01_onclick"/>
+        <Button id="btn_apply" taborder="4" text="신청" left="1440" top="630" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
+        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
+        <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_3" taborder="9" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_4" taborder="10" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_5" taborder="11" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -168,6 +175,11 @@ this.Button00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 };
 
 this.Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
 {
 	
 };

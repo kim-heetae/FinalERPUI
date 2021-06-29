@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_Con" width="550" height="550" titletext="New Form">
+  <Form id="M_AC_Con_S" width="550" height="550" titletext="New Form">
     <Layouts>
       <Layout height="550" width="550">
         <Static id="lb_bg2" taborder="0" left="25" top="229" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
@@ -31,7 +31,7 @@
         <Static id="lb_date" taborder="25" text="신청일" left="269" top="113" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_date" taborder="26" left="390" top="114" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Edit id="ed_person" taborder="27" left="144" top="153" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <FileUpload id="file_upload" taborder="28" left="390" top="231" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false"/>
+        <FileUpload id="file_upload" taborder="28" left="390" top="231" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
       </Layout>
     </Layouts>
   </Form>
