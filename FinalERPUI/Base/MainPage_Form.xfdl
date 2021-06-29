@@ -137,14 +137,17 @@
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.application = null;
 
+this.tabChangeCount = 0;
+
 this.MainPage_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
 	this.cb_dept.set_visible(false);
 	/*this.cb_dept.set_index(0);*/
-		
+	this.transactionCount = 0;
 }
 
+//콤보박스 데이터를 부서에 맞게 나오도록 수정하는 함수
 this.cb_detp_innerSet = function(){
 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
 	if(objgdsLoginInfo.getColumn(0,"D_NAME") === "인사과"){
@@ -155,49 +158,83 @@ this.cb_detp_innerSet = function(){
 	}
 }
 
+//공지사항게시판 정보 가져오기
 this.bn_board_load = function(){
-	//공지사항게시판 정보 가져오기
 			var bnparam = " bn_no=" + 0;
-			this.transaction("bnSelect"
+			var idCount = this.transactionCount++;
+			var svcID = "bnSelect" + idCount;
+			this.transaction(svcID
 				,"SvcURL::/main/getAllSel.mpg"
 				,""
 				,"DS_INFO=out_test"
 				,bnparam
 				,"");
-				
 }
 
+//업무게시판 정보 가져오기
 this.bw_board_load = function(){
-// 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-// 	var bwparam = " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO");
-// 	this.transaction("svcSelect"
-// 				,"SvcURL::/main/getAllSel.mpg"
-// 				,""
-// 				,"DS_WORK=out_test"
-// 				,bwparam
-// 				,"");
+		var objgdsLoginInfo = this.application.objgdsLoginInfo;
+		var bwparam = " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO");//부서별로 다른 정보를 가져온다.
+		var idCount = this.transactionCount++;
+		var svcID = "bwSelect" + idCount;
+		
+		this.transaction(svcID
+				,"SvcURL::/main/getNBSearch.mpg"
+				,""
+				,"DS_WORK=out_test"
+				,bwparam
+				,"");
+} 
+
+this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
+	/*alert(this.tabChangeCount%2);*/
+// 	this.transactionCount++;
+// 	alert("bwSelect" + this.transactionCount);
+	if(this.tabChangeCount % 2 ===0){
+		this.fn_bnDetailSel();
+	}
+	else{
+		this.fn_bwDetailSel();
+	}
+	/*this.fn_bwDetailSel();*/
 }
 
-this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	
+this.fn_bnDetailSel = function(){
+	var edContent = this.ed_content.value;
+	var bnparam = " bn_no=" + 0 + " bn_content=" + edContent;
+	var idCount = this.transactionCount++;
+	var svcID = "bnSelect" + idCount;
+			this.transaction(svcID
+				,"SvcURL::/main/getAllSel.mpg"
+				,""
+				,"DS_INFO=out_test"
+				,bnparam
+				,"");
+}
+
+this.fn_bwDetailSel = function(){
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var edContent = this.ed_content.value;
+	var bwparam = " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO") + " bw_name=" + edContent;//부서별로 다른 정보를 가져온다.
+	var idCount = this.transactionCount++;
+	var svcID = "bwSelect" + idCount;
+	this.transaction(svcID
+			,"SvcURL::/main/getNBSearch.mpg"
+			,""
+			,"DS_WORK=out_test"
+			,bwparam
+			,"");
 }
 
 this.tb_work_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo){
 	trace(e.postindex);
 	if (e.postindex == 0){
 		this.cb_dept.set_visible(false);
+		this.tabChangeCount++;
 	}
 	else{
 		this.cb_dept.set_visible(true);
-		var objgdsLoginInfo = this.application.objgdsLoginInfo;
-		var bwparam = " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO");
-		this.transaction("bwSelect"
-				,"SvcURL::/main/getNBSearch.mpg"
-				,""
-				,"DS_WORK=out_test"
-				,bwparam
-				,"");
+		this.tabChangeCount++;
 	}
 }
 this.btn_ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
