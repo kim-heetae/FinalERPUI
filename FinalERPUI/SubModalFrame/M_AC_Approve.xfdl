@@ -14,15 +14,15 @@
         <Edit id="ed_date" taborder="8" left="390" top="112" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_file" taborder="9" text="첨부파일" left="269" top="150" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Button id="btn_cancel" taborder="10" left="449" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소"/>
-        <Button id="btn_confirm" taborder="11" left="329" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인"/>
-        <Static id="lb_bg2_00" taborder="12" left="270" top="224" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Edit id="ed_title" taborder="13" left="144" top="190" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="true"/>
-        <TextArea id="ta_content" taborder="14" left="25" top="263" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="true"/>
-        <Static id="lb_content" taborder="15" text="내용" left="25" top="225" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_title" taborder="16" text="제목" left="25" top="188" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_content00" taborder="17" left="145" top="226" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_file00_00" taborder="18" left="144" top="226" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <FileUpload id="file_upload" taborder="19" left="390" top="151" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36"/>
+        <Static id="lb_bg2_00" taborder="11" left="270" top="224" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Edit id="ed_title" taborder="12" left="144" top="190" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="true"/>
+        <TextArea id="ta_content" taborder="13" left="25" top="263" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="true"/>
+        <Static id="lb_content" taborder="14" text="내용" left="25" top="225" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_title" taborder="15" text="제목" left="25" top="188" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_content00" taborder="16" left="145" top="226" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_file00_00" taborder="17" left="144" top="226" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <FileUpload id="file_upload" taborder="18" left="390" top="151" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_confirm" taborder="19" left="316" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

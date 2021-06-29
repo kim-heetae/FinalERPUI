@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_Account" width="550" height="500" titletext="New Form">
+  <Form id="M_AC_Account_S" width="550" height="500" titletext="New Form">
     <Layouts>
       <Layout height="500" width="550">
         <Static id="lb_bg1" taborder="0" left="25" top="101" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
@@ -26,7 +26,7 @@
         <Static id="lb_account" taborder="20" text="계좌번호" left="269" top="141" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_account" taborder="21" left="390" top="142" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Edit id="ed_state" taborder="22" left="144" top="181" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <FileUpload id="file_upload" taborder="23" left="390" top="181" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false"/>
+        <FileUpload id="file_upload" taborder="23" left="390" top="181" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
       </Layout>
     </Layouts>
   </Form>
