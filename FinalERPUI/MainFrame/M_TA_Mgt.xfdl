@@ -44,13 +44,13 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_out" taborder="2" left="1137" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외출" cursor="pointer"/>
-        <Button id="btn_lev" taborder="3" left="1321" top="130" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="퇴근" cursor="pointer"/>
-        <Button id="btn_att" taborder="4" left="1203" top="130" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="출근" cursor="pointer"/>
+        <Button id="btn_out" taborder="2" left="1137" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외출" cursor="pointer" onclick="btn_out_onclick"/>
+        <Button id="btn_lev" taborder="3" left="1321" top="130" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="퇴근" cursor="pointer" onclick="btn_lev_onclick"/>
+        <Button id="btn_att" taborder="4" left="1203" top="130" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="출근" cursor="pointer" onclick="btn_att_onclick"/>
         <Button id="btn_earlylev" taborder="5" left="1439" top="130" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조퇴" cursor="pointer"/>
-        <Button id="btn_outIn" taborder="6" left="1237" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외출복귀" cursor="pointer"/>
-        <Button id="btn_workoutIn" taborder="7" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외근복귀" cursor="pointer"/>
-        <Button id="btn_workOut" taborder="8" left="1337" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외근" cursor="pointer"/>
+        <Button id="btn_outIn" taborder="6" left="1237" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외출복귀" cursor="pointer" onclick="btn_outIn_onclick"/>
+        <Button id="btn_workoutIn" taborder="7" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외근복귀" cursor="pointer" onclick="btn_workoutIn_onclick"/>
+        <Button id="btn_workOut" taborder="8" left="1337" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외근" cursor="pointer" onclick="btn_workOut_onclick"/>
         <Static id="lb_M_TA_Mgt" taborder="9" text="마이페이지 &gt; 근태관리" left="1369" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
         <Static id="Static00" taborder="10" text="&lt;" left="630" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00" taborder="11" text="1" left="695" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -62,7 +62,7 @@
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="M_TA_Mgt">
+      <Dataset id="M_TA_MGT">
         <ColumnInfo>
           <Column id="w_date" type="STRING" size="256"/>
           <Column id="w_attend" type="STRING" size="256"/>
@@ -75,5 +75,56 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Script type="xscript5.1"><![CDATA[this.application = null;
+
+this.M_TA_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	this.fn_setSize(this.divLayout);
+	this.fn_trans_commonCode();
+};
+
+
+
+
+
+
+//출근 버튼 클릭 시 이벤트 처리
+this.btn_att_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	/*this.M_TA_Mgt.getColumn(0,"w_attend");*/
+	this.transaction();
+};
+
+//퇴근 버튼 클릭 시 이벤트 처리
+this.btn_lev_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.M_TA_Mgt.getColumn(0,"w_late");
+};
+
+//외출 버튼 클릭 시 이벤트 처리
+this.btn_out_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.M_TA_Mgt.getColumn(0,"w_out");
+};
+
+//외출복귀 버튼 클릭 시, 이벤트 처리
+this.btn_outIn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+//외근 버튼 클릭 시, 이벤트 처리
+this.btn_workOut_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+//외근복귀 버튼 클릭 시, 이벤트 처리
+this.btn_workoutIn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
   </Form>
 </FDL>
