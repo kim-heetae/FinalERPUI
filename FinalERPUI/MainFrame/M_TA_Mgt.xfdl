@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="835" width="1670">
         <Static id="lb_title" taborder="0" text="근태관리" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
-        <Grid id="gr_MTA" taborder="1" left="150" top="200" width="1370" height="400" border="1px solid #c7c7c7" binddataset="M_TA_Mgt" autofittype="col">
+        <Grid id="gr_MTA" taborder="1" left="150" top="200" width="1370" height="400" border="1px solid #c7c7c7" binddataset="M_TA_MGT" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -64,14 +64,14 @@
     <Objects>
       <Dataset id="M_TA_MGT">
         <ColumnInfo>
-          <Column id="w_date" type="STRING" size="256"/>
-          <Column id="w_attend" type="STRING" size="256"/>
-          <Column id="w_late" type="STRING" size="256"/>
-          <Column id="w_out" type="STRING" size="256"/>
-          <Column id="w_work_out" type="STRING" size="256"/>
-          <Column id="w_early_leave" type="STRING" size="256"/>
-          <Column id="w_leave" type="STRING" size="256"/>
-          <Column id="w_vacation" type="STRING" size="256"/>
+          <Column id="W_DATE" type="STRING" size="256"/>
+          <Column id="W_ATTEND" type="STRING" size="256"/>
+          <Column id="W_LATE" type="STRING" size="256"/>
+          <Column id="W_OUT" type="STRING" size="256"/>
+          <Column id="W_WORK_OUT" type="STRING" size="256"/>
+          <Column id="W_EARLY_LEAVE" type="STRING" size="256"/>
+          <Column id="W_LEAVE" type="STRING" size="256"/>
+          <Column id="W_VACATION" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -80,12 +80,21 @@
 this.M_TA_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
-	this.fn_setSize(this.divLayout);
-	this.fn_trans_commonCode();
+	//this.fn_setSize(this.divLayout);
+	//this.fn_trans_commonCode();
 };
 
-
-
+//근태정보 가져오기
+this.mta_board_load = function(){
+	var mtaparam = " bm_no=" + 0;
+	this.transaction("mtaSelect"
+	,"SvcURL:://main/getTASel.mpg"
+	,""
+	,"M_TA_MGT=out_test"
+	
+	,mtaparam
+	,"");
+}
 
 
 
