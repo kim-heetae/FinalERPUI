@@ -2,7 +2,14 @@
 <FDL version="2.1">
   <Form id="M_HR_Type" width="550" height="400" titletext="New Form">
     <Layouts>
-      <Layout height="400" mobileorientation="landscape" width="550"/>
+      <Layout height="400" mobileorientation="landscape" width="550">
+        <Static id="lb_title" taborder="0" text="인사 신청서" left="188" top="15" width="175" height="65" font="bold 25px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" verticalAlign="middle"/>
+        <Button id="btn_attend" taborder="1" text="근태 사유서" left="80" top="100" width="100" height="100" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
+        <Button id="btn_approve" taborder="2" text="전자 결재" left="225" top="100" width="100" height="100" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
+        <Button id="btn_vacation" taborder="3" text="휴가" left="80" top="250" width="100" height="100" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
+        <Button id="btn_retire" taborder="4" text="퇴직" left="225" top="250" width="100" height="100" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
+        <Button id="btn_overtime" taborder="5" text="연장 근무" left="370" top="100" width="100" height="100" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
+      </Layout>
     </Layouts>
   </Form>
 </FDL>
