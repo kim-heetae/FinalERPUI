@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="My_Page" width="1670" height="835" titletext="New Form" cursor="pointer">
+  <Form id="My_Page" width="1670" height="835" titletext="New Form" onload="My_Page_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_title" taborder="0" text="내정보 관리" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
@@ -12,7 +12,7 @@
         <Static id="lb_name" taborder="6" text="사원명" left="389" top="192" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
         <Edit id="ed_date" taborder="7" left="1020" top="194" width="300" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
         <Static id="lb_file" taborder="8" text="비밀번호 확인" left="833" top="192" width="187" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_cancel" taborder="9" left="1242" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="취소" cursor="pointer"/>
+        <Button id="btn_cancel" taborder="9" left="1242" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
         <Button id="btn_confirm" taborder="10" left="1126" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="발급" cursor="pointer"/>
         <Static id="lb_bg2_00" taborder="11" left="389" top="231" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
         <Edit id="ed_date00" taborder="12" left="1020" top="154" width="300" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
@@ -405,8 +405,22 @@
         <ImageViewer id="iv_search00" taborder="54" left="791" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer"/>
         <Edit id="ed_empno00_01_00_00_00_00_00_00" taborder="55" left="575" top="550" width="746" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
         <Button id="btn_com" taborder="56" left="1010" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="완료" cursor="pointer"/>
-        <Static id="lb_myPage" taborder="57" text="마이페이지 &gt; 내정보관리" left="1171" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <Static id="lb_myPage" taborder="57" text="마이페이지 &gt; 내정보관리" left="1151" top="49" width="170" height="21" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.application = null;
+
+this.My_Page_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+};
+
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.application.Main_Frame.form.go("Base::MainPage_Form.xfdl");
+	this.application.Main_Frame.form.bn_board_load();
+}
+]]></Script>
   </Form>
 </FDL>

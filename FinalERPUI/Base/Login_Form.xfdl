@@ -18,7 +18,7 @@ include "lib::lib_base.xjs";
 
 this.application = null;
 
-var loginCount = 0;
+this.loginCount = 0;
 
 this.Login_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -44,8 +44,9 @@ this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	if(!this.gfn_isNull(ed_id) && !this.gfn_isNull(ed_pw)){
 		param += " e_no=" + ed_id;
 		param += " e_pw=" + ed_pw;
-		this.transaction("login"
-			,"SvcURL::getLoginForm.lg"
+		this.loginCount++;
+		this.transaction("login" + this.loginCount
+			,"SvcURL::getLoginForm.lg?no=" + this.loginCount
 			,""
 			,"objgdsLoginInfo=out_test"
 			,param
@@ -67,7 +68,7 @@ this.fn_login_callback = function(){
 		if(objgdsLoginInfo.getColumn(0, "E_NO") === "0"){
 /*			this.application.objgdsLoginInfo.deleteRow();*/
 			this.alert("아이디와 비밀번호를 확인해주세요.");
-			this.application.reload();
+			/*this.application.reload();*/
 			return;
 		}
 		else{//로그인성공
