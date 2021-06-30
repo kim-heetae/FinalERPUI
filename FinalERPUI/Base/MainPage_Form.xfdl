@@ -3,14 +3,14 @@
   <Form id="MainPage_Form" width="1670" height="835" titletext="New Form" onload="MainPage_Form_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Edit id="ed_content" taborder="0" left="1134" top="99" width="300" height="40" displaynulltext="내용을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Edit id="ed_content" taborder="0" left="1134" top="99" width="300" height="40" displaynulltext="제목을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
         <Button id="btn_sel" taborder="1" text="조회" left="1451" top="99" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;" cursor="pointer" onclick="btn_sel_onclick"/>
         <Tab id="tb_work" taborder="2" tabindex="0" left="180" top="149" width="1352" height="521" font="bold 25px/normal &quot;나눔바른펜&quot;" onchanged="tb_work_onchanged" border="1px solid #c7c7c7px">
           <Tabpages>
             <Tabpage id="tb_info" text="공지 게시판" border="1px solid #c7c7c7px" left="0" top="43" width="1272" height="382">
               <Layouts>
                 <Layout>
-                  <Grid id="gr_info" taborder="0" left="0" top="0" width="1348" height="468" binddataset="DS_INFO" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" scrolltype="none" readonly="true" font="normal bold 18px/normal &quot;Gulim&quot;">
+                  <Grid id="gr_info" taborder="0" left="0" top="0" width="1348" height="468" binddataset="DS_INFO" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" scrolltype="none" readonly="true" font="normal bold 18px/normal &quot;Gulim&quot;" nodatatext="조회결과가 없습니다.">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -83,7 +83,7 @@
             </Tabpage>
           </Tabpages>
         </Tab>
-        <Button id="btn_write" taborder="3" text="작성글" left="1451" top="690" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;" cursor="pointer"/>
+        <Button id="btn_write" taborder="3" text="작성글" left="1451" top="690" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;" cursor="pointer" onclick="btn_write_onclick"/>
         <Button id="btn_ins" taborder="4" text="입력" left="1350" top="690" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;" cursor="pointer" onclick="btn_ins_onclick"/>
         <Combo id="cb_dept" taborder="5" left="965" top="99" width="150" height="40" font="20px/normal &quot;나눔바른펜&quot;" innerdataset="DS_Combo" codecolumn="CODECOLUMN" datacolumn="DATACOLUMN" index="0" value="DEPT" type="dropdown" onitemchanged="cb_dept_onitemchanged" text="부서목록"/>
         <Static id="Static00" taborder="6" text="&lt;" left="655" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -135,7 +135,11 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
 
 this.tabChangeCount = 0;
 this.transactionCount = 0;
@@ -164,7 +168,7 @@ this.bn_board_load = function(){
 			var idCount = this.transactionCount++;
 			var svcID = "bnSelect" + idCount;
 			this.transaction(svcID
-				,"SvcURL::/main/getAllSel.mpg"
+				,"SvcURL::/main/getAllSel.mpg?no=" + idCount
 				,""
 				,"DS_INFO=out_test"
 				,bnparam
@@ -179,7 +183,7 @@ this.bw_board_load = function(){
 		var svcID = "bwSelect" + idCount;
 		
 		this.transaction(svcID
-				,"SvcURL::/main/getNBSearch.mpg"
+				,"SvcURL::/main/getNBSearch.mpg?no=" + idCount
 				,""
 				,"DS_WORK=out_test"
 				,bwparam
@@ -187,18 +191,16 @@ this.bw_board_load = function(){
 } 
 
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
-	/*alert(this.tabChangeCount%2);*/
-// 	this.transactionCount++;
-// 	alert("bwSelect" + this.transactionCount);
 	if(this.tabChangeCount % 2 === 0){
 		this.DS_INFO.clearData();
+		this.tb_work.tb_info.form.gr_info.set_nodatatext("조회하신 결과가 없습니다.");
 		this.fn_bnDetailSel();
 	}
 	else{
 		this.DS_WORK.clearData();
+		this.tb_work.tb_work.form.gr_work.set_nodatatext("조회하신 결과가 없습니다.");
 		this.fn_bwDetailSel();
 	}
-	/*this.fn_bwDetailSel();*/
 }
 
 this.fn_bnDetailSel = function(){
@@ -217,14 +219,14 @@ this.fn_bnDetailSel = function(){
 this.fn_bwDetailSel = function(){
 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
 	var edContent = this.ed_content.value;
-	var bwparam2 = " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO") + " bw_name=" + edContent;//부서별로 다른 정보를 가져온다.
+	var bwparam = " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO") + " bw_name=" + edContent;//부서별로 다른 정보를 가져온다.
 	var idCount = this.transactionCount++;
 	var svcID = "bwDetailSel" + idCount;
 	this.transaction(svcID
-			,"SvcURL::/main/getNBSearch.mpg"
+			,"SvcURL::/main/getNBSearch.mpg?no=" + idCount
 			,""
 			,"DS_WORK=out_test"
-			,bwparam2
+			,bwparam
 			,"");
 }
 
@@ -233,20 +235,131 @@ this.tb_work_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventI
 	if (e.postindex == 0){
 		this.cb_dept.set_visible(false);
 		this.tabChangeCount++;
+		this.bn_board_load();
 	}
 	else{
 		this.cb_dept.set_visible(true);
 		this.tabChangeCount++;
+		this.bw_board_load();
 	}
 }
-this.btn_ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	
-};
 
 this.cb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
 {
 	
+};
+
+this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fn_myWriteSel();
+};
+
+this.fn_myWriteSel = function(){
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var idCount = this.transactionCount++;
+	var svcID = null;
+	var SvcURL = null; 
+	var data = null;
+	var param = null;
+	if(this.tabChangeCount % 2 === 0){
+		this.DS_INFO.clearData();
+		this.tb_work.tb_info.form.gr_info.set_nodatatext("조회하신 결과가 없습니다.");
+		svcID = "mySel" + idCount;
+		SvcURL = "SvcURL::/main/getAllSel.mpg?no=" + idCount;
+		data = "DS_INFO=out_test"
+		param = " bn_no=" + 0 + " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
+	}
+	else{
+		this.DS_WORK.clearData();
+		this.tb_work.tb_work.form.gr_work.set_nodatatext("조회하신 결과가 없습니다.");
+		svcID = "mySel" + idCount;
+		SvcURL = "SvcURL::/main/getAllSel.mpg?no=" + idCount;
+		data = "DS_WORK=out_test"
+		param = " bw_no=" + 0 + " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
+	}
+	this.transaction(svcID
+		,SvcURL
+		,""
+		,data
+		,param
+		,"");
+};
+
+this.btn_ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.gfnShowModal("popupModal", null, "ModalFrame::M_AC_Type.xfdl", "", this, 550, 30, true, true, null);
+};
+
+this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, obj, nPopupWidth, nPopupHeight, bShowFrameTitle, bShowFrameStatus, sAlignType)
+{
+	// 현재 구동되는 정보를 업데이트 한다.
+	var childFrame = new ChildFrame();
+	var parentFrame = obj.getOwnerFrame();
+	
+	var sOpenAlignType = "center middle";
+
+	// TO-DO 팝업사이즈 미지정 시 디폴트 값 적용
+	if (this.gfnIsNull(nPopupWidth)) 
+	{
+		nPopupWidth = obj.confing.popupWidth;
+	}
+
+	if (this.gfnIsNull(nPopupHeight)) 
+	{
+		nPopupHeight = obj.confing.popupHeight;
+	}
+
+	var sShowStatus;
+	if (this.gfnIsNull(bShowFrameStatus) || bShowFrameStatus == false) 
+	{
+		sShowStatus = false;
+	}
+	else if (bShowFrameStatus == true) 
+	{
+		sShowStatus = true;
+	}
+	
+	if (!this.gfnIsNull(sAlignType)) 
+	{
+		sOpenAlignType = sAlignType;
+	}
+
+	var nPopupLeft = "";
+	var nPopupTop = "";
+
+	// 팝업 포지션 값 위치 설정
+	nPopupLeft = 0;
+	nPopupTop = 0;
+	
+	/* ===== Statusbar 옵션 추가 - Start ===== */
+	if (sShowStatus == true) 
+	{
+		childFrame.init(sPopupId, nPopupLeft, nPopupTop, nexacro.toNumber(nPopupWidth) + 4, nexacro.toNumber(nPopupHeight) + 20 + 4 + 25, null, null, sPopupUrl);
+// 		childFrame.set_statusbarheight(25);
+// 		childFrame.set_showstatusbar(true);
+	}
+	else 
+	{
+		childFrame.init(sPopupId, nPopupLeft, nPopupTop, nexacro.toNumber(nPopupWidth) + 4, nexacro.toNumber(nPopupHeight) + 20 + 4, null, null, sPopupUrl);
+	}
+	
+	/* ===== Statusbar 옵션 추가 - End   ===== */
+	childFrame.set_openalign(sOpenAlignType);
+	childFrame.set_overlaycolor("RGBA(204, 204, 204, 0.5)");
+	childFrame.set_autosize(true);	
+	childFrame.set_dragmovetype("normal");
+
+	if (this.gfnIsNull(bShowFrameTitle) || bShowFrameTitle == true) 
+	{
+		childFrame.set_showtitlebar(true);
+		childFrame.set_border("3 solid #351b6f");
+		childFrame.set_border("normal");
+	}else{
+		childFrame.set_showtitlebar(false);
+	}
+	
+	// 동적으로 생성한 ChildFrame을 Modal Dialog로 보여줌.
+	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);
 };
 ]]></Script>
   </Form>
