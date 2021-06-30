@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_TA_Mgt" width="1670" height="835" titletext="New Form">
+  <Form id="M_TA_Mgt" width="1670" height="835" titletext="New Form" onload="M_TA_Mgt_onload">
     <Layouts>
       <Layout height="835" width="1670">
         <Static id="lb_title" taborder="0" text="근태관리" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
@@ -8,38 +8,38 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="100"/>
-                <Column size="100"/>
-                <Column size="100"/>
-                <Column size="130"/>
-                <Column size="130"/>
-                <Column size="130"/>
-                <Column size="130"/>
-                <Column size="130"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="30" band="head"/>
-                <Row size="30"/>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="날짜" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="출근시간" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="퇴근시간" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="외출" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="조퇴" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="외근" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="6" text="지각" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="7" text="휴가" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell text="W_DATE"/>
+                <Cell col="1" text="W_ATTEND"/>
+                <Cell col="2" text="W_LATE"/>
+                <Cell col="3" text="W_OUT"/>
+                <Cell col="4" text="W_WORK_OUT"/>
+                <Cell col="5" text="W_EARLY_LEAVE"/>
+                <Cell col="6" text="W_LEAVE"/>
+                <Cell col="7" text="W_VACATION"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:w_date" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="bind:w_attend" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="bind:w_leave" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="bind:w_out" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="bind:w_early_leave" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="bind:w_work_out" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="6" text="bind:w_late" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="7" text="bind:w_vacation" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell text="bind:W_DATE"/>
+                <Cell col="1" text="bind:W_ATTEND"/>
+                <Cell col="2" text="bind:W_LATE"/>
+                <Cell col="3" text="bind:W_OUT"/>
+                <Cell col="4" text="bind:W_WORK_OUT"/>
+                <Cell col="5" text="bind:W_EARLY_LEAVE"/>
+                <Cell col="6" text="bind:W_LEAVE"/>
+                <Cell col="7" text="bind:W_VACATION"/>
               </Band>
             </Format>
           </Formats>
@@ -75,7 +75,11 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
 
 this.transactionCount = 0;
 
@@ -84,17 +88,18 @@ this.M_TA_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.application = nexacro.getApplication();
 	//this.fn_setSize(this.divLayout);
 	//this.fn_trans_commonCode();
+	
 };
 
 //근태정보 가져오기
 this.mta_board_load = function(){
-	var objgsdLoginInfo = this.application.objgdsLoginInfo;
-	var mtaparam = " e_no=" + objgsdLoginInfo.getColumn(0,"E_NO");
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
 	var idCount = this.transactionCount++;
 	var svcID = "mtaSel" + idCount;
-	
+	this.M_TA_MGT.clearData();
 	this.transaction(svcID
-	,"SvcURL::/mypage/getTASel.mpg?no=" + idCount
+	,"SvcURL::/mtamgt/getTASel.mpg?no=" + idCount
 	,""
 	,"M_TA_MGT=out_test"
 	,mtaparam
@@ -110,13 +115,15 @@ this.mygeuntae = function(){
 this.btn_att_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*this.M_TA_Mgt.getColumn(0,"w_attend");*/
-	this.transaction();
+	this.mta_board_load();
+	/*this.transaction();*/
 };
 
 //퇴근 버튼 클릭 시 이벤트 처리
 this.btn_lev_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.M_TA_Mgt.getColumn(0,"w_late");
+	/*this.M_TA_Mgt.getColumn(0,"w_late");*/
+	this.alert(this.M_TA_MGT.getColumn(0, "W_DATE"));
 };
 
 //외출 버튼 클릭 시 이벤트 처리
