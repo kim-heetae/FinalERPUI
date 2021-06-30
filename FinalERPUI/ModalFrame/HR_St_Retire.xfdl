@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="HR_St_Retire" width="550" height="501" titletext="New Form" border="1px solid #999999" onclick="M_AC_Approve_onclick">
+  <Form id="HR_St_Retire" width="550" height="501" titletext="New Form" border="1px solid #999999" onclick="M_AC_Approve_onclick" cursor="pointer">
     <Layouts>
       <Layout height="501" width="550">
         <Static id="lb_title_m" taborder="0" text="퇴직서 제출내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
@@ -36,7 +36,7 @@
         <Static id="lb_content" taborder="13" text="내용" left="25" top="218" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Edit id="ed__date_retire" taborder="14" left="390" top="141" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_content00" taborder="15" left="144" top="218" width="381" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Button id="btn_reject" taborder="16" left="449" top="440" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려"/>
+        <Button id="btn_reject" taborder="16" left="449" top="440" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer"/>
         <Static id="lb_bg3" taborder="17" left="25" top="374" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" background="#f7f7f7"/>
         <Static id="lb_contact" taborder="18" text="연락처" left="25" top="375" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Combo id="cb_contact_first" taborder="19" text="" left="144" top="376" width="106" height="36" onitemchanged="Combo00_onitemchanged" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" color="#000000" displaynulltext="010" enable="false">
@@ -125,7 +125,7 @@
         <Edit id="ed_contact_middle" taborder="21" left="290" top="376" width="100" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36"/>
         <Static id="Static00_00" taborder="22" text="-" left="400" top="377" width="14" height="35" textAlign="center"/>
         <Edit id="ed_contact_last" taborder="23" left="425" top="376" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36" width="100"/>
-        <Button id="btn_approve" taborder="24" left="314" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인"/>
+        <Button id="btn_approve" taborder="24" left="334" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

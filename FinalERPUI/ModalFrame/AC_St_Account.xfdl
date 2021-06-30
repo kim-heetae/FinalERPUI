@@ -8,7 +8,7 @@
         <Edit id="ed_empno" taborder="2" left="144" top="113" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_date" taborder="3" text="신청일" left="269" top="112" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_date" taborder="4" left="390" top="113" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Button id="btn_reject" taborder="5" left="449" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려"/>
+        <Button id="btn_reject" taborder="5" left="449" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer"/>
         <Static id="lb_bg2_00" taborder="6" left="270" top="225" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Edit id="ed_title" taborder="7" left="144" top="191" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
         <TextArea id="ta_content" taborder="8" left="25" top="264" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
@@ -22,7 +22,7 @@
         <Edit id="ed_bank" taborder="16" left="144" top="152" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_account" taborder="17" text="계좌번호" left="269" top="151" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_account" taborder="18" left="390" top="152" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Button id="btn_approve" taborder="19" left="315" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인"/>
+        <Button id="btn_approve" taborder="19" left="335" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer"/>
         <Static id="lb_bg2_01" taborder="20" left="26" top="383" width="499" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_file00" taborder="21" text="첨부파일" left="25" top="384" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <FileUpload id="file_upload" taborder="22" left="144" top="385" width="125" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
