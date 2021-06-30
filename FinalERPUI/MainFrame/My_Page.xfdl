@@ -109,7 +109,7 @@
         <Edit id="ed_empno00_01_00_00_00_00" taborder="43" left="574" top="431" width="257" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
         <Edit id="ed_date01_00_00_00_00" taborder="44" left="833" top="431" width="489" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
         <Edit id="ed_empno00_01_00_00_00_00_00" taborder="45" left="574" top="470" width="746" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Combo id="cb_year" taborder="46" text="2000" left="1021" top="272" width="109" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+        <Combo id="cb_year" taborder="46" text="2000" left="1021" top="272" width="109" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" readonly="true">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -118,131 +118,300 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">연도</Col>
+                <Col id="codecolumn">연도</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2021</Col>
+                <Col id="codecolumn">2021</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2020</Col>
+                <Col id="codecolumn">2020</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2019</Col>
+                <Col id="codecolumn">2019</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2018</Col>
+                <Col id="codecolumn">2018</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2017</Col>
+                <Col id="codecolumn">2017</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2016</Col>
+                <Col id="codecolumn">2016</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2015</Col>
+                <Col id="codecolumn">2015</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2014</Col>
+                <Col id="codecolumn">2014</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2013</Col>
+                <Col id="codecolumn">2013</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2012</Col>
+                <Col id="codecolumn">2012</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2011</Col>
+                <Col id="codecolumn">2011</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2010</Col>
+                <Col id="codecolumn">2010</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2009</Col>
+                <Col id="codecolumn">2009</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2008</Col>
+                <Col id="codecolumn">2008</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2007</Col>
+                <Col id="codecolumn">2007</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2006</Col>
+                <Col id="codecolumn">2006</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2005</Col>
+                <Col id="codecolumn">2005</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2004</Col>
+                <Col id="codecolumn">2004</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2003</Col>
+                <Col id="codecolumn">2003</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2002</Col>
+                <Col id="codecolumn">2002</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">2001</Col>
+                <Col id="codecolumn">2001</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">2000</Col>
+                <Col id="codecolumn">2000</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1999</Col>
+                <Col id="codecolumn">1999</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1998</Col>
+                <Col id="codecolumn">1998</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1997</Col>
+                <Col id="codecolumn">1997</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1996</Col>
+                <Col id="codecolumn">1996</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1995</Col>
+                <Col id="codecolumn">1995</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1994</Col>
+                <Col id="codecolumn">1994</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1993</Col>
+                <Col id="codecolumn">1993</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1992</Col>
+                <Col id="codecolumn">1992</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1991</Col>
+                <Col id="codecolumn">1991</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1990</Col>
+                <Col id="codecolumn">1990</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1989</Col>
+                <Col id="codecolumn">1989</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1988</Col>
+                <Col id="codecolumn">1988</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1987</Col>
+                <Col id="codecolumn">1987</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1986</Col>
+                <Col id="codecolumn">1986</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1985</Col>
+                <Col id="codecolumn">1985</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1984</Col>
+                <Col id="codecolumn">1984</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1983</Col>
+                <Col id="codecolumn">1983</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1982</Col>
+                <Col id="codecolumn">1982</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1981</Col>
+                <Col id="codecolumn">1981</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1980</Col>
+                <Col id="codecolumn">1980</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1979</Col>
+                <Col id="codecolumn">1979</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1978</Col>
+                <Col id="codecolumn">1978</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1977</Col>
+                <Col id="codecolumn">1977</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1976</Col>
+                <Col id="codecolumn">1976</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1975</Col>
+                <Col id="codecolumn">1975</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1974</Col>
+                <Col id="codecolumn">1974</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1973</Col>
+                <Col id="codecolumn">1973</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1972</Col>
+                <Col id="codecolumn">1972</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1971</Col>
+                <Col id="codecolumn">1971</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1970</Col>
+                <Col id="codecolumn">1970</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1969</Col>
+                <Col id="codecolumn">1969</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1968</Col>
+                <Col id="codecolumn">1968</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1967</Col>
+                <Col id="codecolumn">1967</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1966</Col>
+                <Col id="codecolumn">1966</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1965</Col>
+                <Col id="codecolumn">1965</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1964</Col>
+                <Col id="codecolumn">1964</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1963</Col>
+                <Col id="codecolumn">1963</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1962</Col>
+                <Col id="codecolumn">1962</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1961</Col>
+                <Col id="codecolumn">1961</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1960</Col>
+                <Col id="codecolumn">1960</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1959</Col>
+                <Col id="codecolumn">1959</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1958</Col>
+                <Col id="codecolumn">1958</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1957</Col>
+                <Col id="codecolumn">1957</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1956</Col>
+                <Col id="codecolumn">1956</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1955</Col>
+                <Col id="codecolumn">1955</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1954</Col>
+                <Col id="codecolumn">1954</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1953</Col>
+                <Col id="codecolumn">1953</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1952</Col>
+                <Col id="codecolumn">1952</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1951</Col>
+                <Col id="codecolumn">1951</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">1950</Col>
+                <Col id="codecolumn">1950</Col>
               </Row>
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="cb_month" taborder="47" text="연도" left="1130" top="272" width="95" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+        <Combo id="cb_month" taborder="47" text="연도" left="1130" top="272" width="95" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" readonly="true">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -251,47 +420,60 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">월</Col>
+                <Col id="codecolumn">월</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1</Col>
+                <Col id="codecolumn">1</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">2</Col>
+                <Col id="codecolumn">2</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">3</Col>
+                <Col id="codecolumn">3</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">4</Col>
+                <Col id="codecolumn">4</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">5</Col>
+                <Col id="codecolumn">5</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">6</Col>
+                <Col id="codecolumn">6</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">7</Col>
+                <Col id="codecolumn">7</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">8</Col>
+                <Col id="codecolumn">8</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">9</Col>
+                <Col id="codecolumn">9</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">10</Col>
+                <Col id="codecolumn">10</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">11</Col>
+                <Col id="codecolumn">11</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">12</Col>
+                <Col id="codecolumn">12</Col>
               </Row>
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="cb_day" taborder="48" text="일" left="1225" top="272" width="94" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+        <Combo id="cb_day" taborder="48" text="일" left="1225" top="272" width="94" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" readonly="true">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -300,104 +482,136 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">일</Col>
+                <Col id="codecolumn">일</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">1</Col>
+                <Col id="codecolumn">1</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">2</Col>
+                <Col id="codecolumn">2</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">3</Col>
+                <Col id="codecolumn">3</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">4</Col>
+                <Col id="codecolumn">4</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">5</Col>
+                <Col id="codecolumn">5</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">6</Col>
+                <Col id="codecolumn">6</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">7</Col>
+                <Col id="codecolumn">7</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">8</Col>
+                <Col id="codecolumn">8</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">9</Col>
+                <Col id="codecolumn">9</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">10</Col>
+                <Col id="codecolumn">10</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">11</Col>
+                <Col id="codecolumn">11</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">12</Col>
+                <Col id="codecolumn">12</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">13</Col>
+                <Col id="codecolumn">13</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">14</Col>
+                <Col id="codecolumn">14</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">15</Col>
+                <Col id="codecolumn">15</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">16</Col>
+                <Col id="codecolumn">16</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">17</Col>
+                <Col id="codecolumn">17</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">18</Col>
+                <Col id="codecolumn">18</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">19</Col>
+                <Col id="codecolumn">19</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">20</Col>
+                <Col id="codecolumn">20</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">21</Col>
+                <Col id="codecolumn">21</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">22</Col>
+                <Col id="codecolumn">22</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">23</Col>
+                <Col id="codecolumn">23</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">24</Col>
+                <Col id="codecolumn">24</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">25</Col>
+                <Col id="codecolumn">25</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">26</Col>
+                <Col id="codecolumn">26</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">27</Col>
+                <Col id="codecolumn">27</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">28</Col>
+                <Col id="codecolumn">28</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">29</Col>
+                <Col id="codecolumn">29</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">30</Col>
+                <Col id="codecolumn">30</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">31</Col>
+                <Col id="codecolumn">31</Col>
               </Row>
             </Rows>
           </Dataset>
         </Combo>
-        <ImageViewer id="iv_search" taborder="49" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer"/>
+        <ImageViewer id="iv_search" taborder="49" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search_onclick"/>
         <Static id="lb_bg2_01_00_00_00_00_00" taborder="50" left="384" top="508" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept01_00_00_00_00_00" taborder="51" text="실 거주지" left="385" top="509" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
         <Edit id="ed_empno00_01_00_00_00_00_01" taborder="52" left="575" top="510" width="257" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
@@ -406,9 +620,14 @@
         <Edit id="ed_empno00_01_00_00_00_00_00_00" taborder="55" left="575" top="550" width="746" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
         <Button id="btn_com" taborder="56" left="1010" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="완료" cursor="pointer"/>
         <Static id="lb_myPage" taborder="57" text="마이페이지 &gt; 내정보관리" left="1151" top="49" width="170" height="21" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <MaskEdit id="MaskEdit00" taborder="58" left="221" top="349" width="257" height="40" format="### '-' #### '-' ####" textAlign="center" type="string" wordSpacing="5px" font="20px/normal &quot;Gulim&quot;" maskchar=" " autoselect="true"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
 
 this.My_Page_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -421,6 +640,52 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.application.Main_Frame.form.go("Base::MainPage_Form.xfdl");
 	this.application.Main_Frame.form.bn_board_load();
 }
+
+this.Calendar00_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
+{
+	
+};
+
+this.iv_search_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	var oArg = {};
+				
+	//우편번호 조회 팝업
+	this.gfn_showModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 330, false, false, null);
+};
+
+/**
+ * @description POPUP CALLBACK
+ */
+this.popupCallBack = function(sFormId, sArg)
+{
+	if(sFormId=="popupPostcode")
+	{
+		this.dsCustomer.setColumn(this.dsCustomer.rowposition,"CORPORATE_POSTAL_CODE",this.postcode);
+		this.dsCustomer.setColumn(this.dsCustomer.rowposition,"CORPORATE_ADRESS1",this.address1);
+	}
+}; 
 ]]></Script>
+    <Objects>
+      <Dataset id="DS_MyInfo">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="E_EMAIL" type="STRING" size="256"/>
+          <Column id="E_PHONE" type="STRING" size="256"/>
+          <Column id="EOI_CALL" type="STRING" size="256"/>
+          <Column id="E_LOC" type="STRING" size="256"/>
+          <Column id="E_REAL_LOC" type="STRING" size="256"/>
+          <Column id="E_PW" type="STRING" size="256"/>
+          <Column id="E_GENDER" type="STRING" size="256"/>
+          <Column id="E_BIRTH" type="STRING" size="256"/>
+          <Column id="EA_NAME" type="STRING" size="256"/>
+          <Column id="EA_NO" type="STRING" size="256"/>
+          <Column id="E_SOCIAL_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>
