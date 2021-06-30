@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_HR_Attend_S" width="550" height="475" titletext="New Form" border="1px solid #999999">
+  <Form id="M_HR_Attend_S" width="550" height="475" titletext="New Form" border="1px solid #999999" cursor="pointer">
     <Layouts>
       <Layout height="475" width="550">
         <Static id="lb_title_m" taborder="0" text="근태사유서 제출내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>

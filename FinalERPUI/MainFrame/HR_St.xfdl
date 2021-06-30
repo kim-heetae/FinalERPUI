@@ -46,17 +46,18 @@
                 <Column size="120"/>
               </Columns>
               <Rows>
-                <Row size="35" band="head"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
+                <Row size="36" band="head"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
               </Rows>
               <Band id="head">
                 <Cell text="NO" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
@@ -127,12 +128,18 @@
                 <Cell row="9" col="3"/>
                 <Cell row="9" col="4"/>
                 <Cell row="9" col="5"/>
+                <Cell row="10"/>
+                <Cell row="10" col="1"/>
+                <Cell row="10" col="2"/>
+                <Cell row="10" col="3"/>
+                <Cell row="10" col="4"/>
+                <Cell row="10" col="5"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Static id="lb_route" taborder="4" text="인사 &gt; 신청현황" left="1438" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
+        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
         <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
