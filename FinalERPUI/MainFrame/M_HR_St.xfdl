@@ -2,9 +2,6 @@
 <FDL version="2.1">
 <<<<<<< HEAD
   <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onload="M_HR_St_onload">
-=======
-  <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" onload="M_HR_St_onload">
->>>>>>> hit
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_title" taborder="0" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick"/>
