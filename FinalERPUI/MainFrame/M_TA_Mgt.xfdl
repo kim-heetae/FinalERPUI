@@ -86,10 +86,12 @@ this.transactionCount = 0;
 this.M_TA_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
+	this.mta_board_load();
 	//this.fn_setSize(this.divLayout);
 	//this.fn_trans_commonCode();
 	
 };
+
 
 //근태정보 가져오기
 this.mta_board_load = function(){
@@ -115,7 +117,7 @@ this.mygeuntae = function(){
 this.btn_att_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*this.M_TA_Mgt.getColumn(0,"w_attend");*/
-	this.mta_board_load();
+
 	/*this.transaction();*/
 };
 

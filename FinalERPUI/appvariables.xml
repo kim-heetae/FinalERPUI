@@ -128,6 +128,13 @@
           <Col id="MENU_LEV">0</Col>
           <Col id="MENU_CD">0004</Col>
         </Row>
+        <Row>
+          <Col id="MENU_CD">0005</Col>
+          <Col id="MENU_MN">내정보관리</Col>
+          <Col id="MENU_LEV">0</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">My_Page.xfdl</Col>
+        </Row>
       </Rows>
     </Dataset>
     <Dataset id="gdsOpenMenu">

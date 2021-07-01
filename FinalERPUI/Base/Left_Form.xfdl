@@ -215,6 +215,19 @@ this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClick
 // 	}
 	
 	this.fn_openMenu(sMenuId);	
+// 	alert(e.row);
+// 	var nextPath = this.application.gdsLeftMenu.getColumn(e.row, "PGM_PATH");
+// 	alert(nextPath);
+// 	var nextID = this.application.gdsLeftMenu.getColumn(e.row, "PGM_ID");
+// 	alert(nextID);
+// 	var nextPage = nextPath + "::" + nextID;
+// 	
+// 	var nextChildFrame = new ChildFrame();
+// 	nextChildFrame.set_formurl(nextPage);
+// 	
+// 	if(e.row === 5){
+// 		nextChildFrame.form.mta_board_load();
+// 	}
 };
 
 
@@ -299,6 +312,7 @@ this.fn_AddOpenMenu = function(pvWinId, pvMenuCd, pvMenuNm)
 	objOpenMenuDs.setColumn(nAddRow, "WINID", pvWinId);
 	objOpenMenuDs.setColumn(nAddRow, "MENU_CD", pvMenuCd);
 	objOpenMenuDs.setColumn(nAddRow, "MENU_NM", pvMenuNm);	
+
 };
 
 // this.fn_initLeftMenu = function()

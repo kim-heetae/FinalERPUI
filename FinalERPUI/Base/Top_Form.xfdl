@@ -13,7 +13,12 @@
         <Button id="btn_AC" taborder="7" text="회계" left="334" top="2" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+
+this.application = null;
+
+this.transactionCount = 0;
 
 this.Top_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -70,8 +75,34 @@ this.ed_name_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
 
 this.btn_myInfo_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.application.Main_Frame.form.go("MainFrame::My_Page.xfdl");
+// 	this.application = nexacro.getApplication();
+// 	this.application.Main_Frame.set_formurl("MainFrame::My_Page.xfdl");
+// 	var Main_Frame = this.application.Main_Frame;
+// 	Main_Frame.form.fn_MyPage_init();
+	var Left_Frame = this.application.Left_Frame;
+	Left_Frame.form.fn_openMenu("0005");
 };
 ]]></Script>
+    <Objects>
+      <Dataset id="DS_MyInfo">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="E_EMAIL" type="STRING" size="256"/>
+          <Column id="E_PHONE" type="STRING" size="256"/>
+          <Column id="EOI_CALL" type="STRING" size="256"/>
+          <Column id="E_LOC" type="STRING" size="256"/>
+          <Column id="E_REAL_LOC" type="STRING" size="256"/>
+          <Column id="E_PW" type="STRING" size="256"/>
+          <Column id="E_GENDER" type="STRING" size="256"/>
+          <Column id="E_BIRTH" type="STRING" size="256"/>
+          <Column id="EA_NAME" type="STRING" size="256"/>
+          <Column id="EA_NO" type="STRING" size="256"/>
+          <Column id="E_SOCIAL_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

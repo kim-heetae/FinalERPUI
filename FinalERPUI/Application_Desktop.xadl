@@ -26,7 +26,11 @@
       </MainFrame>
     </Layout>
   </Application>
-  <Script type="xscript5.1"><![CDATA[this.VFrameSet00;
+  <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.VFrameSet00;
 this.HFrameSet00;
 this.Left_Frame;
 this.VFrameSet01;
@@ -37,6 +41,7 @@ this.WorkFrame;
 this.Login_Frame;
 
 this.objgdsLoginInfo;
+this.objgdsLeftMenu;
 
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
 {
@@ -52,6 +57,7 @@ this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventIn
 	this.Login_Frame = this.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.Login_Frame;
 	
 	this.objgdsLoginInfo = this.gdsLoginInfo;
+	this.objgdsLeftMenu = this.gdsLeftMenu;
 	
 	//로그인 화면 Sigit ze Setting
 	this.fn_init();
@@ -61,5 +67,78 @@ this.fn_init = function (){
 	this.HFrameSet00.set_separatesize("0,*");
 	this.VFrameSet01.set_separatesize("0,0,0,0,*");
 }
+
+this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, obj, nPopupWidth, nPopupHeight, bShowFrameTitle, bShowFrameStatus, sAlignType)
+{
+	// 현재 구동되는 정보를 업데이트 한다.
+	var childFrame = new ChildFrame();
+	var parentFrame = obj.getOwnerFrame();
+	
+	var sOpenAlignType = "center middle";
+
+	// TO-DO 팝업사이즈 미지정 시 디폴트 값 적용
+	if (this.gfnIsNull(nPopupWidth)) 
+	{
+		nPopupWidth = obj.confing.popupWidth;
+	}
+
+	if (this.gfnIsNull(nPopupHeight)) 
+	{
+		nPopupHeight = obj.confing.popupHeight;
+	}
+
+	var sShowStatus;
+	if (this.gfnIsNull(bShowFrameStatus) || bShowFrameStatus == false) 
+	{
+		sShowStatus = false;
+	}
+	else if (bShowFrameStatus == true) 
+	{
+		sShowStatus = true;
+	}
+	
+	if (!this.gfnIsNull(sAlignType)) 
+	{
+		sOpenAlignType = sAlignType;
+	}
+
+	var nPopupLeft = "";
+	var nPopupTop = "";
+
+	// 팝업 포지션 값 위치 설정
+	nPopupLeft = 0;
+	nPopupTop = 0;
+	
+	/* ===== Statusbar 옵션 추가 - Start ===== */
+	if (sShowStatus == true) 
+	{
+		childFrame.init(sPopupId, nPopupLeft, nPopupTop, nexacro.toNumber(nPopupWidth) + 4, nexacro.toNumber(nPopupHeight) + 20 + 4 + 25, null, null, sPopupUrl);
+// 		childFrame.set_statusbarheight(25);
+// 		childFrame.set_showstatusbar(true);
+	}
+	else 
+	{
+		childFrame.init(sPopupId, nPopupLeft, nPopupTop, nexacro.toNumber(nPopupWidth) + 4, nexacro.toNumber(nPopupHeight) + 20 + 4, null, null, sPopupUrl);
+	}
+	
+	/* ===== Statusbar 옵션 추가 - End   ===== */
+	childFrame.set_openalign(sOpenAlignType);
+	childFrame.set_overlaycolor("RGBA(204, 204, 204, 0.5)");
+	childFrame.set_autosize(true);	
+	childFrame.set_dragmovetype("normal");
+
+	if (this.gfnIsNull(bShowFrameTitle) || bShowFrameTitle == true) 
+	{
+		childFrame.set_showtitlebar(true);
+		childFrame.set_border("3 solid #351b6f");
+		childFrame.set_border("normal");
+	}else{
+		childFrame.set_showtitlebar(false);
+	}
+	
+	// 동적으로 생성한 ChildFrame을 Modal Dialog로 보여줌.
+	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);
+};
+
 ]]></Script>
 </ADL>
