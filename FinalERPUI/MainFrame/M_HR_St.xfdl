@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer">
+  <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onload="M_HR_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_title" taborder="0" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick"/>
@@ -38,16 +38,16 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" fillareatype="datarow">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="50"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="250"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
               </Columns>
               <Rows>
                 <Row size="36" band="head"/>
@@ -64,20 +64,80 @@
                 <Row size="32"/>
               </Rows>
               <Band id="head">
-                <Cell text="FI_NO"/>
-                <Cell col="1" text="FT_TYPE"/>
-                <Cell col="2" text="FI_NAME"/>
-                <Cell col="3" text="D_NAME"/>
-                <Cell col="4" text="FI_DATE"/>
-                <Cell col="5" text="FI_STATE"/>
+                <Cell text="No"/>
+                <Cell col="1" text="유형"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="담당부서"/>
+                <Cell col="4" text="신청일"/>
+                <Cell col="5" text="상태"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:FI_NO"/>
-                <Cell col="1" text="bind:FT_TYPE"/>
-                <Cell col="2" text="bind:FI_NAME"/>
-                <Cell col="3" text="bind:D_NAME"/>
-                <Cell col="4" text="bind:FI_DATE"/>
-                <Cell col="5" text="bind:FI_STATE"/>
+                <Cell text="bind:FI_NO" textAlign="center"/>
+                <Cell col="1" text="bind:FT_TYPE" textAlign="center"/>
+                <Cell col="2" text="bind:FI_NAME" textAlign="center"/>
+                <Cell col="3" text="bind:D_NAME" textAlign="center"/>
+                <Cell col="4" text="bind:FI_DATE" textAlign="center"/>
+                <Cell col="5" text="bind:FI_STATE" textAlign="center"/>
+                <Cell row="1" textAlign="center"/>
+                <Cell row="1" col="1" textAlign="center"/>
+                <Cell row="1" col="2" textAlign="center"/>
+                <Cell row="1" col="3" textAlign="center"/>
+                <Cell row="1" col="4" textAlign="center"/>
+                <Cell row="1" col="5" textAlign="center"/>
+                <Cell row="2" textAlign="center"/>
+                <Cell row="2" col="1" textAlign="center"/>
+                <Cell row="2" col="2" textAlign="center"/>
+                <Cell row="2" col="3" textAlign="center"/>
+                <Cell row="2" col="4" textAlign="center"/>
+                <Cell row="2" col="5" textAlign="center"/>
+                <Cell row="3" textAlign="center"/>
+                <Cell row="3" col="1" textAlign="center"/>
+                <Cell row="3" col="2" textAlign="center"/>
+                <Cell row="3" col="3" textAlign="center"/>
+                <Cell row="3" col="4" textAlign="center"/>
+                <Cell row="3" col="5" textAlign="center"/>
+                <Cell row="4" textAlign="center"/>
+                <Cell row="4" col="1" textAlign="center"/>
+                <Cell row="4" col="2" textAlign="center"/>
+                <Cell row="4" col="3" textAlign="center"/>
+                <Cell row="4" col="4" textAlign="center"/>
+                <Cell row="4" col="5" textAlign="center"/>
+                <Cell row="5" textAlign="center"/>
+                <Cell row="5" col="1" textAlign="center"/>
+                <Cell row="5" col="2" textAlign="center"/>
+                <Cell row="5" col="3" textAlign="center"/>
+                <Cell row="5" col="4" textAlign="center"/>
+                <Cell row="5" col="5" textAlign="center"/>
+                <Cell row="6" textAlign="center"/>
+                <Cell row="6" col="1" textAlign="center"/>
+                <Cell row="6" col="2" textAlign="center"/>
+                <Cell row="6" col="3" textAlign="center"/>
+                <Cell row="6" col="4" textAlign="center"/>
+                <Cell row="6" col="5" textAlign="center"/>
+                <Cell row="7" textAlign="center"/>
+                <Cell row="7" col="1" textAlign="center"/>
+                <Cell row="7" col="2" textAlign="center"/>
+                <Cell row="7" col="3" textAlign="center"/>
+                <Cell row="7" col="4" textAlign="center"/>
+                <Cell row="7" col="5" textAlign="center"/>
+                <Cell row="8" textAlign="center"/>
+                <Cell row="8" col="1" textAlign="center"/>
+                <Cell row="8" col="2" textAlign="center"/>
+                <Cell row="8" col="3" textAlign="center"/>
+                <Cell row="8" col="4" textAlign="center"/>
+                <Cell row="8" col="5" textAlign="center"/>
+                <Cell row="9" textAlign="center"/>
+                <Cell row="9" col="1" textAlign="center"/>
+                <Cell row="9" col="2" textAlign="center"/>
+                <Cell row="9" col="3" textAlign="center"/>
+                <Cell row="9" col="4" textAlign="center"/>
+                <Cell row="9" col="5" textAlign="center"/>
+                <Cell row="10" textAlign="center"/>
+                <Cell row="10" col="1" textAlign="center"/>
+                <Cell row="10" col="2" textAlign="center"/>
+                <Cell row="10" col="3" textAlign="center"/>
+                <Cell row="10" col="4" textAlign="center"/>
+                <Cell row="10" col="5" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
@@ -104,72 +164,62 @@ this.transactionCount = 0;
 
 this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.application = nexacro.getApplication();
-	this.mhr_board_load();
+   this.application = nexacro.getApplication();
+   this.mhr_board_load();
+};
+
+/*조회 버튼*/
+this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   alert(this.cb_type.id);
+   alert("123");
+   this.mhrSel_load();
+};
+
+/*신청 버튼*/
+this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   alert("456");
 };
 
 /*인사 신청현황(전체 조회)*/
 this.mhr_board_load = function(){
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var mhrNparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "d_name=" +objgdsLoginInfo.getColumn(0,"인사과");
-	var idCount = this.transactionCount++;
-	var svcID = "mhrSel" + idCount;
-	this.ds_my_ap_hr.clearData();
-	
-	this.transaction(svcID
-	,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
-	,""
-	,"ds_my_ap_hr=out_test"
-	,mhrNparam
-	,"");
-}
-
-/*조회버튼 클릭 이벤트*/
-this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-alert(this.cb_type.text);
-	alert("asd");
-	
-	this.mhrSel_load();
+   var objgdsLoginInfo = this.application.objgdsLoginInfo;
+   var mhrNparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=인사과";
+   var idCount = this.transactionCount++;
+   var svcID = "mhrSel" + idCount;
+   this.ds_my_ap_hr.clearData();
+   
+   this.transaction(svcID
+   ,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
+   ,""
+   ,"ds_my_ap_hr=out_test"
+   ,mhrNparam
+   ,"");
 };
 
 /*인사 신청현황(조회 버튼 선택 시 함수)*/
 this.mhrSel_load = function(){
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	
-	var selectedCombo = this.cb_type.value;
-	/*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
-	var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
-	var idCount = this.transactionCount++;
-	var svcID = "mhrSelType" + idCount;
-	this.ds_my_ap_hr.clearData();
-	
-	this.transaction(svcID
-	,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
-	,""
-	,"ds_my_ap_hr=out_test"
-	,mhrSelparam
-	,"");
-}
-
-
-// this.Button00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-// {
-// 	var objHFrameset = new HFrameSet();  
-//     objHFrameset.init("hframesetNew", 30, 90, 550, 400);
-//     this.addChild("hframesetNew", objHFrameset);
-//     objHFrameset.set_border("1px solid #999999");
-//     objHFrameset.show();
-//         
-//     var objChildFrame = new ChildFrame();  
-//     objChildFrame.init("TEST", 0, 0, 0, 0);
-//     objHFrameset.addChild("TEST", objChildFrame);
-//     objChildFrame.set_border("1px solid #999999");
-//     objChildFrame.set_formurl("FrameBase::my_ap_hr_md.xfdl");
-//     objChildFrame.show();
-// };
-
-
+   var objgdsLoginInfo = this.application.objgdsLoginInfo;
+   var selectedCombo = this.cb_type.text;
+   if(selectedCombo === "신청서 종류"){
+   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+   }
+   else{
+   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
+   }
+   /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
+   var idCount = this.transactionCount++;
+   var svcID = "mhrSelType" + idCount;
+   this.ds_my_ap_hr.clearData();
+   
+   this.transaction(svcID
+   ,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
+   ,""
+   ,"ds_my_ap_hr=out_test"
+   ,mhrSelparam
+   ,"");
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_my_ap_hr">
