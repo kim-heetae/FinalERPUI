@@ -153,15 +153,15 @@
     <Objects>
       <Dataset id="ds_pay_stub">
         <ColumnInfo>
-          <Column id="e_no" type="STRING" size="256"/>
-          <Column id="e_name" type="STRING" size="256"/>
-          <Column id="d_name" type="STRING" size="256"/>
-          <Column id="e_pos" type="STRING" size="256"/>
-          <Column id="sb_date" type="STRING" size="256"/>
-          <Column id="ss_basic" type="STRING" size="256"/>
-          <Column id="ss_duc" type="STRING" size="256"/>
-          <Column id="ss_real" type="STRING" size="256"/>
-          <Column id="ss_state" type="STRING" size="256"/>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="SB_DATE" type="STRING" size="256"/>
+          <Column id="SS_BASIC" type="STRING" size="256"/>
+          <Column id="SS_DUC" type="STRING" size="256"/>
+          <Column id="SS_REAL" type="STRING" size="256"/>
+          <Column id="SS_STATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
