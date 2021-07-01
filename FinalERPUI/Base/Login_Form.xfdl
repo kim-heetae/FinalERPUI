@@ -18,6 +18,8 @@ include "lib::lib_base.xjs";
 
 this.application = null;
 
+this.loginCount = 0;
+
 this.Login_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
@@ -34,56 +36,51 @@ this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var ed_id = this.ed_id.value;
 	var ed_pw = this.ed_pw.value;
 	
-	var param;
+	var param = null;
 	
-	var objgdsLogin = this.application.objgdsLogin;
-	
-	/*var imsi=1;*/
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
 	
 	//아이디와 비밀번호를 모두 입력했을때
 	if(!this.gfn_isNull(ed_id) && !this.gfn_isNull(ed_pw)){
 		param += " e_no=" + ed_id;
 		param += " e_pw=" + ed_pw;
-		this.transaction("svcSelect"
-			,"SvcURL::getLoginForm.lg"
+		this.loginCount++;
+		this.transaction("login" + this.loginCount
+			,"SvcURL::getLoginForm.lg?no=" + this.loginCount
 			,""
-			,"objgdsLogin=out_test"
+			,"objgdsLoginInfo=out_test"
 			,param
 			,"fn_login_callback");
-	
 	}
 	else{
 		this.alert("아이디와 비밀번호를 입력해주세요");
 	}
-}
+};
 
 this.fn_login_callback = function(){
 	var objHFrameSet00 = this.application.HFrameSet00;//HFrame
 	var objVFrameSet01 = this.application.VFrameSet01;//VFrame
 	var objMainPage = this.application.Main_Frame.form;//MainPage
-	var objgdsLogin = this.application.objgdsLogin;//전역변수 gdsLogin
-	//MainPage의 Dataset
-	var objDsInfo = objMainPage.DS_INFO;
-	var objDsWork = objMainPage.DS_WORK;
-
-		//로그인 성공
-		if(objgdsLogin.getColumn(0, "RESULT") === "1"){
+	var objTopForm = this.application.Top_Frame.form;
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;//전역변수 gdsLoginInfo
+	/*this.alert(objgdsLoginInfo.getColumn(0, "E_NO"));*/
+		//로그인 실패
+		if(objgdsLoginInfo.getColumn(0, "E_NO") === "0"){
+/*			this.application.objgdsLoginInfo.deleteRow();*/
+			this.alert("아이디와 비밀번호를 확인해주세요.");
+			/*this.application.reload();*/
+			return;
+		}
+		else{//로그인성공
 			//화면 사이즈(구조)변경
 			objHFrameSet00.set_separatesize("250,*");
 			objVFrameSet01.set_separatesize("50,0,*,0,0");
-			
-			//게시판 정보 가져오기
-			this.transaction("svcSelect"
-				,"SvcURL::/main/getAllSel.mpg"
-				,""
-				,"objDsInfo=out_test"
-				,""
-				,"");
+			objMainPage.cb_detp_innerSet();
+			objTopForm.fn_setEdName();//TopForm 사원이름 넣어주기
+			objMainPage.bn_board_load();//공지사항 게시판 정보 Loading
+			objMainPage.bw_board_load();//업무 게시판 정보 Loading
 		}
-		else{
-			this.alert("아이디와 비밀번호를 확인해주세요.");
-		}
-}
+};
 
 this.fn_callback = function(svcID, errCD, errMSG)
 {

@@ -4,20 +4,21 @@
     <Layouts>
       <Layout height="50" width="1920">
         <Button id="btn_logout" taborder="0" text="로그아웃" left="1477" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;&#9;" color="black" cursor="pointer" onclick="btn_logout_onclick"/>
-        <Button id="btn_myInfo" taborder="1" text="내정보" left="1327" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer"/>
+        <Button id="btn_myInfo" taborder="1" text="내정보" left="1327" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" onclick="btn_myInfo_onclick"/>
         <Static id="lb_topTitle" taborder="2" text="님 환영합니다." left="1157" top="0" width="120" height="50" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center" textDecoration="none" wordSpacing="4px"/>
-        <Edit id="ed_name" taborder="3" left="1040" top="4" width="127" height="40" background="none" font="16px/normal &quot;나눔바른펜&quot;" border="0px none"/>
-        <Edit id="ed_no" taborder="4" left="899" top="3" width="127" height="40" background="none" font="16px/normal &quot;나눔바른펜&quot;" border="0px none"/>
+        <Edit id="ed_name" taborder="3" left="1070" top="5" width="87" height="40" background="none" font="16px/normal &quot;나눔바른펜&quot;" border="0px none" readonly="true" onchanged="ed_name_onchanged" textAlign="right" borderRadius="30px" letterSpacing="5px"/>
+        <Edit id="ed_no" taborder="4" left="1003" top="4" width="50" height="40" background="none" font="16px/normal &quot;나눔바른펜&quot;" border="0px none" readonly="true" borderRadius="30px" letterSpacing="5px" textAlign="center"/>
         <Button id="btn_myPage" taborder="5" text="마이페이지" left="26" top="3" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
         <Button id="btn_HR" taborder="6" text="인사" left="180" top="2" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
         <Button id="btn_AC" taborder="7" text="회계" left="334" top="2" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
       </Layout>
     </Layouts>
-    <Bind>
-      <BindItem id="item0" compid="ed_no" propid="value" datasetid="DS_MemberInfo" columnid="e_no"/>
-      <BindItem id="item1" compid="ed_name" propid="value" datasetid="DS_MemberInfo" columnid="e_name"/>
-    </Bind>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+
+this.application = null;
+
+this.transactionCount = 0;
 
 this.Top_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -34,6 +35,16 @@ this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fn_logout();
 };
+
+//로그인 이후 사원이름 넣어주기
+this.fn_setEdName = function()
+{
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var edname = this.ed_name;
+	var edno = this.ed_no;
+	edname.set_value(objgdsLoginInfo.getColumn(0, "E_NAME"));
+	edno.set_value(objgdsLoginInfo.getColumn(0, "E_NO"));
+}
 
 /**
 * Function Name : fn_closeMain
@@ -56,6 +67,42 @@ this.fn_openMain = function()
 	var objMainFrame = this.application.Main_Frame;
 	
 	/*objMainFrame.form.fn_createDataList();*/
-};]]></Script>
+};
+this.ed_name_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	
+};
+
+this.btn_myInfo_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+// 	this.application = nexacro.getApplication();
+// 	this.application.Main_Frame.set_formurl("MainFrame::My_Page.xfdl");
+// 	var Main_Frame = this.application.Main_Frame;
+// 	Main_Frame.form.fn_MyPage_init();
+	var Left_Frame = this.application.Left_Frame;
+	Left_Frame.form.fn_openMenu("0005");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="DS_MyInfo">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="E_EMAIL" type="STRING" size="256"/>
+          <Column id="E_PHONE" type="STRING" size="256"/>
+          <Column id="EOI_CALL" type="STRING" size="256"/>
+          <Column id="E_LOC" type="STRING" size="256"/>
+          <Column id="E_REAL_LOC" type="STRING" size="256"/>
+          <Column id="E_PW" type="STRING" size="256"/>
+          <Column id="E_GENDER" type="STRING" size="256"/>
+          <Column id="E_BIRTH" type="STRING" size="256"/>
+          <Column id="EA_NAME" type="STRING" size="256"/>
+          <Column id="EA_NO" type="STRING" size="256"/>
+          <Column id="E_SOCIAL_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

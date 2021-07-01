@@ -9,7 +9,7 @@
             <Tabpage id="Tabpage1" text="Tabpage1"/>
           </Tabpages>
         </Tab>
-        <Button id="btnCloseAll" taborder="2" top="0" width="50" height="50" right="0" onclick="btnCloseAll_onclick" background="" fittocontents="none" icon="url('..\images\btn_mdi_close2.png')"/>
+        <Button id="btnCloseAll" taborder="2" top="0" width="50" height="50" right="0" onclick="btnCloseAll_onclick" background="" fittocontents="none" icon="url('..\images\btn_mid_close.png')"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.application = null;
@@ -24,6 +24,7 @@ this.Mid_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.fn_ActiveTabPage = function(pvWinId)
 {
+	
 	var nCnt = this.tabMdi.getTabpageCount();
 	if(nCnt > 0)
 	{
@@ -39,6 +40,7 @@ this.fn_ActiveTabPage = function(pvWinId)
 			return;
 		}
 	}
+
 };
 
 /**

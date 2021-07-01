@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="My_Page" width="1670" height="835" titletext="New Form" cursor="pointer">
+  <Form id="My_Page" width="1670" height="835" titletext="New Form" onload="My_Page_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_title" taborder="0" text="내정보 관리" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
-        <Static id="lb_bg1" taborder="1" left="389" top="152" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_empno" taborder="2" text="사원번호" left="389" top="152" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_empno" taborder="3" left="574" top="152" width="259" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_bg2" taborder="4" left="389" top="191" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_date" taborder="5" text="비밀번호" left="833" top="152" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_name" taborder="6" text="사원명" left="389" top="192" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_date" taborder="7" left="1020" top="194" width="300" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
-        <Static id="lb_file" taborder="8" text="비밀번호 확인" left="833" top="192" width="187" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_cancel" taborder="9" left="1242" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="취소" cursor="pointer"/>
-        <Button id="btn_confirm" taborder="10" left="1126" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="발급" cursor="pointer"/>
-        <Static id="lb_bg2_00" taborder="11" left="389" top="231" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
-        <Edit id="ed_date00" taborder="12" left="1020" top="154" width="300" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
-        <Edit id="ed_empno00" taborder="13" left="574" top="193" width="259" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_dept" taborder="14" text="소속부서" left="388" top="232" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_empno00_00" taborder="15" left="574" top="232" width="259" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_file00" taborder="16" text="성별" left="833" top="232" width="187" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Radio id="rd_gender" taborder="17" left="1020" top="230" width="302" height="39" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true" direction="vertical" font="20px/normal &quot;나눔바른펜&quot;">
+        <Static id="lb_bg1" taborder="14" left="389" top="152" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="16" text="사원번호" left="389" top="152" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_empno" left="574" top="152" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="false" taborder="15"/>
+        <Static id="lb_bg2" taborder="17" left="389" top="191" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_date" taborder="18" text="비밀번호" left="833" top="152" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_name" taborder="19" text="사원명" left="389" top="192" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_password_check" taborder="9" left="1020" top="194" width="300" height="36" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999"/>
+        <Static id="lb_file" taborder="20" text="비밀번호 확인" left="833" top="192" width="187" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_cancel" taborder="13" left="1242" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
+        <Button id="btn_confirm" taborder="12" left="1126" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="발급" cursor="pointer"/>
+        <Static id="lb_bg2_00" taborder="21" left="389" top="231" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Edit id="ed_password" taborder="8" left="1020" top="154" width="300" height="36" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999"/>
+        <Edit id="ed_ename" taborder="22" left="574" top="193" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_dept" taborder="23" text="소속부서" left="388" top="232" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_dept" taborder="24" left="574" top="232" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_file00" taborder="25" text="성별" left="833" top="232" width="187" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Radio id="rd_gender" taborder="26" left="1020" top="230" width="302" height="39" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true" direction="vertical" font="16pt/normal &quot;Arial&quot;" index="-1" text="" value="" onitemchanged="rd_gender_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -29,384 +29,155 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">남</Col>
+                <Col id="codecolumn">남</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">여</Col>
+                <Col id="codecolumn">여</Col>
               </Row>
             </Rows>
           </Dataset>
         </Radio>
-        <Static id="lb_bg2_01" taborder="18" left="388" top="270" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_dept01" taborder="19" text="이메일" left="388" top="271" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_empno00_01" taborder="20" left="574" top="272" width="259" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Static id="lb_file01" taborder="21" text="생년월일" left="833" top="271" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_bg2_01_00" taborder="22" left="387" top="310" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_dept01_00" taborder="23" text="이메일 확인" left="388" top="311" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_empno00_01_00" taborder="24" left="574" top="311.5" width="259" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Static id="lb_file01_00" taborder="25" text="은행명" left="833" top="311" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_bg2_01_00_00" taborder="26" left="386" top="349" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_dept01_00_00" taborder="27" text="이동전화" left="388" top="350" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_empno00_01_00_00" taborder="28" left="693" top="351" width="56" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Static id="lb_file01_00_00" taborder="29" text="계좌번호" left="833" top="350" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_acNum" taborder="30" left="1020" top="352" width="300" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
-        <Static id="lb_bg2_01_00_00_00" taborder="31" left="385" top="388" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_dept01_00_00_00" taborder="32" text="사내전화" left="388" top="389" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_file01_00_00_00" taborder="33" text="주민등록번호" left="831" top="389" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_primayNum" taborder="34" left="1020" top="391" width="300" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" readonly="true"/>
-        <Edit id="ed_empno00_01_00_00_00" taborder="35" left="574" top="390" width="259" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true" readonly="true"/>
-        <Combo id="cb_account" taborder="36" text="은행목록" left="1021" top="312" width="300" height="36" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="20px/normal &quot;나눔바른펜&quot;">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="datacolumn">은행목록</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">신한은행</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">국민은행</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">우리은행</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">하나은행</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Edit id="ed_empno00_01_00_00_01" taborder="37" left="776" top="351" width="56" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Combo id="Combo00" taborder="38" text="010" left="575" top="351" width="85" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="datacolumn">010</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">011</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">016</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">019</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Static id="Static00" taborder="39" text="-" left="662" top="352" width="28" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
-        <Static id="Static00_00" taborder="40" text="-" left="749" top="351" width="28" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
-        <Static id="lb_bg2_01_00_00_00_00" taborder="41" left="385" top="429" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_dept01_00_00_00_00" taborder="42" text="주민등록&#13;&#10;거주지" left="387" top="430" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_empno00_01_00_00_00_00" taborder="43" left="574" top="431" width="257" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Edit id="ed_date01_00_00_00_00" taborder="44" left="833" top="431" width="489" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
-        <Edit id="ed_empno00_01_00_00_00_00_00" taborder="45" left="574" top="470" width="746" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Combo id="cb_year" taborder="46" text="2000" left="1021" top="272" width="109" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="datacolumn">연도</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">2000</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1999</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1998</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1997</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1996</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1995</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1994</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1993</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1992</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1991</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1990</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1989</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1988</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1987</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1986</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1985</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1984</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1983</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1982</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1981</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1980</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1979</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1978</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1977</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1976</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1975</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1974</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1973</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1972</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1971</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1970</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1969</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1968</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1967</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1966</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1965</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1964</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1963</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1962</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1961</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Combo id="cb_month" taborder="47" text="연도" left="1130" top="272" width="95" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="datacolumn">월</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">2</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">3</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">4</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">5</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">6</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">7</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">8</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">9</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">10</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">11</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">12</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Combo id="cb_day" taborder="48" text="일" left="1225" top="272" width="94" height="38" font="15px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="datacolumn">일</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">1</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">2</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">3</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">4</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">5</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">6</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">7</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">8</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">9</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">10</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">11</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">12</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">13</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">14</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">15</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">16</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">17</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">18</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">19</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">20</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">21</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">22</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">23</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">24</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">25</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">26</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">27</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">28</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">29</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">30</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">31</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <ImageViewer id="iv_search" taborder="49" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer"/>
-        <Static id="lb_bg2_01_00_00_00_00_00" taborder="50" left="384" top="508" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_dept01_00_00_00_00_00" taborder="51" text="실 거주지" left="385" top="509" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_empno00_01_00_00_00_00_01" taborder="52" left="575" top="510" width="257" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Edit id="ed_date01_00_00_00_00_00" taborder="53" left="832" top="510" width="489" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999"/>
-        <ImageViewer id="iv_search00" taborder="54" left="791" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer"/>
-        <Edit id="ed_empno00_01_00_00_00_00_00_00" taborder="55" left="575" top="550" width="746" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Button id="btn_com" taborder="56" left="1010" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="완료" cursor="pointer"/>
-        <Static id="lb_myPage" taborder="57" text="마이페이지 &gt; 내정보관리" left="1171" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <Static id="lb_bg2_01" taborder="27" left="388" top="270" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01" taborder="28" text="이메일" left="388" top="271" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_email" taborder="1" left="574" top="272" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true"/>
+        <Static id="lb_file01" taborder="29" text="생년월일" left="833" top="271" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg2_01_00" taborder="30" left="387" top="310" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00" taborder="31" text="이메일 확인" left="388" top="311" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_email_check" taborder="2" left="574" top="311.5" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true"/>
+        <Static id="lb_file01_00" taborder="32" text="은행명" left="833" top="311" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg2_01_00_00" taborder="33" left="386" top="349" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00_00" taborder="34" text="이동전화" left="388" top="350" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_file01_00_00" taborder="35" text="계좌번호" left="833" top="350" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_acNum" taborder="10" left="1019" top="349" width="301" height="39" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true"/>
+        <Static id="lb_bg2_01_00_00_00" taborder="36" left="385" top="388" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00_00_00" taborder="37" text="사내전화" left="388" top="389" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_file01_00_00_00" taborder="38" text="주민등록번호" left="831" top="389" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg2_01_00_00_00_00" taborder="39" left="385" top="429" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00_00_00_00" taborder="40" text="주민등록&#13;&#10;거주지" left="387" top="430" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_loc_find" taborder="41" left="574" top="431" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true"/>
+        <Edit id="ed_loc_findresult" taborder="42" left="833" top="431" width="489" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true"/>
+        <Edit id="ed_loc_detail" taborder="5" left="574" top="470" width="746" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true"/>
+        <ImageViewer id="iv_search" taborder="4" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search_onclick"/>
+        <Static id="lb_bg2_01_00_00_00_00_00" taborder="43" left="384" top="508" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00_00_00_00_00" taborder="44" text="실 거주지" left="385" top="509" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_realloc_find" taborder="45" left="575" top="510" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true"/>
+        <Edit id="ed_realloc_findresult" taborder="46" left="832" top="510" width="489" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true"/>
+        <ImageViewer id="iv_search00" taborder="6" left="791" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer"/>
+        <Edit id="ed_realloc_detail" taborder="7" left="575" top="550" width="746" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true"/>
+        <Button id="btn_com" taborder="11" left="1010" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="완료" cursor="pointer" onclick="btn_com_onclick"/>
+        <Static id="lb_myPage" taborder="47" text="마이페이지 &gt; 내정보관리" left="1151" top="49" width="170" height="21" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <MaskEdit id="me_phone" taborder="3" left="574" top="350" width="259" height="40" format="### '-' #### '-' ####" textAlign="center" type="string" wordSpacing="5px" font="16pt/normal &quot;Arial&quot;" maskchar=" " autoselect="true"/>
+        <MaskEdit id="me_birth" taborder="48" left="1019" top="272" width="301" height="37" readonly="true" type="string" format="#### '년' ## '월' ## '일'" maskchar=" " letterSpacing="5px" font="16pt/normal &quot;Arial&quot;"/>
+        <MaskEdit id="me_socialnum" taborder="49" left="1019" top="390" width="302" height="37" readonly="true" maskchar=" " format="###### '-' #{######}" type="string" font="16pt/normal &quot;Arial&quot;" textAlign="center"/>
+        <MaskEdit id="me_call" taborder="50" left="574" top="389" width="258" height="39" format="## '-' ### '-' ####" maskchar=" " readonly="true" type="string" font="16pt/normal &quot;Arial&quot;" textAlign="center"/>
+        <Edit id="ed_acname" taborder="51" left="1020" top="309" width="300" height="41" readonly="true" font="16pt/normal &quot;Arial&quot;"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+this.transactionCount = 0;
+
+this.My_Page_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	this.fn_MyPage_init();
+};
+
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.application.Main_Frame.form.bn_board_load();
+	var sWinId = this.application.Mid_Frame.form.tabMdi.tabpages[this.application.Mid_Frame.form.tabMdi.tabindex].name;
+	this.application.Mid_Frame.form.tabMdi.removeTabpage(this.application.Mid_Frame.form.tabMdi.tabindex);
+	this.application.WorkFrame[sWinId].form.close();
+	this.application.Left_Frame.form.fn_DelOpenMenu(sWinId);
+}
+
+this.Calendar00_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
+{
+	
+};
+
+this.iv_search_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	var oArg = {};
+				
+	//우편번호 조회 팝업
+	this.gfn_showModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 330, false, false, null);
+};
+
+/**
+ * @description POPUP CALLBACK
+ */
+this.popupCallBack = function(sFormId, sArg)
+{
+	if(sFormId=="popupPostcode")
+	{
+		this.dsCustomer.setColumn(this.dsCustomer.rowposition,"CORPORATE_POSTAL_CODE",this.postcode);
+		this.dsCustomer.setColumn(this.dsCustomer.rowposition,"CORPORATE_ADRESS1",this.address1);
+	}
+}; 
+
+this.fn_MyPage_init = function(){
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var idCount = this.transactionCount++;
+	var svcID = "myInfo" + idCount;
+	var SvcURL = "SvcURL::/my/getmyPageSel.mpg?no=" + idCount;
+	var senddataset = "DS_MyInfo=out_test";
+	var param = " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
+	this.transaction(svcID, SvcURL, "", senddataset, param, "fn_ect_init");
+};
+
+this.fn_ect_init = function(){
+	if(this.DS_MyInfo.getColumn(0, "E_GENDER") === "남"){
+		this.rd_gender.set_index(0);
+	}
+	else{
+		this.rd_gender.set_index(1);
+	}
+}
+this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="DS_MyInfo">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="E_EMAIL" type="STRING" size="256"/>
+          <Column id="E_PHONE" type="STRING" size="256"/>
+          <Column id="EOI_CALL" type="STRING" size="256"/>
+          <Column id="E_LOC" type="STRING" size="256"/>
+          <Column id="E_REAL_LOC" type="STRING" size="256"/>
+          <Column id="E_PW" type="STRING" size="256"/>
+          <Column id="E_GENDER" type="STRING" size="256"/>
+          <Column id="E_BIRTH" type="STRING" size="256"/>
+          <Column id="EA_NAME" type="STRING" size="256"/>
+          <Column id="EA_NO" type="STRING" size="256"/>
+          <Column id="E_SOCIAL_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="DS_MyInfo" columnid="E_NO"/>
+      <BindItem id="item1" compid="ed_ename" propid="value" datasetid="DS_MyInfo" columnid="E_NAME"/>
+      <BindItem id="item2" compid="ed_dept" propid="value" datasetid="DS_MyInfo" columnid="D_NAME"/>
+      <BindItem id="item6" compid="ed_acNum" propid="value" datasetid="DS_MyInfo" columnid="EA_NO"/>
+      <BindItem id="item7" compid="me_birth" propid="value" datasetid="DS_MyInfo" columnid="E_BIRTH"/>
+      <BindItem id="item8" compid="me_socialnum" propid="value" datasetid="DS_MyInfo" columnid="E_SOCIAL_NO"/>
+      <BindItem id="item9" compid="me_call" propid="value" datasetid="DS_MyInfo" columnid="EOI_CALL"/>
+      <BindItem id="item4" compid="ed_loc_detail" propid="value" datasetid="DS_MyInfo" columnid="E_LOC"/>
+      <BindItem id="item10" compid="ed_realloc_detail" propid="value" datasetid="DS_MyInfo" columnid="E_REAL_LOC"/>
+      <BindItem id="item11" compid="me_phone" propid="value" datasetid="DS_MyInfo" columnid="E_PHONE"/>
+      <BindItem id="item3" compid="ed_acname" propid="value" datasetid="DS_MyInfo" columnid="EA_NAME"/>
+    </Bind>
   </Form>
 </FDL>
