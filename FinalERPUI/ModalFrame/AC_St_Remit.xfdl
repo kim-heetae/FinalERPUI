@@ -43,12 +43,12 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btn_reject" taborder="23" left="449" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려"/>
+        <Button id="btn_reject" taborder="23" left="449" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer"/>
         <Static id="lb_bg2_01" taborder="24" left="26" top="423" width="499" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_file00" taborder="25" text="첨부파일" left="25" top="424" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <FileUpload id="file_upload" taborder="26" left="144" top="425" width="125" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
         <Static id="lb_file00_01" taborder="27" left="269" top="424" width="256" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_approve" taborder="28" left="315" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인"/>
+        <Button id="btn_approve" taborder="28" left="335" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[

@@ -50,8 +50,18 @@
                 <Column size="80"/>
               </Columns>
               <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
+                <Row size="36" band="head"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
+                <Row size="32"/>
               </Rows>
               <Band id="head">
                 <Cell text="FI_NO"/>
