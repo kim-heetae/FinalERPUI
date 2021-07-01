@@ -24,6 +24,7 @@ this.Mid_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.fn_ActiveTabPage = function(pvWinId)
 {
+	
 	var nCnt = this.tabMdi.getTabpageCount();
 	if(nCnt > 0)
 	{
@@ -39,6 +40,7 @@ this.fn_ActiveTabPage = function(pvWinId)
 			return;
 		}
 	}
+
 };
 
 /**

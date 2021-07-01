@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000">
+  <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" onload="M_HR_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_title" taborder="0" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick"/>
@@ -38,106 +38,43 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="Dataset00" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="100"/>
-                <Column size="120"/>
-                <Column size="450"/>
-                <Column size="120"/>
-                <Column size="140"/>
-                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="35" band="head"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="NO" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="유형" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="제목" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="담당부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="날짜" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="상태" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell text="FI_NO"/>
+                <Cell col="1" text="FT_TYPE"/>
+                <Cell col="2" text="FI_NAME"/>
+                <Cell col="3" text="D_NAME"/>
+                <Cell col="4" text="FI_DATE"/>
+                <Cell col="5" text="FI_STATE"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:no"/>
-                <Cell col="1" text="bind:type"/>
-                <Cell col="2" text="bind:title"/>
-                <Cell col="3" text="bind:dept"/>
-                <Cell col="4" text="bind:date"/>
-                <Cell col="5" text="bind:state"/>
-                <Cell row="1"/>
-                <Cell row="1" col="1"/>
-                <Cell row="1" col="2"/>
-                <Cell row="1" col="3"/>
-                <Cell row="1" col="4"/>
-                <Cell row="1" col="5"/>
-                <Cell row="2"/>
-                <Cell row="2" col="1"/>
-                <Cell row="2" col="2"/>
-                <Cell row="2" col="3"/>
-                <Cell row="2" col="4"/>
-                <Cell row="2" col="5"/>
-                <Cell row="3"/>
-                <Cell row="3" col="1"/>
-                <Cell row="3" col="2"/>
-                <Cell row="3" col="3"/>
-                <Cell row="3" col="4"/>
-                <Cell row="3" col="5"/>
-                <Cell row="4"/>
-                <Cell row="4" col="1"/>
-                <Cell row="4" col="2"/>
-                <Cell row="4" col="3"/>
-                <Cell row="4" col="4"/>
-                <Cell row="4" col="5"/>
-                <Cell row="5"/>
-                <Cell row="5" col="1"/>
-                <Cell row="5" col="2"/>
-                <Cell row="5" col="3"/>
-                <Cell row="5" col="4"/>
-                <Cell row="5" col="5"/>
-                <Cell row="6"/>
-                <Cell row="6" col="1"/>
-                <Cell row="6" col="2"/>
-                <Cell row="6" col="3"/>
-                <Cell row="6" col="4"/>
-                <Cell row="6" col="5"/>
-                <Cell row="7"/>
-                <Cell row="7" col="1"/>
-                <Cell row="7" col="2"/>
-                <Cell row="7" col="3"/>
-                <Cell row="7" col="4"/>
-                <Cell row="7" col="5"/>
-                <Cell row="8"/>
-                <Cell row="8" col="1"/>
-                <Cell row="8" col="2"/>
-                <Cell row="8" col="3"/>
-                <Cell row="8" col="4"/>
-                <Cell row="8" col="5"/>
-                <Cell row="9"/>
-                <Cell row="9" col="1"/>
-                <Cell row="9" col="2"/>
-                <Cell row="9" col="3"/>
-                <Cell row="9" col="4"/>
-                <Cell row="9" col="5"/>
+                <Cell text="bind:FI_NO"/>
+                <Cell col="1" text="bind:FT_TYPE"/>
+                <Cell col="2" text="bind:FI_NAME"/>
+                <Cell col="3" text="bind:D_NAME"/>
+                <Cell col="4" text="bind:FI_DATE"/>
+                <Cell col="5" text="bind:FI_STATE"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Static id="lb_route" taborder="3" text="마이페이지 &gt; 인사 신청 현황" left="1373" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static01_onclick"/>
-        <Button id="btn_apply" taborder="4" text="신청" left="1440" top="630" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
-        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick"/>
+        <Button id="btn_apply" taborder="4" text="신청" left="1440" top="630" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_apply_onclick"/>
+        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
         <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -147,32 +84,35 @@
         <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
-this.Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.transactionCount = 0;
+
+this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	
+   this.application = nexacro.getApplication();
+   this.mhr_board_load();
 };
 
-this.ListBox00_onitemchanged = function(obj:nexacro.ListBox,e:nexacro.ItemChangeEventInfo)
-{
-	
-};
-
-this.Button00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	  var objHFrameset = new HFrameSet();  
-    objHFrameset.init("hframesetNew", 30, 90, 550, 400);
-    this.addChild("hframesetNew", objHFrameset);
-    objHFrameset.set_border("1px solid #999999");
-    objHFrameset.show();
-        
-    var objChildFrame = new ChildFrame();  
-    objChildFrame.init("TEST", 0, 0, 0, 0);
-    objHFrameset.addChild("TEST", objChildFrame);
-    objChildFrame.set_border("1px solid #999999");
-    objChildFrame.set_formurl("FrameBase::my_ap_hr_md.xfdl");
-    objChildFrame.show();
-};
+// this.Button00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+// {
+// 	  var objHFrameset = new HFrameSet();  
+//     objHFrameset.init("hframesetNew", 30, 90, 550, 400);
+//     this.addChild("hframesetNew", objHFrameset);
+//     objHFrameset.set_border("1px solid #999999");
+//     objHFrameset.show();
+//         
+//     var objChildFrame = new ChildFrame();  
+//     objChildFrame.init("TEST", 0, 0, 0, 0);
+//     objHFrameset.addChild("TEST", objChildFrame);
+//     objChildFrame.set_border("1px solid #999999");
+//     objChildFrame.set_formurl("FrameBase::my_ap_hr_md.xfdl");
+//     objChildFrame.show();
+// };
 
 this.Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
 {
@@ -183,16 +123,68 @@ this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
 {
 	
 };
+
+this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   alert(this.cb_type.id);
+	alert("123");
+	this.mhrSel_load();
+};
+
+this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("456");
+};
+
+/*인사 신청현황(전체 조회)*/
+this.mhr_board_load = function(){
+   var objgdsLoginInfo = this.application.objgdsLoginInfo;
+   var mhrNparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=인사과";
+   var idCount = this.transactionCount++;
+   var svcID = "mhrSel" + idCount;
+   this.ds_my_ap_hr.clearData();
+   
+   this.transaction(svcID
+   ,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
+   ,""
+   ,"ds_my_ap_hr=out_test"
+   ,mhrNparam
+   ,"");
+};
+
+/*인사 신청현황(조회 버튼 선택 시 함수)*/
+this.mhrSel_load = function(){
+   var objgdsLoginInfo = this.application.objgdsLoginInfo;
+   var selectedCombo = this.cb_type.text;
+   if(selectedCombo === "신청서 종류"){
+	var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+   }
+   else{
+	var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
+   }
+   /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
+   var idCount = this.transactionCount++;
+   var svcID = "mhrSelType" + idCount;
+   this.ds_my_ap_hr.clearData();
+   
+   this.transaction(svcID
+   ,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
+   ,""
+   ,"ds_my_ap_hr=out_test"
+   ,mhrSelparam
+   ,"");
+};
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_my_ap_hr">
         <ColumnInfo>
-          <Column id="fi_no" type="STRING" size="256"/>
-          <Column id="ft_type" type="STRING" size="256"/>
-          <Column id="fi_name" type="STRING" size="256"/>
-          <Column id="d_name" type="STRING" size="256"/>
-          <Column id="fi_date" type="STRING" size="256"/>
-          <Column id="fi_state" type="STRING" size="256"/>
+          <Column id="FI_NO" type="STRING" size="256"/>
+          <Column id="FT_TYPE" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="FI_STATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
