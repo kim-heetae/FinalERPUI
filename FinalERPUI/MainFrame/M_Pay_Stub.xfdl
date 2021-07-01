@@ -138,9 +138,9 @@
           </Formats>
         </Grid>
         <Static id="Static01" taborder="2" text="마이페이지 &gt; 급여명세서 발급" left="1369" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_ducSel" taborder="3" left="1324" top="630" width="90" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="공제액 조회" cursor="pointer"/>
-        <Button id="btn_issue" taborder="4" left="1443" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="등록" cursor="pointer"/>
-        <Button id="btn_basicSel" taborder="5" left="1216" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="급여 조회" cursor="pointer"/>
+        <Button id="btn_ducSel" taborder="3" left="1324" top="630" width="90" height="40" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="공제액 조회" cursor="pointer"/>
+        <Button id="btn_issue" taborder="4" left="1443" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="등록" cursor="pointer"/>
+        <Button id="btn_basicSel" taborder="5" left="1216" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="급여 조회" cursor="pointer"/>
         <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>

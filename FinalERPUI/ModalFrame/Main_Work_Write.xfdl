@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Main_Work_Write" width="800" height="800" titletext="New Form">
+    <Layouts>
+      <Layout height="800" mobileorientation="landscape" width="800">
+        <Static id="lb_title_m" taborder="0" text="업무 게시글 조회" left="290" top="50" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
+        <Static id="lb_bg1" taborder="1" left="25" top="139" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_ename_label" taborder="2" text="작성자" left="125" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_date_label" taborder="3" text="작성일" left="345" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_hit_label" taborder="4" text="조회수" left="575" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_num" taborder="5" left="25" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_num_onclick" text=""/>
+        <Static id="lb_hit" taborder="6" left="675" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text="" onclick="lb_hit_onclick"/>
+        <Static id="lb_ename" taborder="7" left="225" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" text=""/>
+        <Static id="lb_date" taborder="8" left="445" top="140" width="130" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_date01_onclick"/>
+        <Static id="lb_bg1_00" taborder="9" left="25" top="661" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_file" taborder="10" text="첨부파일" left="25" top="662" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_ok" taborder="11" left="699" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer"/>
+        <Edit id="ed_title" taborder="12" left="144" top="178" width="631" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
+        <TextArea id="ta_content" taborder="13" left="25" top="253" width="750" height="409" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <Static id="lb_content" taborder="14" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_title" taborder="15" text="제목" left="25" top="177" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="none"/>
+        <Static id="lb_content00" taborder="16" left="144" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_file00" taborder="17" left="144" top="216" width="631" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text=""/>
+        <FileUpload id="file_upload" taborder="18" left="146" top="663" width="629" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_edit" taborder="19" left="583" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="수정" cursor="pointer"/>
+        <Static id="lb_0000" taborder="20" left="25" top="176" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Button id="btn_delete" taborder="21" left="467" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="삭제" onclick="btn_confirm00_onclick" cursor="pointer"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="lb_num" propid="text" datasetid="ds_bn_no" columnid="bn_no"/>
+      <BindItem id="item1" compid="lb_hit" propid="text" datasetid="ds_bn_hit" columnid="bn_hit"/>
+      <BindItem id="item2" compid="lb_ename" propid="text" datasetid="ds_e_name" columnid="e_name"/>
+      <BindItem id="item3" compid="lb_date" propid="text" datasetid="ds_bn_date" columnid="bn_date"/>
+      <BindItem id="item5" compid="lb_num" propid="accessibilityaction" datasetid="ds_bn_no" columnid="bn_no"/>
+      <BindItem id="item4" compid="lb_ename" propid="accessibilityaction" datasetid="ds_e_name" columnid="e_name"/>
+      <BindItem id="item6" compid="lb_date" propid="accessibilityaction" datasetid="ds_bn_date" columnid="bn_date"/>
+      <BindItem id="item7" compid="lb_hit" propid="accessibilityaction" datasetid="ds_bn_hit" columnid="bn_hit"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_bn_no">
+        <ColumnInfo>
+          <Column id="bn_no" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_bn_hit">
+        <ColumnInfo>
+          <Column id="bn_hit" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_e_name">
+        <ColumnInfo>
+          <Column id="e_name" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_bn_date">
+        <ColumnInfo>
+          <Column id="bn_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
