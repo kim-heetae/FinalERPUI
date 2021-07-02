@@ -443,6 +443,10 @@ this.fnPopupCallBack = function(sFormId, sArg)
 			var param;
 			var svcURL;
 			var svcID;
+			
+			//현재 사원정보가 들어있는 GLOBAL DATASET 가져오기
+			var objgdsLoginInfo = this.application.objgdsLoginInfo;
+				
 			//일정 정보를 JSON오브젝트로 만들기
 			var objRtn = JSON.parse(sArg);
 			
@@ -453,20 +457,28 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				nRow = this.dsSchedule.findRow("ID", objRtn.ID);
 				
 				//일정 정보 변경
-				this.dsSchedule.setColumn(nRow, "TITLE", objRtn.TITLE);
-				this.dsSchedule.setColumn(nRow, "SDATE", objRtn.SDATE);
-				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
-				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
-				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
-				
-				
+// 				this.dsSchedule.setColumn(nRow, "TITLE", objRtn.TITLE);
+// 				this.dsSchedule.setColumn(nRow, "SDATE", objRtn.SDATE);
+// 				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
+// 				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
+// 				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
+				var sch_date = this.dsSchedule.getColumn(nRow, "SDATE");
+				var sch_no = this.dsSchedule.getColumn(nRow, "SCH_NO");
+				var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+				var new_sch_date = objRtn.SDATE;
+				var new_sch_enddate = objRtn.EDATE;
+				var new_sch_name = objRtn.TITLE;
+				var new_sch_content = objRtn.CONTENT;
+				var new_scht_no = objRtn.TYPE;
+				this.dsSchedule.clearData();
+				svcID = "getOSUpd" + this.application.transactionCount++;
+				svcURL = "SvcURL::/mscmgt/getOSUpd.mpg?no=" + svcID;
+				param = " new_sch_date=" + new_sch_date + " new_sch_enddate=" + new_sch_enddate  + " new_sch_name=" + new_sch_name + " new_sch_content=" + new_sch_content + " new_scht_no=" + new_scht_no + " sch_date=" + sch_date + " sch_no=" + sch_no + " e_no=" + e_no;
+				this.transaction(svcID, svcURL, "", "", param, "fn_LoadScheduler");
 			}
 			//신규일 경우
 			else if(objRtn.popuptype=="new")
 			{
-				//현재 사원정보가 들어있는 GLOBAL DATASET 가져오기
-				var objgdsLoginInfo = this.application.objgdsLoginInfo;
-				
 				//일정번호 채번
 				var sch_no = this.dsSchedule.getCaseCount(" SDATE == '"+ objRtn.SDATE +"' ") + 1;
 				
@@ -474,16 +486,16 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				nRow = this.dsSchedule.addRow();
 				
 				//일정 정보 등록
-				this.dsSchedule.setColumn(nRow, "ID", nexacro.round(Math.random()*1000, 0));
-				this.dsSchedule.setColumn(nRow, "TITLE", objRtn.TITLE);
-				this.dsSchedule.setColumn(nRow, "SDATE", objRtn.SDATE);
-				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
-				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
-				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
-				this.dsSchedule.setColumn(nRow, "SCH_NO", sch_no);
-				this.dsSchedule.setColumn(nRow, "E_NO", objgdsLoginInfo.getColumn(0, "E_NO"));
-				this.dsSchedule.setColumn(nRow, "E_NAME", objgdsLoginInfo.getColumn(0, "E_NAME"));
-				
+// 				this.dsSchedule.setColumn(nRow, "ID", nexacro.round(Math.random()*1000, 0));
+// 				this.dsSchedule.setColumn(nRow, "TITLE", objRtn.TITLE);
+// 				this.dsSchedule.setColumn(nRow, "SDATE", objRtn.SDATE);
+// 				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
+// 				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
+// 				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
+// 				this.dsSchedule.setColumn(nRow, "SCH_NO", sch_no);
+// 				this.dsSchedule.setColumn(nRow, "E_NO", objgdsLoginInfo.getColumn(0, "E_NO"));
+// 				this.dsSchedule.setColumn(nRow, "E_NAME", objgdsLoginInfo.getColumn(0, "E_NAME"));
+				this.dsSchedule.clearData();
 				trace(this.dsSchedule.getCaseCount(" SDATE == '"+ objRtn.SDATE +"' ") + 1);
 				svcID = "getOSIns" + this.application.transactionCount++;
 				svcURL = "SvcURL::/mscmgt/getOSIns.mpg?no=" + svcID;
@@ -497,8 +509,9 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				var sch_no = this.dsSchedule.getColumn(nRow, "SCH_NO");
 				var sch_sdate = this.dsSchedule.getColumn(nRow, "SDATE");
 				
-				this.dsSchedule.deleteRow(nRow);
+				/*this.dsSchedule.deleteRow(nRow);*/
 				//////////////삭제코드 진행..//////////////////////////////
+				this.dsSchedule.clearData();
 				svcID = "getOSDel" + this.application.transactionCount++;
 				svcURL = "SvcURL::/mscmgt/getOSDel.mpg?no=" + svcID;
 				param = " sch_date=" + sch_sdate + " sch_no=" + sch_no + " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
