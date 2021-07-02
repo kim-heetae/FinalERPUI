@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M_AC_Remit_S" width="550" height="450" titletext="New Form">
+    <Layouts>
+      <Layout height="450" width="550">
+        <Static id="lb_bg1" taborder="0" left="25" top="122" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno_label" taborder="1" text="사원번호" left="25" top="123" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_bg2" taborder="2" left="25" top="239" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_ename_label" taborder="3" text="사원명" left="279" top="123" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_basic_label" taborder="4" text="급여" left="25" top="240" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_empno" taborder="5" left="145" top="123" width="135" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_ok" taborder="6" left="449" top="390" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer"/>
+        <Static id="lb_real_label" taborder="7" text="실수령액" left="25" top="318" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_content00" taborder="8" left="145" top="317" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_real" taborder="9" left="144" top="318" width="321" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7"/>
+        <Static id="lb_title_m" taborder="10" text="급여명세서" left="165" top="38" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_bg1_00" taborder="11" left="25" top="161" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept_label" taborder="12" text="부서명" left="25" top="162" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_pos_label" taborder="13" text="직급" left="279" top="162" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg1_00_00" taborder="14" left="25" top="200" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_date_sal_label" taborder="15" text="지급날짜" left="25" top="201" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_state_label" taborder="16" text="지급상태" left="279" top="201" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_ok00" taborder="17" left="334" top="390" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="발급" cursor="pointer"/>
+        <Static id="lb_deduct" taborder="18" left="144" top="279" width="321" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7"/>
+        <Static id="lb_deduct_label" taborder="19" text="공제액" left="25" top="279" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_0000" taborder="20" left="25" top="278" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Static id="lb_bg2_01" taborder="21" left="25" top="317" width="500" height="40" border="2px solid #000000, 0px none&#9;"/>
+        <Static id="lb_basic" taborder="22" left="144" top="240" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7"/>
+        <Static id="lb_ename" taborder="23" left="400" top="123" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_dept" taborder="24" left="145" top="162" width="135" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_date_sal" taborder="25" left="145" top="201" width="135" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_pos" taborder="26" left="400" top="162" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_state" taborder="27" left="400" top="201" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_basic_label00" taborder="28" text="-" left="220" top="279" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00" taborder="29" text="원" left="465" top="240" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_00" taborder="30" text="원" left="465" top="279" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_01" taborder="31" text="원" left="465" top="319" width="60" height="36" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_pay_stub">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="SB_DATE" type="STRING" size="256"/>
+          <Column id="SS_STATE" type="STRING" size="256"/>
+          <Column id="SS_BASIC" type="STRING" size="256"/>
+          <Column id="SS_DUC" type="STRING" size="256"/>
+          <Column id="SS_REAL" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="lb_empno" propid="text" datasetid="ds_pay_stub" columnid="E_NO"/>
+      <BindItem id="item1" compid="lb_ename" propid="text" datasetid="ds_pay_stub" columnid="E_NAME"/>
+      <BindItem id="item2" compid="lb_dept" propid="text" datasetid="ds_pay_stub" columnid="D_NAME"/>
+      <BindItem id="item3" compid="lb_pos" propid="text" datasetid="ds_pay_stub" columnid="E_POS"/>
+      <BindItem id="item4" compid="lb_date_sal" propid="text" datasetid="ds_pay_stub" columnid="SB_DATE"/>
+      <BindItem id="item5" compid="lb_state" propid="text" datasetid="ds_pay_stub" columnid="SS_STATE"/>
+      <BindItem id="item6" compid="lb_basic" propid="text" datasetid="ds_pay_stub" columnid="SS_BASIC"/>
+      <BindItem id="item7" compid="lb_deduct" propid="text" datasetid="ds_pay_stub" columnid="SS_DUC"/>
+      <BindItem id="item8" compid="lb_real" propid="text" datasetid="ds_pay_stub" columnid="SS_REAL"/>
+    </Bind>
+  </Form>
+</FDL>

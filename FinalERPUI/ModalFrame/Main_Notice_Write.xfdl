@@ -8,10 +8,10 @@
         <Static id="lb_ename_label" taborder="2" text="작성자" left="125" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_date_label" taborder="3" text="작성일" left="345" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Static id="lb_hit_label" taborder="4" text="조회수" left="575" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_num" taborder="5" left="25" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_num_onclick" text=""/>
-        <Static id="lb_hit" taborder="6" left="675" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text="" onclick="lb_hit_onclick"/>
-        <Static id="lb_ename" taborder="7" left="225" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_date" taborder="8" left="445" top="140" width="130" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_date01_onclick"/>
+        <Static id="lb_num" taborder="5" left="25" top="140" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_num_onclick" text=""/>
+        <Static id="lb_hit" taborder="6" left="675" top="140" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text="" onclick="lb_hit_onclick"/>
+        <Static id="lb_ename" taborder="7" left="225" top="140" width="120" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_date" taborder="8" left="445" top="140" width="130" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_date01_onclick"/>
         <Static id="lb_bg1_00" taborder="9" left="25" top="661" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_file" taborder="10" text="첨부파일" left="25" top="662" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Button id="btn_ok" taborder="11" left="699" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer"/>
@@ -28,32 +28,20 @@
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="ds_bn_no">
+      <Dataset id="ds_board_notice">
         <ColumnInfo>
-          <Column id="bn_no" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_bn_hit">
-        <ColumnInfo>
-          <Column id="bn_hit" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_e_name">
-        <ColumnInfo>
-          <Column id="e_name" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_bn_date">
-        <ColumnInfo>
-          <Column id="bn_date" type="STRING" size="256"/>
+          <Column id="BN_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="BN_HIT" type="STRING" size="256"/>
+          <Column id="BN_DATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
     <Bind>
-      <BindItem id="item1" compid="lb_hit" propid="text" datasetid="ds_bn_hit" columnid="bn_hit"/>
-      <BindItem id="item0" compid="lb_num" propid="text" datasetid="ds_bn_no" columnid="bn_no"/>
-      <BindItem id="item2" compid="lb_ename" propid="text" datasetid="ds_e_name" columnid="e_name"/>
-      <BindItem id="item3" compid="lb_date" propid="text" datasetid="ds_bn_date" columnid="bn_date"/>
+      <BindItem id="item4" compid="lb_num" propid="text" datasetid="ds_board_notice" columnid="BN_NO"/>
+      <BindItem id="item0" compid="lb_ename" propid="text" datasetid="ds_board_notice" columnid="E_NAME"/>
+      <BindItem id="item1" compid="lb_date" propid="text" datasetid="ds_board_notice" columnid="BN_DATE"/>
+      <BindItem id="item2" compid="lb_hit" propid="text" datasetid="ds_board_notice" columnid="BN_HIT"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[
 this.lb_num_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)

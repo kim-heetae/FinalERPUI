@@ -163,12 +163,12 @@ this.Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
     <Objects>
       <Dataset id="ds_hr_ap">
         <ColumnInfo>
-          <Column id="fi_no" type="STRING" size="256"/>
-          <Column id="ft_type" type="STRING" size="256"/>
-          <Column id="e_no" type="STRING" size="256"/>
-          <Column id="fi_name" type="STRING" size="256"/>
-          <Column id="fi_date" type="STRING" size="256"/>
-          <Column id="fi_state" type="STRING" size="256"/>
+          <Column id="FI_NO" type="STRING" size="256"/>
+          <Column id="FT_TYPE" type="STRING" size="256"/>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="FI_STATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
