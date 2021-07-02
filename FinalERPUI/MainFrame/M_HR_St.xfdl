@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-<<<<<<< HEAD
   <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onload="M_HR_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
@@ -43,24 +42,24 @@
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="60"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="250"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
               </Columns>
               <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
+                <Row size="36" band="head"/>
+                <Row size="32"/>
               </Rows>
               <Band id="head">
-                <Cell text="FI_NO"/>
-                <Cell col="1" text="FT_TYPE"/>
-                <Cell col="2" text="FI_NAME"/>
-                <Cell col="3" text="D_NAME"/>
-                <Cell col="4" text="FI_DATE"/>
-                <Cell col="5" text="FI_STATE"/>
+                <Cell text="No"/>
+                <Cell col="1" text="유형"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="담당부서"/>
+                <Cell col="4" text="신청일"/>
+                <Cell col="5" text="상태여부"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:FI_NO"/>
@@ -96,32 +95,24 @@ this.transactionCount = 0;
 this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
    this.application = nexacro.getApplication();
+   /*인사 신청현황(전체 조회) 함수 호출*/
    this.mhr_board_load();
 };
-
-/*조회 버튼*/
+/*조회 버튼 호출*/
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    alert(this.cb_type.id);
    alert("123");
+   /*인사 신청현황(전체 조회) 함수 호출*/
    this.mhrSel_load();
 };
 
-this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
-};
-
-this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-   alert(this.cb_type.id);
-	alert("123");
-	this.mhrSel_load();
-};
-
+/*신청 버튼*/
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	alert("456");
+   /*인사 신청 모달 출력*/
+   this.application.gfnShowModal("popupModal", null, "ModalFrame::M_HR_Type.xfdl", "", this, 550, 30, true, true, null);
+   alert("456");
 };
 
 /*인사 신청현황(전체 조회)*/
@@ -145,10 +136,10 @@ this.mhrSel_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var selectedCombo = this.cb_type.text;
    if(selectedCombo === "신청서 종류"){
-	var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
    }
    else{
-	var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
+   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
    }
    /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
    var idCount = this.transactionCount++;
@@ -161,9 +152,7 @@ this.mhrSel_load = function(){
    ,"ds_my_ap_hr=out_test"
    ,mhrSelparam
    ,"");
-};
-
-]]></Script>
+};]]></Script>
     <Objects>
       <Dataset id="ds_my_ap_hr">
         <ColumnInfo>
