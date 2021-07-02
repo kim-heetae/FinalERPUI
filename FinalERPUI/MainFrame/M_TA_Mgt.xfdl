@@ -81,8 +81,6 @@ include "lib::lib_base.xjs";
 
 this.application = null;
 
-this.transactionCount = 0;
-
 this.M_TA_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
@@ -98,7 +96,7 @@ this.mta_board_load = function(){
 
 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
 	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
-	var idCount = this.transactionCount++;
+	var idCount = this.application.transactionCount++;
 	var svcID = "mtaSel" + idCount;
 	this.M_TA_MGT.clearData();
 	this.transaction(svcID

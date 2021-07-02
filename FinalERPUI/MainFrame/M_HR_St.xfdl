@@ -38,28 +38,28 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" scrolltype="both">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="60"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="250"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
               </Columns>
               <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
+                <Row size="36" band="head"/>
+                <Row size="32"/>
               </Rows>
               <Band id="head">
-                <Cell text="FI_NO"/>
-                <Cell col="1" text="FT_TYPE"/>
-                <Cell col="2" text="FI_NAME"/>
-                <Cell col="3" text="D_NAME"/>
-                <Cell col="4" text="FI_DATE"/>
-                <Cell col="5" text="FI_STATE"/>
+                <Cell text="No"/>
+                <Cell col="1" text="유형"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="담당부서"/>
+                <Cell col="4" text="신청일"/>
+                <Cell col="5" text="상태여부"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:FI_NO"/>
@@ -73,8 +73,8 @@
           </Formats>
         </Grid>
         <Static id="lb_route" taborder="3" text="마이페이지 &gt; 인사 신청 현황" left="1373" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static01_onclick"/>
-        <Button id="btn_apply" taborder="4" text="신청" left="1440" top="630" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_apply_onclick"/>
-        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
+        <Button id="btn_apply" taborder="4" text="신청" left="1440" top="630" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_apply_onclick" cursor="pointer"/>
+        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer" defaultbutton="true"/>
         <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -90,44 +90,34 @@ include "lib::lib_base.xjs";
 
 this.application = null;
 
-this.transactionCount = 0;
-
 this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
    this.application = nexacro.getApplication();
+   /*인사 신청현황(전체 조회) 함수 호출*/
    this.mhr_board_load();
 };
-
-/*조회 버튼*/
+/*조회 버튼 호출*/
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    alert(this.cb_type.id);
    alert("123");
+   /*인사 신청현황(전체 조회) 함수 호출*/
    this.mhrSel_load();
 };
 
-this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
-};
-
-this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-   alert(this.cb_type.id);
-	alert("123");
-	this.mhrSel_load();
-};
-
+/*신청 버튼*/
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	alert("456");
+   /*인사 신청 모달 출력*/
+   this.application.gfnShowModal("popupModal", null, "ModalFrame::M_HR_Type.xfdl", "", this, 550, 30, true, true, null);
+   alert("456");
 };
 
 /*인사 신청현황(전체 조회)*/
 this.mhr_board_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var mhrNparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=인사과";
-   var idCount = this.transactionCount++;
+   var idCount = this.application.transactionCount++;
    var svcID = "mhrSel" + idCount;
    this.ds_my_ap_hr.clearData();
    
@@ -144,13 +134,13 @@ this.mhrSel_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var selectedCombo = this.cb_type.text;
    if(selectedCombo === "신청서 종류"){
-	var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
    }
    else{
-	var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
+   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
    }
    /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
-   var idCount = this.transactionCount++;
+   var idCount = this.application.transactionCount++;
    var svcID = "mhrSelType" + idCount;
    this.ds_my_ap_hr.clearData();
    
@@ -160,9 +150,7 @@ this.mhrSel_load = function(){
    ,"ds_my_ap_hr=out_test"
    ,mhrSelparam
    ,"");
-};
-
-]]></Script>
+};]]></Script>
     <Objects>
       <Dataset id="ds_my_ap_hr">
         <ColumnInfo>
