@@ -172,5 +172,6 @@
     <Variable id="gvLoginDeptno"/>
     <Variable id="gvLoginEpos"/>
     <Variable id="gvLoginAuth"/>
+    <Variable id="gvTransactionCount" initval="0"/>
   </Variables>
 </AppVariables>

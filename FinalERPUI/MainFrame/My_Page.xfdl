@@ -79,7 +79,6 @@ include "lib::lib_date.xjs";
 include "lib::lib_base.xjs";
 
 this.application = null;
-this.transactionCount = 0;
 
 this.My_Page_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -124,7 +123,7 @@ this.popupCallBack = function(sFormId, sArg)
 
 this.fn_MyPage_init = function(){
 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var idCount = this.transactionCount++;
+	var idCount = this.application.transactionCount++;
 	var svcID = "myInfo" + idCount;
 	var SvcURL = "SvcURL::/my/getmyPageSel.mpg?no=" + idCount;
 	var senddataset = "DS_MyInfo=out_test";
@@ -142,7 +141,11 @@ this.fn_ect_init = function(){
 }
 this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	var ed_email = this.ed_email.value;
+	var ed_email_check = this.ed_email_check.value;
+	var ed_password = this.ed_password.value;
+	var ed_password_check = this.ed_password_check.value;
+	/*if(ed_email === ed_email_check )*/
 };
 ]]></Script>
     <Objects>

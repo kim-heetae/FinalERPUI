@@ -38,7 +38,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" scrolltype="both">
           <Formats>
             <Format id="default">
               <Columns>
@@ -73,8 +73,8 @@
           </Formats>
         </Grid>
         <Static id="lb_route" taborder="3" text="마이페이지 &gt; 인사 신청 현황" left="1373" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static01_onclick"/>
-        <Button id="btn_apply" taborder="4" text="신청" left="1440" top="630" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_apply_onclick"/>
-        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
+        <Button id="btn_apply" taborder="4" text="신청" left="1440" top="630" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_apply_onclick" cursor="pointer"/>
+        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="20px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer" defaultbutton="true"/>
         <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -89,8 +89,6 @@ include "lib::lib_date.xjs";
 include "lib::lib_base.xjs";
 
 this.application = null;
-
-this.transactionCount = 0;
 
 this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -119,7 +117,7 @@ this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.mhr_board_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var mhrNparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=인사과";
-   var idCount = this.transactionCount++;
+   var idCount = this.application.transactionCount++;
    var svcID = "mhrSel" + idCount;
    this.ds_my_ap_hr.clearData();
    
@@ -142,7 +140,7 @@ this.mhrSel_load = function(){
    var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
    }
    /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
-   var idCount = this.transactionCount++;
+   var idCount = this.application.transactionCount++;
    var svcID = "mhrSelType" + idCount;
    this.ds_my_ap_hr.clearData();
    

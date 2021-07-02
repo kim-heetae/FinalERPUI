@@ -43,6 +43,8 @@ this.Login_Frame;
 this.objgdsLoginInfo;
 this.objgdsLeftMenu;
 
+this.transactionCount;
+
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
 {
 	//frame 정의
@@ -58,6 +60,8 @@ this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventIn
 	
 	this.objgdsLoginInfo = this.gdsLoginInfo;
 	this.objgdsLeftMenu = this.gdsLeftMenu;
+	
+	this.transactionCount = this.gvTransactionCount;
 	
 	//로그인 화면 Sigit ze Setting
 	this.fn_init();
