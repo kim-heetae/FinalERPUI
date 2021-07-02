@@ -20,16 +20,6 @@
               <Rows>
                 <Row size="36" band="head"/>
                 <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
               </Rows>
               <Band id="head">
                 <Cell text="날짜"/>
@@ -50,86 +40,6 @@
                 <Cell col="5" text="bind:W_EARLY_LEAVE"/>
                 <Cell col="6" text="bind:W_LEAVE"/>
                 <Cell col="7" text="bind:W_VACATION"/>
-                <Cell row="1"/>
-                <Cell row="1" col="1"/>
-                <Cell row="1" col="2"/>
-                <Cell row="1" col="3"/>
-                <Cell row="1" col="4"/>
-                <Cell row="1" col="5"/>
-                <Cell row="1" col="6"/>
-                <Cell row="1" col="7"/>
-                <Cell row="2"/>
-                <Cell row="2" col="1"/>
-                <Cell row="2" col="2"/>
-                <Cell row="2" col="3"/>
-                <Cell row="2" col="4"/>
-                <Cell row="2" col="5"/>
-                <Cell row="2" col="6"/>
-                <Cell row="2" col="7"/>
-                <Cell row="3"/>
-                <Cell row="3" col="1"/>
-                <Cell row="3" col="2"/>
-                <Cell row="3" col="3"/>
-                <Cell row="3" col="4"/>
-                <Cell row="3" col="5"/>
-                <Cell row="3" col="6"/>
-                <Cell row="3" col="7"/>
-                <Cell row="4"/>
-                <Cell row="4" col="1"/>
-                <Cell row="4" col="2"/>
-                <Cell row="4" col="3"/>
-                <Cell row="4" col="4"/>
-                <Cell row="4" col="5"/>
-                <Cell row="4" col="6"/>
-                <Cell row="4" col="7"/>
-                <Cell row="5"/>
-                <Cell row="5" col="1"/>
-                <Cell row="5" col="2"/>
-                <Cell row="5" col="3"/>
-                <Cell row="5" col="4"/>
-                <Cell row="5" col="5"/>
-                <Cell row="5" col="6"/>
-                <Cell row="5" col="7"/>
-                <Cell row="6"/>
-                <Cell row="6" col="1"/>
-                <Cell row="6" col="2"/>
-                <Cell row="6" col="3"/>
-                <Cell row="6" col="4"/>
-                <Cell row="6" col="5"/>
-                <Cell row="6" col="6"/>
-                <Cell row="6" col="7"/>
-                <Cell row="7"/>
-                <Cell row="7" col="1"/>
-                <Cell row="7" col="2"/>
-                <Cell row="7" col="3"/>
-                <Cell row="7" col="4"/>
-                <Cell row="7" col="5"/>
-                <Cell row="7" col="6"/>
-                <Cell row="7" col="7"/>
-                <Cell row="8"/>
-                <Cell row="8" col="1"/>
-                <Cell row="8" col="2"/>
-                <Cell row="8" col="3"/>
-                <Cell row="8" col="4"/>
-                <Cell row="8" col="5"/>
-                <Cell row="8" col="6"/>
-                <Cell row="8" col="7"/>
-                <Cell row="9"/>
-                <Cell row="9" col="1"/>
-                <Cell row="9" col="2"/>
-                <Cell row="9" col="3"/>
-                <Cell row="9" col="4"/>
-                <Cell row="9" col="5"/>
-                <Cell row="9" col="6"/>
-                <Cell row="9" col="7"/>
-                <Cell row="10"/>
-                <Cell row="10" col="1"/>
-                <Cell row="10" col="2"/>
-                <Cell row="10" col="3"/>
-                <Cell row="10" col="4"/>
-                <Cell row="10" col="5"/>
-                <Cell row="10" col="6"/>
-                <Cell row="10" col="7"/>
               </Band>
             </Format>
           </Formats>
