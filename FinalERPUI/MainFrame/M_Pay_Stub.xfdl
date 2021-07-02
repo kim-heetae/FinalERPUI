@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M_Pay_Stub" width="1670" height="835" titletext="New Form">
+    <Layouts>
+      <Layout height="835" mobileorientation="landscape" width="1670">
+        <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Grid id="Grid00" taborder="1" left="153" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="35" band="head"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+                <Row size="35"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="1" text="사원명" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="2" text="부서명" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="3" text="직급" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="4" text="지급날짜" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="5" text="급여" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="6" text="공제액" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="7" text="실수령액" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="8" text="지급상태" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:e_no"/>
+                <Cell col="1" text="bind:e_name"/>
+                <Cell col="2" text="bind:d_name"/>
+                <Cell col="3" text="bind:e_pos"/>
+                <Cell col="4" text="bind:sb_date"/>
+                <Cell col="5" text="bind:ss_basic"/>
+                <Cell col="6" text="bind:ss_duc"/>
+                <Cell col="7" text="bind:ss_real"/>
+                <Cell col="8" text="bind:ss_state"/>
+                <Cell row="1"/>
+                <Cell row="1" col="1"/>
+                <Cell row="1" col="2"/>
+                <Cell row="1" col="3"/>
+                <Cell row="1" col="4"/>
+                <Cell row="1" col="5"/>
+                <Cell row="1" col="6"/>
+                <Cell row="1" col="7"/>
+                <Cell row="1" col="8"/>
+                <Cell row="2"/>
+                <Cell row="2" col="1"/>
+                <Cell row="2" col="2"/>
+                <Cell row="2" col="3"/>
+                <Cell row="2" col="4"/>
+                <Cell row="2" col="5"/>
+                <Cell row="2" col="6"/>
+                <Cell row="2" col="7"/>
+                <Cell row="2" col="8"/>
+                <Cell row="3"/>
+                <Cell row="3" col="1"/>
+                <Cell row="3" col="2"/>
+                <Cell row="3" col="3"/>
+                <Cell row="3" col="4"/>
+                <Cell row="3" col="5"/>
+                <Cell row="3" col="6"/>
+                <Cell row="3" col="7"/>
+                <Cell row="3" col="8"/>
+                <Cell row="4"/>
+                <Cell row="4" col="1"/>
+                <Cell row="4" col="2"/>
+                <Cell row="4" col="3"/>
+                <Cell row="4" col="4"/>
+                <Cell row="4" col="5"/>
+                <Cell row="4" col="6"/>
+                <Cell row="4" col="7"/>
+                <Cell row="4" col="8"/>
+                <Cell row="5"/>
+                <Cell row="5" col="1"/>
+                <Cell row="5" col="2"/>
+                <Cell row="5" col="3"/>
+                <Cell row="5" col="4"/>
+                <Cell row="5" col="5"/>
+                <Cell row="5" col="6"/>
+                <Cell row="5" col="7"/>
+                <Cell row="5" col="8"/>
+                <Cell row="6"/>
+                <Cell row="6" col="1"/>
+                <Cell row="6" col="2"/>
+                <Cell row="6" col="3"/>
+                <Cell row="6" col="4"/>
+                <Cell row="6" col="5"/>
+                <Cell row="6" col="6"/>
+                <Cell row="6" col="7"/>
+                <Cell row="6" col="8"/>
+                <Cell row="7"/>
+                <Cell row="7" col="1"/>
+                <Cell row="7" col="2"/>
+                <Cell row="7" col="3"/>
+                <Cell row="7" col="4"/>
+                <Cell row="7" col="5"/>
+                <Cell row="7" col="6"/>
+                <Cell row="7" col="7"/>
+                <Cell row="7" col="8"/>
+                <Cell row="8"/>
+                <Cell row="8" col="1"/>
+                <Cell row="8" col="2"/>
+                <Cell row="8" col="3"/>
+                <Cell row="8" col="4"/>
+                <Cell row="8" col="5"/>
+                <Cell row="8" col="6"/>
+                <Cell row="8" col="7"/>
+                <Cell row="8" col="8"/>
+                <Cell row="9"/>
+                <Cell row="9" col="1"/>
+                <Cell row="9" col="2"/>
+                <Cell row="9" col="3"/>
+                <Cell row="9" col="4"/>
+                <Cell row="9" col="5"/>
+                <Cell row="9" col="6"/>
+                <Cell row="9" col="7"/>
+                <Cell row="9" col="8"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="2" text="마이페이지 &gt; 급여명세서 발급" left="1369" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_issue" taborder="3" left="1443" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="발급" cursor="pointer"/>
+        <Static id="lb_left" taborder="4" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_1" taborder="5" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_2" taborder="6" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_3" taborder="7" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_4" taborder="8" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_5" taborder="9" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_right" taborder="10" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_pay_stub">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="SB_DATE" type="STRING" size="256"/>
+          <Column id="SS_BASIC" type="STRING" size="256"/>
+          <Column id="SS_DUC" type="STRING" size="256"/>
+          <Column id="SS_REAL" type="STRING" size="256"/>
+          <Column id="SS_STATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+  </Form>
+</FDL>

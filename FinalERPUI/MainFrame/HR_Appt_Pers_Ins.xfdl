@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="HR_Appt_Pers_Ins" width="1670" height="835" titletext="New Form">
+    <Layouts>
+      <Layout height="835" width="1670">
+        <Static id="lb_title" taborder="0" text="인사발령 등록" left="30" top="40" width="200" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Static id="lb_myPage" taborder="1" text="인사 &gt; 인사발령 &gt; 인사발령 등록" left="1317" top="49" width="200" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <Button id="btn_Com" taborder="2" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="완료" cursor="pointer"/>
+        <Static id="lb_bg1" taborder="3" left="154" top="162" width="646" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept" taborder="4" text="부서" left="154" top="164" width="80" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_lev" taborder="5" text="직급" left="336" top="164" width="80" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Combo id="cb_dept" taborder="6" text="부서전체" left="234" top="164" width="100" height="36" font="16px/normal &quot;나눔바른펜&quot;" value="" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">전체</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">회계팀</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="cb_dept00" taborder="7" text="직급 전체" left="416" top="164" width="100" height="36" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">전체</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">사장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">부장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">차장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">과장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">대리</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">사원</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="Edit00" taborder="8" left="516" top="164" width="214" height="36" displaynulltext="내용을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btn_Sel" taborder="9" left="730" top="164" width="70" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조회" cursor="pointer"/>
+        <Grid id="gr_Ins" taborder="10" left="153" top="200" width="647" height="390" border="1px solid #c7c7c7" binddataset="DS_HRIns" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="사원명" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="직급" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:e_no" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="bind:e_name" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="bind:d_dept" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="bind:e_pos" font="20px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_ins" taborder="11" text="&gt;" left="800" top="163" width="90" height="213"/>
+        <Button id="btn_del" taborder="12" text="&lt;" left="800" top="377" width="90" height="213"/>
+        <Grid id="gr_upd" taborder="13" left="890" top="163" width="630" height="429" border="1px solid #c7c7c7" binddataset="DS_HRUpd" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="사원명" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="이전부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="변경부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="이전직급" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="변경직급" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="6" text="변경일" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:e_no" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="bind:e_name" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="bind:edh_dept_pre" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="bind:edh_dept_aft" font="20px/normal &quot;나눔바른펜&quot;" displaytype="combocontrol" edittype="combo"/>
+                <Cell col="4" text="bind:edh_pos_pre" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="bind:edh_pos_aft" font="20px/normal &quot;나눔바른펜&quot;" displaytype="combocontrol" edittype="combo"/>
+                <Cell col="6" text="bind:dc_date" font="20px/normal &quot;나눔바른펜&quot;" displaytype="date" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="DS_HRIns">
+        <ColumnInfo>
+          <Column id="e_no" type="STRING" size="256"/>
+          <Column id="e_name" type="STRING" size="256"/>
+          <Column id="d_dept" type="STRING" size="256"/>
+          <Column id="e_pos" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="DS_HRUpd">
+        <ColumnInfo>
+          <Column id="e_no" type="STRING" size="256"/>
+          <Column id="e_name" type="STRING" size="256"/>
+          <Column id="edh_dept_pre" type="STRING" size="256"/>
+          <Column id="edh_dept_aft" type="STRING" size="256"/>
+          <Column id="edh_pos_pre" type="STRING" size="256"/>
+          <Column id="edh_pos_aft" type="STRING" size="256"/>
+          <Column id="dc_date" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
