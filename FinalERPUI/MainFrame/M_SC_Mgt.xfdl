@@ -21,6 +21,7 @@
           <Column id="TYPE" type="STRING" size="256"/>
           <Column id="SCH_NO" type="STRING" size="256"/>
           <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -43,15 +44,15 @@ include "lib::lib_schedulerv2.xjs";
 /**************************************************************************
  * FORM 변수 선언 영역
 **************************************************************************/
-this.transactionCount = 0;
 this.application = null;
 /**************************************************************************
  * FORM EVENT 영역(onload)
 **************************************************************************/
 this.M_SC_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {	
+	this.application = nexacro.getApplication();
  	this.fn_scheduleSel();
-  	this.application = nexacro.getApplication();
+	/*this.transactionCount = this.application.transactionCount;*/
 // 	this.fn_scheduleMake();
 };
 
@@ -133,10 +134,9 @@ this.fn_scheduleMake = function(){
 						"schedule" : {
 										//일정 타입별 배경색
 										"type" : {
+													"0" : "#f9423a",
 													"1" : "#f4da40",
-													"2" : "#f9423a",
-													"3" : "#74d1ea",
-													"0" : "#00b08b"
+													"2" : "#74d1ea"
 												 },
 												 
 										//일정 영역 높이
@@ -197,7 +197,7 @@ this.fn_scheduleMake = function(){
 }
 
 this.fn_scheduleSel = function(){
-	var svcCount = this.transactionCount++;
+	var svcCount = this.application.transactionCount++;
 	this.transaction("scheduleSel" + svcCount
 		,"SvcURL::/mscmgt/getOSSel.mpg?no=" + svcCount
 		,""
@@ -317,6 +317,9 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 	var sType;
 	var sTitle;
 	var sContent;
+	var sSch_No;
+	var sE_No;
+	var sE_Name;
 	var objSchedule;
 	
 	//더블 클릭된 위치의 Graphic 오브젝트 가져오기
@@ -355,8 +358,17 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 		//일정 내용 가져오기
 		sContent = objDs.getColumn(nRow, "CONTENT");
 		
+		//일정 번호 가져오기
+		sSch_No = objDs.getColumn(nRow, "SCH_NO");
+		
+		//일정 작성자 사원번호 가져오기
+		sE_No = objDs.getColumn(nRow, "E_NO");
+		
+		//일정 작성자 이름 가져오기
+		sE_Name = objDs.getColumn(nRow, "E_NAME");		
+		
 		//팝업오픈 함수 호출
-		this.fnOpenSchedulePop("modify", sId, sSDate, sEDate, sType, sTitle, sContent);
+		this.fnOpenSchedulePop("modify", sId, sSDate, sEDate, sType, sTitle, sContent, sSch_No, sE_No, sE_Name);
 		
 		return;
 	}
@@ -397,9 +409,9 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 * @param sContent    	: 일정 내용
 * @return             	: 없음
 */
-this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sType, sTitle, sContent)
+this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sType, sTitle, sContent, sSch_No, sE_No, sE_Name)
 {
-	var oArg = { "popuptype" : sPopupType, "scheduleid" : "", "SDATE" : "", "EDATE" : "", "TYPE" : "", "TITLE" : "", "CONTENT" : "" };
+	var oArg = { "popuptype" : sPopupType, "scheduleid" : "", "SDATE" : "", "EDATE" : "", "TYPE" : "", "TITLE" : "", "CONTENT" : "", "SCH_NO" : "", "E_NO" : "", "E_NAME" : "" };
 	
 	if(sId)oArg.scheduleid = sId;
 	if(sSDate)oArg.SDATE = sSDate;
@@ -407,10 +419,13 @@ this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sType, sTitle
 	if(sType)oArg.TYPE = sType;
 	if(sTitle)oArg.TITLE = sTitle;
 	if(sContent)oArg.CONTENT = sContent;
+	if(sSch_No)oArg.SCH_NO = sSch_No;
+	if(sE_No)oArg.E_NO = sE_No;
+	if(sE_Name)oArg.E_NAME = sE_Name;
 	
 	this.gfnShowModal("popupModal", oArg, "ModalFrame::M_SC_Sel.xfdl", "fnPopupCallBack", this, 400, 300, true, true, null);
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
 * @description 	      	: 팝업 콜백 함수
 * @param sFormId		: 팝업 ID
@@ -425,7 +440,9 @@ this.fnPopupCallBack = function(sFormId, sArg)
 		if(sArg)
 		{
 			var nRow;
-			
+			var param;
+			var svcURL;
+			var svcID;
 			//일정 정보를 JSON오브젝트로 만들기
 			var objRtn = JSON.parse(sArg);
 			
@@ -442,10 +459,17 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
 				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
 				
+				
 			}
 			//신규일 경우
 			else if(objRtn.popuptype=="new")
 			{
+				//현재 사원정보가 들어있는 GLOBAL DATASET 가져오기
+				var objgdsLoginInfo = this.application.objgdsLoginInfo;
+				
+				//일정번호 채번
+				var sch_no = this.dsSchedule.getCaseCount(" SDATE == '"+ objRtn.SDATE +"' ") + 1;
+				
 				//신규 Row 추가
 				nRow = this.dsSchedule.addRow();
 				
@@ -456,28 +480,38 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
 				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
 				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
+				this.dsSchedule.setColumn(nRow, "SCH_NO", sch_no);
+				this.dsSchedule.setColumn(nRow, "E_NO", objgdsLoginInfo.getColumn(0, "E_NO"));
+				this.dsSchedule.setColumn(nRow, "E_NAME", objgdsLoginInfo.getColumn(0, "E_NAME"));
 				
 				trace(this.dsSchedule.getCaseCount(" SDATE == '"+ objRtn.SDATE +"' ") + 1);
-				var objgdsLoginInfo = this.application.objgdsLoginInfo;
-				var sch_no = this.dsSchedule.getCaseCount(" SDATE == '"+ objRtn.SDATE +"' ") + 1;
-				var svcID = this.transactionCount++;
-				var param = " sch_date=" + objRtn.SDATE + " sch_no=" + sch_no + " sch_name=" + objRtn.TITLE 
-							+ " sch_content=" + objRtn.CONTENT + " sch_enddate=" + objRtn.EDATE + " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
-				/*this.transaction("getOSIns"+svcID, "SvcURL::/mscmgt/getOSIns.mpg?no=" + svcID, "","",param,"fn_LoadScheduler");*/
-				this.fn_schedule_ins(svcID, param);
+				svcID = "getOSIns" + this.application.transactionCount++;
+				svcURL = "SvcURL::/mscmgt/getOSIns.mpg?no=" + svcID;
+				param = " sch_date=" + objRtn.SDATE + " sch_no=" + sch_no + " sch_name=" + objRtn.TITLE + " scht_no=" + objRtn.TYPE +
+							" sch_content=" + objRtn.CONTENT + " sch_enddate=" + objRtn.EDATE + " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
+				this.transaction(svcID, svcURL, "", "", param, "fn_LoadScheduler");
 			}
-			
+			else if(objRtn.popuptype == "delete"){
+				nRow = this.dsSchedule.findRow("ID", objRtn.ID);
+				
+				var sch_no = this.dsSchedule.getColumn(nRow, "SCH_NO");
+				var sch_sdate = this.dsSchedule.getColumn(nRow, "SDATE");
+				
+				this.dsSchedule.deleteRow(nRow);
+				//////////////삭제코드 진행..//////////////////////////////
+				svcID = "getOSDel" + this.application.transactionCount++;
+				svcURL = "SvcURL::/mscmgt/getOSDel.mpg?no=" + svcID;
+				param = " sch_date=" + sch_sdate + " sch_no=" + sch_no + " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
+				this.transaction(svcID, svcURL, "", "", param, "fn_LoadScheduler");
+			}
 		}
 	}
-}
-
-this.fn_schedule_ins = function(svcID, param){
-	this.transaction("getOSIns"+svcID, "SvcURL::/mscmgt/getOSIns.mpg?no=" + svcID, "", "", param, "fn_LoadScheduler");
 }
 
 this.fn_LoadScheduler = function(){
 		//스케줄 조회 함수 호출
 		this.gfnLoadScheduler(this.grpScheduler);
+		this.fn_scheduleSel();
 }
 
 /**

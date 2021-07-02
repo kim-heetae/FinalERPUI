@@ -79,7 +79,6 @@ include "lib::lib_date.xjs";
 include "lib::lib_base.xjs";
 
 this.application = null;
-this.transactionCount = 0;
 
 this.My_Page_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -124,7 +123,7 @@ this.popupCallBack = function(sFormId, sArg)
 
 this.fn_MyPage_init = function(){
 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var idCount = this.transactionCount++;
+	var idCount = this.application.transactionCount++;
 	var svcID = "myInfo" + idCount;
 	var SvcURL = "SvcURL::/my/getmyPageSel.mpg?no=" + idCount;
 	var senddataset = "DS_MyInfo=out_test";

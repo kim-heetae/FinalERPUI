@@ -90,8 +90,6 @@ include "lib::lib_base.xjs";
 
 this.application = null;
 
-this.transactionCount = 0;
-
 this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
    this.application = nexacro.getApplication();
@@ -127,7 +125,7 @@ this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.mhr_board_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var mhrNparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=인사과";
-   var idCount = this.transactionCount++;
+   var idCount = this.application.transactionCount++;
    var svcID = "mhrSel" + idCount;
    this.ds_my_ap_hr.clearData();
    
@@ -150,7 +148,7 @@ this.mhrSel_load = function(){
 	var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
    }
    /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
-   var idCount = this.transactionCount++;
+   var idCount = this.application.transactionCount++;
    var svcID = "mhrSelType" + idCount;
    this.ds_my_ap_hr.clearData();
    
