@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-<<<<<<< HEAD
   <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onload="M_HR_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
