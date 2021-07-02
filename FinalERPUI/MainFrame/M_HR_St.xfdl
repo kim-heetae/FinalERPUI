@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" onload="M_HR_St_onload">
+  <Form id="M_HR_St" width="1670" height="835" titletext="New Form" borderRadius="10px" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onload="M_HR_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_title" taborder="0" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick"/>
@@ -98,25 +98,12 @@ this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
    this.mhr_board_load();
 };
 
-// this.Button00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-// {
-// 	  var objHFrameset = new HFrameSet();  
-//     objHFrameset.init("hframesetNew", 30, 90, 550, 400);
-//     this.addChild("hframesetNew", objHFrameset);
-//     objHFrameset.set_border("1px solid #999999");
-//     objHFrameset.show();
-//         
-//     var objChildFrame = new ChildFrame();  
-//     objChildFrame.init("TEST", 0, 0, 0, 0);
-//     objHFrameset.addChild("TEST", objChildFrame);
-//     objChildFrame.set_border("1px solid #999999");
-//     objChildFrame.set_formurl("FrameBase::my_ap_hr_md.xfdl");
-//     objChildFrame.show();
-// };
-
-this.Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+/*조회 버튼*/
+this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+   alert(this.cb_type.id);
+   alert("123");
+   this.mhrSel_load();
 };
 
 this.Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
