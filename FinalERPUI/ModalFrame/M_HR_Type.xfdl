@@ -16,8 +16,9 @@
 this.btn_attend_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*근태사유 신청서 모달창 출력*/
-	nexacro.open(set_formurl);
-	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Attend.xfdl", "", this, 550, 30, true, true, null);
+	this.alert("근태사유 신청서를 출력합니다.");
+	this.application.set_formurl("SubModalFrame::M_HR_Attend.xfdl");
+	/*this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Attend.xfdl", "", this, 550, 30, true, true, null);*/
 };
 
 /*전자결재 버튼*/

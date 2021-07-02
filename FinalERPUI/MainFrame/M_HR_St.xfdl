@@ -100,7 +100,7 @@ this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    alert(this.cb_type.id);
-   alert("123");
+   alert("조회를 시작합니다.");
    /*인사 신청현황(전체 조회) 함수 호출*/
    this.mhrSel_load();
 };
@@ -109,8 +109,8 @@ this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    /*인사 신청 모달 출력*/
+   this.alert("신청서를 눌렀습니다.");
    this.application.gfnShowModal("popupModal", null, "ModalFrame::M_HR_Type.xfdl", "", this, 550, 30, true, true, null);
-   alert("456");
 };
 
 /*인사 신청현황(전체 조회)*/
@@ -122,7 +122,7 @@ this.mhr_board_load = function(){
    this.ds_my_ap_hr.clearData();
    
    this.transaction(svcID
-   ,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
+   ,"SvcURL::/mhrst/getHRAllSel.mpg?no=" + idCount
    ,""
    ,"ds_my_ap_hr=out_test"
    ,mhrNparam
@@ -145,7 +145,7 @@ this.mhrSel_load = function(){
    this.ds_my_ap_hr.clearData();
    
    this.transaction(svcID
-   ,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
+   ,"SvcURL::/mhrst/getHRAllSel.mpg?no=" + idCount
    ,""
    ,"ds_my_ap_hr=out_test"
    ,mhrSelparam
