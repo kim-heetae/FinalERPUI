@@ -4,10 +4,9 @@
     <Layouts>
       <Layout height="935" width="250">
         <ImageViewer id="iv_logo" taborder="0" left="0" top="0" width="250" height="100" image="url('imagerc::FinalProjectLogo-removebg-preview.png')" background="none" border="0px none"/>
-        <Button id="btnMenuAll" taborder="1" text="전체메뉴" left="0" top="118" width="115" height="42" enable="false" onclick="btnMenuAll_onclick" cssclass="btn_LF_menu" background="black" color="white" font="16px/normal &quot;나눔바른펜&quot;" cursor="pointer" border="0px none"/>
-        <Static id="Static00_01" taborder="2" left="115" top="118" width="20" height="42" cssclass="sta_LF_division" background="#333333" borderRadius="0px none"/>
-        <Button id="btnMenuFav" taborder="3" text="즐겨찾기" left="135" top="118" width="115" height="42" onclick="btnMenuFav_onclick" cssclass="btn_LF_favorite" cursor="pointer" font="16px/normal &quot;나눔바른펜&quot;" background="#333333" color="white" border="0px none"/>
-        <Grid id="gr_menu" taborder="4" left="0" top="160" width="250" height="760" binddataset="DS_SideMenu" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" treeuseimage="true" treeuseline="true" treeuseexpandkey="true" oncellclick="divLeft_grdLeft_oncellclick">
+        <Button id="btnMenuAll" taborder="1" text="전체메뉴" left="0" top="100" width="125" height="40" enable="false" onclick="btnMenuAll_onclick" cssclass="btn_LF_menu" background="black" color="white" font="16px/normal &quot;나눔바른펜&quot;" cursor="pointer" border="0px none"/>
+        <Button id="btnMenuFav" taborder="2" text="즐겨찾기" left="125" top="100" width="125" height="40" onclick="btnMenuFav_onclick" cssclass="btn_LF_favorite" cursor="pointer" font="16px/normal &quot;나눔바른펜&quot;" background="#333333" color="white" border="0px none"/>
+        <Grid id="gr_menu" taborder="3" left="0" top="140" width="250" height="760" binddataset="DS_SideMenu" autofittype="col" treeinitstatus="expand,all" treeusecheckbox="false" treeuseimage="true" treeuseline="true" treeuseexpandkey="true" oncellclick="divLeft_grdLeft_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -379,6 +378,7 @@ this.fn_DelOpenMenu = function(pvWinId)
 		this.application.Top_Frame.form.fn_openMain();
 	}
 }
+
 ]]></Script>
   </Form>
 </FDL>
