@@ -93,6 +93,7 @@ this.M_TA_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 //근태정보 가져오기
 this.mta_board_load = function(){
+
 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
 	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
 	var idCount = this.application.transactionCount++;
@@ -106,48 +107,166 @@ this.mta_board_load = function(){
 	,"");
 }
 
-this.mygeuntae = function(){
+// this.mygeuntae = function(){
+// 
+// }
+
+
+//출근 시간입력하기
+this.fn_getWorkIns = function(){
+	
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var idCount = this.transactionCount++;
+	var svcID = "getWorkIns" + idCount;
+	this.transaction(svcID
+	,"SvcURL::/mtamgt/getWorkIns.mpg?no=" + idCount
+	,""
+	,""
+	,""
+	,"");
+
+}
+
+//퇴근 시간입력하기
+this.fn_getOffWorkIns = function(){
+	
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+	var idCount = this.transactionCount++;
+	var svcID = "getOffWorkIns" + idCount;
+	this.transaction(svcID
+	,"SvcURL::/mtamgt/getOffWorkIns.mpg?no=" + idCount
+	,""
+	,""
+	,mtaparam
+	,"");
+
+}
+
+//외근버튼 입력하기
+
+this.fn_getOutsideIns = function(){
+	
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+	var idCount = this.transactionCount++;
+	var svcID = "getOutsideIns" + idCount;
+	this.transaction(svcID
+	,"SvcURL::/mtamgt/getOutsideIns.mpg?no=" + idCount
+	,""
+	,""
+	,mtaparam
+	,"");
+
+}
+
+//외근복귀버튼 입력하기
+
+this.fn_workOutReturnIns = function(){
+	
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+	var idCount = this.transactionCount++;
+	var svcID = "workOutReturnIns" + idCount;
+	this.transaction(svcID
+	,"SvcURL::/mtamgt/workOutReturnIns.mpg?no=" + idCount
+	,""
+	,""
+	,mtaparam
+	,"");
 
 }
 
 
-//출근 버튼 클릭 시 이벤트 처리
+//외출버튼 입력하기
+
+this.fn_getOuttingIns = function(){
+	
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+	var idCount = this.transactionCount++;
+	var svcID = "getOuttingIns" + idCount;
+	this.transaction(svcID
+	,"SvcURL::/mtamgt/getOuttingIns.mpg?no=" + idCount
+	,""
+	,""
+	,mtaparam
+	,"");
+
+}
+
+//외출복귀버튼 입력하기
+
+this.fn_OutReturnIns = function(){
+	
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+	var idCount = this.transactionCount++;
+	var svcID = "OutReturnIns" + idCount;
+	this.transaction(svcID
+	,"SvcURL::/mtamgt/OutReturnIns.mpg?no=" + idCount
+	,""
+	,""
+	,mtaparam
+	,"");
+
+}
+
+
+//출근 버튼 클릭 시 출근시간이 입력되고 근태정보 재 업로드되도록 이벤트 처리
 this.btn_att_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*this.M_TA_Mgt.getColumn(0,"w_attend");*/
+	
+	this.application = nexacro.getApplication();
+	this.fn_getWorkIns();
+	this.mta_board_load();
 
 	/*this.transaction();*/
 };
 
-//퇴근 버튼 클릭 시 이벤트 처리
+//퇴근 버튼 클릭 시 퇴근시간이 입력되고 근태정보 재 업로드되도록 이벤트 처리
 this.btn_lev_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*this.M_TA_Mgt.getColumn(0,"w_late");*/
-	this.alert(this.M_TA_MGT.getColumn(0, "W_DATE"));
+	//this.alert(this.M_TA_MGT.getColumn(0, "W_DATE"));
+	this.application = nexacro.getApplication();
+	this.fn_offWorkIns();
+	this.mta_board_load();
 };
 
-//외출 버튼 클릭 시 이벤트 처리
-this.btn_out_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.M_TA_Mgt.getColumn(0,"w_out");
-};
 
-//외출복귀 버튼 클릭 시, 이벤트 처리
-this.btn_outIn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	
-};
-
-//외근 버튼 클릭 시, 이벤트 처리
+//외근 버튼 클릭 시, 외근시간이 입력되고 근태정보 재 업로드되도록 이벤트 처리
 this.btn_workOut_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	this.application = nexacro.getApplication();
+	this.fn_workOutIns();
+	this.mta_board_load();
 };
 
-//외근복귀 버튼 클릭 시, 이벤트 처리
+//외근복귀 버튼 클릭 시, 외근복귀시간이 입력되고 근태정보 재 업로드되도록 이벤트 처리
 this.btn_workoutIn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	this.application = nexacro.getApplication();
+	this.fn_workOutReturnIns();
+	this.mta_board_load();
+};
+
+//외출 버튼 클릭 시 외출시간이 입력되고 근태정보 재 업로드되도록 이벤트 처리
+this.btn_out_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//this.M_TA_Mgt.getColumn(0,"w_out");
+	this.application = nexacro.getApplication();
+	this.fn_getOutIns();
+	this.mta_board_load();
+};
+
+//외출복귀 버튼 클릭 시, 외출복귀시간이 입력되고 근태정보 재 업로드되도록 이벤트 처리
+this.btn_outIn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.application = nexacro.getApplication();
+	this.fn_OutReturnIns();
+	this.mta_board_load();
 };
 ]]></Script>
   </Form>
