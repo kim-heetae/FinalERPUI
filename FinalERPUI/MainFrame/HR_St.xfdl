@@ -38,12 +38,12 @@
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="60"/>
+                <Column size="80"/>
                 <Column size="100"/>
-                <Column size="120"/>
-                <Column size="140"/>
-                <Column size="450"/>
-                <Column size="140"/>
-                <Column size="120"/>
+                <Column size="250"/>
+                <Column size="100"/>
+                <Column size="100"/>
               </Columns>
               <Rows>
                 <Row size="36" band="head"/>
@@ -60,20 +60,20 @@
                 <Row size="32"/>
               </Rows>
               <Band id="head">
-                <Cell text="NO" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="1" text="유형" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="2" text="사원번호" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="3" text="제목" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="4" text="날짜" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="5" text="상태" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell text="No"/>
+                <Cell col="1" text="유형"/>
+                <Cell col="2" text="사원번호"/>
+                <Cell col="3" text="제목"/>
+                <Cell col="4" text="신청일"/>
+                <Cell col="5" text="상태여부"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:fi_no"/>
-                <Cell col="1" text="bind:ft_type"/>
-                <Cell col="2" text="bind:e_no"/>
-                <Cell col="3" text="bind:fi_name"/>
-                <Cell col="4" text="bind:fi_date"/>
-                <Cell col="5" text="bind:fi_state"/>
+                <Cell text="bind:FI_NO"/>
+                <Cell col="1" text="bind:FT_TYPE"/>
+                <Cell col="2" text="bind:E_NO"/>
+                <Cell col="3" text="bind:FI_NAME"/>
+                <Cell col="4" text="bind:FI_DATE"/>
+                <Cell col="5" text="bind:FI_STATE"/>
                 <Cell row="1"/>
                 <Cell row="1" col="1"/>
                 <Cell row="1" col="2"/>
