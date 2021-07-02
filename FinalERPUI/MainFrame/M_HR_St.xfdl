@@ -38,7 +38,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" scrolltype="both">
           <Formats>
             <Format id="default">
               <Columns>
@@ -51,16 +51,6 @@
               </Columns>
               <Rows>
                 <Row size="36" band="head"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
                 <Row size="32"/>
               </Rows>
               <Band id="head">

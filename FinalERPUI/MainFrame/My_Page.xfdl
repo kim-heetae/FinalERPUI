@@ -146,7 +146,7 @@ this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var ed_email_check = this.ed_email_check.value;
 	var ed_password = this.ed_password.value;
 	var ed_password_check = this.ed_password_check.value;
-	if(ed_email === ed_email_check )
+	/*if(ed_email === ed_email_check )*/
 };
 ]]></Script>
     <Objects>
