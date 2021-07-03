@@ -22,19 +22,20 @@
         <Button id="btn_confirm" taborder="16" left="336" top="370" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_confirm_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
-include "lib::lib_date.xjs";
-include "lib::lib_base.xjs";
+    <Script type="xscript5.1"><![CDATA[this.application = null;
 
-this.application = null;
+/*근태사유서 로드*/
+this.mhrAttend_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
+   this.application = nexacro.getApplication();
+}
 
-/*근태사유서 제출(마이페이지 인사 신청현황)*/
-this.mhrAttend_board_load = function(){
+/*근태사유서 제출하는 함수(마이페이지 인사 신청현황)*/
+this.mhrAttend_board = function(){
+
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var mhrAttendparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=인사과";
    var idCount = this.application.transactionCount++;
    var svcID = "mhrAttend" + idCount;
-   this.ds_my_ap_hr.clearData();
    
    this.transaction(svcID
    ,"SvcURL::?no=" + idCount
@@ -43,8 +44,6 @@ this.mhrAttend_board_load = function(){
    ,mhrAttendparam
    ,"");
 };
-
-
 
 /***********************************************
 * 설명 :
