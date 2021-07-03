@@ -8,7 +8,7 @@
             <HFrameSet id="HFrameSet00" separatesize="250,*">
               <Frames>
                 <ChildFrame id="Left_Frame" formurl="Base::Left_Form.xfdl" showtitlebar="false" dragmovetype="none"/>
-                <VFrameSet id="VFrameSet01" separatesize="50,50,0,*,0">
+                <VFrameSet id="VFrameSet01" separatesize="60,60,0,*,0">
                   <Frames>
                     <ChildFrame id="Top_Frame" formurl="Base::Top_Form.xfdl" showtitlebar="false" dragmovetype="none"/>
                     <ChildFrame id="Mid_Frame" formurl="Base::Mid_Form.xfdl" showtitlebar="false" dragmovetype="none"/>
