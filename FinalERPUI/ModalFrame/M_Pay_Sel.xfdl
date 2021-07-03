@@ -53,10 +53,10 @@
       </Dataset>
     </Objects>
     <Bind>
-      <BindItem id="item0" compid="lb_empno" propid="text" datasetid="ds_pay_stub" columnid="E_NO"/>
-      <BindItem id="item1" compid="lb_ename" propid="text" datasetid="ds_pay_stub" columnid="E_NAME"/>
-      <BindItem id="item2" compid="lb_dept" propid="text" datasetid="ds_pay_stub" columnid="D_NAME"/>
-      <BindItem id="item3" compid="lb_pos" propid="text" datasetid="ds_pay_stub" columnid="E_POS"/>
+      <BindItem id="item0" compid="lb_empno" propid="text" datasetid="gdsLoginInfo" columnid="E_NO"/>
+      <BindItem id="item1" compid="lb_ename" propid="text" datasetid="gdsLoginInfo" columnid="E_NAME"/>
+      <BindItem id="item2" compid="lb_dept" propid="text" datasetid="gdsLoginInfo" columnid="D_NAME"/>
+      <BindItem id="item3" compid="lb_pos" propid="text" datasetid="gdsLoginInfo" columnid="E_POS"/>
       <BindItem id="item4" compid="lb_date_sal" propid="text" datasetid="ds_pay_stub" columnid="SB_DATE"/>
       <BindItem id="item5" compid="lb_state" propid="text" datasetid="ds_pay_stub" columnid="SS_STATE"/>
       <BindItem id="item6" compid="lb_basic" propid="text" datasetid="ds_pay_stub" columnid="SS_BASIC"/>

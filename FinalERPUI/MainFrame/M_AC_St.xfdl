@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_St" width="1670" height="835" titletext="New Form" borderRadius="10px">
+  <Form id="M_AC_St" width="1670" height="835" titletext="New Form" borderRadius="10px" onload="M_AC_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_my_ap_ac" taborder="0" text="회계 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
@@ -34,106 +34,36 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="Dataset00" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_ac" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="250"/>
                 <Column size="100"/>
-                <Column size="120"/>
-                <Column size="450"/>
-                <Column size="120"/>
-                <Column size="140"/>
-                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="100"/>
               </Columns>
               <Rows>
                 <Row size="36" band="head"/>
                 <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
               </Rows>
               <Band id="head">
-                <Cell text="NO" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="1" text="유형" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="2" text="제목" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="3" text="담당부서" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="4" text="날짜" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="5" text="상태" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell text="No"/>
+                <Cell col="1" text="유형"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="담당부서"/>
+                <Cell col="4" text="신청일"/>
+                <Cell col="5" text="상태여부"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:no"/>
-                <Cell col="1" text="bind:type"/>
-                <Cell col="2" text="bind:title"/>
-                <Cell col="3" text="bind:dept"/>
-                <Cell col="4" text="bind:date"/>
-                <Cell col="5" text="bind:state"/>
-                <Cell row="1"/>
-                <Cell row="1" col="1"/>
-                <Cell row="1" col="2"/>
-                <Cell row="1" col="3"/>
-                <Cell row="1" col="4"/>
-                <Cell row="1" col="5"/>
-                <Cell row="2"/>
-                <Cell row="2" col="1"/>
-                <Cell row="2" col="2"/>
-                <Cell row="2" col="3"/>
-                <Cell row="2" col="4"/>
-                <Cell row="2" col="5"/>
-                <Cell row="3"/>
-                <Cell row="3" col="1"/>
-                <Cell row="3" col="2"/>
-                <Cell row="3" col="3"/>
-                <Cell row="3" col="4"/>
-                <Cell row="3" col="5"/>
-                <Cell row="4"/>
-                <Cell row="4" col="1"/>
-                <Cell row="4" col="2"/>
-                <Cell row="4" col="3"/>
-                <Cell row="4" col="4"/>
-                <Cell row="4" col="5"/>
-                <Cell row="5"/>
-                <Cell row="5" col="1"/>
-                <Cell row="5" col="2"/>
-                <Cell row="5" col="3"/>
-                <Cell row="5" col="4"/>
-                <Cell row="5" col="5"/>
-                <Cell row="6"/>
-                <Cell row="6" col="1"/>
-                <Cell row="6" col="2"/>
-                <Cell row="6" col="3"/>
-                <Cell row="6" col="4"/>
-                <Cell row="6" col="5"/>
-                <Cell row="7"/>
-                <Cell row="7" col="1"/>
-                <Cell row="7" col="2"/>
-                <Cell row="7" col="3"/>
-                <Cell row="7" col="4"/>
-                <Cell row="7" col="5"/>
-                <Cell row="8"/>
-                <Cell row="8" col="1"/>
-                <Cell row="8" col="2"/>
-                <Cell row="8" col="3"/>
-                <Cell row="8" col="4"/>
-                <Cell row="8" col="5"/>
-                <Cell row="9"/>
-                <Cell row="9" col="1"/>
-                <Cell row="9" col="2"/>
-                <Cell row="9" col="3"/>
-                <Cell row="9" col="4"/>
-                <Cell row="9" col="5"/>
-                <Cell row="10"/>
-                <Cell row="10" col="1"/>
-                <Cell row="10" col="2"/>
-                <Cell row="10" col="3"/>
-                <Cell row="10" col="4"/>
-                <Cell row="10" col="5"/>
+                <Cell text="bind:FI_NO"/>
+                <Cell col="1" text="bind:FT_TYPE"/>
+                <Cell col="2" text="bind:FI_NAME"/>
+                <Cell col="3" text="bind:D_NAME"/>
+                <Cell col="4" text="bind:FI_DATE"/>
+                <Cell col="5" text="bind:FI_STATE"/>
               </Band>
             </Format>
           </Formats>
@@ -150,7 +80,76 @@
         <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.M_AC_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+   this.application = nexacro.getApplication();
+   /*인사 신청현황(전체 조회) 함수 호출*/
+   this.mac_board_load();
+};
+
+
+/*인사 신청현황(전체 조회)*/
+this.mac_board_load = function(){
+   var objgdsLoginInfo = this.application.objgdsLoginInfo;
+   var macNparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=인사과";
+   var idCount = this.application.transactionCount++;
+   var svcID = "macSel" + idCount;
+   this.ds_my_ap_ac.clearData();
+   
+   this.transaction(svcID
+   ,"SvcURL::/macst/getAllSel.mpg?no=" + idCount
+   ,""
+   ,"ds_my_ap_ac=out_test"
+   ,macNparam
+   ,"");
+};
+
+/*신청 버튼*/
+this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   /*인사 신청 모달 출력*/
+   this.application.gfnShowModal("popupModal", null, "ModalFrame::M_AC_Type.xfdl", "", this, 550, 30, true, true, null);
+   alert("456");
+};
+
+/*조회 버튼 호출*/
+this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   alert(this.cb_type.id);
+   alert("123");
+   /*인사 신청현황(전체 조회) 함수 호출*/
+   this.macSel_load();
+};
+
+
+/*인사 신청현황(조회 버튼 선택 시 함수)*/
+this.macSel_load = function(){
+   var objgdsLoginInfo = this.application.objgdsLoginInfo;
+   var selectedCombo = this.cb_type.text;
+   if(selectedCombo === "신청서 종류"){
+   var macSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+   }
+   else{
+   var macSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
+   }
+   /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
+   var idCount = this.application.transactionCount++;
+   var svcID = "macSelType" + idCount;
+   this.ds_my_ap_ac.clearData();
+   
+   this.transaction(svcID
+   ,"SvcURL::/macst/getAllSel.mpg?no=" + idCount
+   ,""
+   ,"ds_my_ap_ac=out_test"
+   ,macSelparam
+   ,"");
+};]]></Script>
     <Objects>
       <Dataset id="ds_my_ap_ac">
         <ColumnInfo>
