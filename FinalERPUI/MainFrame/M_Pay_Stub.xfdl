@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_Pay_Stub" width="1670" height="835" titletext="New Form">
+  <Form id="M_Pay_Stub" width="1670" height="835" titletext="New Form" onload="M_Pay_Stub_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
@@ -8,30 +8,30 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="60"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
-                <Column size="100"/>
-                <Column size="100"/>
-                <Column size="100"/>
-                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
                 <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="36" band="head"/>
-                <Row size="32"/>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="No"/>
-                <Cell col="1" text="사원명"/>
-                <Cell col="2" text="부서명"/>
-                <Cell col="3" text="직급"/>
-                <Cell col="4" text="지급일"/>
-                <Cell col="5" text="기본급"/>
-                <Cell col="6" text="공제액"/>
-                <Cell col="7" text="실수령액"/>
-                <Cell col="8" text="지급여부"/>
+                <Cell text="E_NO"/>
+                <Cell col="1" text="E_NAME"/>
+                <Cell col="2" text="D_NAME"/>
+                <Cell col="3" text="E_POS"/>
+                <Cell col="4" text="SB_DATE"/>
+                <Cell col="5" text="SS_BASIC"/>
+                <Cell col="6" text="SS_DUC"/>
+                <Cell col="7" text="SS_REAL"/>
+                <Cell col="8" text="SS_STATE"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:E_NO"/>
@@ -48,7 +48,7 @@
           </Formats>
         </Grid>
         <Static id="Static01" taborder="2" text="마이페이지 &gt; 급여명세서 발급" left="1369" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_issue" taborder="3" left="1443" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="발급" cursor="pointer"/>
+        <Button id="btn_issue" taborder="3" left="1443" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" onclick="btn_issue_onclick" text="발급" cursor="pointer"/>
         <Static id="lb_left" taborder="4" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_1" taborder="5" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_2" taborder="6" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -73,10 +73,41 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[
-this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.M_Pay_Stub_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
+	this.application = nexacro.getApplication();
+	this.mps_board_load();
+}
+
+/************************************************************************
+ * 발급 버튼 클릭 시 모달창 생성 
+ ************************************************************************/
+this.btn_issue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	this.application.gfnShowModal("popupModal", null, "ModalFrame::M_Pay_Sel.xfdl", "", this, 550, 30, true, true, null);
+};
+
+/************************************************************************
+ * 급여 명세서 전체 조회
+ ************************************************************************/
+this.mps_board_load = function (){
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var mpsSelParam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+	var idCount = this.application.transactionCount++;
+	var svcID = "mpsStub" + idCount;
+	this.ds_pay_stub.clearData();
 	
+	this.transaction(svcID
+	,"SvcURL::/mpaystub/getPayStubSel.mpg?no=" + idCount
+	,""
+	,"ds_pay_stub=out_test"
+	,mpsSelParam
+	,"");
 };
 ]]></Script>
   </Form>

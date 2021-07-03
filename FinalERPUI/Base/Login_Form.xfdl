@@ -74,7 +74,7 @@ this.fn_login_callback = function(){
 		else{//로그인성공
 			//화면 사이즈(구조)변경
 			objHFrameSet00.set_separatesize("250,*");
-			objVFrameSet01.set_separatesize("50,0,*,0,0");
+			objVFrameSet01.set_separatesize("60,0,*,0,0");
 			objMainPage.cb_detp_innerSet();
 			objTopForm.fn_setEdName();//TopForm 사원이름 넣어주기
 			objMainPage.bn_board_load();//공지사항 게시판 정보 Loading
