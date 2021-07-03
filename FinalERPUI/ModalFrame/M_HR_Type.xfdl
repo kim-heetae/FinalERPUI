@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_HR_Type" width="550" height="400" titletext="New Form">
+  <Form id="M_HR_Type" width="550" height="400" titletext="New Form" onload="M_HR_Type_onload">
     <Layouts>
       <Layout height="400" mobileorientation="landscape" width="550">
         <Static id="lb_title" taborder="0" text="인사 신청서" left="188" top="15" width="175" height="65" font="bold 25px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" verticalAlign="middle"/>
@@ -20,7 +20,14 @@
 //     objHFrameset.set_border("1px solid #999999");
 //     objHFrameset.show();
 // };
-
+// 
+// this.application = null;
+//  
+// this.M_HR_Type_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+// {
+// 	this.application = nexacro.getApplication();
+// };
+// 
 
 /*근태사유서 버튼 클릭 시 이벤트 처리*/
 this.btn_attend_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
