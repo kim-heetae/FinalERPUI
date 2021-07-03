@@ -122,7 +122,7 @@ this.mhr_board_load = function(){
    this.ds_my_ap_hr.clearData();
    
    this.transaction(svcID
-   ,"SvcURL::/mhrst/getHRAllSel.mpg?no=" + idCount
+   ,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
    ,""
    ,"ds_my_ap_hr=out_test"
    ,mhrNparam
@@ -145,7 +145,7 @@ this.mhrSel_load = function(){
    this.ds_my_ap_hr.clearData();
    
    this.transaction(svcID
-   ,"SvcURL::/mhrst/getHRAllSel.mpg?no=" + idCount
+   ,"SvcURL::/mhrst/getAllSel.mpg?no=" + idCount
    ,""
    ,"ds_my_ap_hr=out_test"
    ,mhrSelparam

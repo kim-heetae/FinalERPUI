@@ -150,33 +150,7 @@
         <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
-this.Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
-{
-	
-};
-
-this.ListBox00_onitemchanged = function(obj:nexacro.ListBox,e:nexacro.ItemChangeEventInfo)
-{
-	
-};
-
-this.Button00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	  var objHFrameset = new HFrameSet();  
-    objHFrameset.init("hframesetNew", 30, 90, 550, 400);
-    this.addChild("hframesetNew", objHFrameset);
-    objHFrameset.set_border("1px solid #999999");
-    objHFrameset.show();
-        
-    var objChildFrame = new ChildFrame();  
-    objChildFrame.init("TEST", 0, 0, 0, 0);
-    objHFrameset.addChild("TEST", objChildFrame);
-    objChildFrame.set_border("1px solid #999999");
-    objChildFrame.set_formurl("FrameBase::my_ap_hr_md.xfdl");
-    objChildFrame.show();
-};
-]]></Script>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
     <Objects>
       <Dataset id="ds_my_ap_ac">
         <ColumnInfo>
