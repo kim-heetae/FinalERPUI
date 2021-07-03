@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_Remit_S" width="550" height="450" titletext="New Form">
+  <Form id="M_AC_Remit_S" width="550" height="450" titletext="New Form" onload="M_Pay_Sel_onload">
     <Layouts>
       <Layout height="450" width="550">
-        <Static id="lb_bg1" taborder="0" left="25" top="122" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_bg1" taborder="0" left="25" top="122" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
         <Static id="lb_empno_label" taborder="1" text="사원번호" left="25" top="123" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_bg2" taborder="2" left="25" top="239" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_ename_label" taborder="3" text="사원명" left="279" top="123" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Static id="lb_basic_label" taborder="4" text="급여" left="25" top="240" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
         <Static id="lb_empno" taborder="5" left="145" top="123" width="135" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_ok" taborder="6" left="449" top="390" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer"/>
+        <Button id="btn_ok" taborder="6" left="449" top="390" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer" onclick="btn_ok_onclick"/>
         <Static id="lb_real_label" taborder="7" text="실수령액" left="25" top="318" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_content00" taborder="8" left="145" top="317" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_real" taborder="9" left="144" top="318" width="321" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7"/>
@@ -53,15 +53,41 @@
       </Dataset>
     </Objects>
     <Bind>
-      <BindItem id="item0" compid="lb_empno" propid="text" datasetid="gdsLoginInfo" columnid="E_NO"/>
-      <BindItem id="item1" compid="lb_ename" propid="text" datasetid="gdsLoginInfo" columnid="E_NAME"/>
-      <BindItem id="item2" compid="lb_dept" propid="text" datasetid="gdsLoginInfo" columnid="D_NAME"/>
-      <BindItem id="item3" compid="lb_pos" propid="text" datasetid="gdsLoginInfo" columnid="E_POS"/>
       <BindItem id="item4" compid="lb_date_sal" propid="text" datasetid="ds_pay_stub" columnid="SB_DATE"/>
       <BindItem id="item5" compid="lb_state" propid="text" datasetid="ds_pay_stub" columnid="SS_STATE"/>
       <BindItem id="item6" compid="lb_basic" propid="text" datasetid="ds_pay_stub" columnid="SS_BASIC"/>
       <BindItem id="item7" compid="lb_deduct" propid="text" datasetid="ds_pay_stub" columnid="SS_DUC"/>
       <BindItem id="item8" compid="lb_real" propid="text" datasetid="ds_pay_stub" columnid="SS_REAL"/>
+      <BindItem id="item3" compid="lb_empno" propid="text" datasetid="gdsLoginInfo" columnid="E_NO"/>
+      <BindItem id="item2" compid="lb_dept" propid="text" datasetid="gdsLoginInfo" columnid="D_NAME"/>
+      <BindItem id="item0" compid="lb_ename" propid="text" datasetid="gdsLoginInfo" columnid="E_NAME"/>
+      <BindItem id="item1" compid="lb_pos" propid="text" datasetid="gdsLoginInfo" columnid="E_POS"/>
     </Bind>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.M_Pay_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
+	this.application = nexacro.getApplication();
+	this.lb_text_init();
+}
+
+this.lb_text_init = function(){	
+	
+	this.lb_empno.text(this.application.objgdsLoginInfo.getColumn(0, "E_NO"));
+	this.lb_ename.text(this.application.objgdsLoginInfo.getColumn(0, "E_NAME"));
+	this.lb_dept.text(this.application.objgdsLoginInfo.getColumn(0, "D_NAME"));
+	this.lb_pos.text(this.application.objgdsLoginInfo.getColumn(0, "E_POS"));
+};
+
+
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
   </Form>
 </FDL>

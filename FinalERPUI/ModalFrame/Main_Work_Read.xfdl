@@ -42,16 +42,16 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		var title = this.ed_title.text;
 		var content = this.ta_content.text;
 		var file = this.file_upload.text;
+		var filePath = this.file_upload.uploadurl;
 		var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
 		var d_no = this.application.objgdsLoginInfo.getColumn(0, "D_NO");
 		var svcID = "getWBIns" + this.application.transactionCount++;
 		var SvcURL = "/main/getWBIns.mpg?no=" + svcID;
 		var param = " bw_name=" + title + " bw_content=" + content + " d_no=" + d_no + " e_no=" + e_no;
 		if(!this.gfn_isNull(file)){
-			
+			param += " path=" + filePath;
 		}
 		this.transaction(svcID, SvcURL, "", "", param, "");
-		this.file_upload.upload("http://192.168.0.243/fileBox");
 	}
 	this.close();
 };
