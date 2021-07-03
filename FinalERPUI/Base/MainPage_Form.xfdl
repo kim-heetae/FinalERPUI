@@ -140,7 +140,6 @@ include "lib::lib_date.xjs";
 include "lib::lib_base.xjs";
 
 this.application = null;
-
 this.tabChangeCount = 0;
 
 this.MainPage_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)

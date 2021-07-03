@@ -11,27 +11,44 @@
         <Button id="btn_overtime" taborder="5" text="연장 근무" left="370" top="110" width="100" height="100" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onclick="btn_overtime_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[//FrameSet 생성하기
+// this.sample_frame_02_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+// {
+//     var objHFrameset = new HFrameSet();  
+//     objHFrameset.init("hframesetNew", 30, 90, 400, 200);
+//     this.addChild("hframesetNew", objHFrameset);
+//     objHFrameset.set_border("1px solid #999999");
+//     objHFrameset.show();
+// };
+
+
 /*근태사유서 버튼 클릭 시 이벤트 처리*/
 this.btn_attend_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*근태사유 신청서 모달창 출력*/
-	nexacro.open(set_formurl);
-	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Attend.xfdl", "", this, 550, 30, true, true, null);
+	this.alert("근태사유 신청서를 출력합니다.");
+	/*this.application.Main_Frame.set_formurl("SubModalFrame::M_HR_Attend.xfdl");*/
+	/*this.opener.parent.set_formurl("SubModalFrame::M_HR_Attend.xfdl");*/
+	this.go("SubModalFrame::M_HR_Attend.xfdl");
+	/*this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Attend.xfdl", "", this, 550, 30, true, true, null);*/
 };
 
 /*전자결재 버튼*/
 this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*전자결재 신청서 모달창 출력*/
-	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Approve.xfdl", "", this, 550, 30, true, true, null);
+	this.alert("전자결재 신청서를 출력합니다.");
+	/*this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Approve.xfdl", "", this, 550, 30, true, true, null);*/
+	this.go("SubModalFrame::M_HR_Approve.xfdl");
 };
 
 /*연장근무 버튼*/
 this.btn_overtime_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*연장근무 신청서 모달창 출력*/
-	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Overtime.xfdl", "", this, 550, 30, true, true, null);
+	this.alert("연장근무 신청서를 출력합니다.");
+	/*this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Overtime.xfdl", "", this, 550, 30, true, true, null);*/
+	this.go("SubModalFrame::M_HR_Overtime.xfdl");
 };
 
 
@@ -39,14 +56,18 @@ this.btn_overtime_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 this.btn_vacation_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*휴가 신청서 모달창 출력*/
-	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Vacation.xfdl", "", this, 550, 30, true, true, null);
+	this.alert("휴가 신청서를 출력합니다.");
+	/*this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Vacation.xfdl", "", this, 550, 30, true, true, null);*/
+	this.go("SubModalFrame::M_HR_Vacation.xfdl");
 };
 
 /*퇴직 버튼*/
 this.btn_retire_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*퇴직 신청서 모달창 출력*/
-	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Retire.xfdl", "", this, 550, 30, true, true, null);
+	this.alert("퇴직 신청서를 출력합니다.");
+	/*this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_HR_Retire.xfdl", "", this, 550, 30, true, true, null);*/
+	this.go("SubModalFrame::M_HR_Retire.xfdl");
 };
 ]]></Script>
   </Form>
