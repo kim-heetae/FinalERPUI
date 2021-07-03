@@ -24,106 +24,36 @@
           </Tabpages>
         </Tab>
         <Static id="lb_title" taborder="1" text="회계 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
-        <Grid id="gr_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="" font="20px/normal &quot;나눔바른펜&quot;&#9;">
+        <Grid id="gr_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_ac_ap" font="20px/normal &quot;나눔바른펜&quot;&#9;">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="60"/>
+                <Column size="80"/>
                 <Column size="100"/>
-                <Column size="120"/>
-                <Column size="140"/>
-                <Column size="450"/>
-                <Column size="140"/>
-                <Column size="120"/>
+                <Column size="250"/>
+                <Column size="100"/>
+                <Column size="100"/>
               </Columns>
               <Rows>
                 <Row size="36" band="head"/>
                 <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
-                <Row size="32"/>
               </Rows>
               <Band id="head">
-                <Cell text="NO" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="1" text="유형" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="2" text="사원번호" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="3" text="제목" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="4" text="신청일" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="5" text="상태" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell text="No"/>
+                <Cell col="1" text="유형"/>
+                <Cell col="2" text="사원번호"/>
+                <Cell col="3" text="제목"/>
+                <Cell col="4" text="신청일"/>
+                <Cell col="5" text="상태"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:fi_no"/>
-                <Cell col="1" text="bind:ft_type"/>
-                <Cell col="2" text="bind:e_no"/>
-                <Cell col="3" text="bind:fi_name"/>
-                <Cell col="4" text="bind:fi_date"/>
-                <Cell col="5" text="bind:fi_state"/>
-                <Cell row="1"/>
-                <Cell row="1" col="1"/>
-                <Cell row="1" col="2"/>
-                <Cell row="1" col="3"/>
-                <Cell row="1" col="4"/>
-                <Cell row="1" col="5"/>
-                <Cell row="2"/>
-                <Cell row="2" col="1"/>
-                <Cell row="2" col="2"/>
-                <Cell row="2" col="3"/>
-                <Cell row="2" col="4"/>
-                <Cell row="2" col="5"/>
-                <Cell row="3"/>
-                <Cell row="3" col="1"/>
-                <Cell row="3" col="2"/>
-                <Cell row="3" col="3"/>
-                <Cell row="3" col="4"/>
-                <Cell row="3" col="5"/>
-                <Cell row="4"/>
-                <Cell row="4" col="1"/>
-                <Cell row="4" col="2"/>
-                <Cell row="4" col="3"/>
-                <Cell row="4" col="4"/>
-                <Cell row="4" col="5"/>
-                <Cell row="5"/>
-                <Cell row="5" col="1"/>
-                <Cell row="5" col="2"/>
-                <Cell row="5" col="3"/>
-                <Cell row="5" col="4"/>
-                <Cell row="5" col="5"/>
-                <Cell row="6"/>
-                <Cell row="6" col="1"/>
-                <Cell row="6" col="2"/>
-                <Cell row="6" col="3"/>
-                <Cell row="6" col="4"/>
-                <Cell row="6" col="5"/>
-                <Cell row="7"/>
-                <Cell row="7" col="1"/>
-                <Cell row="7" col="2"/>
-                <Cell row="7" col="3"/>
-                <Cell row="7" col="4"/>
-                <Cell row="7" col="5"/>
-                <Cell row="8"/>
-                <Cell row="8" col="1"/>
-                <Cell row="8" col="2"/>
-                <Cell row="8" col="3"/>
-                <Cell row="8" col="4"/>
-                <Cell row="8" col="5"/>
-                <Cell row="9"/>
-                <Cell row="9" col="1"/>
-                <Cell row="9" col="2"/>
-                <Cell row="9" col="3"/>
-                <Cell row="9" col="4"/>
-                <Cell row="9" col="5"/>
-                <Cell row="10"/>
-                <Cell row="10" col="1"/>
-                <Cell row="10" col="2"/>
-                <Cell row="10" col="3"/>
-                <Cell row="10" col="4"/>
-                <Cell row="10" col="5"/>
+                <Cell text="bind:FI_NO"/>
+                <Cell col="1" text="bind:FT_TYPE"/>
+                <Cell col="2" text="bind:E_NO"/>
+                <Cell col="3" text="bind:FI_NAME"/>
+                <Cell col="4" text="bind:FI_DATE"/>
+                <Cell col="5" text="bind:FI_STATE"/>
               </Band>
             </Format>
           </Formats>

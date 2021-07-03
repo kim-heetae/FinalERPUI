@@ -192,7 +192,7 @@ this.bw_board_load = function(){
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 	if(this.tabChangeCount % 2 === 0){
 		this.DS_INFO.clearData();
-		this.tb_work.tb_info.form.gr_info.set_nodatatext("조회하신 결과가 없습니다.");
+		this.set_nodatatext("조회하신 결과가 없습니다.");
 		this.fn_bnDetailSel();
 	}
 	else{
