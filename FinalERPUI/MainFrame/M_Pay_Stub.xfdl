@@ -8,131 +8,41 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="120"/>
-                <Column size="120"/>
-                <Column size="120"/>
-                <Column size="120"/>
-                <Column size="130"/>
-                <Column size="130"/>
-                <Column size="130"/>
-                <Column size="130"/>
-                <Column size="120"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="35" band="head"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
-                <Row size="35"/>
+                <Row size="36" band="head"/>
+                <Row size="32"/>
               </Rows>
               <Band id="head">
-                <Cell text="사원번호" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="1" text="사원명" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="2" text="부서명" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="3" text="직급" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="4" text="지급날짜" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="5" text="급여" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="6" text="공제액" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="7" text="실수령액" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-                <Cell col="8" text="지급상태" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell text="No"/>
+                <Cell col="1" text="사원명"/>
+                <Cell col="2" text="부서명"/>
+                <Cell col="3" text="직급"/>
+                <Cell col="4" text="지급일"/>
+                <Cell col="5" text="기본급"/>
+                <Cell col="6" text="공제액"/>
+                <Cell col="7" text="실수령액"/>
+                <Cell col="8" text="지급여부"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:e_no"/>
-                <Cell col="1" text="bind:e_name"/>
-                <Cell col="2" text="bind:d_name"/>
-                <Cell col="3" text="bind:e_pos"/>
-                <Cell col="4" text="bind:sb_date"/>
-                <Cell col="5" text="bind:ss_basic"/>
-                <Cell col="6" text="bind:ss_duc"/>
-                <Cell col="7" text="bind:ss_real"/>
-                <Cell col="8" text="bind:ss_state"/>
-                <Cell row="1"/>
-                <Cell row="1" col="1"/>
-                <Cell row="1" col="2"/>
-                <Cell row="1" col="3"/>
-                <Cell row="1" col="4"/>
-                <Cell row="1" col="5"/>
-                <Cell row="1" col="6"/>
-                <Cell row="1" col="7"/>
-                <Cell row="1" col="8"/>
-                <Cell row="2"/>
-                <Cell row="2" col="1"/>
-                <Cell row="2" col="2"/>
-                <Cell row="2" col="3"/>
-                <Cell row="2" col="4"/>
-                <Cell row="2" col="5"/>
-                <Cell row="2" col="6"/>
-                <Cell row="2" col="7"/>
-                <Cell row="2" col="8"/>
-                <Cell row="3"/>
-                <Cell row="3" col="1"/>
-                <Cell row="3" col="2"/>
-                <Cell row="3" col="3"/>
-                <Cell row="3" col="4"/>
-                <Cell row="3" col="5"/>
-                <Cell row="3" col="6"/>
-                <Cell row="3" col="7"/>
-                <Cell row="3" col="8"/>
-                <Cell row="4"/>
-                <Cell row="4" col="1"/>
-                <Cell row="4" col="2"/>
-                <Cell row="4" col="3"/>
-                <Cell row="4" col="4"/>
-                <Cell row="4" col="5"/>
-                <Cell row="4" col="6"/>
-                <Cell row="4" col="7"/>
-                <Cell row="4" col="8"/>
-                <Cell row="5"/>
-                <Cell row="5" col="1"/>
-                <Cell row="5" col="2"/>
-                <Cell row="5" col="3"/>
-                <Cell row="5" col="4"/>
-                <Cell row="5" col="5"/>
-                <Cell row="5" col="6"/>
-                <Cell row="5" col="7"/>
-                <Cell row="5" col="8"/>
-                <Cell row="6"/>
-                <Cell row="6" col="1"/>
-                <Cell row="6" col="2"/>
-                <Cell row="6" col="3"/>
-                <Cell row="6" col="4"/>
-                <Cell row="6" col="5"/>
-                <Cell row="6" col="6"/>
-                <Cell row="6" col="7"/>
-                <Cell row="6" col="8"/>
-                <Cell row="7"/>
-                <Cell row="7" col="1"/>
-                <Cell row="7" col="2"/>
-                <Cell row="7" col="3"/>
-                <Cell row="7" col="4"/>
-                <Cell row="7" col="5"/>
-                <Cell row="7" col="6"/>
-                <Cell row="7" col="7"/>
-                <Cell row="7" col="8"/>
-                <Cell row="8"/>
-                <Cell row="8" col="1"/>
-                <Cell row="8" col="2"/>
-                <Cell row="8" col="3"/>
-                <Cell row="8" col="4"/>
-                <Cell row="8" col="5"/>
-                <Cell row="8" col="6"/>
-                <Cell row="8" col="7"/>
-                <Cell row="8" col="8"/>
-                <Cell row="9"/>
-                <Cell row="9" col="1"/>
-                <Cell row="9" col="2"/>
-                <Cell row="9" col="3"/>
-                <Cell row="9" col="4"/>
-                <Cell row="9" col="5"/>
-                <Cell row="9" col="6"/>
-                <Cell row="9" col="7"/>
-                <Cell row="9" col="8"/>
+                <Cell text="bind:E_NO"/>
+                <Cell col="1" text="bind:E_NAME"/>
+                <Cell col="2" text="bind:D_NAME"/>
+                <Cell col="3" text="bind:E_POS"/>
+                <Cell col="4" text="bind:SB_DATE"/>
+                <Cell col="5" text="bind:SS_BASIC"/>
+                <Cell col="6" text="bind:SS_DUC"/>
+                <Cell col="7" text="bind:SS_REAL"/>
+                <Cell col="8" text="bind:SS_STATE"/>
               </Band>
             </Format>
           </Formats>
