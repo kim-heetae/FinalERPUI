@@ -276,11 +276,12 @@ this.fn_myWriteSel = function(){
 		data = "DS_WORK=out_test"
 		param = " bw_no=" + 0 + " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
 	}
+	this.transaction(svcID, SvcURL, "", data, param, "");
 };
 
 this.btn_ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.application.gfnShowModal("popupModal", null, "ModalFrame::M_AC_Type.xfdl", "", this, 550, 30, true, true, null);
+	this.application.gfnShowModal("popupModal", null, "ModalFrame::Main_Board_Type.xfdl", "", this, 550, 30, true, true, null);
 };]]></Script>
   </Form>
 </FDL>
