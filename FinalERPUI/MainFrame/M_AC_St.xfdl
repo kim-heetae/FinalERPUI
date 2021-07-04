@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_my_ap_ac" taborder="0" text="회계 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
-        <Combo id="cb_type" taborder="1" text="신청서 종류" left="1241" top="160" width="200" height="40" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="20px/normal &quot;나눔바른펜&quot;&#9;">
+        <Combo id="cb_type" taborder="1" text="신청서 종류" left="1241" top="160" width="200" height="40" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="16px/normal &quot;나눔바른펜&quot;&#9;">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -49,7 +49,7 @@
                 <Row size="36" band="head"/>
                 <Row size="32"/>
               </Rows>
-              <Band id="head">
+              <Band id="head" font="bold 20px/normal &quot;나눔바른펜&quot;">
                 <Cell text="No"/>
                 <Cell col="1" text="유형"/>
                 <Cell col="2" text="제목"/>
@@ -57,7 +57,7 @@
                 <Cell col="4" text="신청일"/>
                 <Cell col="5" text="상태여부"/>
               </Band>
-              <Band id="body">
+              <Band id="body" font="20px/normal &quot;나눔바른펜&quot;">
                 <Cell text="bind:FI_NO"/>
                 <Cell col="1" text="bind:FT_TYPE"/>
                 <Cell col="2" text="bind:FI_NAME"/>
