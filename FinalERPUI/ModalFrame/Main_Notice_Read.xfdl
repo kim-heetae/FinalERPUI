@@ -48,16 +48,17 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		var svcID = "getNBIns" + this.application.transactionCount++;
 		var SvcURL = "SvcURL::/main/getNBIns.mpg?no=" + svcID;
 		var param = " bn_name=" + title + " bn_content=" + content + " e_no=" + e_no;
+		var objReturn;
 		if(!this.gfn_isNull(file)){
 			param += " path=" + filePath;
 			SvcURL = "http://localhost:9000/fileBox/save.jsp";
 		}
-		this.transaction(svcID, SvcURL, "", "", param, "");
-	}
-	var objReturn;
-	objReturn = {
+		objReturn = {
 			"popuptype" : "notice"
 			};
+		this.transaction(svcID, SvcURL, "", "", param, "");
+	}
+	
 	this.close(JSON.stringify(objReturn, null, "\t"));
 };
 ]]></Script>

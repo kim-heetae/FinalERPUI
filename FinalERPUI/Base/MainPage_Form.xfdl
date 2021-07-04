@@ -47,7 +47,7 @@
             <Tabpage id="tb_work" text="업무 게시판" background="#ffffff" border="1px solid #c7c7c7px" left="0" top="43" width="1272" height="382">
               <Layouts>
                 <Layout>
-                  <Grid id="gr_work" taborder="0" left="0" top="-1" width="1348" height="468" binddataset="DS_WORK" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" font="bold 18px/normal &quot;Gulim&quot;" scrolltype="none">
+                  <Grid id="gr_work" taborder="0" left="0" top="-1" width="1348" height="468" binddataset="DS_WORK" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" font="bold 18px/normal &quot;Gulim&quot;" scrolltype="none" oncelldblclick="work_dbclick">
                     <Formats>
                       <Format id="default">
                         <Columns>
