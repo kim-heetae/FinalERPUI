@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Main_Work_Read" width="800" height="800" titletext="New Form" onload="Main_Board_Type_onload">
+  <Form id="Main_Work_Read" width="800" height="800" titletext="New Form" onload="Main_Work_Read_onload">
     <Layouts>
       <Layout height="800" mobileorientation="landscape" width="800" stepcount="0">
         <Static id="lb_title_m" taborder="0" text="업무 게시글 등록" left="290" top="50" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
@@ -24,7 +24,7 @@ include "lib::lib_base.xjs";
 
 this.application = null;
 
-this.Main_Board_Type_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+this.Main_Work_Read_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
 };
@@ -33,8 +33,7 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
 };
-this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
+this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") < 2){
 		alert("권한을 확인해주세요.");
 	}
@@ -46,15 +45,21 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
 		var d_no = this.application.objgdsLoginInfo.getColumn(0, "D_NO");
 		var svcID = "getWBIns" + this.application.transactionCount++;
-		var SvcURL = "/main/getWBIns.mpg?no=" + svcID;
+		var SvcURL = "SvcURL::/main/getWBIns.mpg?no=" + svcID;
 		var param = " bw_name=" + title + " bw_content=" + content + " d_no=" + d_no + " e_no=" + e_no;
 		if(!this.gfn_isNull(file)){
 			param += " path=" + filePath;
+			SvcURL = "http://localhost:9000/fileBox/save.jsp";
 		}
 		this.transaction(svcID, SvcURL, "", "", param, "");
 	}
-	this.close();
+	var objReturn;
+	objReturn = {
+			"popuptype" : "work"
+			};
+	this.close(JSON.stringify(objReturn, null, "\t"));
 };
 ]]></Script>
+    <Objects/>
   </Form>
 </FDL>

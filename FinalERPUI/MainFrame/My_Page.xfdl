@@ -57,14 +57,14 @@
         <Static id="lb_dept01_00_00_00_00" taborder="40" text="주민등록&#13;&#10;거주지" left="387" top="430" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
         <Edit id="ed_loc_find" taborder="41" left="574" top="431" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true"/>
         <Edit id="ed_loc_findresult" taborder="42" left="833" top="431" width="489" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true"/>
-        <Edit id="ed_loc_detail" taborder="5" left="574" top="470" width="746" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true"/>
-        <ImageViewer id="iv_search" taborder="4" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search_onclick"/>
+        <Edit id="ed_loc_detail" taborder="5" left="574" top="470" width="746" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" displaynulltext="상세주소를 입력해주세요"/>
+        <ImageViewer id="iv_search" taborder="4" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search_onclick" text=""/>
         <Static id="lb_bg2_01_00_00_00_00_00" taborder="43" left="384" top="508" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept01_00_00_00_00_00" taborder="44" text="실 거주지" left="385" top="509" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_realloc_find" taborder="45" left="575" top="510" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true"/>
+        <Edit id="ed_realloc_find" taborder="45" left="575" top="510" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true" onchanged="ed_realloc_find_onchanged"/>
         <Edit id="ed_realloc_findresult" taborder="46" left="832" top="510" width="489" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true"/>
-        <ImageViewer id="iv_search00" taborder="6" left="791" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer"/>
-        <Edit id="ed_realloc_detail" taborder="7" left="575" top="550" width="746" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true"/>
+        <ImageViewer id="iv_search00" taborder="6" left="791" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search00_onclick"/>
+        <Edit id="ed_realloc_detail" taborder="7" left="575" top="550" width="746" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" displaynulltext="상세주소를 입력해주세요"/>
         <Button id="btn_com" taborder="11" left="1010" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="완료" cursor="pointer" onclick="btn_com_onclick"/>
         <Static id="lb_myPage" taborder="47" text="마이페이지 &gt; 내정보관리" left="1151" top="49" width="170" height="21" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
         <MaskEdit id="me_phone" taborder="3" left="574" top="350" width="259" height="40" format="### '-' #### '-' ####" textAlign="center" type="string" wordSpacing="5px" font="16pt/normal &quot;Arial&quot;" maskchar=" " autoselect="true"/>
@@ -106,7 +106,13 @@ this.iv_search_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventIn
 	var oArg = {};
 				
 	//우편번호 조회 팝업
-	this.gfn_showModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 330, false, false, null);
+	this.gfn_showModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 330, true, true, null);
+};
+
+this.iv_search00_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	var oArg = {};
+	this.gfn_showModal("popupRealPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 330, false, false, null);
 };
 
 /**
@@ -116,8 +122,14 @@ this.popupCallBack = function(sFormId, sArg)
 {
 	if(sFormId=="popupPostcode")
 	{
-		this.dsCustomer.setColumn(this.dsCustomer.rowposition,"CORPORATE_POSTAL_CODE",this.postcode);
-		this.dsCustomer.setColumn(this.dsCustomer.rowposition,"CORPORATE_ADRESS1",this.address1);
+		alert(this.postcode);
+		this.DS_MyInfo.setColumn(0,"E_POSTCODE", this.postcode);
+		this.DS_MyInfo.setColumn(0,"E_LOC",this.address1);
+		alert(this.DS_MyInfo.getColumn(0,"E_LOC"));
+	}
+	else if(sFormId=="popupRealPostcode"){
+		this.DS_MyInfo.setColumn(0,"E_REAL_POSTCODE",this.postcode);
+		this.DS_MyInfo.setColumn(0,"E_REAL_LOC",this.address1);
 	}
 }; 
 
@@ -145,8 +157,15 @@ this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var ed_email_check = this.ed_email_check.value;
 	var ed_password = this.ed_password.value;
 	var ed_password_check = this.ed_password_check.value;
-	/*if(ed_email === ed_email_check )*/
+	var check = 0;
+	if(ed_email == ed_email_check){
+		check += 1;
+	}
+	if(ed_password == ed_password_check){
+		check += 1;
+	}
 };
+
 ]]></Script>
     <Objects>
       <Dataset id="DS_MyInfo">
@@ -166,6 +185,8 @@ this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="EA_NAME" type="STRING" size="256"/>
           <Column id="EA_NO" type="STRING" size="256"/>
           <Column id="E_SOCIAL_NO" type="STRING" size="256"/>
+          <Column id="E_POSTCODE" type="STRING" size="256"/>
+          <Column id="E_REAL_POSTCODE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -177,10 +198,12 @@ this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       <BindItem id="item7" compid="me_birth" propid="value" datasetid="DS_MyInfo" columnid="E_BIRTH"/>
       <BindItem id="item8" compid="me_socialnum" propid="value" datasetid="DS_MyInfo" columnid="E_SOCIAL_NO"/>
       <BindItem id="item9" compid="me_call" propid="value" datasetid="DS_MyInfo" columnid="EOI_CALL"/>
-      <BindItem id="item4" compid="ed_loc_detail" propid="value" datasetid="DS_MyInfo" columnid="E_LOC"/>
-      <BindItem id="item10" compid="ed_realloc_detail" propid="value" datasetid="DS_MyInfo" columnid="E_REAL_LOC"/>
       <BindItem id="item11" compid="me_phone" propid="value" datasetid="DS_MyInfo" columnid="E_PHONE"/>
       <BindItem id="item3" compid="ed_acname" propid="value" datasetid="DS_MyInfo" columnid="EA_NAME"/>
+      <BindItem id="item5" compid="ed_loc_find" propid="value" datasetid="DS_MyInfo" columnid="E_POSTCODE"/>
+      <BindItem id="item12" compid="ed_realloc_find" propid="value" datasetid="DS_MyInfo" columnid="E_REAL_POSTCODE"/>
+      <BindItem id="item13" compid="ed_loc_findresult" propid="value" datasetid="DS_MyInfo" columnid="E_LOC"/>
+      <BindItem id="item4" compid="ed_realloc_findresult" propid="value" datasetid="DS_MyInfo" columnid="E_REAL_LOC"/>
     </Bind>
   </Form>
 </FDL>

@@ -17,12 +17,24 @@ this.Main_Board_Type_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.btn_notice_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.go("ModalFrame::Main_Notice_Read.xfdl");
+	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") > 3){
+		this.go("ModalFrame::Main_Notice_Read.xfdl");
+	}
+	else{
+		alert("권한이 불충분합니다. \n권한을 확인해주세요.");
+		this.close();
+	}
 };
 
 this.btn_work_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.go("ModalFrame::Main_Work_Read.xfdl");
+	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") > 1){
+		this.go("ModalFrame::Main_Work_Read.xfdl");
+	}
+	else{
+		alert("권한이 불충분합니다. \n권한을 확인해주세요.");
+		this.close();
+	}
 };
 ]]></Script>
   </Form>

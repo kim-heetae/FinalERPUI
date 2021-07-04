@@ -50,7 +50,6 @@ this.webPostcode_onusernotify = function(obj:nexacro.WebBrowser,e:nexacro.WebUse
 	{
 		this.opener.postcode = addData[0];
 		this.opener.address1 = addData[1];
-		
 		//팝업 닫기
 		this.close();
 	}	

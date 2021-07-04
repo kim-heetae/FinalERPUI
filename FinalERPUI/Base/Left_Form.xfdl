@@ -178,6 +178,10 @@ this.Left_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	
 };
 
+this.fn_Menu_init = function(){
+	
+}
+
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	/*var sFavCheck =0;*/
