@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
-        <Grid id="Grid00" taborder="1" left="153" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col">
+        <Grid id="M_Pay_Stub_grid" taborder="1" left="153" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col" oncelldblclick="m_pay_stub_grid_dbclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -19,11 +19,11 @@
                 <Column size="80"/>
               </Columns>
               <Rows>
-                <Row band="head" size="24"/>
+                <Row size="24" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="E_NO"/>
+                <Cell text="NO"/>
                 <Cell col="1" text="E_NAME"/>
                 <Cell col="2" text="D_NAME"/>
                 <Cell col="3" text="E_POS"/>
@@ -89,7 +89,7 @@ this.M_Pay_Stub_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
  ************************************************************************/
 this.btn_issue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.application.gfnShowModal("popupModal", null, "ModalFrame::M_Pay_Sel.xfdl", "", this, 550, 30, true, true, null);
+	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_Pay_Issue.xfdl", "", this, 550, 30, true, true, null);
 };
 
 /************************************************************************
@@ -109,6 +109,16 @@ this.mps_board_load = function (){
 	,mpsSelParam
 	,"");
 };
+
+/************************************************************************
+ * 급여 명세서 더블 클릭 시 상세 조회 
+ ************************************************************************/
+this.m_pay_stub_grid_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var checkData = this.ds_pay_stub.getColumn(e.row,"FI_NO");
+	
+	this.application.gfnShowModal("popupModal", null, "ModalFrame::M_Pay_Sel.xfdl", "", this, 550, 30, true, true, null);
+}
 ]]></Script>
   </Form>
 </FDL>
