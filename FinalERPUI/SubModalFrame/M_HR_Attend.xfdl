@@ -56,35 +56,58 @@ this.mhrAttend_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 
 this.mhrIntegration = function(){
 	var callback = "mhrAttend";
-	var SvcID = "mhrAtTraction" + this.application.transactionCount++;
-	var SvcURL = "" + svcID;
-	var param = 
-	this.transaction(SvcID
-	,SvcURL
-	,""
-	,""
-	,param
-	,callback
-	);
+	var svcID = "mhrAtTraction" + this.application.transactionCount++;
+	var file = this.file_upload.text;
+	var svcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + svcID;
+	var title = this.ed_title.text;
+	var combotype = this.cb_type.text;
+	
+	//var type = this.cb_type.text;
+	var type = "근태사유서"
+	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	
+	if(this.fn_Today <= this.cal_date.value){
+		this.alert("지난 날짜만 선택 가능합니다.");
+	}
+	if(this.gfn_isNull(file)){
+		this.alert("파일을 첨부해주세요");
+   } else if(this.gfn_isNull(title)){
+		this.alert("제목을 작성해주세요.");
+   } else if(this.gfn_isNull(this.cb_type)){
+		this.alert("신청 유형을 선택해주세요.");
+   } else if(this.gfn_isNull(this.cal_date)){
+		this.alert("해당 일자를 선택해주세요.");
+   } else if(this.gfn_isNull(this.ta_content)){
+		this.alert("내용을 작성해주세요.");
+   }else{
+		var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no 
+				+ " ff_name=" + file + " ff_size=" + 0
+				+ " fr_type=" + combotype + " fr_reason=" + this.ta_content.text + " fr_date=" + this.cal_date.value;
+		/*var Integparam = */
+		this.transaction(svcID, svcURL, "", "", param, "");
+	}
+	this.alert("근태사유서 제출이 완료됐습니다.");
+    this.close();
+	/*fi_name : 제목, fi_state : 상태여부, sysdate: 현재날짜 ft_type: 신청서유형, e_no : 사원번호*/	
 }
 
 /*근태사유서 제출하는 함수(마이페이지 인사 신청현황)*/
 this.mhrAttend = function(){
    var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-   var date = this.ed_date.text;
+   var date = this.cal_date.value;
    var title = this.ed_title.text;
    var content = this.ta_content.text;
    
    var file = this.file_upload.text;
    var type = this.cb_type.text;
-   var svcID = "HRAttendIns" + this.application.transactionCount++;
-   var SvcURL = "mhrst/subAtt.mpg?no=" + svcID;
+   var SvcID = "HRAttendIns" + this.application.transactionCount++;
+   var SvcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + SvcID;
    var callback = "";
    /*var param = " bw_name=" + title + " bw_content=" + content + " d_no=" + d_no + " e_no=" + e_no;*/
    /*근태 유형(fr_type), 사유(fr_reason), 해당 날짜(fr_date), 첨부파일(fr_doc)*/
    
    /*첨부파일이 쿼리에 있던 경우*/
-   var mhrAtSbmit = " fr_type" + type + " fr_reason" + content + " fr_date" + date + " fr_doc" + file;
+   var mhrAtSbmit = " fr_type=" + type + " fr_reason=" + content + " fr_date=" + date + " fr_doc=" + file;
    
    /*첨부파일이 쿼리에 없는 경우*/
    /*var mhrAtSbmit = " fr_type" + type + " fr_reason" + content + " fr_date" + date;*/
@@ -92,14 +115,9 @@ this.mhrAttend = function(){
 		callback = "mhrFile";
    }
 
-   this.transaction(svcID
-   , SvcURL
-   , ""
-   , ""
-   , mhrAtSbmit
-   , callback);
+   this.transaction(SvcID, SvcURL, "", "", mhrAtSbmit, callback);
 //    this.file_upload.upload("http://192.168.0.243/fileBox");
-   
+   this.alert("근태사유서 제출이 완료됐습니다.");
    this.close();
 }
 
@@ -112,15 +130,15 @@ this.mhrAttend = function(){
   - 성공 = yyyyMMdd형태의 오늘 날짜 ( 예 : "20210703" )
   - 실패 = 없음
 ************************************************/
-// this.fn_Today = function(){
-//   var sToday = "";
-//   var objDate = new Date();
-//   var sToday = objDate.getFullYear().toString();
-//   sToday += Right("0" + (objDate.getMonth() +1), 2);
-//   sToday += Right("0" + objDate.getDate(), 2);
-//   
-//   return sToday;
-// }
+this.fn_Today = function(){
+  var sToday = "";
+  var objDate = new Date();
+  var sToday = objDate.getFullYear().toString();
+  sToday += Right("0" + (objDate.getMonth() +1), 2);
+  sToday += Right("0" + objDate.getDate(), 2);
+  
+  return sToday;
+}
 
 /*확인버튼 이벤트*/
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
