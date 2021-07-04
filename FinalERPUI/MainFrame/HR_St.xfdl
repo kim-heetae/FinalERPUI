@@ -93,6 +93,7 @@ this.application = null;
 this.HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 	this.application = nexacro.getApplication();
 	this.hr_st_att_board_load();
+
 }
 
 
@@ -100,35 +101,35 @@ this.HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
  * '조회'버튼 클릭 시 데이터 조회
  ************************************************************************/
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
-	if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "근태사유서"){
-		this.ds_hr_ap.clearData();
+		if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "근태사유서"){
+			this.ds_hr_ap.clearData();
 
-		this.hr_st_att_board_load();
+			this.hr_st_att_board_load();
 
-	}
-	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "연장근무"){
-		this.ds_hr_ap.clearData();
+		}
+		else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "연장근무"){
+			this.ds_hr_ap.clearData();
 
-		this.hr_st_ott_board_load();
+			this.hr_st_ott_board_load();
 
-	}
-	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "전자결재"){
-		this.ds_hr_ap.clearData();
+		}
+		else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "전자결재"){
+			this.ds_hr_ap.clearData();
 
-		this.hr_st_ep_board_load();
+			this.hr_st_ep_board_load();
 
-	}
-	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "휴가"){
-		this.ds_hr_ap.clearData();
+		}
+		else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "휴가"){
+			this.ds_hr_ap.clearData();
 
-		this.hr_st_vacation_board_load();
+			this.hr_st_vacation_board_load();
 
-	}
-	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "퇴직"){
-		this.ds_hr_ap.clearData();
-		
-		this.hr_st_retire_board_load();
-	}
+		}
+		else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "퇴직"){
+			this.ds_hr_ap.clearData();
+			
+			this.hr_st_retire_board_load();
+		}
 }
 
 
@@ -139,26 +140,26 @@ this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 
 this.tb_apply_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo){
 	trace(e.postindex);
-	if (e.postindex == 0){
-		this.ds_hr_ap.clearData();
-		this.hr_st_att_board_load();
-	}
-	else if(e.postindex == 1){
-		this.ds_hr_ap.clearData();
-		this.hr_st_ott_board_load();
-	}
-	else if(e.postindex == 2){
-		this.ds_hr_ap.clearData();
-		this.hr_st_ep_board_load();
-	}
-	else if(e.postindex == 3){
-		this.ds_hr_ap.clearData();
-		this.hr_st_vacation_board_load();
-	}
-	else if(e.postindex == 4){
-		this.ds_hr_ap.clearData();
-		this.hr_st_retire_board_load();
-	}
+		if (e.postindex == 0){
+			this.ds_hr_ap.clearData();
+			this.hr_st_att_board_load();
+		}
+		else if(e.postindex == 1){
+			this.ds_hr_ap.clearData();
+			this.hr_st_ott_board_load();
+		}
+		else if(e.postindex == 2){
+			this.ds_hr_ap.clearData();
+			this.hr_st_ep_board_load();
+		}
+		else if(e.postindex == 3){
+			this.ds_hr_ap.clearData();
+			this.hr_st_vacation_board_load();
+		}
+		else if(e.postindex == 4){
+			this.ds_hr_ap.clearData();
+			this.hr_st_retire_board_load();
+		}
 	
 }
 
