@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Mid_Form" width="1280" height="50" titletext="New Form" background="#d3d3d3" onload="Mid_Form_onload" scrollbartype="none" scrolltype="none">
+    <Layouts>
+      <Layout height="50" width="1280">
+        <Static id="Static00" taborder="0" left="0" top="0" height="50" right="0"/>
+        <Tab id="tabMdi" taborder="1" tabindex="0" left="0" top="0" right="95" height="320" showextrabutton="true" tabbuttonheight="50" tabbuttonwidth="170" onchanged="tabMdi_onchanged" onextrabuttonclick="tabMdi_onextrabuttonclick">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="Tabpage1"/>
+          </Tabpages>
+        </Tab>
+        <Button id="btnCloseAll" taborder="2" top="0" width="50" height="50" right="0" onclick="btnCloseAll_onclick" background="" fittocontents="none" icon="url('..\images\btn_mid_close.png')"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.application = null;
+
+this.Mid_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	
+	//tab 초기화를 위한 현재 탭 삭제
+	this.tabMdi.removeTabpage(0);
+};
+
+this.fn_ActiveTabPage = function(pvWinId)
+{
+	
+	var nCnt = this.tabMdi.getTabpageCount();
+	if(nCnt > 0)
+	{
+		this.application.TopFrame.form.fn_closeMain();
+	}
+	
+	for(var i=0; i<nCnt; i++)
+	{	
+		if(this.tabMdi.tabpages[i].name == pvWinId)
+		{
+			this.tabMdi.set_tabindex(i);
+			
+			return;
+		}
+	}
+
+};
+
+/**
+* Function Name : fn_AddTabPage
+* Description   : 탭 페이지 추가
+* Arguments     : pvWinId - 생성된 화면 id
+*				: pvMenuNm - 선택된 메뉴명
+* Return        : none
+*/
+this.fn_AddTabPage = function(pvWinId, pvMenuNm)
+{
+	this.tabMdi.insertTabpage(pvWinId, -1, "", pvMenuNm);
+};
+
+
+/**
+* Function Name : fn_DeleteTabpage
+* Description   : 탭 페이지 삭제
+* Arguments     : pvWinId - 생성된 화면 id
+* Return        : none
+*/
+this.fn_DeleteTabpage = function(pvWinId)
+{
+	var nCnt = this.tabMdi.getTabpageCount();
+	for(var i=0; i<nCnt; i++)
+	{
+		if(this.tabMdi.tabpages[i].name == pvWinId)
+		{
+			this.tabMdi.removeTabpage(i); 
+			this.application.Left_Frame.form.fn_DelOpenMenu(pvWinId);
+			return;
+		}
+	}
+};
+
+
+/**
+* Function Name : fn_ActiveTabPage
+* Description   : 탭 페이지 활성화 - 이미 생성된 화면이 다시 활성화 될 때 탭 위치
+* Arguments     : pvWinId - 생성된 화면 id
+* Return        : none
+*/
+this.fn_ActiveTabPage = function(pvWinId)
+{
+	var nCnt = this.tabMdi.getTabpageCount();
+	if(nCnt > 0)
+	{
+		this.application.Top_Frame.form.fn_closeMain();
+	}
+	
+	for(var i=0; i<nCnt; i++)
+	{	
+		if(this.tabMdi.tabpages[i].name == pvWinId)
+		{
+			this.tabMdi.set_tabindex(i);
+			
+			return;
+		}
+	}
+};
+
+
+/**
+ * @description tabMdi onchanged event : 탭 선택 변경
+ */
+this.tabMdi_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	var sWinId = obj.tabpages[e.postindex].name;
+	
+	this.application.WorkFrame[sWinId].form.setFocus();
+};
+
+
+/**
+ * @description tabMdi onextrabuttonclick event : 탭 닫기 버튼 클릭
+ */
+this.tabMdi_onextrabuttonclick = function(obj:nexacro.Tab,e:nexacro.TabMouseEventInfo)
+{
+	var sWinId = obj.tabpages[e.index].name;
+	
+	obj.removeTabpage(e.index);
+	
+// 	if(obj.tabpages[e.index] > 1){
+// 		var sWinId2 = obj.tabpages[e.index - 1].name;
+// 		this.tabMdi_onchanged(sWinId2);
+// 	}
+	
+	this.application.WorkFrame[sWinId].form.close();
+
+	this.application.Left_Frame.form.fn_DelOpenMenu(sWinId);
+};
+
+/**
+ * @description btnCloseAll onclick event : 전체닫기 (오른쪽 X) 버튼 클릭 - 열린 화면 모두 닫기 후 메인화면 활성화
+ */
+this.btnCloseAll_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var WorkFrame = this.application.WorkFrame.all;
+	
+	for(var i=WorkFrame.length-1; i>=0; i--) 
+	{		
+		WorkFrame[i].form.close();
+		this.tabMdi.removeTabpage(i);
+		
+		if(i < 1)
+		{
+			this.application.Top_Frame.form.fn_openMain();
+		}
+	}	
+	
+	var WorkFrame = this.application.WorkFrame.all;
+	for(var i=WorkFrame.length-1; i>=0; i--) 
+	{
+		WorkFrame[i].form.close();
+		this.tabMdi.removeTabpage(i);
+	}
+};]]></Script>
+  </Form>
+</FDL>

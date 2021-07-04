@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="AC_AccountSel" width="550" height="400" titletext="New Form">
+    <Layouts>
+      <Layout height="400" width="550">
+        <Static id="lb_title" taborder="0" text="급여조회" left="185" top="10" width="180" height="60" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" color="black"/>
+        <Static id="lb_bg1" taborder="1" left="1" top="108" width="549" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="2" text="사원번호" left="1" top="109" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_empno00" taborder="3" text="부서" left="276" top="108" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_empno01" taborder="4" text="사원정보" left="1" top="70" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_no" taborder="5" left="81" top="109" width="195" height="38" readonly="true"/>
+        <Edit id="ed_dept" taborder="6" left="355" top="109" width="195" height="38" readonly="true"/>
+        <Static id="lb_empno02" taborder="7" text="사원명" left="1" top="148" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_lev" taborder="8" text="직급" left="276" top="147" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_name" taborder="9" left="81" top="148" width="195" height="38" readonly="true"/>
+        <Edit id="ed_lev" taborder="10" left="355" top="147" width="195" height="38" readonly="true"/>
+        <Static id="lb_bg1_00" taborder="11" left="1" top="219" width="549" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_sbSal" taborder="12" text="기본급" left="1" top="220" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_soHour" taborder="13" text="야근수당" left="276" top="219" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_accountInfo" taborder="14" text="급여정보" left="1" top="186" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_sbSal" taborder="15" left="81" top="220" width="195" height="38" readonly="true"/>
+        <Edit id="ed_soHour" taborder="16" left="355" top="220" width="195" height="38" readonly="true"/>
+        <Static id="lb_speSal" taborder="17" text="정산금액" left="1" top="259" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_ssCost" taborder="18" text="경조비" left="276" top="258" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_speSal" taborder="19" left="81" top="259" width="195" height="38" readonly="true"/>
+        <Edit id="ed_ssCost" taborder="20" left="355" top="258" width="195" height="38" readonly="true"/>
+        <Static id="lb_Hap" taborder="21" text="합계" left="1" top="295" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_speSal00" taborder="22" left="81" top="296" width="195" height="38" readonly="true"/>
+        <Button id="btn_Com" taborder="23" left="474" top="334" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

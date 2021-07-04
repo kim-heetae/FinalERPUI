@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M_AC_Remit" width="550" height="500" titletext="New Form">
+    <Layouts>
+      <Layout height="500" width="550">
+        <Static id="lb_title_m" taborder="0" text="이제 요청" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
+        <Static id="lb_bg1" taborder="1" left="25" top="131" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept" taborder="2" text="부서" left="25" top="132" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_bg2" taborder="3" left="269" top="246" width="256" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_pertner" taborder="4" text="거래처명" left="269" top="132" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_partner" taborder="5" left="390" top="133" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
+        <Static id="lb_file" taborder="6" text="첨부파일" left="269" top="248" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_cancel" taborder="7" left="449" top="440" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer"/>
+        <Edit id="ed_title" taborder="8" left="144" top="211" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
+        <TextArea id="ta_content" taborder="9" left="25" top="285" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <Static id="lb_content" taborder="10" text="내용" left="25" top="247" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_title" taborder="11" text="제목" left="25" top="209" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_content00" taborder="12" left="144" top="248" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_file00" taborder="13" left="144" top="248" width="126" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg1_00" taborder="14" left="25" top="170" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_date_pay" taborder="15" text="사용날짜" left="25" top="171" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_date_pay" taborder="16" left="144" top="172" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
+        <Static id="lb_amount" taborder="17" text="금액" left="270" top="171" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_amount" taborder="18" left="390" top="172" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
+        <Static id="lb_bg1_01" taborder="19" left="25" top="92" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="20" text="사원번호" left="25" top="93" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_empno" taborder="21" left="144" top="94" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_date" taborder="22" text="신청일" left="269" top="93" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_date" taborder="23" left="390" top="94" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Combo id="cb_dept" taborder="24" left="144" top="133" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" displaynulltext="부서">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+                <Col id="codecolumn">dept_ac</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">회계팀</Col>
+                <Col id="codecolumn">dep_hr</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <FileUpload id="file_upload" taborder="25" left="390" top="248" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_confirm" taborder="26" left="336" top="440" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

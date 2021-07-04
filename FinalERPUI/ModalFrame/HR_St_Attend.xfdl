@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="HR_St_Attend" width="550" height="475" titletext="New Form" border="1px solid #999999">
+    <Layouts>
+      <Layout height="475" width="550">
+        <Static id="lb_title_m" taborder="0" text="근태사유서 제출내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
+        <Static id="lb_bg1" taborder="1" left="26" top="110" width="498" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="111" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_empno" taborder="3" left="144" top="112" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_date" taborder="4" text="신청일" left="269" top="111" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_date" taborder="5" left="389" top="112" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_bg2_00" taborder="6" left="270" top="183" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Edit id="ed_title" taborder="7" left="144" top="149" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
+        <TextArea id="ta_content" taborder="8" left="25" top="222" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
+        <Static id="lb_content" taborder="9" text="내용" left="25" top="184" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_title" taborder="10" text="제목" left="25" top="147" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_content00" taborder="11" left="145" top="185" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_file00_00" taborder="12" left="144" top="185" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_reject" taborder="13" left="449" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer"/>
+        <Static id="lb_bg2_01" taborder="14" left="26" top="341" width="499" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_file00" taborder="15" text="첨부파일" left="25" top="342" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <FileUpload id="file_upload" taborder="16" left="144" top="343" width="125" height="36" itemheight="36" buttontext="+" buttonsize="36" enableevent="true" enable="false"/>
+        <Static id="lb_file00_01" taborder="17" left="269" top="342" width="256" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_approve" taborder="18" left="335" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Static02_00_00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.Static02_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	
+};
+
+this.Common_onchanged = function(obj:nexacro.TextArea,e:nexacro.ChangeEventInfo)
+{
+	
+};
+
+this.lb_title_m_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+  </Form>
+</FDL>

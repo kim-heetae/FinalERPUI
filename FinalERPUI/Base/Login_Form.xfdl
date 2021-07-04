@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Login_Form" width="1920" height="935" titletext="New Form" onload="Login_Form_onload">
+    <Layouts>
+      <Layout height="935" mobileorientation="landscape" width="1920">
+        <ImageViewer id="iv_logo" taborder="4" left="825" top="145" width="270" height="270" image="url('imagerc::FinalProjectLogo-removebg-preview.png')" stretch="fit" background="none" border="0px none"/>
+        <ImageViewer id="iv_id" taborder="5" left="670" top="386" width="60" height="60" image="url('imagerc::user-circle.png')" stretch="fit"/>
+        <Edit id="ed_id" taborder="0" left="730" top="386" width="490" height="60" font="28px/normal &quot;나눔바른펜&quot;" displaynulltext="사원번호를 입력해주세요."/>
+        <ImageViewer id="iv_pw" taborder="6" left="670" top="460" width="60" height="60" image="url('imagerc::lock.png')" stretch="fit"/>
+        <Edit id="ed_pw" taborder="1" left="730" top="460" width="490" height="60" font="28px/normal &quot;나눔바른펜&quot;" displaynulltext="비밀번호를 입력해주세요." password="true"/>
+        <Button id="btn_login" taborder="2" text="Login" left="670" top="540" width="550" height="60" font="bold 30px/normal &quot;나눔바른펜&quot;" onclick="btn_login_onclick" defaultbutton="true"/>
+        <Button id="btn_fgpw" taborder="3" text="Forget Your Passward?" left="1050" top="620" width="170" height="50" font="18px/normal &quot;나눔바른펜&quot;" background="none" border="0px none" cursor="pointer"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.loginCount = 0;
+
+this.Login_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	
+	/*this.fn_setSize(this.divLayer);*/
+	/*this.fn_trans_commonCode();*/
+};
+
+this.btn_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objHFrameSet00 = this.application.HFrameSet00;
+	var objVFrameSet01 = this.application.VFrameSet01;
+	
+	var ed_id = this.ed_id.value;
+	var ed_pw = this.ed_pw.value;
+	
+	var param = null;
+	
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	
+	//아이디와 비밀번호를 모두 입력했을때
+	if(!this.gfn_isNull(ed_id) && !this.gfn_isNull(ed_pw)){
+		param += " e_no=" + ed_id;
+		param += " e_pw=" + ed_pw;
+		this.loginCount++;
+		this.transaction("login" + this.loginCount
+			,"SvcURL::getLoginForm.lg?no=" + this.loginCount
+			,""
+			,"objgdsLoginInfo=out_test"
+			,param
+			,"fn_login_callback");
+	}
+	else{
+		this.alert("아이디와 비밀번호를 입력해주세요");
+	}
+};
+
+this.fn_login_callback = function(){
+	var objHFrameSet00 = this.application.HFrameSet00;//HFrame
+	var objVFrameSet01 = this.application.VFrameSet01;//VFrame
+	var objMainPage = this.application.Main_Frame.form;//MainPage
+	var objTopForm = this.application.Top_Frame.form;
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;//전역변수 gdsLoginInfo
+	/*this.alert(objgdsLoginInfo.getColumn(0, "E_NO"));*/
+		//로그인 실패
+		if(objgdsLoginInfo.getColumn(0, "E_NO") === "0"){
+/*			this.application.objgdsLoginInfo.deleteRow();*/
+			this.alert("아이디와 비밀번호를 확인해주세요.");
+			/*this.application.reload();*/
+			return;
+		}
+		else{//로그인성공
+			//화면 사이즈(구조)변경
+			objHFrameSet00.set_separatesize("250,*");
+			objVFrameSet01.set_separatesize("60,0,*,0,0");
+			objMainPage.cb_detp_innerSet();
+			objTopForm.fn_setEdName();//TopForm 사원이름 넣어주기
+			objMainPage.bn_board_load();//공지사항 게시판 정보 Loading
+			objMainPage.bw_board_load();//업무 게시판 정보 Loading
+		}
+};
+
+this.fn_callback = function(svcID, errCD, errMSG)
+{
+	alert("fn_callback 호출 성공");
+	if(errCD < 0){
+		this.alert("Error: " + errMSG);
+		return;
+	}
+	if(svcID == "svcSelect"){
+		this.alert("Retrieve Success!!!");
+	}
+};
+
+
+// this.fn_workframe = function(){
+// 	var objChildFrame = new ChildFrame();
+// 	objChildFrame.init("childFrame", 0, 0, null, null, 0, 0);
+// 	
+// 	var objWorkFrame = this.application.WorkFrame;
+// 	objWorkFrame.addChild(objChildFrame.name, objChildFrame);
+// 	objChildFrame.set_resizable(true);
+// 	objChildFrame.set_showtitlebar(false);
+//  	objChildFrame.set_openstatus("maximize");
+// 	objChildFrame.set_formurl("MainFrame::My_Page.xfdl");
+// 	objChildFrame.show();
+// }]]></Script>
+    <Objects>
+      <Dataset id="Dataset00" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="MESSAGE" type="STRING" size="256"/>
+          <Column id="RESULT" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

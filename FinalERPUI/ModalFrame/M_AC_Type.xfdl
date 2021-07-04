@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M_AC_Type" width="550" height="400" titletext="New Form">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="550">
+        <Static id="lb_title" taborder="0" text="회계 신청서" left="188" top="15" width="175" height="65" font="bold 25px/normal &quot;나눔바른펜&quot;" color="#000000" textAlign="center" verticalAlign="middle"/>
+        <Button id="btn_remit" taborder="1" text="이체 요청" left="150" top="100" width="100" height="100" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer"/>
+        <Button id="btn_con" taborder="2" text="경조비" left="300" top="250" width="100" height="100" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" onclick="btn_con_onclick" cursor="pointer"/>
+        <Button id="btn_account" taborder="3" text="계좌 정보" left="150" top="250" width="100" height="100" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer"/>
+        <Button id="btn_approve" taborder="4" text="전자 결재" left="300" top="100" width="100" height="100" onclick="Button00_02_onclick" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.Button00_02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.btn_con_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+  </Form>
+</FDL>

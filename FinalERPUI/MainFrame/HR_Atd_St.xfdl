@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="HR_Atd_St" width="1670" height="835" titletext="New Form">
+    <Layouts>
+      <Layout height="835" width="1670">
+        <Static id="lb_title" taborder="0" text="근태정보" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Static id="lb_myPage" taborder="1" text="인사 &gt; 근태정보" left="1369" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <Grid id="gr_atd" taborder="2" left="150" top="200" width="1370" height="400" border="1px solid #c7c7c7" binddataset="HR_TA_Mgt" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="사원명" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="직급" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="날짜" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="출근" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="6" text="퇴근" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="7" text="외출" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="8" text="조퇴" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="9" text="외근" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="10" text="지각" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="11" text="휴가" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:e_no" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="bind:e_name" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="bind:d_dept" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="bind:e_pos" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="bind:w_date" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="bind:w_attend" font="20px/normal &quot;나눔바른펜&quot;" displaytype="editcontrol" edittype="text"/>
+                <Cell col="6" text="bind:w_leave" font="20px/normal &quot;나눔바른펜&quot;" displaytype="editcontrol" edittype="text"/>
+                <Cell col="7" text="bind:w_out" font="20px/normal &quot;나눔바른펜&quot;" displaytype="editcontrol" edittype="text"/>
+                <Cell col="8" text="bind:w_early_leave" font="20px/normal &quot;나눔바른펜&quot;" displaytype="editcontrol" edittype="text"/>
+                <Cell col="9" text="bind:w_work_out" font="20px/normal &quot;나눔바른펜&quot;" displaytype="editcontrol" edittype="text"/>
+                <Cell col="10" text="bind:w_late" font="20px/normal &quot;나눔바른펜&quot;" displaytype="editcontrol" edittype="text"/>
+                <Cell col="11" text="bind:w_vacation" font="20px/normal &quot;나눔바른펜&quot;" displaytype="editcontrol" edittype="text"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_upd" taborder="3" left="1440" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="수정" cursor="pointer"/>
+        <Static id="Static00" taborder="4" text="&lt;" left="630" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00" taborder="5" text="1" left="695" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00" taborder="6" text="2" left="760" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00" taborder="7" text="3" left="825" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00_00" taborder="8" text="4" left="890" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00_00_00" taborder="9" text="5" left="955" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00_00_00_00_00_00_00" taborder="10" text="&gt;" left="1020" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_bg1" taborder="11" left="150" top="162" width="1370" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept" taborder="12" text="부서" left="150" top="165" width="186" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_lev" taborder="13" text="직급" left="507" top="164" width="186" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Combo id="cb_dept" taborder="14" text="부서전체" left="336" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" value="" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">전체</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">인사팀</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">회계팀</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="cb_dept00" taborder="15" text="직급 전체" left="693" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">전체</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">사장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">부장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">차장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">과장</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">대리</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">사원</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="Edit00" taborder="16" left="860" top="164" width="577" height="36" displaynulltext="내용을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btn_Sel" taborder="17" left="1440" top="164" width="80" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조회" cursor="pointer"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="HR_TA_Mgt">
+        <ColumnInfo>
+          <Column id="e_no" type="STRING" size="256"/>
+          <Column id="e_name" type="STRING" size="256"/>
+          <Column id="d_dept" type="STRING" size="256"/>
+          <Column id="e_pos" type="STRING" size="256"/>
+          <Column id="w_date" type="STRING" size="256"/>
+          <Column id="w_attend" type="STRING" size="256"/>
+          <Column id="w_late" type="STRING" size="256"/>
+          <Column id="w_out" type="STRING" size="256"/>
+          <Column id="w_work_out" type="STRING" size="256"/>
+          <Column id="w_early_leave" type="STRING" size="256"/>
+          <Column id="w_leave" type="STRING" size="256"/>
+          <Column id="w_vacation" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

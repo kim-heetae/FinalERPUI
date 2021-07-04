@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="HR_St" width="1670" height="835" titletext="New Form" onload="HR_St_onload">
+    <Layouts>
+      <Layout height="835" mobileorientation="landscape" width="1670">
+        <Tab id="tb_hr_apply" taborder="0" tabindex="0" left="150" top="163" width="1370" height="400" onchanged="Tab00_onchanged" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;">
+          <Tabpages>
+            <Tabpage id="tb_hr_att" text="근태사유서">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tb_hr_over" text="연장근무">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tb_hr_approve" text="전자결재">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tb_hr_leave" text="휴가">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tb_hr_retire" text="퇴직">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Edit id="ed_enpmo" taborder="1" left="1241" top="160" width="200" height="40" displaynulltext="사원번호를 입력해주세요" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="lb_title" taborder="2" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
+        <Grid id="gr_hr_apply" taborder="3" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_hr_ap" font="20px/normal &quot;나눔바른펜&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO"/>
+                <Cell col="1" text="유형"/>
+                <Cell col="2" text="사원번호"/>
+                <Cell col="3" text="제목"/>
+                <Cell col="4" text="날짜"/>
+                <Cell col="5" text="상태"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FI_NO"/>
+                <Cell col="1" text="bind:FT_TYPE"/>
+                <Cell col="2" text="bind:E_NO"/>
+                <Cell col="3" text="bind:FI_NAME"/>
+                <Cell col="4" text="bind:FI_DATE"/>
+                <Cell col="5" text="bind:FI_STATE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="lb_route" taborder="4" text="인사 &gt; 신청현황" left="1438" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
+        <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_3" taborder="9" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_4" taborder="10" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_5" taborder="11" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
+	this.application = nexacro.getApplication();
+	this.hr_st_att_board_load();
+}
+
+/************************************************************************
+ * 근태사유서 전체조회 
+ ************************************************************************/
+ 
+ this.hr_st_att_board_load = function() {
+ 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var hrstattSelParam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=근태사유서";
+	var idCount = this.application.transactionCount++;
+	var svcID = "HRStAtt" + idCount;
+	this.ds_hr_ap.clearData();
+	
+	this.transaction(svcID
+	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
+	,""
+	,"ds_hr_ap=out_test"
+	,hrstattSelParam
+	,"");
+	
+}
+
+/************************************************************************
+ * 연장근무 전체조회 
+ ************************************************************************/
+ 
+ this.hr_st_att_board_load = function() {
+ 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var hrstattSelParam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=근태사유서";
+	var idCount = this.application.transactionCount++;
+	var svcID = "HRStAtt" + idCount;
+	this.ds_hr_ap.clearData();
+	
+	this.transaction(svcID
+	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
+	,""
+	,"ds_hr_ap=out_test"
+	,hrstattSelParam
+	,"");
+	
+}
+
+/************************************************************************
+ * 전자결재 전체조회 
+ ************************************************************************/
+ 
+ this.hr_st_att_board_load = function() {
+ 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var hrstattSelParam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=근태사유서";
+	var idCount = this.application.transactionCount++;
+	var svcID = "HRStAtt" + idCount;
+	this.ds_hr_ap.clearData();
+	
+	this.transaction(svcID
+	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
+	,""
+	,"ds_hr_ap=out_test"
+	,hrstattSelParam
+	,"");
+	
+}
+
+/************************************************************************
+ * 휴가 전체조회 
+ ************************************************************************/
+ 
+ this.hr_st_att_board_load = function() {
+ 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var hrstattSelParam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=근태사유서";
+	var idCount = this.application.transactionCount++;
+	var svcID = "HRStAtt" + idCount;
+	this.ds_hr_ap.clearData();
+	
+	this.transaction(svcID
+	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
+	,""
+	,"ds_hr_ap=out_test"
+	,hrstattSelParam
+	,"");
+	
+}
+
+/************************************************************************
+ * 퇴직 전체조회 
+ ************************************************************************/
+ 
+ this.hr_st_att_board_load = function() {
+ 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var hrstattSelParam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=근태사유서";
+	var idCount = this.application.transactionCount++;
+	var svcID = "HRStAtt" + idCount;
+	this.ds_hr_ap.clearData();
+	
+	this.transaction(svcID
+	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
+	,""
+	,"ds_hr_ap=out_test"
+	,hrstattSelParam
+	,"");
+	
+}]]></Script>
+    <Objects>
+      <Dataset id="ds_hr_ap">
+        <ColumnInfo>
+          <Column id="FI_NO" type="STRING" size="256"/>
+          <Column id="FT_TYPE" type="STRING" size="256"/>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="FI_STATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
