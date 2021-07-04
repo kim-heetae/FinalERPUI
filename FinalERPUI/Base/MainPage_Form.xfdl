@@ -3,14 +3,14 @@
   <Form id="MainPage_Form" width="1670" height="835" titletext="New Form" onload="MainPage_Form_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Edit id="ed_content" taborder="0" left="1134" top="99" width="300" height="40" displaynulltext="제목을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Edit id="ed_content" taborder="0" left="1134" top="99" width="300" height="40" displaynulltext="게시글의 제목을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
         <Button id="btn_sel" taborder="1" text="조회" left="1451" top="99" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;" cursor="pointer" onclick="btn_sel_onclick"/>
         <Tab id="tb_work" taborder="2" tabindex="0" left="180" top="149" width="1352" height="521" font="bold 25px/normal &quot;나눔바른펜&quot;" onchanged="tb_work_onchanged" border="1px solid #c7c7c7px">
           <Tabpages>
             <Tabpage id="tb_info" text="공지 게시판" border="1px solid #c7c7c7px" left="0" top="43" width="1272" height="382">
               <Layouts>
                 <Layout>
-                  <Grid id="gr_info" taborder="0" left="0" top="0" width="1348" height="468" binddataset="DS_INFO" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" scrolltype="none" readonly="true" font="normal bold 18px/normal &quot;Gulim&quot;" nodatatext="조회결과가 없습니다.">
+                  <Grid id="gr_info" taborder="0" left="0" top="0" width="1348" height="468" binddataset="DS_INFO" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" scrolltype="none" readonly="true" font="normal bold 18px/normal &quot;Gulim&quot;" nodatatext="조회결과가 없습니다." oncelldblclick="info_dbclick" cellclickbound="cell">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -47,7 +47,7 @@
             <Tabpage id="tb_work" text="업무 게시판" background="#ffffff" border="1px solid #c7c7c7px" left="0" top="43" width="1272" height="382">
               <Layouts>
                 <Layout>
-                  <Grid id="gr_work" taborder="0" left="0" top="-1" width="1348" height="468" binddataset="DS_WORK" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" font="bold 18px/normal &quot;Gulim&quot;" scrolltype="none">
+                  <Grid id="gr_work" taborder="0" left="0" top="-1" width="1348" height="468" binddataset="DS_WORK" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" font="bold 18px/normal &quot;Gulim&quot;" scrolltype="none" oncelldblclick="work_dbclick">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -119,18 +119,24 @@
           <Column id="CODECOLUMN" type="STRING" size="256"/>
           <Column id="DATACOLUMN" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="DS_Combo1">
+        <ColumnInfo>
+          <Column id="CODECOLUMN" type="STRING" size="256"/>
+          <Column id="DATACOLUMN" type="STRING" size="256"/>
+        </ColumnInfo>
         <Rows>
           <Row>
+            <Col id="CODECOLUMN">TITLE</Col>
+            <Col id="DATACOLUMN">제목</Col>
+          </Row>
+          <Row>
             <Col id="CODECOLUMN">DEPT</Col>
-            <Col id="DATACOLUMN">부서목록</Col>
+            <Col id="DATACOLUMN">부서</Col>
           </Row>
           <Row>
-            <Col id="CODECOLUMN">HR</Col>
-            <Col id="DATACOLUMN">인사과</Col>
-          </Row>
-          <Row>
-            <Col id="CODECOLUMN">AC</Col>
-            <Col id="DATACOLUMN">회계과</Col>
+            <Col id="CODECOLUMN">NAME</Col>
+            <Col id="DATACOLUMN">작성자</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -141,11 +147,16 @@ include "lib::lib_base.xjs";
 
 this.application = null;
 this.tabChangeCount = 0;
+this.seletedNo;
 
 this.MainPage_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
-	this.cb_dept.set_visible(false);
+	this.DS_Combo.copyData(this.DS_Combo1);
+	this.DS_Combo.deleteRow(2);
+	this.DS_Combo.deleteRow(1);
+	this.cb_dept.set_index(0);
+	/*this.cb_dept.set_visible(false);*/
 	/*this.cb_dept.set_index(0);*/
 }
 
@@ -181,7 +192,8 @@ this.bw_board_load = function(){
 		var svcID = "bwSelect" + idCount;
 		
 		this.transaction(svcID
-				,"SvcURL::/main/getNBSearch.mpg?no=" + idCount
+				/*,"SvcURL::/main/getAllSel.mpg?no=" + idCount*/
+				,"SvcURL::/main/getAllSel.mpg?no=" + idCount
 				,""
 				,"DS_WORK=out_test"
 				,bwparam
@@ -192,12 +204,22 @@ this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 	if(this.tabChangeCount % 2 === 0){
 		this.DS_INFO.clearData();
 		this.tb_work.tb_info.form.gr_info.set_nodatatext("조회하신 결과가 없습니다.");
-		this.fn_bnDetailSel();
+		if(!this.gfn_isNull(this.ed_content.text)){
+			this.fn_bnDetailSel();
+		}
+		else if(this.gfn_isNull(this.ed_content.text)){
+			this.bn_board_load();
+		}
 	}
 	else{
 		this.DS_WORK.clearData();
 		this.tb_work.tb_work.form.gr_work.set_nodatatext("조회하신 결과가 없습니다.");
-		this.fn_bwDetailSel();
+		if(!this.gfn_isNull(this.ed_content.text)){
+			this.fn_bwDetailSel();
+		}
+		else if(this.gfn_isNull(this.ed_content.text)){
+			this.bw_board_load();
+		}
 	}
 }
 
@@ -217,11 +239,22 @@ this.fn_bnDetailSel = function(){
 this.fn_bwDetailSel = function(){
 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
 	var edContent = this.ed_content.value;
-	var bwparam = " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO") + " bw_name=" + edContent;//부서별로 다른 정보를 가져온다.
+	var bwparam = "";//부서별로 다른 정보를 가져온다.
+	if (this.cb_dept.value == "TITLE"){
+		bwparam += " bw_name=" + edContent;
+	}
+	else if(this.cb_dept.value == "DEPT"){
+		bwparam += " d_name=" + edContent;
+	}
+	else if(this.cb_dept.value == "NAME"){
+		bwparam += " e_name=" + edContent;
+	}
+	bwparam += " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO");
 	var idCount = this.application.transactionCount++;
 	var svcID = "bwDetailSel" + idCount;
 	this.transaction(svcID
-			,"SvcURL::/main/getNBSearch.mpg?no=" + idCount
+			/*,"SvcURL::/main/getAllSel.mpg?no=" + idCount*/
+			,"SvcURL::/main/getAllSel.mpg?no=" + idCount
 			,""
 			,"DS_WORK=out_test"
 			,bwparam
@@ -231,12 +264,20 @@ this.fn_bwDetailSel = function(){
 this.tb_work_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo){
 	trace(e.postindex);
 	if (e.postindex == 0){
-		this.cb_dept.set_visible(false);
+		/*this.cb_dept.set_visible(false);*/
+		this.DS_Combo.clearData();
+		this.DS_Combo.copyData(this.DS_Combo1);
+		this.DS_Combo.deleteRow(2);
+		this.DS_Combo.deleteRow(1);
+		this.cb_dept.set_index(0);
 		this.tabChangeCount++;
 		this.bn_board_load();
 	}
 	else{
-		this.cb_dept.set_visible(true);
+		/*this.cb_dept.set_visible(true);*/
+		this.DS_Combo.clearData();
+		this.DS_Combo.copyData(this.DS_Combo1);
+		this.cb_dept.set_index(0);
 		this.tabChangeCount++;
 		this.bw_board_load();
 	}
@@ -244,7 +285,15 @@ this.tb_work_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventI
 
 this.cb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
 {
-	
+	if(this.cb_dept.index == 0){
+		this.ed_content.set_displaynulltext("게시글의 제목을 입력해주세요");
+	}
+	else if(this.cb_dept.index == 1){
+		this.ed_content.set_displaynulltext("게시글의 부서를 입력해주세요");
+	}
+	else if(this.cb_dept.index == 2){
+		this.ed_content.set_displaynulltext("게시글의 작성자를 입력해주세요");
+	}
 };
 
 this.btn_write_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -280,7 +329,31 @@ this.fn_myWriteSel = function(){
 
 this.btn_ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.application.gfnShowModal("popupModal", null, "ModalFrame::Main_Board_Type.xfdl", "", this, 550, 30, true, true, null);
-};]]></Script>
+	this.application.gfnShowModal("popupModal", null, "ModalFrame::Main_Board_Type.xfdl", "fn_ins_callback", this, 550, 30, true, true, null);
+};
+
+this.fn_ins_callback = function(sFormId, returnArgs){
+	var objRtn = JSON.parse(returnArgs);
+	if(objRtn.popuptype == "notice"){
+		this.bn_board_load();
+	}
+	else if(objRtn.popuptype == "work"){
+		this.bw_board_load();
+	}
+};
+
+this.info_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo){
+	var selectedNo = this.DS_INFO.getColumn(e.row, "BN_NO");
+	var arg = { "bn_no" : selectedNo };
+	this.application.gfnShowModal("popupModal", arg, "ModalFrame::Main_Notice_Write.xfdl", "bn_board_load", this, 550, 30, true, true, null);
+	/*this.childFrame.fn_notice_init();*/
+};
+
+this.work_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo){
+	var selectedNo = this.DS_WORK.getColumn(e.row, "BW_NO");
+	var arg = { "bw_no" : selectedNo };
+	this.application.gfnShowModal("popupModal", arg, "ModalFrame::Main_Work_Write.xfdl", "bw_board_load", this, 550, 30, true, true, null);
+}
+]]></Script>
   </Form>
 </FDL>

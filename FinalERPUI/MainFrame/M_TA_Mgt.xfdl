@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="835" width="1670">
         <Static id="lb_title" taborder="0" text="근태관리" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
-        <Grid id="gr_MTA" taborder="1" left="150" top="200" width="1370" height="400" border="1px solid #c7c7c7" binddataset="M_TA_MGT" autofittype="col">
+        <Grid id="gr_MTA" taborder="1" left="150" top="200" width="1370" height="400" border="1px solid #c7c7c7" binddataset="M_TA_MGT" autofittype="col" font="16px/normal &quot;나눔바른펜&quot;&#9;">
           <Formats>
             <Format id="default">
               <Columns>
@@ -22,14 +22,14 @@
                 <Row size="32"/>
               </Rows>
               <Band id="head">
-                <Cell text="날짜"/>
-                <Cell col="1" text="출근시간"/>
-                <Cell col="2" text="퇴근시간"/>
-                <Cell col="3" text="외출"/>
-                <Cell col="4" text="조퇴"/>
-                <Cell col="5" text="외근"/>
-                <Cell col="6" text="지각"/>
-                <Cell col="7" text="휴가"/>
+                <Cell text="날짜" font="18px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="1" text="출근시간" font="18px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="2" text="지각" font="18px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="3" text="외출" font="18px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="4" text="조퇴" font="18px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="5" text="외근" font="18px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="6" text="퇴근" font="18px/normal &quot;나눔바른펜&quot;&#9;"/>
+                <Cell col="7" text="휴가" font="18px/normal &quot;나눔바른펜&quot;&#9;"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:W_DATE"/>
