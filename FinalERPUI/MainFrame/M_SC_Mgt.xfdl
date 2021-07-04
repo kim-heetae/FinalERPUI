@@ -25,7 +25,8 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[/**
+    <Script type="xscript5.1"><![CDATA[
+/**
 *  @MenuPath    techtip > scheduler
 *  techtip Graphics Component를 활용한 월 스케줄러
 *  @FileName	workflow.xfdl 
