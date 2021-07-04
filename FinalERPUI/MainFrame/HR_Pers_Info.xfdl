@@ -47,8 +47,8 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_Ins" taborder="2" left="1337" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="등록" cursor="pointer"/>
-        <Button id="btn_Upd" taborder="3" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="수정" cursor="pointer"/>
+        <Button id="btn_Ins" taborder="2" left="1337" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="등록" cursor="pointer" onclick="btn_Ins_onclick"/>
+        <Button id="btn_Upd" taborder="3" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="수정" cursor="pointer" onclick="btn_Upd_onclick"/>
         <Static id="lb_M_TA_Mgt" taborder="4" text="인사 &gt; 인사정보" left="1369" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
         <Static id="lb_bg1" taborder="5" left="150" top="162" width="1367" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept" taborder="6" text="부서" left="150" top="163" width="186" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
@@ -156,62 +156,50 @@ this.hrPersInfo_board_load = function(){
    ,""
    ,"");
 };
-this.cb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
-{
-   this.hrPersInfo_board_load = function(){
-   var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var selectedCombo = this.cb_dept.text;
-   alert(selectedCombo);
-   if(selectedCombo === "부서전체"){
-   this.hrPersInfo_board_load();
-   }
-   else if(selectedCombo === "인사팀"){
-		var hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
-   }
-   else if(selectedCombo === "회계팀"){
-		var hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
-   }
-   var idCount = this.application.transactionCount++;
-   var svcID = "hrPISearch" + idCount;
-   this.DS_HR_PersInfo.clearData();
+
+/*선택 정보에 따른 사원정보 조회*/
+
+   this.hrPersInfoSel_load = function(){
    
-   this.transaction(svcID
-   ,"SvcURL::/hrpi/hrPISearch.hr?no=" + idCount
-   ,""
-   ,"DS_HR_PersInfo=out_test"
-   ,hrpiSelparam
-   ,"");
-};
-};
-
-
-this.cb_pos_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
-{
-	this.hrPersInfo_board_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var selectedCombo = this.cb_pos.text;
-   alert(selectedCombo);
-   if(selectedCombo === "직급전체"){
-   this.hrPersInfo_board_load();
+   var deptCombo = this.cb_dept.text;
+   var posCombo = this.cb_pos.text;
+   var editText = this.ed_ename.text;
+
+   if(deptCombo === "부서전체"){
+		var hrpiSelparam = null;
+   }
+   else if(deptCombo === "인사팀"){
+		var hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
+   }
+   else if(deptCombo === "회계팀"){
+		var hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
+   }
+   
+      if(selectedCombo === "직급전체"){
+		var hrpiSelparam = hrpiSelparam;
    }
    else if(selectedCombo === "사장"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
    }
       else if(selectedCombo === "부장"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
    }
       else if(selectedCombo === "차장"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
    }
       else if(selectedCombo === "과장"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
    }
       else if(selectedCombo === "대리"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
    }
       else if(selectedCombo === "사원"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
    }
+   
+   var hrpiSelparam =+ editText;
+   
    var idCount = this.application.transactionCount++;
    var svcID = "hrPISearch" + idCount;
    this.DS_HR_PersInfo.clearData();
@@ -224,29 +212,27 @@ this.cb_pos_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEvent
    ,"");
 };
 
-};
 
-this.ed_ename_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+/*선택된 사원 정보 조회*/
+
+this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-
-this.hrPersInfo_board_load = function(){
-
-   var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var hrpiSelparam = this.ed_ename.text;
-   
-   var idCount = this.application.transactionCount++;
-   var svcID = "hrPISearch" + idCount;
-   this.DS_HR_PersInfo.clearData();
-   
-   this.transaction(svcID
-   ,"SvcURL::/hrpi/hrPISearch.hr?no=" + idCount
-   ,""
-   ,"DS_HR_PersInfo=out_test"
-   ,hrpiSelparam
-   ,"");
+   alert("조회를 시작합니다.");
+   /*사원명 조회 함수 호출*/
+   this.hrPersInfoSel_load();
 };
 
-	
+
+this.btn_Ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   this.alert(" 인사 카드를 등록합니다.");
+   this.go("ModalFrame::HR_Pers_Insert.xfdl");
+};
+
+this.btn_Upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   this.alert(" 인사 카드를 수정합니다.");
+   this.go("ModalFrame::HR_Pers_Update1.xfdl");
 };
 ]]></Script>
   </Form>

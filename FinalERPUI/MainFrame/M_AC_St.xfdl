@@ -99,7 +99,7 @@ this.mac_board_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var macNparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=회계과";
    var idCount = this.application.transactionCount++;
-   var svcID = "macSel" + idCount;
+   var svcID = "getAllSel" + idCount;
    this.ds_my_ap_ac.clearData();
    
    this.transaction(svcID
@@ -151,6 +151,14 @@ this.macSel_load = function(){
    ,"ds_my_ap_ac=out_test"
    ,macSelparam
    ,"");
+};
+
+this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   alert(this.cb_type.id);
+   alert("조회를 시작합니다.");
+   /*인사 신청현황(전체 조회) 함수 호출*/
+   this.macSel_load();
 };
 ]]></Script>
     <Objects>
