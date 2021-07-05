@@ -22,7 +22,7 @@
                 <Row size="36" band="head"/>
                 <Row size="32"/>
               </Rows>
-              <Band id="head">
+              <Band id="head" font="20px/normal &quot;나눔바른펜&quot;">
                 <Cell text="사원번호"/>
                 <Cell col="1" text="사원명"/>
                 <Cell col="2" text="부서명"/>
@@ -33,7 +33,7 @@
                 <Cell col="7" text="입사일"/>
                 <Cell col="8" text="퇴사일"/>
               </Band>
-              <Band id="body">
+              <Band id="body" font="20px/normal &quot;나눔바른펜&quot;">
                 <Cell text="bind:E_NO"/>
                 <Cell col="1" text="bind:E_NAME"/>
                 <Cell col="2" text="bind:D_NAME"/>
@@ -64,15 +64,15 @@
                 <Col id="datacolumn">부서전체</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">인사팀</Col>
+                <Col id="datacolumn">인사과</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">회계팀</Col>
+                <Col id="datacolumn">회계과</Col>
               </Row>
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btn_Sel" taborder="9" left="1437" top="164" width="80" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조회" cursor="pointer"/>
+        <Button id="btn_Sel" taborder="9" left="1437" top="164" width="80" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조회" cursor="pointer" onclick="btn_Sel_onclick"/>
         <Static id="Static00" taborder="10" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00" taborder="11" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00_00" taborder="12" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -80,7 +80,7 @@
         <Static id="Static00_00_00_00_00" taborder="14" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00_00_00_00_00" taborder="15" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00_00_00_00_00_00" taborder="16" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Combo id="cb_pos" taborder="17" text="" left="692" top="164" width="170" height="36" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_pos_onitemchanged" font="20px/normal &quot;나눔바른펜&quot;">
+        <Combo id="cb_pos" taborder="17" text="" left="692" top="164" width="170" height="36" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_pos_onitemchanged" font="16px/normal &quot;나눔바른펜&quot;">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -136,6 +136,7 @@ include "lib::lib_base.xjs";
 this.application = null;
 
 
+
 this.HR_Pers_Info_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
    this.application = nexacro.getApplication();
@@ -159,51 +160,40 @@ this.hrPersInfo_board_load = function(){
 
 /*선택 정보에 따른 사원정보 조회*/
 
-   this.hrPersInfoSel_load = function(){
-   
+   this.hrPersInfoSel_load = function(deptCombo, posCombo, editText){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var deptCombo = this.cb_dept.text;
-   var posCombo = this.cb_pos.text;
-   var editText = this.ed_ename.text;
-
-   if(deptCombo === "부서전체"){
-		var hrpiSelparam = null;
-   }
-   else if(deptCombo === "인사팀"){
-		var hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
-   }
-   else if(deptCombo === "회계팀"){
-		var hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
-   }
-   
-      if(selectedCombo === "직급전체"){
-		var hrpiSelparam = hrpiSelparam;
-   }
-   else if(selectedCombo === "사장"){
-		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "부장"){
-		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "차장"){
-		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "과장"){
-		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "대리"){
-		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "사원"){
-		var hrpiSelparam =+ " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-   
-   var hrpiSelparam =+ editText;
-   
+   var hrpiSelparam;
    var idCount = this.application.transactionCount++;
-   var svcID = "hrPISearch" + idCount;
+   var svcID = "hrPISearch" + idCount; 
    this.DS_HR_PersInfo.clearData();
-   
+
+	if(!this.gfn_isNull(editText)){
+		if(deptCombo === "부서전체" && posCombo === "직급전체"){
+			hrpiSelparam = " e_name=" + editText;
+		}
+		else if(deptCombo === "부서전체"){
+			hrpiSelparam = " e_pos=" + posCombo + " e_name=" + editText;
+		}
+		else if(posCombo === "직급전체"){
+			hrpiSelparam = " d_name=" + deptCombo + " e_name=" + editText;
+		}else{
+		hrpiSelparam = " d_name=" + deptCombo + " e_pos=" + posCombo + " e_name=" + editText;
+		}
+	}
+	else{
+		if(deptCombo === "부서전체" && posCombo === "직급전체"){
+			hrpiSelparam = "";
+		}
+		else if(deptCombo === "부서전체"){
+			hrpiSelparam = " e_pos=" + posCombo;
+		}
+		else if(posCombo === "직급전체"){
+			hrpiSelparam = " d_name=" + deptCombo;
+		}else{
+		hrpiSelparam = " d_name=" + deptCombo + " e_pos=" + posCombo;
+		}
+	}
+   console.log(deptCombo, posCombo, editText);
    this.transaction(svcID
    ,"SvcURL::/hrpi/hrPISearch.hr?no=" + idCount
    ,""
@@ -219,20 +209,27 @@ this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    alert("조회를 시작합니다.");
    /*사원명 조회 함수 호출*/
-   this.hrPersInfoSel_load();
+	var deptCombo = this.cb_dept.text;
+	var posCombo = this.cb_pos.text;
+	var editText = this.ed_ename.text;
+	this.hrPersInfoSel_load(deptCombo, posCombo, editText);
 };
 
 
 this.btn_Ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    this.alert(" 인사 카드를 등록합니다.");
-   this.go("ModalFrame::HR_Pers_Insert.xfdl");
+   this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Insert.xfdl", "", this, 550, 30, true, true, null);
+   alert("456");
+
 };
 
 this.btn_Upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    this.alert(" 인사 카드를 수정합니다.");
-   this.go("ModalFrame::HR_Pers_Update1.xfdl");
+   this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Update1.xfdl", "", this, 550, 30, true, true, null);
+   alert("456");
+
 };
 ]]></Script>
   </Form>

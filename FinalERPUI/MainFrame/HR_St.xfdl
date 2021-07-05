@@ -49,21 +49,21 @@
                 <Row size="36" band="head"/>
                 <Row size="32"/>
               </Rows>
-              <Band id="head">
-                <Cell text="NO"/>
-                <Cell col="1" text="유형"/>
-                <Cell col="2" text="사원번호"/>
-                <Cell col="3" text="제목"/>
-                <Cell col="4" text="날짜"/>
-                <Cell col="5" text="상태"/>
+              <Band id="head" font="20px/normal &quot;나눔바른펜&quot;">
+                <Cell text="NO" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="유형" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="사원번호" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="제목" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="날짜" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="상태" font="20px/normal &quot;나눔바른펜&quot;"/>
               </Band>
-              <Band id="body">
-                <Cell text="bind:FI_NO"/>
-                <Cell col="1" text="bind:FT_TYPE"/>
-                <Cell col="2" text="bind:E_NO"/>
-                <Cell col="3" text="bind:FI_NAME"/>
-                <Cell col="4" text="bind:FI_DATE"/>
-                <Cell col="5" text="bind:FI_STATE"/>
+              <Band id="body" font="20px/normal &quot;나눔바른펜&quot;">
+                <Cell text="bind:FI_NO" textAlign="center"/>
+                <Cell col="1" text="bind:FT_TYPE" textAlign="center"/>
+                <Cell col="2" text="bind:E_NO" textAlign="center"/>
+                <Cell col="3" text="bind:FI_NAME" textAlign="center"/>
+                <Cell col="4" text="bind:FI_DATE" textAlign="center"/>
+                <Cell col="5" text="bind:FI_STATE" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
