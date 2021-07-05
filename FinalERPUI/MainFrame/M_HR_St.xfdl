@@ -24,7 +24,7 @@
                 <Col id="codecolumn">overtime</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">전자결재</Col>
+                <Col id="datacolumn">전자결재_인사</Col>
                 <Col id="codecolumn">approve</Col>
               </Row>
               <Row>
@@ -108,6 +108,7 @@ this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    /*인사 신청 모달 출력*/
+   
    this.alert("신청서를 눌렀습니다.");
    this.application.gfnShowModal("popupModal", null, "ModalFrame::M_HR_Type.xfdl", "", this, 550, 30, true, true, null);
 };
@@ -132,11 +133,12 @@ this.mhr_board_load = function(){
 this.mhrSel_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var selectedCombo = this.cb_type.text;
+   
    if(selectedCombo === "신청서 종류"){
-   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=인사과";
    }
    else{
-   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo;
+   var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " ft_type=" + selectedCombo + " d_name=인사과";
    }
    /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
    var idCount = this.application.transactionCount++;

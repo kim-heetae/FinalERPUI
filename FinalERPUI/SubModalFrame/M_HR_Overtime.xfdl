@@ -38,13 +38,16 @@ this.mhrOvertime_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.mhrOvertime = function(){
 	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-	var title = this.ed_title.text;
+	var title = this.ed_title.value;
 	var content = this.ta_content.text;
 	var time = this.ed_time_work.text;
 	var workday = this.cal_workDay.value;
 	var svcID = "mhrOverTimeTraction" + this.application.transactionCount++;
 	var svcURL = "SvcURL::/mhrst/subOTA.mpg?no=" + svcID;
 	var type = "연장근무"
+	
+	this.alert(title);
+
 	
 	if(this.fn_Today <= this.cal_workDay){
 		this.alert("지난 날짜만 선택 가능합니다.");
@@ -53,7 +56,7 @@ this.mhrOvertime = function(){
 	if(this.gfn_isNull(workday)){
 		this.alert("근무일을 지정해주세요.");
 	} else if(this.gfn_isNull(time)){
-		this.alert("시간을 지정해주세요")
+		this.alert("시간을 지정해주세요");
 	}
 	else if(this.gfn_isNull(title)){
 		this.alert("제목을 작성해주세요.");
