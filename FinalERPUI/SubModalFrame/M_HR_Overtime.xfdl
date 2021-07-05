@@ -8,12 +8,12 @@
         <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="101" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="3" left="144" top="102" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg2" taborder="4" left="25" top="139" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_date" taborder="5" text="신청일" left="269" top="101" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_date" taborder="5" text="사원명" left="269" top="101" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_date" taborder="6" left="390" top="102" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Button id="btn_cancel" taborder="7" left="449" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
         <Static id="lb_date_work" taborder="8" text="근무날짜" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
         <Static id="lb_time_work" taborder="9" text="근무시간" left="269" top="140" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_time_work" taborder="10" left="390" top="141" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
+        <Edit id="ed_time_work" taborder="10" left="390" top="141" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true" displaynulltext="22:00"/>
         <Static id="lb_bg2_00" taborder="11" left="270" top="214" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Edit id="ed_title" taborder="12" left="144" top="180" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="true"/>
         <TextArea id="ta_content" taborder="13" left="25" top="253" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="true"/>
@@ -39,7 +39,6 @@ this.mhrOvertime_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.mhrOvertime = function(){
 	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
 	var title = this.ed_title.text;
-	var today = this.ed_date.text;
 	var content = this.ta_content.text;
 	var time = this.ed_time_work.text;
 	var workday = this.cal_workDay.value;
@@ -82,6 +81,7 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
+      <BindItem id="item1" compid="ed_date" propid="value" datasetid="gdsLoginInfo" columnid="E_NAME"/>
     </Bind>
   </Form>
 </FDL>
