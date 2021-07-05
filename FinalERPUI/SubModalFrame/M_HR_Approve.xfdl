@@ -22,7 +22,7 @@
         <Static id="lb_content00" taborder="16" left="145" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_file00_00" taborder="17" left="144" top="216" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <FileUpload id="file_upload" taborder="18" left="390" top="141" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_confirm" taborder="19" left="336" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer"/>
+        <Button id="btn_confirm" taborder="19" left="336" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="제출" cursor="pointer" onclick="btn_confirm_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -31,9 +31,49 @@ include "lib::lib_base.xjs";
 
 this.application = null;
 
-this.mhrApprove_board_load = function (obj:nexcaro.Form, e:nexacro.LoadEventInfo)
+/*전자결제 로딩중*/
+this.mhrApprove_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
+   this.application = nexacro.getApplication();
+}
+
+this.mhrApprove = function(){
+	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	var file = this.file_upload.text;
+	var title = this.ed_title.text;
+	var content = this.ta_content.text;
+	var svcID = "mhrAPTraction" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/mhrst/subEPReq.mpg?no=" + svcID;
+	var type = "전자결재_인사"
+	
+	if(this.gfn_isNull(file)){
+		this.alert("파일을 첨부해주세요");
+   } else if(this.gfn_isNull(title)){
+		this.alert("제목을 작성해주세요.");
+   } else if(this.gfn_isNull(content)){
+		this.alert("내용을 작성해주세요.");
+   } else{
+		var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no 
+				+ " ff_name=" + file + " ff_size=" + 0
+				+ " fah_file=" + file + " fah_content=" + content;
+		/*var Integparam = */
+		this.transaction(svcID, svcURL, "", "", param, "");
+	}
+	this.alert("전자결재 신청이 완료됐습니다.");
+    this.close();
+	/*fi_name : 제목, fi_state : 상태여부, sysdate: 현재날짜 ft_type: 신청서유형, e_no : 사원번호*/	
+}
+this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.application = nexacro.getApplication();
-};]]></Script>
+	this.mhrApprove();
+};
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
+    </Bind>
   </Form>
 </FDL>
