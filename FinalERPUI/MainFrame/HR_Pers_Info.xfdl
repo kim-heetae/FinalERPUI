@@ -220,16 +220,12 @@ this.btn_Ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    this.alert(" 인사 카드를 등록합니다.");
    this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Insert.xfdl", "", this, 550, 30, true, true, null);
-   alert("456");
-
 };
 
 this.btn_Upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    this.alert(" 인사 카드를 수정합니다.");
    this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Update1.xfdl", "", this, 550, 30, true, true, null);
-   alert("456");
-
 };
 ]]></Script>
   </Form>

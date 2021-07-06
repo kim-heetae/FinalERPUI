@@ -51,7 +51,7 @@
         <Button id="btn_outIn" taborder="6" left="1237" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외출복귀" cursor="pointer" onclick="btn_outIn_onclick"/>
         <Button id="btn_workoutIn" taborder="7" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외근복귀" cursor="pointer" onclick="btn_workoutIn_onclick"/>
         <Button id="btn_workOut" taborder="8" left="1337" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="외근" cursor="pointer" onclick="btn_workOut_onclick"/>
-        <Static id="lb_M_TA_Mgt" taborder="9" text="마이페이지 &gt; 근태관리" left="1369" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <Static id="lb_M_TA_Mgt" taborder="9" text="마이페이지 &gt; 근태관리" left="1369" top="49" width="160" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
         <Static id="Static00" taborder="10" text="&lt;" left="630" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00" taborder="11" text="1" left="695" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00_00" taborder="12" text="2" left="760" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -168,7 +168,6 @@ this.fn_getWorkOutIns = function(){
 	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_work_out=" + this.M_TA_MGT.getColumn(0, "W_WORK_OUT");
 	var idCount = this.application.transactionCount++;0
 	var svcID = "getWorkOutIns" + idCount;
-	alert(mtaparam);
 	this.transaction(svcID
 	,"SvcURL::/mtamgt/getWorkOutIns.mpg?no=" + idCount
 	,""

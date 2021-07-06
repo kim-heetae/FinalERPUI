@@ -49,10 +49,9 @@ this.mhrOvertime = function(){
 	this.alert(title);
 
 	
-	if(this.fn_Today <= this.cal_workDay){
+	if(this.fn_Today <= this.cal_workDay.value){
 		this.alert("지난 날짜만 선택 가능합니다.");
 	}
-	
 	if(this.gfn_isNull(workday)){
 		this.alert("근무일을 지정해주세요.");
 	} else if(this.gfn_isNull(time)){
