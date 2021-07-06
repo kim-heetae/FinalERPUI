@@ -85,9 +85,10 @@ this.mhrIntegration = function(){
 				+ " fr_type=" + combotype + " fr_reason=" + this.ta_content.text + " fr_date=" + this.cal_date.value;
 		/*var Integparam = */
 		this.transaction(svcID, svcURL, "", "", param, "");
+		this.close();
 	}
-	this.alert("근태사유서 제출이 완료됐습니다.");
-    this.close();
+	/*this.alert("근태사유서 제출이 완료됐습니다.");*/
+    /*this.close();*/
 	/*fi_name : 제목, fi_state : 상태여부, sysdate: 현재날짜 ft_type: 신청서유형, e_no : 사원번호*/	
 }
 

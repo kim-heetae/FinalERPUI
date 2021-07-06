@@ -173,7 +173,6 @@ this.cb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEven
    this.hrAtdSel_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var selectedCombo = this.cb_dept.text;
-   alert(selectedCombo);
    if(selectedCombo === "부서전체"){
    this.hrPersInfoSel_load();
    }
@@ -203,7 +202,6 @@ this.cb_dept00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEv
 	this.hrAtdSel_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var selectedCombo = this.cb_dept00.text;
-   alert(selectedCombo);
    if(selectedCombo === "직급전체"){
    this.hrAtdSel_load();
    }
@@ -266,7 +264,6 @@ this.hrPersInfoSel_load = function(){
 
 this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	alert(this.cb_type.id);
    alert("조회를 시작합니다.");
    /*사원명 조회 함수 호출*/
    this.hrAtdSel_load();

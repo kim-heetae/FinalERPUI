@@ -106,13 +106,14 @@ this.iv_search_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventIn
 	var oArg = {};
 				
 	//우편번호 조회 팝업
-	this.gfn_showModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 330, true, true, null);
+	this.gfn_showModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 550, true, true, null);
+	/*this.application.gfnShowModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 550, 550, true, true, null);*/
 };
 
 this.iv_search00_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
 {
 	var oArg = {};
-	this.gfn_showModal("popupRealPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 330, false, false, null);
+	this.gfn_showModal("popupRealPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 550, false, false, null);
 };
 
 /**
@@ -122,10 +123,8 @@ this.popupCallBack = function(sFormId, sArg)
 {
 	if(sFormId=="popupPostcode")
 	{
-		alert(this.postcode);
 		this.DS_MyInfo.setColumn(0,"E_POSTCODE", this.postcode);
 		this.DS_MyInfo.setColumn(0,"E_LOC",this.address1);
-		alert(this.DS_MyInfo.getColumn(0,"E_LOC"));
 	}
 	else if(sFormId=="popupRealPostcode"){
 		this.DS_MyInfo.setColumn(0,"E_REAL_POSTCODE",this.postcode);

@@ -110,7 +110,7 @@ this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
    /*인사 신청 모달 출력*/
    
    this.alert("신청서를 눌렀습니다.");
-   this.application.gfnShowModal("popupModal", null, "ModalFrame::M_HR_Type.xfdl", "", this, 550, 30, true, true, null);
+   this.application.gfnShowModal("popupModal", null, "ModalFrame::M_HR_Type.xfdl", "mhrSel_load", this, 550, 30, true, true, null);
 };
 
 /*인사 신청현황(전체 조회)*/
