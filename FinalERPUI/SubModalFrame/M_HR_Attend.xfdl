@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M_HR_Attend" width="550" height="471" titletext="New Form" border="1px solid #999999" onload="mhrAttend_board_load">
+    <Layouts>
+      <Layout height="471" width="550">
+        <Static id="lb_title_m" taborder="0" text="근태사유서 제출" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_bg1" taborder="1" left="25" top="110" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="111" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_empno" taborder="3" left="144" top="111" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_bg2" taborder="4" left="269" top="220" width="256" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_date" taborder="5" text="해당일자" left="269" top="111" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_file" taborder="6" text="첨부파일" left="269" top="222" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_cancel" taborder="7" left="449" top="404" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
+        <Edit id="ed_title" taborder="8" left="144" top="186" width="381" height="35" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
+        <TextArea id="ta_content" taborder="9" left="25" top="259" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <Static id="lb_content" taborder="10" text="내용" left="25" top="221" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_title" taborder="11" text="제목" left="25" top="186" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_content00" taborder="12" left="144" top="222" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_file00" taborder="13" left="144" top="222" width="126" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <FileUpload id="file_upload" taborder="14" left="390" top="222" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_confirm" taborder="15" left="352" top="404" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="제출" cursor="pointer" onclick="btn_confirm_onclick"/>
+        <Static id="lb_bg1_00" taborder="16" left="25" top="147" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_type" taborder="17" text="신청유형" left="24" top="148" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Combo id="cb_type" taborder="18" text="전체" left="144" top="148" width="381" height="38" font="15px/normal &quot;나눔바른펜&quot;" displaynulltext="전체" value="" index="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">지각</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">외출</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">병가</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Calendar id="cal_date" taborder="19" left="390" top="111" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+/*근태사유서 로드*/
+this.mhrAttend_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
+   this.application = nexacro.getApplication();
+}
+
+this.mhrIntegration = function(){
+	var callback = "mhrAttend";
+	var svcID = "mhrAtTraction" + this.application.transactionCount++;
+	var file = this.file_upload.text;
+	var svcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + svcID;
+	var title = this.ed_title.text;
+	var combotype = this.cb_type.text;
+	
+	//var type = this.cb_type.text;
+	var type = "근태사유서"
+	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	
+	if(this.fn_Today <= this.cal_date.value){
+		this.alert("지난 날짜만 선택 가능합니다.");
+	}
+	if(this.gfn_isNull(file)){
+		this.alert("파일을 첨부해주세요");
+   } else if(this.gfn_isNull(title)){
+		this.alert("제목을 작성해주세요.");
+   } else if(this.gfn_isNull(this.cb_type)){
+		this.alert("신청 유형을 선택해주세요.");
+   } else if(this.gfn_isNull(this.cal_date)){
+		this.alert("해당 일자를 선택해주세요.");
+   } else if(this.gfn_isNull(this.ta_content)){
+		this.alert("내용을 작성해주세요.");
+   }else{
+		var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no 
+				+ " ff_name=" + file + " ff_size=" + 0
+				+ " fr_type=" + combotype + " fr_reason=" + this.ta_content.text + " fr_date=" + this.cal_date.value;
+		/*var Integparam = */
+		this.transaction(svcID, svcURL, "", "", param, "");
+		this.close();
+	}
+	/*this.alert("근태사유서 제출이 완료됐습니다.");*/
+    /*this.close();*/
+	/*fi_name : 제목, fi_state : 상태여부, sysdate: 현재날짜 ft_type: 신청서유형, e_no : 사원번호*/	
+}
+
+/*근태사유서 제출하는 함수(마이페이지 인사 신청현황)*/
+this.mhrAttend = function(){
+   var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+   var date = this.cal_date.value;
+   var title = this.ed_title.text;
+   var content = this.ta_content.text;
+   
+   var file = this.file_upload.text;
+   var type = this.cb_type.text;
+   var SvcID = "HRAttendIns" + this.application.transactionCount++;
+   var SvcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + SvcID;
+   var callback = "";
+   /*var param = " bw_name=" + title + " bw_content=" + content + " d_no=" + d_no + " e_no=" + e_no;*/
+   /*근태 유형(fr_type), 사유(fr_reason), 해당 날짜(fr_date), 첨부파일(fr_doc)*/
+   
+   /*첨부파일이 쿼리에 있던 경우*/
+   var mhrAtSbmit = " fr_type=" + type + " fr_reason=" + content + " fr_date=" + date + " fr_doc=" + file;
+   
+   /*첨부파일이 쿼리에 없는 경우*/
+   /*var mhrAtSbmit = " fr_type" + type + " fr_reason" + content + " fr_date" + date;*/
+   if(!this.gfn_isNull(file)){
+		callback = "mhrFile";
+   }
+
+   this.transaction(SvcID, SvcURL, "", "", mhrAtSbmit, callback);
+//    this.file_upload.upload("http://192.168.0.243/fileBox");
+   this.alert("근태사유서 신청이 완료됐습니다.");
+   this.close();
+}
+
+/***********************************************
+* 설명 :
+해당 PC의 오늘 날짜를 가져온다.
+
+* parameter
+* return 
+  - 성공 = yyyyMMdd형태의 오늘 날짜 ( 예 : "20210703" )
+  - 실패 = 없음
+************************************************/
+this.fn_Today = function(){
+  var sToday = "";
+  var objDate = new Date();
+  var sToday = objDate.getFullYear().toString();
+  sToday += Right("0" + (objDate.getMonth() +1), 2);
+  sToday += Right("0" + objDate.getDate(), 2);
+  
+  return sToday;
+}
+
+/*확인버튼 이벤트*/
+this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	/*확인 버튼 눌렀을 때 Insert되는 함수 호출하기*/
+	this.mhrIntegration();
+	/*this.mhrAttend();*/
+};
+
+/*취소 버튼 누르기*/
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
+    </Bind>
+    <Objects/>
+  </Form>
+</FDL>

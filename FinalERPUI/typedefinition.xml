@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <TypeDefinition version="2.3">
   <Modules>
     <Module url="CompBase.json"/>
@@ -6,6 +6,7 @@
     <Module url="Grid.json"/>
     <Module url="ListView.json"/>
     <Module url="DeviceAPI.json"/>
+    <Module url="Graphics.json"/>
   </Modules>
   <Components>
     <Component type="JavaScript" id="Button" classname="nexacro.Button"/>
@@ -31,6 +32,14 @@
     <Component type="JavaScript" id="Plugin" classname="nexacro.Plugin"/>
     <Component type="JavaScript" id="Dataset" classname="nexacro.NormalDataset"/>
     <Component type="JavaScript" id="ListView" classname="nexacro.ListView"/>
+    <Component type="JavaScript" id="FileUpload" classname="nexacro.FileUpload"/>
+    <Component type="JavaScript" id="Phone" classname="nexacro.Phone"/>
+    <Component type="JavaScript" id="WebBrowser" classname="nexacro.WebBrowser"/>
+    <Component type="JavaScript" id="Graphics" classname="nexacro.Graphics"/>
+    <Component type="JavaScript" id="FileDialog" classname="nexacro.FileDialog"/>
+    <Component type="JavaScript" id="FileDownload" classname="nexacro.FileDownload"/>
+    <Component type="JavaScript" id="FileUpTransfer" classname="nexacro.FileUpTransfer"/>
+    <Component type="JavaScript" id="FileDownTransfer" classname="nexacro.FileDownTransfer"/>
   </Components>
   <Services>
     <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" cachelevel="session" include_subdir="true"/>
@@ -38,7 +47,13 @@
     <Service prefixid="xcssrc" type="resource" url="./_resource_/_xcss_/" version="0" cachelevel="session" include_subdir="false"/>
     <Service prefixid="imagerc" type="resource" url="./_resource_/_images_/" version="0" cachelevel="session" include_subdir="true"/>
     <Service prefixid="font" type="resource" url="./_resource_/_font_/" version="0" cachelevel="session" include_subdir="false"/>
-	<Service prefixid="Base" type="form" url="./Base/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="Base" type="form" url="./Base/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="MainFrame" type="form" url="./MainFrame/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="ModalFrame" type="form" url="./ModalFrame/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="SubModalFrame" type="form" url="./SubModalFrame/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="lib" type="file" url="./lib/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="SvcURL" type="JSP" version="0" cachelevel="session" include_subdir="false" communicationversion="0" url="http://localhost:9000/"/>
+    <Service prefixid="IMG" type="JSP" version="0" cachelevel="session" include_subdir="false" communicationversion="0" url="http://localhost:9000/"/>
   </Services>
   <Protocols/>
   <DeviceAdaptors/>

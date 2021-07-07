@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="My_Page" width="1670" height="835" titletext="New Form" onload="My_Page_onload">
+    <Layouts>
+      <Layout height="835" mobileorientation="landscape" width="1670">
+        <Static id="lb_title" taborder="0" text="내정보 관리" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Static id="lb_bg1" taborder="14" left="389" top="152" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="16" text="사원번호" left="389" top="152" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_empno" left="574" top="152" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="false" taborder="15"/>
+        <Static id="lb_bg2" taborder="17" left="389" top="191" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_date" taborder="18" text="비밀번호" left="833" top="152" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_name" taborder="19" text="사원명" left="389" top="192" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_password_check" taborder="9" left="1020" top="194" width="300" height="36" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999"/>
+        <Static id="lb_file" taborder="20" text="비밀번호 확인" left="833" top="192" width="187" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_cancel" taborder="13" left="1242" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
+        <Button id="btn_confirm" taborder="12" left="1126" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="발급" cursor="pointer"/>
+        <Static id="lb_bg2_00" taborder="21" left="389" top="231" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Edit id="ed_password" taborder="8" left="1020" top="154" width="300" height="36" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999"/>
+        <Edit id="ed_ename" taborder="22" left="574" top="193" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_dept" taborder="23" text="소속부서" left="388" top="232" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_dept" taborder="24" left="574" top="232" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_file00" taborder="25" text="성별" left="833" top="232" width="187" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Radio id="rd_gender" taborder="26" left="1020" top="230" width="302" height="39" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true" direction="vertical" font="16pt/normal &quot;Arial&quot;" index="-1" text="" value="" onitemchanged="rd_gender_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="datacolumn">남</Col>
+                <Col id="codecolumn">남</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">여</Col>
+                <Col id="codecolumn">여</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="lb_bg2_01" taborder="27" left="388" top="270" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01" taborder="28" text="이메일" left="388" top="271" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_email" taborder="1" left="574" top="272" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true"/>
+        <Static id="lb_file01" taborder="29" text="생년월일" left="833" top="271" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg2_01_00" taborder="30" left="387" top="310" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00" taborder="31" text="이메일 확인" left="388" top="311" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_email_check" taborder="2" left="574" top="311.5" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true"/>
+        <Static id="lb_file01_00" taborder="32" text="은행명" left="833" top="311" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg2_01_00_00" taborder="33" left="386" top="349" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00_00" taborder="34" text="이동전화" left="388" top="350" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_file01_00_00" taborder="35" text="계좌번호" left="833" top="350" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_acNum" taborder="10" left="1019" top="349" width="301" height="39" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true"/>
+        <Static id="lb_bg2_01_00_00_00" taborder="36" left="385" top="388" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00_00_00" taborder="37" text="사내전화" left="388" top="389" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_file01_00_00_00" taborder="38" text="주민등록번호" left="831" top="389" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg2_01_00_00_00_00" taborder="39" left="385" top="429" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00_00_00_00" taborder="40" text="주민등록&#13;&#10;거주지" left="387" top="430" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_loc_find" taborder="41" left="574" top="431" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true"/>
+        <Edit id="ed_loc_findresult" taborder="42" left="833" top="431" width="489" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true"/>
+        <Edit id="ed_loc_detail" taborder="5" left="574" top="470" width="746" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" displaynulltext="상세주소를 입력해주세요"/>
+        <ImageViewer id="iv_search" taborder="4" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search_onclick" text=""/>
+        <Static id="lb_bg2_01_00_00_00_00_00" taborder="43" left="384" top="508" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_dept01_00_00_00_00_00" taborder="44" text="실 거주지" left="385" top="509" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_realloc_find" taborder="45" left="575" top="510" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true" onchanged="ed_realloc_find_onchanged"/>
+        <Edit id="ed_realloc_findresult" taborder="46" left="832" top="510" width="489" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true"/>
+        <ImageViewer id="iv_search00" taborder="6" left="791" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search00_onclick"/>
+        <Edit id="ed_realloc_detail" taborder="7" left="575" top="550" width="746" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" displaynulltext="상세주소를 입력해주세요"/>
+        <Button id="btn_com" taborder="11" left="1010" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="완료" cursor="pointer" onclick="btn_com_onclick"/>
+        <Static id="lb_myPage" taborder="47" text="마이페이지 &gt; 내정보관리" left="1151" top="49" width="170" height="21" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
+        <MaskEdit id="me_phone" taborder="3" left="574" top="350" width="259" height="40" format="### '-' #### '-' ####" textAlign="center" type="string" wordSpacing="5px" font="16pt/normal &quot;Arial&quot;" maskchar=" " autoselect="true"/>
+        <MaskEdit id="me_birth" taborder="48" left="1019" top="272" width="301" height="37" readonly="true" type="string" format="#### '년' ## '월' ## '일'" maskchar=" " letterSpacing="5px" font="16pt/normal &quot;Arial&quot;"/>
+        <MaskEdit id="me_socialnum" taborder="49" left="1019" top="390" width="302" height="37" readonly="true" maskchar=" " format="###### '-' #{######}" type="string" font="16pt/normal &quot;Arial&quot;" textAlign="center"/>
+        <MaskEdit id="me_call" taborder="50" left="574" top="389" width="258" height="39" format="## '-' ### '-' ####" maskchar=" " readonly="true" type="string" font="16pt/normal &quot;Arial&quot;" textAlign="center"/>
+        <Edit id="ed_acname" taborder="51" left="1020" top="309" width="300" height="41" readonly="true" font="16pt/normal &quot;Arial&quot;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.My_Page_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	this.fn_MyPage_init();
+};
+
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.application.Main_Frame.form.bn_board_load();
+	var sWinId = this.application.Mid_Frame.form.tabMdi.tabpages[this.application.Mid_Frame.form.tabMdi.tabindex].name;
+	this.application.Mid_Frame.form.tabMdi.removeTabpage(this.application.Mid_Frame.form.tabMdi.tabindex);
+	this.application.WorkFrame[sWinId].form.close();
+	this.application.Left_Frame.form.fn_DelOpenMenu(sWinId);
+}
+
+this.Calendar00_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
+{
+	
+};
+
+this.iv_search_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	var oArg = {};
+				
+	//우편번호 조회 팝업
+	this.gfn_showModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 550, true, true, null);
+	/*this.application.gfnShowModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 550, 550, true, true, null);*/
+};
+
+this.iv_search00_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	var oArg = {};
+	this.gfn_showModal("popupRealPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 550, false, false, null);
+};
+
+/**
+ * @description POPUP CALLBACK
+ */
+this.popupCallBack = function(sFormId, sArg)
+{
+	if(sFormId=="popupPostcode")
+	{
+		this.DS_MyInfo.setColumn(0,"E_POSTCODE", this.postcode);
+		this.DS_MyInfo.setColumn(0,"E_LOC",this.address1);
+	}
+	else if(sFormId=="popupRealPostcode"){
+		this.DS_MyInfo.setColumn(0,"E_REAL_POSTCODE",this.postcode);
+		this.DS_MyInfo.setColumn(0,"E_REAL_LOC",this.address1);
+	}
+}; 
+
+this.fn_MyPage_init = function(){
+	var objgdsLoginInfo = this.application.objgdsLoginInfo;
+	var idCount = this.application.transactionCount++;
+	var svcID = "myInfo" + idCount;
+	var SvcURL = "SvcURL::/my/getmyPageSel.mpg?no=" + idCount;
+	var senddataset = "DS_MyInfo=out_test";
+	var param = " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
+	this.transaction(svcID, SvcURL, "", senddataset, param, "fn_ect_init");
+};
+
+this.fn_ect_init = function(){
+	if(this.DS_MyInfo.getColumn(0, "E_GENDER") === "남"){
+		this.rd_gender.set_index(0);
+	}
+	else{
+		this.rd_gender.set_index(1);
+	}
+}
+this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var ed_email = this.ed_email.value;
+	var ed_email_check = this.ed_email_check.value;
+	var ed_password = this.ed_password.value;
+	var ed_password_check = this.ed_password_check.value;
+	var check = 0;
+	if(ed_email == ed_email_check){
+		check += 1;
+	}
+	if(ed_password == ed_password_check){
+		check += 1;
+	}
+};
+
+]]></Script>
+    <Objects>
+      <Dataset id="DS_MyInfo">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="E_EMAIL" type="STRING" size="256"/>
+          <Column id="E_PHONE" type="STRING" size="256"/>
+          <Column id="EOI_CALL" type="STRING" size="256"/>
+          <Column id="E_LOC" type="STRING" size="256"/>
+          <Column id="E_REAL_LOC" type="STRING" size="256"/>
+          <Column id="E_PW" type="STRING" size="256"/>
+          <Column id="E_GENDER" type="STRING" size="256"/>
+          <Column id="E_BIRTH" type="STRING" size="256"/>
+          <Column id="EA_NAME" type="STRING" size="256"/>
+          <Column id="EA_NO" type="STRING" size="256"/>
+          <Column id="E_SOCIAL_NO" type="STRING" size="256"/>
+          <Column id="E_POSTCODE" type="STRING" size="256"/>
+          <Column id="E_REAL_POSTCODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="DS_MyInfo" columnid="E_NO"/>
+      <BindItem id="item1" compid="ed_ename" propid="value" datasetid="DS_MyInfo" columnid="E_NAME"/>
+      <BindItem id="item2" compid="ed_dept" propid="value" datasetid="DS_MyInfo" columnid="D_NAME"/>
+      <BindItem id="item6" compid="ed_acNum" propid="value" datasetid="DS_MyInfo" columnid="EA_NO"/>
+      <BindItem id="item7" compid="me_birth" propid="value" datasetid="DS_MyInfo" columnid="E_BIRTH"/>
+      <BindItem id="item8" compid="me_socialnum" propid="value" datasetid="DS_MyInfo" columnid="E_SOCIAL_NO"/>
+      <BindItem id="item9" compid="me_call" propid="value" datasetid="DS_MyInfo" columnid="EOI_CALL"/>
+      <BindItem id="item11" compid="me_phone" propid="value" datasetid="DS_MyInfo" columnid="E_PHONE"/>
+      <BindItem id="item3" compid="ed_acname" propid="value" datasetid="DS_MyInfo" columnid="EA_NAME"/>
+      <BindItem id="item5" compid="ed_loc_find" propid="value" datasetid="DS_MyInfo" columnid="E_POSTCODE"/>
+      <BindItem id="item12" compid="ed_realloc_find" propid="value" datasetid="DS_MyInfo" columnid="E_REAL_POSTCODE"/>
+      <BindItem id="item13" compid="ed_loc_findresult" propid="value" datasetid="DS_MyInfo" columnid="E_LOC"/>
+      <BindItem id="item4" compid="ed_realloc_findresult" propid="value" datasetid="DS_MyInfo" columnid="E_REAL_LOC"/>
+    </Bind>
+  </Form>
+</FDL>

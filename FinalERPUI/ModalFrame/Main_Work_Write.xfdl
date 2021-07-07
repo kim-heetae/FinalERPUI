@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Main_Work_Write" width="800" height="800" titletext="New Form" onload="Main_Work_Write_onload">
+    <Layouts>
+      <Layout height="800" mobileorientation="landscape" width="800">
+        <Static id="lb_title_m" taborder="0" text="업무 게시글 조회" left="290" top="50" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
+        <Static id="lb_bg1" taborder="1" left="25" top="139" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_ename_label" taborder="2" text="작성자" left="125" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_date_label" taborder="3" text="작성일" left="345" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_hit_label" taborder="4" text="조회수" left="575" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_num" taborder="5" left="25" top="140" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_num_onclick" text=""/>
+        <Static id="lb_hit" taborder="6" left="675" top="140" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text="" onclick="lb_hit_onclick"/>
+        <Static id="lb_ename" taborder="7" left="225" top="140" width="120" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" text=""/>
+        <Static id="lb_date" taborder="8" left="445" top="140" width="130" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_date01_onclick"/>
+        <Static id="lb_bg1_00" taborder="9" left="25" top="661" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_file" taborder="10" text="첨부파일" left="25" top="662" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_ok" taborder="11" left="699" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
+        <TextArea id="ta_content" taborder="12" left="25" top="253" width="750" height="409" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <Static id="lb_content" taborder="13" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_content00" taborder="14" left="144" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_file00" taborder="15" left="144" top="216" width="631" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text=""/>
+        <Button id="btn_edit" taborder="16" left="583" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="수정" cursor="pointer" onclick="btn_edit_onclick"/>
+        <Static id="lb_0000" taborder="17" left="25" top="176" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Button id="btn_delete" taborder="18" left="467" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="삭제" onclick="btn_delete_onclick" cursor="pointer"/>
+        <Static id="lb_title" taborder="19" text="제목" left="25" top="177" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="none"/>
+        <Edit id="ed_title" taborder="20" left="144" top="178" width="631" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
+        <Static id="lb_dept_label" taborder="21" text="담당부서" left="445" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_dept" taborder="22" text="" left="635" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <FileDownload id="FileDownload" taborder="23" text="FileDownload00" left="146" top="663" width="629" height="36"/>
+        <FileUpload id="file_upload" taborder="24" left="146" top="663" width="629" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item8" compid="lb_num" propid="text" datasetid="ds_board_work" columnid="BN_NO"/>
+      <BindItem id="item0" compid="lb_ename" propid="text" datasetid="ds_board_work" columnid="E_NAME"/>
+      <BindItem id="item1" compid="lb_date" propid="text" datasetid="ds_board_work" columnid="BN_DATE"/>
+      <BindItem id="item2" compid="lb_hit" propid="text" datasetid="ds_board_work" columnid="BN_HIT"/>
+      <BindItem id="item3" compid="ed_title" propid="value" datasetid="ds_board_work" columnid="BW_NAME"/>
+      <BindItem id="item4" compid="ta_content" propid="value" datasetid="ds_board_work" columnid="BW_CONTENT"/>
+      <BindItem id="item5" compid="lb_dept" propid="text" datasetid="ds_board_work" columnid="D_NO"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_board_work">
+        <ColumnInfo>
+          <Column id="BW_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="BW_HIT" type="STRING" size="256"/>
+          <Column id="BW_DATE" type="STRING" size="256"/>
+          <Column id="BW_NAME" type="STRING" size="256"/>
+          <Column id="BW_CONTENT" type="STRING" size="256"/>
+          <Column id="D_NO" type="STRING" size="256"/>
+          <Column id="BBF_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.Main_Work_Write_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	this.ds_board_work.clearData();
+	var objFrame = this.getOwnerFrame();
+	this.bw_no = objFrame.bw_no;
+	this.fn_work_init(this.bw_no);
+};
+
+this.fn_work_init = function(bw_no){
+	trace(bw_no);
+	var svcID = "getDetailSel" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/main/getDetailSel.mpg?no=" + svcID;
+	var data = "ds_board_work=out_test";
+	var param = " bw_no=" + bw_no;
+	this.transaction(svcID, svcURL, "", data, param, "fn_text_init");
+}
+
+this.fn_text_init = function(){
+	var Login_ENO = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	if (this.ds_board_notice.getColumn(0, "E_NO") != Login_ENO && Login_ENO != 1){
+		this.ed_title.set_readonly(true);
+		this.ta_content.set_readonly(true);
+		this.btn_delete.set_visible(false);
+		this.btn_edit.set_visible(false);
+		this.file_upload.set_visible(false);
+	}
+};
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var svcID = "getWBDel" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/main/getWBDel.mpg?no=" + svcID;
+	var param = " bw_no=" + this.ds_board_notice.getColumn(0, "BW_NO");
+	if(!this.gfn_isNull(this.ds_board_work.getColumn(0, "BBF_NAME"))){
+		param += " bbf_name=" + this.ds_board_work.getColumn(0, "BBF_NAME");
+	}
+	this.transaction(svcID, svcURL, "", "", param, "fn_close");
+};
+
+this.btn_edit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var bn_name = this.ed_title.text;
+	var bn_content = this.ta_content.text;
+	var bn_no = this.ds_board_notice.getColumn(0, "BW_NO");
+	var svcID = "getWBUpd" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/main/getWBUpd.mpg?no=" + svcID;
+	var param = " bw_name=" + bw_name + " bw_content=" + bw_content + " bw_no=" + bw_no;
+	if(!this.gfn_isNull(this.ds_board_work.getColumn(0, "BWF_NAME"))){
+		param += " bbf_name=" + this.file_upload.text;
+	}
+	this.transaction(svcID, svcURL, "", "", param, "fn_close");
+};
+
+this.fn_close = function(){
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

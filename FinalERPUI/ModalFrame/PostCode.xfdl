@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="postcodepopup" width="540" height="486" titletext="우편번호 검색" onload="postcodepopup_onload">
+    <Layouts>
+      <Layout height="486" mobileorientation="landscape" width="540">
+        <WebBrowser id="webPostcode" taborder="0" left="0" top="55" onusernotify="webPostcode_onusernotify" right="0" bottom="0" border="0px none"/>
+        <Button id="btnClose" taborder="1" top="4" height="28" cssclass="btn_WF_popup_close" onclick="btnClose_onclick" right="4" width="28"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+*  @MenuPath    postcodepopup
+*  @FileName	postcodepopup.xfdl
+*  @Desction	우편번호 검색 (다음 api)
+*******************************************************************************
+*  2020.12.28		nana			최초 생성
+*******************************************************************************
+*/
+
+/**************************************************************************
+ * FORM 변수 선언 영역
+ **************************************************************************/
+this.post = "";
+this.addr1 = "";
+this.addr2 = "";
+
+/**************************************************************************
+ * FORM EVENT 영역(onload)
+ **************************************************************************/
+/**
+ * @description form onload
+ */
+this.postcodepopup_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//html 파일 webbrowser 컴포넌트 연결 url
+	var strPostUrl = nexacro.getEnvironment().services["IMG"].url + "postcode.html";
+	this.webPostcode.set_url(strPostUrl);
+};
+
+/**************************************************************************
+* 각 COMPONENT 별 EVENT 영역
+**************************************************************************/
+/**
+ * @description webPostcode onusernotify event : 연결된 웹브라우저 화면에서 이벤트 발생 시 전달
+ */
+this.webPostcode_onusernotify = function(obj:nexacro.WebBrowser,e:nexacro.WebUserNotifyEventInfo)
+{
+	var addData = e.userdata.split(",");
+
+	if(addData.length > 1)
+	{
+		this.opener.postcode = addData[0];
+		this.opener.address1 = addData[1];
+		//팝업 닫기
+		this.close();
+	}	
+};
+
+/**
+ * @description btnClose onclick event : 팝업 닫기버튼 클릭
+ */
+this.btnClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

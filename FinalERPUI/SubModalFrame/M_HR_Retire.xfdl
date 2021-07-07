@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="M_HR_Retire" width="550" height="501" titletext="New Form" border="1px solid #999999" onload="mhrRetire_board_load">
+    <Layouts>
+      <Layout height="501" width="550">
+        <Static id="lb_title_m" taborder="0" text="퇴직서 제출" left="169" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_bg1" taborder="1" left="25" top="100" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="101" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_empno" taborder="3" left="144" top="102" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_bg2" taborder="4" left="25" top="139" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_date" taborder="5" text="해당 일자" left="269" top="101" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_dept" taborder="6" text="부서" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Combo id="cb_dept" taborder="7" text="부서명" left="144" top="141" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" displaynulltext="인사과" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">dept_ac</Col>
+                <Col id="datacolumn">인사팀</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">dep_hr</Col>
+                <Col id="datacolumn">회계팀</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="lb_date_retire" taborder="8" text="희망퇴직일" left="269" top="140" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_title" taborder="9" left="144" top="180" width="381" height="37" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
+        <TextArea id="ta_content" taborder="10" left="25" top="255" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <Static id="lb_title" taborder="11" text="제목" left="25" top="179" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_content" taborder="12" text="내용" left="25" top="218" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Button id="btn_cancel" taborder="13" left="449" top="437" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
+        <Button id="btn_confirm" taborder="14" left="334" top="437" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="제출" cursor="pointer" onclick="btn_confirm_onclick"/>
+        <Static id="lb_content00" taborder="15" left="144" top="218" width="381" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_bg3" taborder="16" left="25" top="374" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" background="#f7f7f7"/>
+        <Static id="lb_contact" taborder="17" text="연락처" left="25" top="375" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Combo id="cb_contact_first" taborder="18" text="" left="144" top="376" width="106" height="36" onitemchanged="Combo00_onitemchanged" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" color="#000000" displaynulltext="010" enable="true">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">010</Col>
+                <Col id="datacolumn">010</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">02</Col>
+                <Col id="datacolumn">02</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">031</Col>
+                <Col id="datacolumn">031</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">032</Col>
+                <Col id="datacolumn">032</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">033</Col>
+                <Col id="datacolumn">033</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">041</Col>
+                <Col id="datacolumn">041</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">042</Col>
+                <Col id="datacolumn">042</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">043</Col>
+                <Col id="datacolumn">043</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">044</Col>
+                <Col id="datacolumn">044</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">051</Col>
+                <Col id="datacolumn">051</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">052</Col>
+                <Col id="datacolumn">052</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">053</Col>
+                <Col id="datacolumn">053</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">054</Col>
+                <Col id="datacolumn">054</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">055</Col>
+                <Col id="datacolumn">055</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">061</Col>
+                <Col id="datacolumn">061</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">062</Col>
+                <Col id="datacolumn">062</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">063</Col>
+                <Col id="datacolumn">063</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">064</Col>
+                <Col id="datacolumn">064</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static00" taborder="19" text="-" left="263" top="377" width="14" height="35" textAlign="center"/>
+        <Edit id="ed_contact_middle" taborder="20" left="290" top="376" width="100" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true" height="36"/>
+        <Static id="Static00_00" taborder="21" text="-" left="400" top="377" width="14" height="35" textAlign="center"/>
+        <Edit id="ed_contact_last" taborder="22" left="425" top="376" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true" height="36" width="100"/>
+        <Calendar id="cal_date" taborder="23" left="390" top="102" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;"/>
+        <Calendar id="cal_retire" taborder="24" left="390" top="141" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+/*퇴직사유서 로딩중*/
+this.mhrRetire_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
+   this.application = nexacro.getApplication();
+}
+
+this.mhrRetire = function(){
+	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	/*해당 일자*/
+	var aplyDay = this.cal_date.value;
+	/*희망퇴직일*/
+	var aplyReday = this.cal_retire.value;
+	var title = this.ed_title.text;
+	var content = this.ta_content.text;
+	var tel = this.cb_contact_first.text + this.ed_contact_middle.text + this.ed_contact_last.text;
+	var svcID = "mhrRetireTc" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/mhrst/subRetire.mpg?no=" + svcID;
+	var type = "퇴직";
+	
+	if(this.gfn_isNull(aplyDay)){
+		this.alert("해당 일자를 선택해주세요.");
+   } else if(this.gfn_isNull(aplyReday)){
+		this.alert("희망퇴직일을 선택해주세요.");
+   } else if(this.gfn_isNull(content)){
+		this.alert("내용을 작성해주세요.");
+   } else if(this.gfn_isNull(title)){
+		this.alert("제목을 작성해주세요.");
+   } else{
+		/*ret_reason: 사유 / ret_date : 퇴직희망날짜*/
+		var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
+				+ " ret_reason=" + content + " ret_date=" + aplyReday;
+		this.transaction(svcID, svcURL, "", "", param, "");
+	}
+	this.alert("퇴직 신청이 완료됐습니다.");
+    this.close();
+}
+/*확인 버튼 누르기*/
+this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.mhrRetire();
+};
+
+/*취소 버튼 누르기*/
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
+    </Bind>
+  </Form>
+</FDL>

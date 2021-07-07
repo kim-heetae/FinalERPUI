@@ -1,5 +1,177 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <AppVariables version="2.0">
-  <Datasets/>
-  <Variables/>
+  <Datasets>
+    <Dataset id="gdsLeftMenu">
+      <ColumnInfo>
+        <Column id="MENU_CD" type="STRING" size="256"/>
+        <Column id="MENU_MN" type="STRING" size="256"/>
+        <Column id="MENU_LEV" type="STRING" size="256"/>
+        <Column id="PGM_PATH" type="STRING" size="256"/>
+        <Column id="PGM_ID" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="MENU_CD">0001</Col>
+          <Col id="MENU_MN">마이페이지</Col>
+          <Col id="MENU_LEV">0</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">0011</Col>
+          <Col id="MENU_MN">신청현황</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID"/>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">인사 신청현황</Col>
+          <Col id="MENU_LEV">2</Col>
+          <Col id="PGM_ID">M_HR_St.xfdl</Col>
+          <Col id="MENU_CD">0111</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">회계 신청현황</Col>
+          <Col id="MENU_LEV">2</Col>
+          <Col id="MENU_CD">0112</Col>
+          <Col id="PGM_ID">M_AC_St.xfdl</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">일정관리</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">M_SC_Mgt.xfdl</Col>
+          <Col id="MENU_CD">0012</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">근태관리</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">M_TA_Mgt.xfdl</Col>
+          <Col id="MENU_CD">0013</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">급여명세서 발급</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">M_Pay_Stub.xfdl</Col>
+          <Col id="MENU_CD">0014</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">인사</Col>
+          <Col id="MENU_LEV">0</Col>
+          <Col id="MENU_CD">0002</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">신청현황</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">HR_St.xfdl</Col>
+          <Col id="MENU_CD">0021</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">인사정보</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">HR_Pers_Info.xfdl</Col>
+          <Col id="MENU_CD">0022</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">인사발령</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">HR_Appt_Pers.xfdl</Col>
+          <Col id="MENU_CD">0023</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">근태관리</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">HR_Atd_St.xfdl</Col>
+          <Col id="MENU_CD">0024</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">회계</Col>
+          <Col id="MENU_LEV">0</Col>
+          <Col id="MENU_CD">0003</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">신청현황</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">AC_St.xfdl</Col>
+          <Col id="MENU_CD">0031</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">계좌정보 관리</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">AC_Acct_Info_Mgr.xfdl</Col>
+          <Col id="MENU_CD">0032</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">급여관리</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">AC_Pay_Mgr.xfdl</Col>
+          <Col id="MENU_CD">0033</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">퇴직급여 관리</Col>
+          <Col id="MENU_LEV">1</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">Retire_Pay_Mgr.xfdl</Col>
+          <Col id="MENU_CD">0034</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_MN">화상회의</Col>
+          <Col id="MENU_LEV">0</Col>
+          <Col id="MENU_CD">0004</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">0005</Col>
+          <Col id="MENU_MN">내정보관리</Col>
+          <Col id="MENU_LEV">0</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">My_Page.xfdl</Col>
+        </Row>
+      </Rows>
+    </Dataset>
+    <Dataset id="gdsOpenMenu">
+      <ColumnInfo>
+        <Column id="MENU_CD" type="STRING" size="8"/>
+        <Column id="MENU_NM" type="STRING" size="50"/>
+        <Column id="MENU_LVL" type="BIGDECIMAL" size="22"/>
+        <Column id="PGM_PATH" type="STRING" size="200"/>
+        <Column id="PGM_ID" type="STRING" size="200"/>
+        <Column id="WINID" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gdsLogin">
+      <ColumnInfo>
+        <Column id="MESSAGE" type="STRING" size="256" prop=""/>
+        <Column id="RESULT" type="STRING" size="256" prop=""/>
+      </ColumnInfo>
+      <Rows>
+        <Row/>
+      </Rows>
+    </Dataset>
+    <Dataset id="gdsLoginInfo">
+      <ColumnInfo>
+        <Column id="E_NO" type="STRING" size="256"/>
+        <Column id="E_NAME" type="STRING" size="256"/>
+        <Column id="D_NO" type="STRING" size="256"/>
+        <Column id="D_NAME" type="STRING" size="256"/>
+        <Column id="PA_AUTH" type="STRING" size="256"/>
+        <Column id="E_POS" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+  </Datasets>
+  <Variables>
+    <Variable id="gvLoginId"/>
+    <Variable id="gvLoginDeptno"/>
+    <Variable id="gvLoginEpos"/>
+    <Variable id="gvLoginAuth"/>
+    <Variable id="gvTransactionCount" initval="0"/>
+  </Variables>
 </AppVariables>
