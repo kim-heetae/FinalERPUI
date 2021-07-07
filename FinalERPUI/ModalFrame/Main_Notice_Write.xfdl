@@ -110,6 +110,7 @@ this.btn_edit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var svcURL = "SvcURL::/main/getNBUpd.mpg?no=" + svcID;
 	var param = " bn_name=" + bn_name + " bn_content=" + bn_content + " bn_no=" + bn_no;
 	if(!this.gfn_isNull(this.ds_board_notice.getColumn(0, "BNF_NAME"))){
+	
 		param += " bnf_name=" + this.file_upload.text;
 	}
 	this.transaction(svcID, svcURL, "", "", param, "fn_close");

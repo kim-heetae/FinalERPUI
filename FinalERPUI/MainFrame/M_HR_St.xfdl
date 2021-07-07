@@ -38,7 +38,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" scrolltype="both">
+        <Grid id="gr_my_hr_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_hr" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" scrolltype="none" nodatatext="조회결과가 없습니다." oncelldblclick="mhrSt_dbclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -89,6 +89,7 @@ include "lib::lib_date.xjs";
 include "lib::lib_base.xjs";
 
 this.application = null;
+this.selectNo;
 
 this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -99,7 +100,6 @@ this.M_HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 /*조회 버튼 호출*/
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-   alert("신청서 전체를 조회합니다.");
    /*인사 신청현황(전체 조회) 함수 호출*/
    this.mhrSel_load();
 };
@@ -108,8 +108,6 @@ this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    /*인사 신청 모달 출력*/
-   
-   this.alert("신청서를 눌렀습니다.");
    this.application.gfnShowModal("popupModal", null, "ModalFrame::M_HR_Type.xfdl", "mhrSel_load", this, 550, 30, true, true, null);
 };
 
@@ -151,7 +149,33 @@ this.mhrSel_load = function(){
    ,"ds_my_ap_hr=out_test"
    ,mhrSelparam
    ,"");
-};]]></Script>
+};
+
+// 
+// this.work_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo){
+// 	var selectedNo = this.DS_WORK.getColumn(e.row, "BW_NO");
+// 	var arg = { "bw_no" : selectedNo };
+// 	this.application.gfnShowModal("popupModal", arg, "ModalFrame::Main_Work_Write.xfdl", "bw_board_load", this, 550, 30, true, true, null);
+// }
+
+/*더블클릭 이벤트 처리*/
+this.mhrSt_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo){
+	var selectedNo = this.ds_my_ap_hr.getColumn(e.row, "FI_NO");
+	var selectedType = this.ds_my_ap_hr.getColumn(e.row, "FT_TYPE");
+	var arg = { "fi_no" : selectedNo };
+	if(selectedType == "근태사유서"){
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_HR_Attend_S.xfdl", "mhr_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "연장근무"){
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_HR_Overtime_S.xfdl", "mhr_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "전자결재_인사"){
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_HR_Approve_S.xfdl", "mhr_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "휴가") {
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_HR_Vacation_S.xfdl", "mhr_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "퇴직") {
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_HR_Retire_S.xfdl", "mhr_board_load", this, 550, 30, true, true, null);
+	}
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_my_ap_hr">
         <ColumnInfo>

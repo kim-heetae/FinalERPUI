@@ -10,7 +10,7 @@
         <Static id="lb_bg2" taborder="4" left="25" top="139" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_date" taborder="5" text="해당 일자" left="269" top="101" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Static id="lb_dept" taborder="6" text="부서" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Combo id="cb_dept" taborder="7" text="부서명" left="144" top="141" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" displaynulltext="인사과" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="cb_dept" taborder="7" text="부서명" left="144" top="141" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" displaynulltext="인사팀" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
