@@ -28,10 +28,10 @@
         <Static id="lb_bg1_01" taborder="22" left="25" top="112" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_empno" taborder="23" text="사원번호" left="25" top="113" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="24" left="144" top="114" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_date" taborder="25" text="신청일" left="269" top="113" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_date" taborder="26" left="390" top="114" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Edit id="ed_person" taborder="27" left="144" top="153" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <FileUpload id="file_upload" taborder="28" left="390" top="231" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Edit id="ed_person" taborder="25" left="144" top="153" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <FileUpload id="file_upload" taborder="26" left="390" top="231" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="lb_date" taborder="27" text="해당일자" left="269" top="113" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Calendar id="cal_date" taborder="28" left="390" top="115" width="135" height="35" font="15px/normal &quot;나눔바른펜&quot;" enable="false" border="1px solid #999999"/>
       </Layout>
     </Layouts>
   </Form>
