@@ -12,10 +12,10 @@
         <Static id="lb_hit" taborder="6" left="675" top="140" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text="" onclick="lb_hit_onclick"/>
         <Static id="lb_ename" taborder="7" left="225" top="140" width="120" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" text=""/>
         <Static id="lb_date" taborder="8" left="445" top="140" width="130" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_date01_onclick"/>
-        <Static id="lb_bg1_00" taborder="9" left="25" top="661" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_file" taborder="10" text="첨부파일" left="25" top="662" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg1_00" taborder="9" left="25" top="661" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;" visible="false"/>
+        <Static id="lb_file" taborder="10" text="첨부파일" left="25" top="662" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" visible="false"/>
         <Button id="btn_ok" taborder="11" left="699" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
-        <TextArea id="ta_content" taborder="12" left="25" top="253" width="750" height="409" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <TextArea id="ta_content" taborder="12" left="25" top="255" width="750" height="355" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
         <Static id="lb_content" taborder="13" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_content00" taborder="14" left="144" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_file00" taborder="15" left="144" top="216" width="631" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text=""/>
@@ -26,8 +26,33 @@
         <Edit id="ed_title" taborder="20" left="144" top="178" width="631" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
         <Static id="lb_dept_label" taborder="21" text="담당부서" left="445" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_dept" taborder="22" text="" left="635" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <FileDownload id="FileDownload" taborder="23" text="FileDownload00" left="146" top="663" width="629" height="36"/>
-        <FileUpload id="file_upload" taborder="24" left="146" top="663" width="629" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <FileUpload id="file_upload" taborder="23" left="146" top="663" width="629" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" visible="false"/>
+        <Grid id="Grid00" taborder="2" left="25" top="614" width="625" height="86" autofittype="col" binddataset="ds_file">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="200"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="FILE_CHK" edittype="checkbox" displaytype="checkboxcontrol" expr="expr:FILE_CHK=='Y'?'1':'0'"/>
+                <Cell col="1" text="파일명"/>
+                <Cell col="2" text="크기"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FILE_CHK" displaytype="checkboxcontrol" edittype="checkbox" expr="expr:FILE_CHK=='Y'?'1':'0'"/>
+                <Cell col="1" text="bind:BBF_NAME"/>
+                <Cell col="2" text="bind:BBF_SIZE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <FileDownload id="FileDownload00" taborder="9" text="다운로드" left="655" top="615" width="120" height="86" onclick="FileDownload00_onclick"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -50,8 +75,17 @@
           <Column id="BW_CONTENT" type="STRING" size="256"/>
           <Column id="D_NO" type="STRING" size="256"/>
           <Column id="BBF_NAME" type="STRING" size="256"/>
+          <Column id="E_NO" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_file" oncolumnchanged="ds_file_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="FILE_CHK" type="STRING" size="256"/>
+          <Column id="BBF_NAME" type="STRING" size="256"/>
+          <Column id="BBF_SIZE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDownTransfer id="FileDownTransfer00"/>
     </Objects>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
 include "lib::lib_date.xjs";
@@ -79,14 +113,23 @@ this.fn_work_init = function(bw_no){
 
 this.fn_text_init = function(){
 	var Login_ENO = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-	if (this.ds_board_notice.getColumn(0, "E_NO") != Login_ENO && Login_ENO != 1){
+	if (this.ds_board_work.getColumn(0, "E_NO") != Login_ENO && Login_ENO != 1){
 		this.ed_title.set_readonly(true);
 		this.ta_content.set_readonly(true);
 		this.btn_delete.set_visible(false);
 		this.btn_edit.set_visible(false);
 		this.file_upload.set_visible(false);
 	}
+	this.fn_file_init();
 };
+
+this.fn_file_init = function(){
+	var svcID = "getWBFileSel" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/main/getDetailSel.mpg?no=" + svcID;
+	var data = "ds_file=out_test";
+	var param = " bw_no=" + this.ds_board_work.getColumn(0, "BW_NO") + " bbf_name=0";
+	this.transaction(svcID, svcURL, "", data, param, "");	
+}
 
 this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -120,6 +163,46 @@ this.btn_edit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.fn_close = function(){
 	this.close();
-}]]></Script>
+}
+
+this.FileDownload00_onclick = function(obj:nexacro.FileDownload,e:nexacro.ClickEventInfo)
+{
+	let count = this.application.transactionCount++;
+	let path = "";
+	if(this.application.objgdsLoginInfo.getColumn(0, "D_NO") == "10"){
+		path = "board_work_hr";
+	}
+	else if(this.application.objgdsLoginInfo.getColumn(0, "D_NO") == "20"){
+		path = "board_work_ac";
+	}
+	else if(this.application.objgdsLoginInfo.getColumn(0, "D_NO") == "99"){
+		path = "board_work_one";
+	}
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		if(this.ds_file.getColumn(i, "FILE_CHK") == "Y"){
+			this.FileDownTransfer00.download('http://localhost:9000/fileBox/fileDownload.jsp?PATH=' + path + "&file_name=" + this.ds_file.getColumn(i, "BBF_NAME")) + "&no=" + count;
+		}
+	}
+	
+};
+
+this.ds_file_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid == "FILE_CHK") {
+        // 다른 이벤트가 동작하지 않도록 설정
+        obj.enableevent = false;  //false can stop event temporarily 
+        // 변경된 값이 1(체크가 된 경우)인경우
+        if(e.newvalue == '1') {
+            // 1인 경우 Dataset의 chk 값을 Y로 변경
+            obj.setColumn(e.row,"FILE_CHK",'Y');
+        } else if(e.newvalue == '0') {
+            // 0인 경우 Dataset의 chk 값을 N로 변경
+            obj.setColumn(e.row,"FILE_CHK",'N'); 
+        }
+        // 다시 이벤트가 정상 동작하도록 설정
+        obj.enableevent = true;
+    }
+};
+]]></Script>
   </Form>
 </FDL>
