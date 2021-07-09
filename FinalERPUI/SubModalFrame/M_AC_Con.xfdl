@@ -54,8 +54,8 @@ this.macCon = function(){
 	let theDate = this.cal_date.value;
 	let type = "경조비";
 	
-	var svcID = "macConTraction" + this.application.transactionCount++;
-	var svcURL = "SvcURL::/macst/subPrivateAcct.mpg?no=" + svcID;
+	let svcID = "macConTraction" + this.application.transactionCount++;
+	let svcURL = "SvcURL::/macst/subPrivateAcct.mpg?no=" + svcID;
 	
 	if(this.gfn_isNull(theDate)){
 		this.alert("해당일자를 지정해주세요.");
@@ -68,14 +68,14 @@ this.macCon = function(){
 	} else{
 		/*경조비 insert parameter ==> fpc_self: 대상자 사원번호 , fpc_date: 경조사 일자 , fpc_loc: 발생지역
 		, fpc_rela: 대상자와의 관계 , fpc_content: 내용 */
-		var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
+		let param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
 				+ " ff_name=" + file + " ff_size=" + 0
 				+ " fpc_self=" + person + " fpc_date=" + dateOccur + " fpc_loc=" + place 
 				+ " fpc_rela=" + relation + " fpc_content=" + content;
 		this.transaction(svcID, svcURL, "", "", param, "");
+		this.alert("경조비 신청이 완료됐습니다.");
+		this.close();
 	}
-	this.alert("경조비 신청이 완료됐습니다.");
-    this.close();
 }
 
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -88,5 +88,9 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.close();
 };
 ]]></Script>
+    <Bind>
+      <BindItem id="item1" compid="ed_empno" propid="accessibilityaction" datasetid="gdsLoginInfo" columnid="E_NO"/>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
+    </Bind>
   </Form>
 </FDL>

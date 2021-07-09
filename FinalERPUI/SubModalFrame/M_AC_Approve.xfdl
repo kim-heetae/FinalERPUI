@@ -37,14 +37,14 @@ this.macApprove_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 }
 
 this.macApprove = function(){
-	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-	var file = this.file_upload.text;
-	var title = this.ed_title.text;
-	var content = this.ta_content.text;
-	var theDate = this.cal_date.value;
-	var svcID = "macAPTraction" + this.application.transactionCount++;
-	var svcURL = "SvcURL::/macst/subACEPReq.mpg?no=" + svcID;
-	var type = "전자결재_회계";
+	let e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	let file = this.file_upload.text;
+	let title = this.ed_title.text;
+	let content = this.ta_content.text;
+	let theDate = this.cal_date.value;
+	let svcID = "macApproveTraction" + this.application.transactionCount++;
+	let svcURL = "SvcURL::/macst/subACEPReq.mpg?no=" + svcID;
+	let type = "전자결재_회계";
 	
 	if(this.gfn_isNull(file)){
 		this.alert("파일을 첨부해주세요");
@@ -55,14 +55,15 @@ this.macApprove = function(){
    } else if(this.gfn_isNull(theDate)){
 		this.alert("해당 일자를 선택해주세요.");
    } else{
-		var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no 
+		/*전자결재 파라미터 ====> faa_content : 내용*/
+		let param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no 
 				+ " ff_name=" + file + " ff_size=" + 0
 				+ " faa_content=" + content;
 		/*var Integparam = */
 		this.transaction(svcID, svcURL, "", "", param, "");
+		this.alert("전자결재 신청이 완료됐습니다.");
+		this.close();
 	}
-	this.alert("전자결재 신청이 완료됐습니다.");
-    this.close();
 }
 
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)

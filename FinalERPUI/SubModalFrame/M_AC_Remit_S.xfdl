@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_Remit_S" width="550" height="550" titletext="New Form">
+  <Form id="M_AC_Remit_S" width="550" height="550" titletext="이체요청 내역" onload="M_AC_Remit_onload">
     <Layouts>
       <Layout height="550" width="550">
         <Static id="lb_bg1" taborder="0" left="25" top="112" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
@@ -24,11 +24,10 @@
         <Static id="lb_partner" taborder="18" text="거래처명" left="269" top="152" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_partner" taborder="19" left="390" top="153" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg1_00_00" taborder="20" left="25" top="190" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_date_pay" taborder="21" text="사용날짜" left="25" top="191" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_date_pay" taborder="22" left="144" top="192" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_amount" taborder="23" text="금액" left="269" top="191" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_amount" taborder="24" left="390" top="192" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Combo id="cb_dept" taborder="25" left="144" top="153" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" displaynulltext="부서">
+        <Static id="lb_date_pay" taborder="21" text="사용일자" left="25" top="191" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_amount" taborder="22" text="금액" left="269" top="191" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_amount" taborder="23" left="390" top="192" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Combo id="cb_dept" taborder="24" left="144" top="153" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" displaynulltext="회계팀">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -46,10 +45,64 @@
             </Rows>
           </Dataset>
         </Combo>
-        <FileUpload id="file_upload" taborder="26" left="390" top="231" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Static id="lb_date" taborder="27" text="해당일자" left="269" top="113" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Calendar id="cal_date" taborder="28" left="390" top="115" width="135" height="35" font="15px/normal &quot;나눔바른펜&quot;" enable="false" border="1px solid #999999"/>
+        <FileUpload id="file_upload" taborder="25" left="390" top="231" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="lb_date" taborder="26" text="해당일자" left="269" top="113" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Calendar id="cal_date" taborder="27" left="390" top="115" width="135" height="35" font="15px/normal &quot;나눔바른펜&quot;" enable="false" border="1px solid #999999"/>
+        <Calendar id="cal_date_pay" taborder="28" left="144" top="193" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;" enable="false" border="1px solid #999999"/>
       </Layout>
     </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
+      <BindItem id="item1" compid="cal_date" propid="value" datasetid="macRemitSel" columnid="FI_DATE"/>
+      <BindItem id="item2" compid="ed_partner" propid="value" datasetid="macRemitSel" columnid="FPE_NAME"/>
+      <BindItem id="item3" compid="cal_date_pay" propid="value" datasetid="macRemitSel" columnid="FPE_DATE"/>
+      <BindItem id="item4" compid="ed_amount" propid="value" datasetid="macRemitSel" columnid="FPE_EXP"/>
+      <BindItem id="item5" compid="ed_state" propid="value" datasetid="macRemitSel" columnid="FI_STATE"/>
+      <BindItem id="item6" compid="file_upload" propid="accessibilityaction" datasetid="macRemitSel" columnid="FF_NAME"/>
+      <BindItem id="item7" compid="ed_title" propid="value" datasetid="macRemitSel" columnid="FI_NAME"/>
+      <BindItem id="item8" compid="ta_content" propid="value" datasetid="macRemitSel" columnid="FPE_CONTENT"/>
+    </Bind>
+    <Objects>
+      <Dataset id="macRemitSel">
+        <ColumnInfo>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="FPE_NAME" type="STRING" size="256"/>
+          <Column id="FPE_DATE" type="STRING" size="256"/>
+          <Column id="FPE_EXP" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="FPE_CONTENT" type="STRING" size="256"/>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+          <Column id="FI_STATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.M_AC_Remit_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+   this.application = nexacro.getApplication();
+   var objFrame = this.getOwnerFrame();
+   this.fn_init(objFrame);
+};
+
+this.fn_init = function(objFrame){
+	var fi_no = objFrame.fi_no;
+	var ft_type = "이체요청";
+	var svcID = "getRemitSels" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/macst/getDetailSel.mpg?no=" + svcID;
+	var data = "macRemitSel=out_test";
+	var param = " fi_no=" + fi_no + " ft_type=" + ft_type + " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
   </Form>
 </FDL>

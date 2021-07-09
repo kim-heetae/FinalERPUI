@@ -8,7 +8,7 @@
         <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="102" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="3" left="144" top="103" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg2" taborder="4" left="269" top="216" width="256" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_date" taborder="5" text="신청일" left="269" top="102" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_date" taborder="5" text="해당일자" left="269" top="102" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Static id="lb_file" taborder="6" text="첨부파일" left="269" top="218" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Button id="btn_cancel" taborder="7" left="449" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
         <Button id="btn_confirm" taborder="8" left="336" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_confirm_onclick"/>
@@ -39,30 +39,30 @@ this.macAccount_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 }
 
 this.macAccount = function(){
-	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-	var theDate = this.cal_date.value;
-	var bank = this.ed_bank.text;
-	var account = this.ed_account.text;
-	var title = this.ed_title.text;
-	var file = this.file_upload.text;
-	var content = this.ta_content.text;
-	var type = "계좌정보변경";
+	let e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	let theDate = this.cal_date.value;
+	let bank = this.ed_bank.text;
+	let account = this.ed_account.text;
+	let title = this.ed_title.text;
+	let file = this.file_upload.text;
+	let content = this.ta_content.text;
+	let type = "계좌정보변경";
+	let svcID = "macAccountTraction" + this.application.transactionCount++;
+	let svcURL = "SvcURL::/macst/subChangeAcct.mpg?no=" + svcID;
 	
-	svcID = "macAccountTraction" + this.application.transactionCount++;
-	svcURL = "SvcURL::/macst/subChangeAcct.mpg?no=" + svcID;
-	if(this.gfn_Null(theDate)){
+	if(this.gfn_isNull(theDate)){
 		alert("해당일자를 선택해주세요.");
-	} else if(this.gfn_Null(bank)){
+	} else if(this.gfn_isNull(bank)){
 		alert("은행명을 입력해주세요.");
-	} else if (this.gfn_Null(account)){
+	} else if (this.gfn_isNull(account)){
 		alert("계좌번호를 입력해주세요.");
 	} else {
-	/* fac_bank: 희망 은행명 , fac_account: 희망계좌 , fac_content: 내용, fac_file: ?	 */
+	/* fac_bank: 희망 은행명 , fac_account: 희망계좌 , fac_content: 내용 */
 		var param =  " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
-				   + " ff_name=" + file + " ff_size=" + 0;
+				   + " ff_name=" + file + " ff_size=" + 0
 				   + " fac_bank=" + bank + " fac_account=" + account +" fac_content="+ content;
-		this.transaction(svcID, svcURL, "", param, "");
-		this.alert("계좌정보가 변경되었습니다.");
+		this.transaction(svcID, svcURL, "", "", param, "");
+		this.alert("계좌정보 변경을 신청했습니다.");
 		this.close();
 	}
 }
@@ -76,5 +76,8 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.close();
 };
 ]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
+    </Bind>
   </Form>
 </FDL>
