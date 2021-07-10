@@ -19,30 +19,30 @@
                 <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="36" band="head"/>
-                <Row size="32"/>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
               </Rows>
-              <Band id="head" font="20px/normal &quot;나눔바른펜&quot;">
-                <Cell text="NO" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="사원명" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="부서" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="직급" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="지급날짜" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="급여" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="6" text="공제액" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="7" text="실수령액" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="8" text="상태" font="20px/normal &quot;나눔바른펜&quot;"/>
+              <Band id="head">
+                <Cell text="SB_NO"/>
+                <Cell col="1" text="E_NAME"/>
+                <Cell col="2" text="D_NAME"/>
+                <Cell col="3" text="E_POS"/>
+                <Cell col="4" text="SB_DATE"/>
+                <Cell col="5" text="SS_BASIC"/>
+                <Cell col="6" text="SS_DUC"/>
+                <Cell col="7" text="SS_REAL"/>
+                <Cell col="8" text="SS_STATE"/>
               </Band>
-              <Band id="body" font="20px/normal &quot;나눔바른펜&quot;">
-                <Cell text="bind:E_NO" textAlign="center"/>
-                <Cell col="1" text="bind:E_NAME" textAlign="center"/>
-                <Cell col="2" text="bind:D_NAME" textAlign="center"/>
-                <Cell col="3" text="bind:E_POS" textAlign="center"/>
-                <Cell col="4" text="bind:SB_DATE" textAlign="center"/>
-                <Cell col="5" text="bind:SS_BASIC" textAlign="right"/>
-                <Cell col="6" text="bind:SS_DUC" textAlign="right"/>
-                <Cell col="7" text="bind:SS_REAL" textAlign="right"/>
-                <Cell col="8" text="bind:SS_STATE" textAlign="center"/>
+              <Band id="body">
+                <Cell text="bind:SB_NO"/>
+                <Cell col="1" text="bind:E_NAME"/>
+                <Cell col="2" text="bind:D_NAME"/>
+                <Cell col="3" text="bind:E_POS"/>
+                <Cell col="4" text="bind:SB_DATE"/>
+                <Cell col="5" text="bind:SS_BASIC"/>
+                <Cell col="6" text="bind:SS_DUC"/>
+                <Cell col="7" text="bind:SS_REAL"/>
+                <Cell col="8" text="bind:SS_STATE"/>
               </Band>
             </Format>
           </Formats>
@@ -61,7 +61,7 @@
     <Objects>
       <Dataset id="ds_pay_stub">
         <ColumnInfo>
-          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="SB_NO" type="STRING" size="256"/>
           <Column id="E_NAME" type="STRING" size="256"/>
           <Column id="D_NAME" type="STRING" size="256"/>
           <Column id="E_POS" type="STRING" size="256"/>
@@ -115,18 +115,19 @@ this.mps_board_load = function (){
  ************************************************************************/
 this.m_pay_stub_grid_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {	
-	var e_no = this.ds_pay_stub.getColumn(e.row,"E_NO");
-	var e_name = this.ds_pay_stub.getColumn(e.row,"E_NAME");
-	var d_name = this.ds_pay_stub.getColumn(e.row,"D_NAME");
-	var e_pos = this.ds_pay_stub.getColumn(e.row,"E_POS");
-	var sb_date = this.ds_pay_stub.getColumn(e.row,"SB_DATE");
-	var ss_basic = this.ds_pay_stub.getColumn(e.row,"SS_BASIC");
-	var ss_duc = this.ds_pay_stub.getColumn(e.row,"SS_DUC");
-	var ss_real = this.ds_pay_stub.getColumn(e.row,"SS_REAL");
-	var ss_state = this.ds_pay_stub.getColumn(e.row,"SS_STATE");
-	
-	var paramData = { "E_NO" : e_no, "E_NAME" : e_name, "D_NAME" : d_name, "E_POS" : e_pos, "SB_DATE" : sb_date,
-					  "SS_BASIC" : ss_basic, "SS_DUC" : ss_duc, "SS_REAL" : ss_real, "SS_STATE" : ss_state }
+// 	var e_no = this.ds_pay_stub.getColumn(e.row,"E_NO");
+// 	var e_name = this.ds_pay_stub.getColumn(e.row,"E_NAME");
+// 	var d_name = this.ds_pay_stub.getColumn(e.row,"D_NAME");
+// 	var e_pos = this.ds_pay_stub.getColumn(e.row,"E_POS");
+// 	var sb_date = this.ds_pay_stub.getColumn(e.row,"SB_DATE");
+// 	var ss_basic = this.ds_pay_stub.getColumn(e.row,"SS_BASIC");
+// 	var ss_duc = this.ds_pay_stub.getColumn(e.row,"SS_DUC");
+// 	var ss_real = this.ds_pay_stub.getColumn(e.row,"SS_REAL");
+// 	var ss_state = this.ds_pay_stub.getColumn(e.row,"SS_STATE");
+	let sb_no = this.ds_pay_stub.getColumn(e.row, "SB_NO");
+// 	var paramData = { "E_NO" : e_no, "E_NAME" : e_name, "D_NAME" : d_name, "E_POS" : e_pos, "SB_DATE" : sb_date,
+// 					  "SS_BASIC" : ss_basic, "SS_DUC" : ss_duc, "SS_REAL" : ss_real, "SS_STATE" : ss_state }
+	let paramData = { "SB_NO" : sb_no };
 					  
 	this.application.gfnShowModal("popupModal", paramData, "ModalFrame::M_Pay_Sel.xfdl", "", this, 550, 30, true, true, null);
 }
