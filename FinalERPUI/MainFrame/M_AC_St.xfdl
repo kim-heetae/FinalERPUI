@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_St" width="1670" height="835" titletext="New Form" borderRadius="10px" onload="M_AC_St_onload">
+  <Form id="M_AC_St" width="1670" height="835" titletext="회계신청 현황" borderRadius="10px" onload="M_AC_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_my_ap_ac" taborder="0" text="회계 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
-        <Combo id="cb_type" taborder="1" text="신청서 종류" left="1241" top="160" width="200" height="40" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="16px/normal &quot;나눔바른펜&quot;&#9;">
+        <Combo id="cb_type" taborder="1" text="신청서 종류" left="1241" top="160" width="200" height="40" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="16px/normal &quot;나눔바른펜&quot;&#9;" displaynulltext="신청서종류">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -24,7 +24,7 @@
                 <Col id="codecolumn">remit</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">계좌 정보 변경</Col>
+                <Col id="datacolumn">계좌정보변경</Col>
                 <Col id="codecolumn">account</Col>
               </Row>
               <Row>
@@ -34,7 +34,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_ac" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_ac" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" oncelldblclick="macSt_dbclick" nodatatext="조회결과가 없습니다.">
           <Formats>
             <Format id="default">
               <Columns>
@@ -77,7 +77,7 @@
         <Static id="lb_4" taborder="9" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_5" taborder="10" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_right" taborder="11" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Button id="btn_apply" taborder="12" text="신청" left="1440" top="631" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="black" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_apply_onclick"/>
+        <Button id="btn_apply" taborder="12" text="신청" left="1440" top="631" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="black" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_apply_onclick" cursor="pointer"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -85,6 +85,7 @@ include "lib::lib_date.xjs";
 include "lib::lib_base.xjs";
 
 this.application = null;
+this.selectNo;
 
 this.M_AC_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -138,7 +139,6 @@ this.macSel_load = function(){
    else{
 		var macSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=회계과" + " ft_type=" + selectedCombo;
    }
-   /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
    var idCount = this.application.transactionCount++;
    var svcID = "macSelType" + idCount;
    this.ds_my_ap_ac.clearData();
@@ -153,9 +153,23 @@ this.macSel_load = function(){
 
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-   alert("조회를 시작합니다.");
-   /*인사 신청현황(전체 조회) 함수 호출*/
    this.macSel_load();
+};
+
+/*더블클릭 이벤트 처리*/
+this.macSt_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo){
+	var selectedNo = this.ds_my_ap_ac.getColumn(e.row, "FI_NO");
+	var selectedType = this.ds_my_ap_ac.getColumn(e.row, "FT_TYPE");
+	var arg = { "fi_no" : selectedNo };
+	if(selectedType == "전자결재_회계"){
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_AC_Approve_S.xfdl", "mac_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "이체요청"){
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_AC_Remit_S.xfdl", "mac_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "계좌정보변경"){
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_AC_Account_S.xfdl", "mac_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "경조비") {
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_AC_Con_S.xfdl", "mac_board_load", this, 550, 30, true, true, null);
+	}
 };
 ]]></Script>
     <Objects>

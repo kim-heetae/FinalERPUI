@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_Type" width="550" height="400" titletext="New Form">
+  <Form id="M_AC_Type" width="550" height="400" titletext="회계 신청서 종류">
     <Layouts>
       <Layout height="400" mobileorientation="landscape" width="550">
         <Static id="lb_title" taborder="0" text="회계 신청서" left="188" top="15" width="175" height="65" font="bold 25px/normal &quot;나눔바른펜&quot;" color="#000000" textAlign="center" verticalAlign="middle"/>
