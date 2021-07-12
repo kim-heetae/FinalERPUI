@@ -171,7 +171,7 @@ this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 		
 		this.exportObj.set_exportfilename(this.ds_pay_stub.getColumn(0, "E_NO") + this.ds_pay_stub.getColumn(0, "SB_DATE"));
 		/*this.exportObj.set_exporturl("http://demo.nexacro.com/developer_guide/XExportImport");*/
-		this.exportObj.set_exporturl("http://192.168.0.171:9000/XExportImport");
+		this.exportObj.set_exporturl("http://localhost:9000/XExportImport");
 		
 		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid01, "Sheet1!A1");
 		/*this.exportObj.set_exportfilepath("http:\\192.168.0.171:9000\\fileBox");*/
@@ -212,7 +212,7 @@ this.Export00_onsuccess = function(obj:ExcelExportObject, e:nexacro.ExcelExportE
     alert("Export00_onsuccess");
 	this.addFileList(obj);
 	let path = "pay_excel";
-	this.FileUpTransfer00.upload('http://192.168.0.171:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + idCount);
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + idCount);
 	
 }
 this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
