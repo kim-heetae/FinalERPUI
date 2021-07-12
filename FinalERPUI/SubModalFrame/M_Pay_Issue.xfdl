@@ -145,6 +145,8 @@ this.application = null;
  
 this.M_Pay_Issue_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 	this.application = nexacro.getApplication();	
+	//해당사원의 모든 급여명세서 가져오기
+		this.fn_payallsel();
 }
 
 /************************************************************************
@@ -163,8 +165,7 @@ this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 	
 	if(!this.gfn_isNull(textInputCheck) && comboSelectIndex > 0){
 	/////////////엑셀 서버에 다운받기 test중/////
-	//해당사원의 모든 급여명세서 가져오기
-		this.fn_payallsel();
+	
 	//엑셀로 만들기
 		this.exportObj = new ExcelExportObject("Export00", this);
 		
@@ -173,16 +174,23 @@ this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 		this.exportObj.set_exporturl("http://localhost:9000/XExportImport");
 		
 		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid01, "Sheet1!A1");
-		alert("!23");
-		this.addEventHandler("onsuccess", this.Export00_onsuccess, this);
-		this.addEventHandler("onerror", this.Export00_onerror, this);
+		/*this.exportObj.set_exportfilepath("http:\\192.168.0.171:9000\\fileBox");*/
+		/*this.exportObj.set_exportfilepath("C:\\FinalProject\\FinalProject\\FinalProject_ERP\\WebContent\\fileBox");*/
+		this.exportObj.exportData();
+		
+// 		trace("!23");
+// 		this.exportObj.addEventHandler("onsuccess", this.Export00_onsuccess, this);
+// 		trace("실ㅍ??");
+// 		this.exportObj.addEventHandler("onerror", this.Export00_onerror, this);
+		/*this.addFileList(this.exportObj);*/
 	//만들어진 엑셀을 목록에 추가
 		/*this.addFileList(this.exportObj.exportData());*/
-		this.addFileList(this.exportObj);
+		/*this.addFileList(this.exportObj);*/
+		/*this.FileUpTransfer00.addFile(this.exportObj.exportfilename, this.exportObj);*/
 	//서버에 엑셀파일 업로드
-		let path = "pay_excel";
-		this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + idCount);
-	
+// 		let path = "pay_excel";
+// 		this.FileUpTransfer00.upload('http://192.168.0.171:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + idCount);
+// // 	
 	//test떄문에 주석 2줄
 // 		mpayissueEmailParam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " e_email=" + textInputCheck + "@" + comboSelectCheck;
 // 		alert(mpayissueEmailParam);
@@ -199,7 +207,18 @@ this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 	}
 
 };
-
+this.Export00_onsuccess = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
+{
+    alert("Export00_onsuccess");
+	this.addFileList(obj);
+	let path = "pay_excel";
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + idCount);
+	
+}
+this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
+{
+    alert("Export00_onerror");
+}
 
 //엑셀파일을 만들기 위해 해당사원의 모든 급여명세서를 조회
 this.fn_payallsel = function(){
@@ -225,6 +244,7 @@ this.addFileList = function(filelist)
 	for (var i = 0, len = filelist.length, vFile; i < len; i++)
 	{
 		vFile = filelist[i];
+		trace("2335");
 		vFile.addEventHandler("onsuccess", this.FileList_onsuccess, this);
 		vFile.addEventHandler("onerror", this.FileList_onerror , this);
 		
@@ -232,22 +252,31 @@ this.addFileList = function(filelist)
 	}
 }
 this.FileList_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileEventInfo)
-{
+{	
+// 	e.virtualfiles.add(1,0);
+// 	e.virtualfiles.add(9,this.exportObj);
+	trace("success");
 	switch (e.reason)
 	{
 		case 1:
 			obj.getFileSize();
+			trace("123");
 			break;
 		case 9:
+			trace("234");
 			var nRowIdx = this.Dataset00.addRow();
 			this.Dataset00.setColumn(nRowIdx, 0, obj.filename);
 			this.Dataset00.setColumn(nRowIdx, 1, this.cutFileSize(e.filesize));
 			this.FileUpTransfer00.addFile(obj.filename, obj);
 			break;
+		default:
+			trace("default");
+			break;
 	}
 }
 this.FileList_onerror = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileErrorEventInfo)
 {
+	
 	trace("errortype: "+e.errortype);
 	trace("errormsg: "+e.errormsg);
 	trace("statuscode: "+e.statuscode);
@@ -292,7 +321,7 @@ this.cutFileSize = function(filesize)
           <Column id="BNF_SIZE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <ExcelExportObject id="ExcelExportObject00"/>
+      <ExcelExportObject id="ExcelExportObject00" onsuccess="Export00_onsuccess" onerror="Export00_onerror" exportfilepath="http://192.168.0.171:9000/fileBox/"/>
       <FileDialog id="FileDialog00"/>
       <FileUpTransfer id="FileUpTransfer00"/>
     </Objects>

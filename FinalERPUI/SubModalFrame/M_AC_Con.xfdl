@@ -73,11 +73,11 @@ this.macCon = function(){
 				+ " ff_name=" + file + " ff_size=" + 0
 				+ " fpc_self=" + person + " fpc_date=" + dateOccur + " fpc_loc=" + place 
 				+ " fpc_rela=" + relation + " fpc_content=" + content;
-		this.transaction(svcID, svcURL, "", "", param, "");`
+		this.transaction(svcID, svcURL, "", "", param, "");
 		this.alert("경조비 신청이 완료됐습니다.");
 		this.close();
 	}
-}
+};
 
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {

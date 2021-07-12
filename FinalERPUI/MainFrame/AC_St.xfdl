@@ -70,12 +70,26 @@
         <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
-this.Tab00_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.AC_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	
+	this.application = nexacro.getApplication();
+	this.fn_ac_st_init();
 };
-]]></Script>
+
+this.fn_ac_st_init = function(){
+	let count = this.application.transactionCount++;
+	let svcID = "acStSel" + count;
+	let svcURL = "SvcURL::/acst/acStSel.ac?no=" + count;
+	let data = "ds_ac_ap=out_test";
+	let param;
+	this.transaction(svcID, svcURL, "", data, param, "");
+};]]></Script>
     <Objects>
       <Dataset id="ds_ac_ap">
         <ColumnInfo>
