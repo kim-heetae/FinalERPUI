@@ -46,6 +46,7 @@ this.macCon_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 this.macCon = function(){
 	let e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
 	let title = this.ed_title.value;
+	let file = this.file_upload.text;
 	let content = this.ta_content.text;
 	let person = this.ed_person.text;
 	let dateOccur = this.cal_date_occur.value;
@@ -72,7 +73,7 @@ this.macCon = function(){
 				+ " ff_name=" + file + " ff_size=" + 0
 				+ " fpc_self=" + person + " fpc_date=" + dateOccur + " fpc_loc=" + place 
 				+ " fpc_rela=" + relation + " fpc_content=" + content;
-		this.transaction(svcID, svcURL, "", "", param, "");
+		this.transaction(svcID, svcURL, "", "", param, "");`
 		this.alert("경조비 신청이 완료됐습니다.");
 		this.close();
 	}
@@ -82,6 +83,7 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.macCon();
 };
+
 
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
