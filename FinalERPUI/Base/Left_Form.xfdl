@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Left_Form" width="250" height="935" titletext="New Form" onload="Left_Form_onload">
+  <Form id="Left_Form" width="250" height="935" titletext="New Form" onload="Left_Form_onload" scrolltype="none">
     <Layouts>
       <Layout height="935" width="250">
         <ImageViewer id="iv_logo" taborder="0" left="0" top="0" width="250" height="100" image="url('imagerc::FinalProjectLogo-removebg-preview.png')" background="none" border="0px none"/>
@@ -63,38 +63,38 @@
             <Col id="MENU_MN">인사 신청현황</Col>
             <Col id="MENU_LEV">2</Col>
             <Col id="PGM_ID">M_AC_St.xfdl</Col>
-            <Col id="MENU_CD">0111</Col>
+            <Col id="MENU_CD">0012</Col>
           </Row>
           <Row>
             <Col id="MENU_MN">회계 신청현황</Col>
             <Col id="MENU_LEV">2</Col>
-            <Col id="MENU_CD">0112</Col>
+            <Col id="MENU_CD">0013</Col>
           </Row>
           <Row>
             <Col id="MENU_MN">일정관리</Col>
             <Col id="MENU_LEV">1</Col>
             <Col id="PGM_PATH">MainFrame</Col>
             <Col id="PGM_ID">M_SC_Mgt.xfdl</Col>
-            <Col id="MENU_CD">0012</Col>
+            <Col id="MENU_CD">0014</Col>
           </Row>
           <Row>
             <Col id="MENU_MN">근태관리</Col>
             <Col id="MENU_LEV">1</Col>
             <Col id="PGM_PATH">MainFrame</Col>
             <Col id="PGM_ID">M_TA_Mgt.xfdl</Col>
-            <Col id="MENU_CD">0013</Col>
+            <Col id="MENU_CD">0015</Col>
           </Row>
           <Row>
             <Col id="MENU_MN">급여명세서 발급</Col>
             <Col id="MENU_LEV">1</Col>
             <Col id="PGM_PATH">MainFrame</Col>
             <Col id="PGM_ID">M_Pay_Stub.xfdl</Col>
-            <Col id="MENU_CD">0014</Col>
+            <Col id="MENU_CD">0016</Col>
           </Row>
           <Row>
             <Col id="MENU_MN">인사</Col>
             <Col id="MENU_LEV">0</Col>
-            <Col id="MENU_CD">0002</Col>
+            <Col id="MENU_CD">0020</Col>
           </Row>
           <Row>
             <Col id="MENU_MN">신청현황</Col>
@@ -127,7 +127,7 @@
           <Row>
             <Col id="MENU_MN">회계</Col>
             <Col id="MENU_LEV">0</Col>
-            <Col id="MENU_CD">0003</Col>
+            <Col id="MENU_CD">0030</Col>
           </Row>
           <Row>
             <Col id="MENU_MN">신청현황</Col>
@@ -160,7 +160,7 @@
           <Row>
             <Col id="MENU_MN">화상회의</Col>
             <Col id="MENU_LEV">0</Col>
-            <Col id="MENU_CD">0004</Col>
+            <Col id="MENU_CD">0040</Col>
           </Row>
         </Rows>
       </Dataset>
@@ -175,11 +175,20 @@ this.Left_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.application = nexacro.getApplication();
 	/*this.fn_workframe();*/
 	/*this.application.gvToday = this.gfnGetToDay();*/
-	
 };
 
+//로그인한 사원의 부서에 맞도록 메뉴 구성하기
 this.fn_Menu_init = function(){
-	
+	trace(this.DS_SideMenu.getRowCount());
+	for(let i = this.DS_SideMenu.getRowCount(); i > 0 ; i--){
+		let j = this.DS_SideMenu.getColumn(i, "MENU_CD")
+		if(this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 10 && j / 10 >= 3 && j / 10 < 4){
+			this.DS_SideMenu.deleteRow(i);
+		}
+		else if(this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 20 && j / 10 >= 2 && j / 10 < 3){
+			this.DS_SideMenu.deleteRow(i);
+		}
+	}
 }
 
 this.divLeft_grdLeft_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)

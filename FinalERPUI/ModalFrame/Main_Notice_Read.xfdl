@@ -83,7 +83,7 @@ this.fn_file_for = function(){
 			};
 	let count = this.application.transactionCount++;
 	let path = "board_notice";
-	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + count);
+	this.FileUpTransfer00.upload('http://192.168.0.171:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + count);
 	for(let i = 0; i < this.Dataset00.getRowCount(); i++){
 		this.fn_file_ins(i);
 	}

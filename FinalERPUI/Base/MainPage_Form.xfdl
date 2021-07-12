@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="MainPage_Form" width="1670" height="835" titletext="New Form" onload="MainPage_Form_onload">
+  <Form id="MainPage_Form" width="1670" height="835" titletext="New Form" onload="MainPage_Form_onload" scrolltype="none" dragscrolltype="none">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Edit id="ed_content" taborder="0" left="1134" top="99" width="300" height="40" displaynulltext="게시글의 제목을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
@@ -10,7 +10,7 @@
             <Tabpage id="tb_info" text="공지 게시판" border="1px solid #c7c7c7px" left="0" top="43" width="1272" height="382">
               <Layouts>
                 <Layout>
-                  <Grid id="gr_info" taborder="0" left="0" top="0" width="1348" height="468" binddataset="DS_INFO" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" scrolltype="none" readonly="true" font="normal bold 18px/normal &quot;Gulim&quot;" nodatatext="조회결과가 없습니다." oncelldblclick="info_dbclick" cellclickbound="cell">
+                  <Grid id="gr_info" taborder="0" left="0" top="0" width="1342" height="455" binddataset="DS_INFO" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" scrolltype="vertical" readonly="true" font="normal bold 18px/normal &quot;Gulim&quot;" nodatatext="조회결과가 없습니다." oncelldblclick="info_dbclick" cellclickbound="cell" autosizingtype="none">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -47,7 +47,7 @@
             <Tabpage id="tb_work" text="업무 게시판" background="#ffffff" border="1px solid #c7c7c7px" left="0" top="43" width="1272" height="382">
               <Layouts>
                 <Layout>
-                  <Grid id="gr_work" taborder="0" left="0" top="-1" width="1348" height="468" binddataset="DS_WORK" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" font="bold 18px/normal &quot;Gulim&quot;" scrolltype="none" oncelldblclick="work_dbclick" cellclickbound="cell">
+                  <Grid id="gr_work" taborder="0" left="0" top="0" width="1340" height="450" binddataset="DS_WORK" autofittype="col" border="1px solid #c7c7c7" background="#ffffff" font="bold 18px/normal &quot;Gulim&quot;" scrolltype="vertical" oncelldblclick="work_dbclick" cellclickbound="cell" autosizingtype="none">
                     <Formats>
                       <Format id="default">
                         <Columns>
