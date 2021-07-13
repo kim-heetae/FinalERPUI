@@ -42,15 +42,12 @@ this.fn_init = function(objFrame){
 	let fi_no = objFrame.fi_no;
 	let ft_type = "전자결재_인사";
 	let svcID = "getHRApproveSels" + this.application.transactionCount++;
-	let svcURL = "SvcURL::/mhrst/getDetailSel.mpg?no=" + svcID;
-	let data = "hrApproveSel=out_test";
+	let svcURL = "SvcURL::/hrst/hrDetailSel.hr?no=" + svcID;
+	let data = "HRStApprove=out_test";
 	let param = " fi_no=" + fi_no + " ft_type=" + ft_type + " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");
 	this.transaction(svcID, svcURL, "", data, param, "");
 };
 
-this.fn_close = function(){
-	this.close();
-}
 /*승인버튼 클릭 시 승인 UPD*/
 this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -58,7 +55,7 @@ this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	let bn_content = this.ta_content.text;
 	let bn_no = this.ds_board_notice.getColumn(0, "BN_NO");
 	let svcID = "HRStApproveUpd" + this.application.transactionCount++;
-	let svcURL = "SvcURL::/main/getNBUpd.mpg?no=" + svcID;
+	let svcURL = "SvcURL::/hrst/hrOkUpd.hr?no=" + svcID;
 	let param = " bn_name=" + bn_name + " bn_content=" + bn_content + " bn_no=" + bn_no;
 	if(!this.gfn_isNull(this.ds_board_notice.getColumn(0, "BNF_NAME"))){
 		param += " bnf_name=" + this.file_upload.text;
@@ -70,6 +67,29 @@ this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	
 };
-]]></Script>
+
+/*닫기 함수*/
+this.fn_close = function(){
+	this.close();
+}]]></Script>
+    <Objects>
+      <Dataset id="HRStApprove">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="FR_REASON" type="STRING" size="256"/>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="HRStApprove" columnid="E_NO"/>
+      <BindItem id="item1" compid="cal_date" propid="value" datasetid="HRStApprove" columnid="FI_DATE"/>
+      <BindItem id="item2" compid="file_upload" propid="accessibilityaction" datasetid="HRStApprove" columnid="FF_NAME"/>
+      <BindItem id="item3" compid="ed_title" propid="value" datasetid="HRStApprove" columnid="FI_NAME"/>
+      <BindItem id="item4" compid="ta_content" propid="value" datasetid="HRStApprove" columnid="FR_REASON"/>
+    </Bind>
   </Form>
 </FDL>
