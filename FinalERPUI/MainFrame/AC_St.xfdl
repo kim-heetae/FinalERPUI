@@ -45,7 +45,7 @@
                 <Cell col="2" text="사원번호"/>
                 <Cell col="3" text="제목"/>
                 <Cell col="4" text="신청일"/>
-                <Cell col="5" text="상태여부"/>
+                <Cell col="5" text="상태여부" comboautoselect="true" displaytype="combocontrol" combodataset="ds_state" combodatacol="STATE" combocodecol="NUM" combopopuptype="normal" combotype="dropdown" edittype="combo"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:FI_NO"/>
@@ -180,6 +180,7 @@ this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.gr_approve_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo){
 	let selectedNo = this.ds_ac_ap.getColumn(e.row, "FI_NO");
+	let selectedState = this.ds_ac_ap.getColumn(e.row, "FI_STATE");
 	let modal = "";
 	switch(this.tabCount) {
 	case 0:
@@ -196,11 +197,11 @@ this.gr_approve_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo
 		break;
 	default:
 	}
-	let arg = { "fi_no" : selectedNo };
+	let arg = { "fi_no" : selectedNo , "fi_state" : selectedState };
 	this.application.gfnShowModal("popupModal", arg, modal, "fn_modal_callback", this, 550, 30, true, true, null);
 };
 
-this.fn_modal_callback = function(sArg){
+this.fn_modal_callback = function(sFormId, sArg){
 	let objReturn = JSON.parse(sArg);
 	switch(objReturn.modalName) {
 	case "approve":
@@ -229,6 +230,26 @@ this.fn_modal_callback = function(sArg){
           <Column id="FI_DATE" type="STRING" size="256"/>
           <Column id="FI_STATE" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_state">
+        <ColumnInfo>
+          <Column id="NUM" type="STRING" size="256"/>
+          <Column id="STATE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="STATE">진행중</Col>
+            <Col id="NUM">0</Col>
+          </Row>
+          <Row>
+            <Col id="STATE">승인</Col>
+            <Col id="NUM">1</Col>
+          </Row>
+          <Row>
+            <Col id="STATE">반려</Col>
+            <Col id="NUM">2</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
   </Form>
