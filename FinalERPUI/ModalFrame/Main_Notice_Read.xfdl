@@ -179,17 +179,17 @@ this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 this.FileUpTransfer00_onprogress = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferProgressEventInfo)
 {
-	this.fn_addlog(e.loaded+"/"+e.total);
+	/*this.fn_addlog(e.loaded+"/"+e.total);*/
 };
 this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferEventinfo)
 {
-	this.fn_addlog(e.code);
-	this.fn_addlog(e.message);
+// 	this.fn_addlog(e.code);
+// 	this.fn_addlog(e.message);
 };
 this.FileUpTransfer00_onerror = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferErrorEventInfo)
 {
-	this.fn_addlog(e.errormsg);
-	this.fn_addlog(e.statuscode);
+// 	this.fn_addlog(e.errormsg);
+// 	this.fn_addlog(e.statuscode);
 };
 this.fn_addlog = function(strMessage)
 {

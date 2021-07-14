@@ -135,8 +135,6 @@ include "lib::lib_base.xjs";
 
 this.application = null;
 
-
-
 this.HR_Pers_Info_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
    this.application = nexacro.getApplication();
@@ -160,7 +158,7 @@ this.hrPersInfo_board_load = function(){
 
 /*선택 정보에 따른 사원정보 조회*/
 
-   this.hrPersInfoSel_load = function(deptCombo, posCombo, editText){
+this.hrPersInfoSel_load = function(deptCombo, posCombo, editText){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var hrpiSelparam;
    var idCount = this.application.transactionCount++;
