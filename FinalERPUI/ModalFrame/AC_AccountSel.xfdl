@@ -1,33 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="AC_AccountSel" width="550" height="400" titletext="New Form">
+  <Form id="AC_AccountSel" width="650" height="500" titletext="New Form" onload="AC_AccountSel_onload">
     <Layouts>
-      <Layout height="400" width="550">
-        <Static id="lb_title" taborder="0" text="급여조회" left="185" top="10" width="180" height="60" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" color="black"/>
-        <Static id="lb_bg1" taborder="1" left="1" top="108" width="549" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_empno" taborder="2" text="사원번호" left="1" top="109" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_empno00" taborder="3" text="부서" left="276" top="108" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_empno01" taborder="4" text="사원정보" left="1" top="70" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_no" taborder="5" left="81" top="109" width="195" height="38" readonly="true"/>
-        <Edit id="ed_dept" taborder="6" left="355" top="109" width="195" height="38" readonly="true"/>
-        <Static id="lb_empno02" taborder="7" text="사원명" left="1" top="148" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_lev" taborder="8" text="직급" left="276" top="147" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_name" taborder="9" left="81" top="148" width="195" height="38" readonly="true"/>
-        <Edit id="ed_lev" taborder="10" left="355" top="147" width="195" height="38" readonly="true"/>
-        <Static id="lb_bg1_00" taborder="11" left="1" top="219" width="549" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_sbSal" taborder="12" text="기본급" left="1" top="220" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_soHour" taborder="13" text="야근수당" left="276" top="219" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_accountInfo" taborder="14" text="급여정보" left="1" top="186" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_sbSal" taborder="15" left="81" top="220" width="195" height="38" readonly="true"/>
-        <Edit id="ed_soHour" taborder="16" left="355" top="220" width="195" height="38" readonly="true"/>
-        <Static id="lb_speSal" taborder="17" text="정산금액" left="1" top="259" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_ssCost" taborder="18" text="경조비" left="276" top="258" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_speSal" taborder="19" left="81" top="259" width="195" height="38" readonly="true"/>
-        <Edit id="ed_ssCost" taborder="20" left="355" top="258" width="195" height="38" readonly="true"/>
-        <Static id="lb_Hap" taborder="21" text="합계" left="1" top="295" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_speSal00" taborder="22" left="81" top="296" width="195" height="38" readonly="true"/>
-        <Button id="btn_Com" taborder="23" left="474" top="334" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer"/>
+      <Layout height="500" width="650">
+        <Static id="lb_title" taborder="0" text="급여조회" left="235" top="10" width="180" height="60" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" color="black"/>
+        <Static id="lb_bg1" taborder="1" left="51" top="108" width="549" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="2" text="사원번호" left="51" top="109" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff" onclick="Static02_onclick"/>
+        <Static id="lb_empno00" taborder="3" text="부서" left="326" top="108" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff" onclick="Static02_onclick"/>
+        <Static id="lb_empno01" taborder="4" text="사원정보" left="51" top="70" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff" onclick="Static02_onclick"/>
+        <Edit id="ed_no" taborder="5" left="131" top="109" width="195" height="38" readonly="true"/>
+        <Edit id="ed_dept" taborder="6" left="405" top="109" width="195" height="38" readonly="true"/>
+        <Static id="lb_empno02" taborder="7" text="사원명" left="51" top="148" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff" onclick="Static02_onclick"/>
+        <Static id="lb_lev" taborder="8" text="직급" left="326" top="147" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff" onclick="Static02_onclick"/>
+        <Edit id="ed_name" taborder="9" left="131" top="148" width="195" height="38" readonly="true"/>
+        <Edit id="ed_lev" taborder="10" left="405" top="147" width="195" height="38" readonly="true"/>
+        <Static id="lb_bg1_00" taborder="11" left="51" top="259" width="549" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_sbSal" taborder="12" text="기본급" left="51" top="260" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff"/>
+        <Static id="lb_soHour" taborder="13" text="야근수당" left="326" top="259" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff"/>
+        <Static id="lb_accountInfo" taborder="14" text="급여정보" left="51" top="226" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff"/>
+        <Static id="lb_speSal" taborder="15" text="정산금액" left="51" top="299" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff"/>
+        <Static id="lb_ssCost" taborder="16" text="경조비" left="326" top="298" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff"/>
+        <Static id="lb_Hap" taborder="17" text="합계" left="51" top="335" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#ffffff"/>
+        <Button id="btn_Com" taborder="18" left="524" top="414" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_Com_onclick"/>
+        <MaskEdit id="me_sbSal" taborder="19" left="131" top="260" width="195" height="38" readonly="true" format="#,#" displaynulltext="0"/>
+        <MaskEdit id="me_ssover" taborder="20" left="405" top="260" width="195" height="38" readonly="true" format="#,#" displaynulltext="0"/>
+        <MaskEdit id="me_exp" taborder="21" left="131" top="300" width="195" height="38" readonly="true" format="#,#" displaynulltext="0"/>
+        <MaskEdit id="me_cost" taborder="22" left="405" top="300" width="195" height="38" readonly="true" format="#,#" displaynulltext="0"/>
+        <MaskEdit id="me_sum" taborder="23" left="131" top="340" width="195" height="38" readonly="true" format="#,#" displaynulltext="0"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.AC_AccountSel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	let objFrame = this.getOwnerFrame();
+	this.fn_init(objFrame);
+};
+
+this.fn_init = function(objFrame){
+	let sb_no = objFrame.SB_NO;
+	let count = this.application.transactionCount++;
+	let svcID = "acPayDetailSel" + count;
+	let svcURL = "SvcURL::/acpay/acPayDetailSel.ac?no=" + count;
+	let data = "ds_accountsel=out_test";
+	let param = " sb_no=" + sb_no;
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+this.btn_Com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_accountsel">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="SB_SAL" type="STRING" size="256"/>
+          <Column id="SS_OVER" type="STRING" size="256"/>
+          <Column id="SS_EXP" type="STRING" size="256"/>
+          <Column id="SS_COST" type="STRING" size="256"/>
+          <Column id="SS_BASIC" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_no" propid="value" datasetid="ds_accountsel" columnid="E_NO"/>
+      <BindItem id="item1" compid="ed_dept" propid="value" datasetid="ds_accountsel" columnid="D_NAME"/>
+      <BindItem id="item2" compid="ed_name" propid="value" datasetid="ds_accountsel" columnid="E_NAME"/>
+      <BindItem id="item3" compid="ed_lev" propid="value" datasetid="ds_accountsel" columnid="E_POS"/>
+      <BindItem id="item4" compid="me_sbSal" propid="value" datasetid="ds_accountsel" columnid="SB_SAL"/>
+      <BindItem id="item5" compid="me_ssover" propid="value" datasetid="ds_accountsel" columnid="SS_OVER"/>
+      <BindItem id="item6" compid="me_exp" propid="value" datasetid="ds_accountsel" columnid="SS_EXP"/>
+      <BindItem id="item7" compid="me_cost" propid="value" datasetid="ds_accountsel" columnid="SS_COST"/>
+      <BindItem id="item8" compid="me_sum" propid="value" datasetid="ds_accountsel" columnid="SS_BASIC"/>
+    </Bind>
   </Form>
 </FDL>

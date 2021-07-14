@@ -24,7 +24,7 @@
           </Tabpages>
         </Tab>
         <Static id="lb_title" taborder="1" text="회계 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
-        <Grid id="gr_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_ac_ap" font="20px/normal &quot;나눔바른펜&quot;&#9;" oncelldblclick="gr_approve_dbclick">
+        <Grid id="gr_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_ac_ap" font="20px/normal &quot;나눔바른펜&quot;&#9;" oncelldblclick="gr_approve_dbclick" readonly="true">
           <Formats>
             <Format id="default">
               <Columns>
@@ -52,7 +52,7 @@
                 <Cell col="1" text="bind:FT_TYPE"/>
                 <Cell col="2" text="bind:E_NO"/>
                 <Cell col="3" text="bind:FI_NAME"/>
-                <Cell col="4" text="bind:FI_DATE"/>
+                <Cell col="4" text="bind:FI_DATE" displaytype="date" edittype="date" calendardateformat="yyyy-MM-dd" calendarpopuptype="none"/>
                 <Cell col="5" text="bind:FI_STATE"/>
               </Band>
             </Format>
@@ -107,6 +107,8 @@ this.tb_ac_apply_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEv
 
 //전자결재_회계 신청서 전체조회
 this.fn_approval_ac_init = function(){
+	this.ds_ac_ap.clearData();
+	this.gr_ac_apply.set_nodatatext("조회하신 결과가 없습니다.");
 	let count = this.application.transactionCount++;
 	let svcID = "acStSel" + count;
 	let svcURL = "SvcURL::/acst/acStSel.ac?no=" + count;
@@ -117,6 +119,8 @@ this.fn_approval_ac_init = function(){
 
 //이체요청 신청서 전체조회
 this.fn_private_expenses_init = function(){
+	this.ds_ac_ap.clearData();
+	this.gr_ac_apply.set_nodatatext("조회하신 결과가 없습니다.");
 	let count = this.application.transactionCount++;
 	let svcID = "acStSel" + count;
 	let svcURL = "SvcURL::/acst/acStSel.ac?no=" + count;
@@ -127,6 +131,8 @@ this.fn_private_expenses_init = function(){
 
 //계좌정보변경 신청서 전체조회
 this.fn_account_change_init = function(){
+	this.ds_ac_ap.clearData();
+	this.gr_ac_apply.set_nodatatext("조회하신 결과가 없습니다.");
 	let count = this.application.transactionCount++;
 	let svcID = "acStSel" + count;
 	let svcURL = "SvcURL::/acst/acStSel.ac?no=" + count;
@@ -137,6 +143,8 @@ this.fn_account_change_init = function(){
 
 //경조비 신청서 전체조회
 this.fn_private_cost_init = function(){
+	this.ds_ac_ap.clearData();
+	this.gr_ac_apply.set_nodatatext("조회하신 결과가 없습니다.");
 	let count = this.application.transactionCount++;
 	let svcID = "acStSel" + count;
 	let svcURL = "SvcURL::/acst/acStSel.ac?no=" + count;

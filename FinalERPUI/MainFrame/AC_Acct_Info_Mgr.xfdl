@@ -70,7 +70,7 @@
         <Static id="Static00_00_00_00_00" taborder="13" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00_00_00_00_00" taborder="14" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00_00_00_00_00_00" taborder="15" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Grid id="gr_ACaccount" taborder="16" left="150" top="200" width="1367" height="400" border="1px solid #c7c7c7" binddataset="DS_Account" autofittype="col">
+        <Grid id="gr_ACaccount" taborder="16" left="150" top="200" width="1367" height="400" border="1px solid #c7c7c7" binddataset="DS_Account" autofittype="col" readonly="true">
           <Formats>
             <Format id="default">
               <Columns>
@@ -100,12 +100,12 @@
               <Band id="body">
                 <Cell text="bind:E_NO"/>
                 <Cell col="1" text="bind:E_NAME"/>
-                <Cell col="2" text="bind:D_DEPT"/>
+                <Cell col="2" text="bind:D_NAME"/>
                 <Cell col="3" text="bind:E_POS"/>
-                <Cell col="4" text="bind:EOI_CALL"/>
+                <Cell col="4" text="bind:EOI_CALL" displaytype="mask" edittype="mask" maskeditformat="##'-'###'-'####" maskeditmaskchar=" " maskedittype="string"/>
                 <Cell col="5" text="bind:E_EMAIL"/>
                 <Cell col="6" text="bind:EA_NAME"/>
-                <Cell col="7" text="bind:EA_NO"/>
+                <Cell col="7" text="bind:EA_NO" edittype="none" displaytype="normal" maskedittype="string" maskeditmaskchar=" "/>
               </Band>
             </Format>
           </Formats>
@@ -117,7 +117,7 @@
         <ColumnInfo>
           <Column id="E_NO" type="STRING" size="256"/>
           <Column id="E_NAME" type="STRING" size="256"/>
-          <Column id="D_DEPT" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
           <Column id="E_POS" type="STRING" size="256"/>
           <Column id="EOI_CALL" type="STRING" size="256"/>
           <Column id="E_EMAIL" type="STRING" size="256"/>
