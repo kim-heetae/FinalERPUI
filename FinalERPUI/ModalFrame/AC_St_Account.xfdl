@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="AC_St_Account" width="550" height="500" titletext="New Form">
+  <Form id="AC_St_Account" width="550" height="500" titletext="New Form" onload="AC_St_Account_onload">
     <Layouts>
       <Layout height="500" width="550">
         <Static id="lb_bg1" taborder="0" left="25" top="111" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
@@ -8,7 +8,7 @@
         <Edit id="ed_empno" taborder="2" left="144" top="113" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_date" taborder="3" text="신청일" left="269" top="112" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_date" taborder="4" left="390" top="113" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Button id="btn_reject" taborder="5" left="449" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer"/>
+        <Button id="btn_reject" taborder="5" left="249" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
         <Static id="lb_bg2_00" taborder="6" left="270" top="225" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Edit id="ed_title" taborder="7" left="144" top="191" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
         <TextArea id="ta_content" taborder="8" left="25" top="264" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
@@ -22,12 +22,110 @@
         <Edit id="ed_bank" taborder="16" left="144" top="152" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_account" taborder="17" text="계좌번호" left="269" top="151" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_account" taborder="18" left="390" top="152" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Button id="btn_approve" taborder="19" left="335" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer"/>
+        <Button id="btn_approve" taborder="19" left="105" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
         <Static id="lb_bg2_01" taborder="20" left="26" top="383" width="499" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_file00" taborder="21" text="첨부파일" left="25" top="384" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <FileUpload id="file_upload" taborder="22" left="144" top="385" width="125" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
         <Static id="lb_file00_01" taborder="23" left="269" top="384" width="256" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_close" taborder="24" left="399" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_close_onclick"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="ds_account">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="FAC_BANK" type="STRING" size="256"/>
+          <Column id="FAC_ACCOUNT" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="FAC_CONTENT" type="STRING" size="256"/>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+this.tabCount = 0;
+this.fi_no = "";//해당 신청서 번호
+
+this.AC_St_Account_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	let objFrame = this.getOwnerFrame();
+	this.fn_text_init(objFrame);
+};
+//신청서 정보 로딩
+this.fn_text_init = function(objFrame){
+	this.fi_no = objFrame.fi_no;
+	if (objFrame.fi_state != "진행중"){//승인, 반려 상태는 확인창만 보이도록 만듬
+		this.btn_approve.set_visible(false);
+		this.btn_reject.set_visible(false);
+		this.btn_close.set_left(239);
+	}
+	let count = this.application.transactionCount++;
+	let svcID = "acStDetail" + count;
+	let svcURL = "SvcURL::/acst/acStDetail.ac?no=" + count;
+	let data = "ds_account=out_test";
+	let param = " fi_no=" + this.fi_no + " ft_type=계좌";
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+//승인
+this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") > 2){
+		let count = this.application.transactionCount++;
+		let svcID = "acStOkUpd" + count;
+		let svcURL = "SvcURL::/acst/acStOk.ac?no=" + count;
+		let data = "";
+		let param = " p_fi_no=" + this.fi_no + " p_fi_state=승인"
+				+ " p_e_no=" + this.ds_account.getColumn(0,"E_NO") 
+				+ " p_ea_name=" + this.ds_account.getColumn(0,"FAC_BANK")
+				+ " p_ea_no=" + this.ds_account.getColumn(0,"FAC_ACCOUNT")
+				+ " ft_type=계좌" ;//어떤신청인지 자바에서 IF문으로 판단
+		this.transaction(svcID, svcURL, "", data, param, "fn_close");	
+	}
+	else{
+		this.alert("승인권한이 없습니다.");
+	}
+};
+
+//반려
+this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") > 2){
+		let count = this.application.transactionCount++;
+		let svcID = "acStNoUpd" + count;
+		let svcURL = "SvcURL::/acst/acStNo.ac?no=" + count;
+		let data = "";
+		let param = " fi_state=반려" + " fi_no=" + this.fi_no + " ft_type=계좌";
+		this.transaction(svcID, svcURL, "", data, param, "fn_close");
+	}
+	else{
+		this.alert("반려권한이 없습니다.");
+	}
+};
+
+this.fn_close = function(){
+	let objReturn = { "modalName" : "account" };
+	this.close(JSON.stringify(objReturn, null, "\t"));
+};
+
+//확인
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="ds_account" columnid="E_NO"/>
+      <BindItem id="item1" compid="ed_date" propid="value" datasetid="ds_account" columnid="FI_DATE"/>
+      <BindItem id="item2" compid="ed_bank" propid="value" datasetid="ds_account" columnid="FAC_BANK"/>
+      <BindItem id="item3" compid="ed_account" propid="value" datasetid="ds_account" columnid="FAC_ACCOUNT"/>
+      <BindItem id="item4" compid="ed_title" propid="value" datasetid="ds_account" columnid="FI_NAME"/>
+      <BindItem id="item5" compid="ta_content" propid="value" datasetid="ds_account" columnid="FAC_CONTENT"/>
+    </Bind>
   </Form>
 </FDL>

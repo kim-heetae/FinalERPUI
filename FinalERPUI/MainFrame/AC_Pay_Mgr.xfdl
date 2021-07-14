@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="AC_Pay_Mgr" width="1670" height="835" titletext="New Form">
+  <Form id="AC_Pay_Mgr" width="1670" height="835" titletext="New Form" onload="AC_Pay_Mgr_onload">
     <Layouts>
       <Layout height="835" width="1670">
         <Static id="lb_title" taborder="0" text="급여관리" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
@@ -71,41 +71,41 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="100"/>
-                <Column size="100"/>
-                <Column size="100"/>
-                <Column size="100"/>
-                <Column size="120"/>
-                <Column size="120"/>
-                <Column size="120"/>
-                <Column size="120"/>
-                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="30" band="head"/>
-                <Row size="30"/>
+                <Row size="36" band="head"/>
+                <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="사원번호" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="사원명" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="직급" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="지급일" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="급여" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="6" text="공제액" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="7" text="실수령액" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="8" text="지급상태" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell text="사원번호"/>
+                <Cell col="1" text="사원명"/>
+                <Cell col="2" text="부서명"/>
+                <Cell col="3" text="직급"/>
+                <Cell col="4" text="지급날짜"/>
+                <Cell col="5" text="기본급"/>
+                <Cell col="6" text="공제액"/>
+                <Cell col="7" text="실수령액"/>
+                <Cell col="8" text="지급상태"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:e_no" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="bind:e_name" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="bind:d_dept" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="bind:e_pos" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="bind:sb_date" font="20px/normal &quot;나눔바른펜&quot;" displaytype="date" textAlign="center"/>
-                <Cell col="5" text="bind:ss_basic" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="6" text="bind:ss_duc" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="7" text="bind:ss_real" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="8" text="bind:ss_state" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell text="bind:E_NO"/>
+                <Cell col="1" text="bind:E_NAME"/>
+                <Cell col="2" text="bind:D_DEPT"/>
+                <Cell col="3" text="bind:E_POS"/>
+                <Cell col="4" text="bind:SB_DATE"/>
+                <Cell col="5" text="bind:SS_BASIC"/>
+                <Cell col="6" text="bind:SS_DUC"/>
+                <Cell col="7" text="bind:SS_REAL"/>
+                <Cell col="8" text="bind:SS_STATE"/>
               </Band>
             </Format>
           </Formats>
@@ -118,17 +118,36 @@
     <Objects>
       <Dataset id="DS_payMgr">
         <ColumnInfo>
-          <Column id="e_no" type="STRING" size="256"/>
-          <Column id="e_name" type="STRING" size="256"/>
-          <Column id="d_dept" type="STRING" size="256"/>
-          <Column id="e_pos" type="STRING" size="256"/>
-          <Column id="sb_date" type="STRING" size="256"/>
-          <Column id="ss_basic" type="STRING" size="256"/>
-          <Column id="ss_duc" type="STRING" size="256"/>
-          <Column id="ss_real" type="STRING" size="256"/>
-          <Column id="ss_state" type="STRING" size="256"/>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="D_DEPT" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="SB_DATE" type="STRING" size="256"/>
+          <Column id="SS_BASIC" type="STRING" size="256"/>
+          <Column id="SS_DUC" type="STRING" size="256"/>
+          <Column id="SS_REAL" type="STRING" size="256"/>
+          <Column id="SS_STATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.AC_Pay_Mgr_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+};
+
+this.fn_load = function(){
+	let count = this.application.transactionCount++;
+	let svcID = "acPayListSel" + count;
+	let svcURL = "SvcURL::/acpay/acPayListSel.ac?no=" + count;
+	let data = "";
+	let param = "";
+	this.transaction();
+};]]></Script>
   </Form>
 </FDL>
