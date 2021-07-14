@@ -34,38 +34,38 @@ this.application = null;
 this.HR_ApproveSel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
    this.application = nexacro.getApplication();
-   var objFrame = this.getOwnerFrame();
+   let objFrame = this.getOwnerFrame();
+   this.e_no = objFrame.e_no;
    this.fn_init(objFrame);
 };
 
 this.fn_init = function(objFrame){
-	let fi_no = objFrame.fi_no;
-	let ft_type = "전자결재_인사";
-	let svcID = "getHRApproveSels" + this.application.transactionCount++;
+	let fi_no = objFrame.FI_NO;
+	let svcID = "getHRApproveSel" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrDetailSel.hr?no=" + svcID;
 	let data = "HRStApprove=out_test";
-	let param = " fi_no=" + fi_no + " ft_type=" + ft_type + " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	let param = " fi_no=" + fi_no;
 	this.transaction(svcID, svcURL, "", data, param, "");
 };
 
 /*승인버튼 클릭 시 승인 UPD*/
 this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let bn_name = this.ed_title.text;
-	let bn_content = this.ta_content.text;
-	let bn_no = this.ds_board_notice.getColumn(0, "BN_NO");
+	let fi_no = objFrame.FI_NO;
 	let svcID = "HRStApproveUpd" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrOkUpd.hr?no=" + svcID;
-	let param = " bn_name=" + bn_name + " bn_content=" + bn_content + " bn_no=" + bn_no;
-	if(!this.gfn_isNull(this.ds_board_notice.getColumn(0, "BNF_NAME"))){
-		param += " bnf_name=" + this.file_upload.text;
-	}
+	let param = " fi_no=" + fi_no;
 	this.transaction(svcID, svcURL, "", "", param, "fn_close");
 };
 /*반려버튼 클릭 시 반려 UPD*/
 this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	let fi_no = objFrame.FI_NO;
+	let svcID = "getHRAccountDels" + this.application.transactionCount++;
+	let svcURL = "SvcURL::/hrst/hrNoUpd.hr?no=" + svcID;
+	let data = "HRStApprove=out_test";
+	let param = " fi_no=" + fi_no;
+	this.transaction(svcID, svcURL, "", data, param, "fn_close");
 };
 
 /*닫기 함수*/
