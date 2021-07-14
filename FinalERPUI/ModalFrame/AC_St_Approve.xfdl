@@ -63,7 +63,7 @@ this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		let svcID = "acStOkUpd" + count;
 		let svcURL = "SvcURL::/acst/acStOk.ac?no=" + count;
 		let data = "";
-		let param = " fi_state=승인" + " ft_type=전자결재_회계" + " fi_no=" + this.fi_no;
+		let param = " fi_state=승인" + " fi_no=" + this.fi_no + " ft_type=전자결재_회계";
 		this.transaction(svcID, svcURL, "", data, param, "fn_close");	
 	}
 	else{
@@ -79,7 +79,7 @@ this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		let svcID = "acStNoUpd" + count;
 		let svcURL = "SvcURL::/acst/acStNo.ac?no=" + count;
 		let data = "";
-		let param = " fi_state=반려" + " ft_type=전자결재_회계" + " fi_no=" + this.fi_no;
+		let param = " fi_state=반려" + " fi_no=" + this.fi_no + " ft_type=전자결재_회계";
 		this.transaction(svcID, svcURL, "", data, param, "fn_close");
 	}
 	else{

@@ -52,7 +52,7 @@ this.AC_St_Remit_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 //신청서 정보 로딩
 this.fn_text_init = function(objFrame){
 	this.fi_no = objFrame.fi_no;
-	if (objFrame.fi_state != "진행중"){
+	if (objFrame.fi_state != "진행중"){//승인, 반려 상태는 확인창만 보이도록 만듬
 		this.btn_approve.set_visible(false);
 		this.btn_reject.set_visible(false);
 		this.btn_close.set_left(239);
@@ -72,11 +72,12 @@ this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		let svcID = "acStOkUpd" + count;
 		let svcURL = "SvcURL::/acst/acStOk.ac?no=" + count;
 		let data = "";
-		let param = " fi_state=승인" + " ft_type=이체요청" + " fi_no=" + this.fi_no;//UPDATE에 필요
-		param += " spe_date=" + this.ds_remit.getColumn(0, "FPE_DATE") 
-			+ " spe_sal=" + this.ds_remit.getColumn(0, "FPE_EXP") 
-			+ " spe_content=" + this.ds_remit.getColumn(0, "FPE_CONTENT") 
-			+ " spe_loc=" + this.ds_remit.getColumn(0, "FPE_NAME");//INSERT에 필요
+		let param = " p_fino=" + this.fi_no + " p_fi_state=승인" + " ft_type=이체요청";//프로시저 사용
+// 		let param = " fi_state=승인" + " ft_type=이체요청" + " fi_no=" + this.fi_no;//UPDATE에 필요
+// 		param += " spe_date=" + this.ds_remit.getColumn(0, "FPE_DATE") 
+// 			+ " spe_sal=" + this.ds_remit.getColumn(0, "FPE_EXP") 
+// 			+ " spe_content=" + this.ds_remit.getColumn(0, "FPE_CONTENT") 
+// 			+ " spe_loc=" + this.ds_remit.getColumn(0, "FPE_NAME");//INSERT에 필요
 		this.transaction(svcID, svcURL, "", data, param, "fn_close");	
 	}
 	else{
@@ -92,7 +93,7 @@ this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		let svcID = "acStNoUpd" + count;
 		let svcURL = "SvcURL::/acst/acStNo.ac?no=" + count;
 		let data = "";
-		let param = " fi_state=반려" + " ft_type=이체요청" + " fi_no=" + this.fi_no;
+		let param = " fi_state=반려" + " fi_no=" + this.fi_no + " ft_type=이체요청";
 		this.transaction(svcID, svcURL, "", data, param, "fn_close");
 	}
 	else{
@@ -101,7 +102,7 @@ this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 this.fn_close = function(){
-	let objReturn = { "modalName" : "approve" };
+	let objReturn = { "modalName" : "remit" };
 	this.close(JSON.stringify(objReturn, null, "\t"));
 }
 

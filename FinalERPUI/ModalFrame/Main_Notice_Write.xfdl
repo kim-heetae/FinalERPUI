@@ -25,7 +25,7 @@
         <Static id="lb_title" taborder="21" text="제목" left="25" top="177" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="none"/>
         <Edit id="ed_title" taborder="22" left="144" top="178" width="631" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
         <FileUpload id="file_upload" taborder="23" left="146" top="663" width="629" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" visible="false"/>
-        <Grid id="Grid00" taborder="3" left="25" top="614" width="625" height="86" autofittype="col" binddataset="ds_file">
+        <Grid id="Grid00" taborder="3" left="25" top="614" width="625" height="86" autofittype="col" binddataset="ds_file" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -38,7 +38,7 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell edittype="checkbox" displaytype="checkboxcontrol" expr="expr:FILE_CHK=='Y'?'1':'0'" onchanged="fn_allchk"/>
+                <Cell edittype="checkbox" displaytype="checkboxcontrol" onchanged="fn_allchk" expr="expr:FILE_CHK=='Y'?'1':'0'"/>
                 <Cell col="1" text="파일명"/>
                 <Cell col="2" text="크기"/>
               </Band>
@@ -193,6 +193,30 @@ this.ds_file_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSCo
 
 this.fn_allchk = function(){
 	this.alert(123);
+}
+
+//헤더 체크박스 클릭
+this.Grid00_onheadclick = function (obj:Grid, e:GridClickEventInfo)
+{
+ if (e.cell == 0) 
+ {
+  this.gf_SetGridCheckAll(obj, e);
+ }
+}
+
+//헤더체크박스 클릭 이벤트
+this.gv_IsGridCheckAll = 'Y';
+this.gf_SetGridCheckAll = function (obj:Grid, e:GridClickEventInfo){
+ var dsObj = eval("this." +obj.binddataset);
+ var v_Colid = obj.getCellProperty("body", e.cell, "text").split("bind:").join("");
+ this.gv_IsGridCheckAll = (this.gv_IsGridCheckAll ? 'Y' : 'N');
+ dsObj.set_enableevent(false);
+ for (var i = 0; i < dsObj.getRowCount(); i++) 
+ {
+  dsObj.setColumn(i, v_Colid, this.gv_IsGridCheckAll);
+ }
+ obj.setCellProperty("Head", 0, "expr", this.gv_IsGridCheckAll);
+ dsObj.set_enableevent(true);
 }]]></Script>
   </Form>
 </FDL>

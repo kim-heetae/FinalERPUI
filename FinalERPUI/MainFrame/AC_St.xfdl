@@ -45,7 +45,7 @@
                 <Cell col="2" text="사원번호"/>
                 <Cell col="3" text="제목"/>
                 <Cell col="4" text="신청일"/>
-                <Cell col="5" text="상태여부" comboautoselect="true" displaytype="combocontrol" combodataset="ds_state" combodatacol="STATE" combocodecol="NUM" combopopuptype="normal" combotype="dropdown" edittype="combo"/>
+                <Cell col="5" text="상태여부" comboautoselect="true" displaytype="normal" combodataset="ds_state" combodatacol="STATE" combocodecol="NUM" combopopuptype="normal" combotype="dropdown" edittype="none" combodisplaynulltype="none"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:FI_NO"/>
@@ -166,7 +166,6 @@ this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	default:
 	}
 	let e_no = this.ed_empno.value;
-	alert(e_no);
 	let count = this.application.transactionCount++;
 	let svcID = "acStSearch" + count;
 	let svcURL = "SvcURL::/acst/acStSearch.ac?no=" + count;
