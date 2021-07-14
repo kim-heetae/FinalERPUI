@@ -27,16 +27,13 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="cb_dept00" taborder="6" text="직급 전체" left="693" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+        <Combo id="cb_dept00" taborder="6" text="직급 전체" left="693" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" displaynulltext="전체">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
               <Column id="datacolumn" size="256"/>
             </ColumnInfo>
             <Rows>
-              <Row>
-                <Col id="datacolumn">직급 전체</Col>
-              </Row>
               <Row>
                 <Col id="datacolumn">사장</Col>
               </Row>
