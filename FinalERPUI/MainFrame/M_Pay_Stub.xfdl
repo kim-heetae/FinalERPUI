@@ -3,8 +3,8 @@
   <Form id="M_Pay_Stub" width="1670" height="835" titletext="New Form" onload="M_Pay_Stub_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
-        <Grid id="Grid00" taborder="1" left="153" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col">
+        <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="260" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
+        <Grid id="M_Pay_Stub_grid" taborder="1" left="153" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col" oncelldblclick="m_pay_stub_grid_dbclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -23,7 +23,7 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="E_NO"/>
+                <Cell text="SB_NO"/>
                 <Cell col="1" text="E_NAME"/>
                 <Cell col="2" text="D_NAME"/>
                 <Cell col="3" text="E_POS"/>
@@ -34,7 +34,7 @@
                 <Cell col="8" text="SS_STATE"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:E_NO"/>
+                <Cell text="bind:SB_NO"/>
                 <Cell col="1" text="bind:E_NAME"/>
                 <Cell col="2" text="bind:D_NAME"/>
                 <Cell col="3" text="bind:E_POS"/>
@@ -61,7 +61,7 @@
     <Objects>
       <Dataset id="ds_pay_stub">
         <ColumnInfo>
-          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="SB_NO" type="STRING" size="256"/>
           <Column id="E_NAME" type="STRING" size="256"/>
           <Column id="D_NAME" type="STRING" size="256"/>
           <Column id="E_POS" type="STRING" size="256"/>
@@ -89,7 +89,7 @@ this.M_Pay_Stub_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
  ************************************************************************/
 this.btn_issue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.application.gfnShowModal("popupModal", null, "ModalFrame::M_Pay_Sel.xfdl", "", this, 550, 30, true, true, null);
+	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_Pay_Issue.xfdl", "", this, 550, 30, true, true, null);
 };
 
 /************************************************************************
@@ -109,6 +109,28 @@ this.mps_board_load = function (){
 	,mpsSelParam
 	,"");
 };
+
+/************************************************************************
+ * 급여 명세서 더블 클릭 시 상세 조회 
+ ************************************************************************/
+this.m_pay_stub_grid_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{	
+// 	var e_no = this.ds_pay_stub.getColumn(e.row,"E_NO");
+// 	var e_name = this.ds_pay_stub.getColumn(e.row,"E_NAME");
+// 	var d_name = this.ds_pay_stub.getColumn(e.row,"D_NAME");
+// 	var e_pos = this.ds_pay_stub.getColumn(e.row,"E_POS");
+// 	var sb_date = this.ds_pay_stub.getColumn(e.row,"SB_DATE");
+// 	var ss_basic = this.ds_pay_stub.getColumn(e.row,"SS_BASIC");
+// 	var ss_duc = this.ds_pay_stub.getColumn(e.row,"SS_DUC");
+// 	var ss_real = this.ds_pay_stub.getColumn(e.row,"SS_REAL");
+// 	var ss_state = this.ds_pay_stub.getColumn(e.row,"SS_STATE");
+	let sb_no = this.ds_pay_stub.getColumn(e.row, "SB_NO");
+// 	var paramData = { "E_NO" : e_no, "E_NAME" : e_name, "D_NAME" : d_name, "E_POS" : e_pos, "SB_DATE" : sb_date,
+// 					  "SS_BASIC" : ss_basic, "SS_DUC" : ss_duc, "SS_REAL" : ss_real, "SS_STATE" : ss_state }
+	let paramData = { "SB_NO" : sb_no };
+					  
+	this.application.gfnShowModal("popupModal", paramData, "ModalFrame::M_Pay_Sel.xfdl", "", this, 550, 30, true, true, null);
+}
 ]]></Script>
   </Form>
 </FDL>

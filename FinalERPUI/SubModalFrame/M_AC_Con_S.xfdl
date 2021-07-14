@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_Con_S" width="550" height="550" titletext="New Form">
+  <Form id="M_AC_Con_S" width="550" height="550" titletext="경조비 신청내역" onload="M_AC_ConSel_onload">
     <Layouts>
       <Layout height="550" width="550">
         <Static id="lb_bg2" taborder="0" left="25" top="229" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_state" taborder="1" text="상태" left="25" top="230" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
         <Static id="lb_file" taborder="2" text="첨부파일" left="269" top="230" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_ok" taborder="3" left="449" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer"/>
+        <Button id="btn_ok" taborder="3" left="449" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
         <Static id="lb_bg2_00" taborder="4" left="270" top="304" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Edit id="ed_title" taborder="5" left="144" top="270" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
         <TextArea id="ta_content" taborder="6" left="25" top="343" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
@@ -19,20 +19,75 @@
         <Static id="lb_bg1" taborder="13" left="25" top="151" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_person" taborder="14" text="대상자" left="25" top="152" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_date_occur" taborder="15" text="발생일자" left="269" top="152" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_date_onclick"/>
-        <Edit id="ed_date_occur" taborder="16" left="390" top="153" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_bg1_00" taborder="17" left="25" top="190" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_place" taborder="18" text="발생장소" left="25" top="191" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_place" taborder="19" left="144" top="192" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_relation" taborder="20" text="사원과의 관계" left="269" top="191" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_relation" taborder="21" left="390" top="192" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_bg1_01" taborder="22" left="25" top="112" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_empno" taborder="23" text="사원번호" left="25" top="113" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_empno" taborder="24" left="144" top="114" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_date" taborder="25" text="신청일" left="269" top="113" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_date" taborder="26" left="390" top="114" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Edit id="ed_person" taborder="27" left="144" top="153" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <FileUpload id="file_upload" taborder="28" left="390" top="231" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="lb_bg1_00" taborder="16" left="25" top="190" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_place" taborder="17" text="발생장소" left="25" top="191" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_place" taborder="18" left="144" top="192" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_relation" taborder="19" text="사원과의 관계" left="269" top="191" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_relation" taborder="20" left="390" top="192" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_bg1_01" taborder="21" left="25" top="112" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="22" text="사원번호" left="25" top="113" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_empno" taborder="23" left="144" top="114" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Edit id="ed_person" taborder="24" left="144" top="153" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <FileUpload id="file_upload" taborder="25" left="390" top="231" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="lb_date" taborder="26" text="해당일자" left="269" top="113" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Calendar id="cal_date" taborder="27" left="390" top="115" width="135" height="35" font="15px/normal &quot;나눔바른펜&quot;" enable="false" border="1px solid #999999"/>
+        <Calendar id="cal_date_occur" taborder="28" left="390" top="153" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;" enable="false" border="1px solid #999999"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.M_AC_ConSel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+   this.application = nexacro.getApplication();
+   var objFrame = this.getOwnerFrame();
+   this.fn_init(objFrame);
+};
+
+this.fn_init = function(objFrame){
+	var fi_no = objFrame.fi_no;
+	var ft_type = "경조비";
+	var svcID = "getConSels" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/macst/getDetailSel.mpg?no=" + svcID;
+	var data = "macConSel=out_test";
+	var param = " fi_no=" + fi_no + " ft_type=" + ft_type + " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="macConSel">
+        <ColumnInfo>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="FPC_SELF" type="STRING" size="256"/>
+          <Column id="FPC_DATE" type="STRING" size="256"/>
+          <Column id="FPC_LOC" type="STRING" size="256"/>
+          <Column id="FPC_RELA" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="FPC_CONTENT" type="STRING" size="256"/>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+          <Column id="FI_STATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
+      <BindItem id="item1" compid="cal_date" propid="value" datasetid="macConSel" columnid="FI_DATE"/>
+      <BindItem id="item2" compid="ed_person" propid="value" datasetid="macConSel" columnid="FPC_SELF"/>
+      <BindItem id="item3" compid="cal_date_occur" propid="value" datasetid="macConSel" columnid="FPC_DATE"/>
+      <BindItem id="item4" compid="ed_place" propid="value" datasetid="macConSel" columnid="FPC_LOC"/>
+      <BindItem id="item5" compid="ed_relation" propid="value" datasetid="macConSel" columnid="FPC_RELA"/>
+      <BindItem id="item6" compid="ed_state" propid="value" datasetid="macConSel" columnid="FI_STATE"/>
+      <BindItem id="item7" compid="file_upload" propid="accessibilityaction" datasetid="macConSel" columnid="FF_NAME"/>
+      <BindItem id="item8" compid="ed_title" propid="value" datasetid="macConSel" columnid="FI_NAME"/>
+      <BindItem id="item9" compid="ta_content" propid="value" datasetid="macConSel" columnid="FPC_CONTENT"/>
+    </Bind>
   </Form>
 </FDL>

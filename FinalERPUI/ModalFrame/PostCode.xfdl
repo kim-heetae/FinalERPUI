@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="486" mobileorientation="landscape" width="540">
         <WebBrowser id="webPostcode" taborder="0" left="0" top="55" onusernotify="webPostcode_onusernotify" right="0" bottom="0" border="0px none"/>
-        <Button id="btnClose" taborder="1" top="20" height="28" cssclass="btn_WF_popup_close" onclick="btnClose_onclick" right="10" width="28"/>
+        <Button id="btnClose" taborder="1" top="4" height="28" cssclass="btn_WF_popup_close" onclick="btnClose_onclick" right="4" width="28"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -50,7 +50,6 @@ this.webPostcode_onusernotify = function(obj:nexacro.WebBrowser,e:nexacro.WebUse
 	{
 		this.opener.postcode = addData[0];
 		this.opener.address1 = addData[1];
-		
 		//팝업 닫기
 		this.close();
 	}	

@@ -1,30 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Main_Notice_Write" width="800" height="800" titletext="New Form">
+  <Form id="Main_Notice_Write" width="800" height="800" titletext="New Form" onload="Main_Notice_Write_onload">
     <Layouts>
       <Layout height="800" mobileorientation="landscape" width="800">
         <Static id="lb_title_m" taborder="0" text="공지사항 게시글 조회" left="290" top="50" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
         <Static id="lb_bg1" taborder="1" left="25" top="139" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_ename_label" taborder="2" text="작성자" left="125" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_date_label" taborder="3" text="작성일" left="345" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_hit_label" taborder="4" text="조회수" left="575" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_num" taborder="5" left="25" top="140" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_num_onclick" text=""/>
-        <Static id="lb_hit" taborder="6" left="675" top="140" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text="" onclick="lb_hit_onclick"/>
-        <Static id="lb_ename" taborder="7" left="225" top="140" width="120" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_date" taborder="8" left="445" top="140" width="130" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_date01_onclick"/>
-        <Static id="lb_bg1_00" taborder="9" left="25" top="661" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_file" taborder="10" text="첨부파일" left="25" top="662" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_ok" taborder="11" left="699" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer"/>
-        <Edit id="ed_title" taborder="12" left="144" top="178" width="631" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
-        <TextArea id="ta_content" taborder="13" left="25" top="253" width="750" height="409" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
-        <Static id="lb_content" taborder="14" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_title" taborder="15" text="제목" left="25" top="177" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="none"/>
+        <Static id="lb_date_label" taborder="4" text="작성일" left="345" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_hit_label" taborder="5" text="조회수" left="575" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_num" taborder="6" left="25" top="140" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_num_onclick" text=""/>
+        <Static id="lb_hit" taborder="7" left="675" top="140" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text="" onclick="lb_hit_onclick"/>
+        <Static id="lb_ename" taborder="8" left="225" top="140" width="120" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_date" taborder="9" left="445" top="140" width="130" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_date01_onclick"/>
+        <Static id="lb_bg1_00" taborder="10" left="25" top="661" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;" visible="false"/>
+        <Static id="lb_file" taborder="12" text="첨부파일" left="25" top="662" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_ok" taborder="13" left="699" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
+        <TextArea id="ta_content" taborder="14" left="25" top="255" width="750" height="355" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <Static id="lb_content" taborder="15" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_content00" taborder="16" left="144" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_file00" taborder="17" left="144" top="216" width="631" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text=""/>
-        <FileUpload id="file_upload" taborder="18" left="146" top="663" width="629" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_edit" taborder="19" left="583" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="수정" cursor="pointer"/>
-        <Static id="lb_0000" taborder="20" left="25" top="176" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
-        <Button id="btn_delete" taborder="21" left="467" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="삭제" onclick="btn_confirm00_onclick" cursor="pointer"/>
+        <Button id="btn_edit" taborder="18" left="583" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="수정" cursor="pointer" onclick="btn_edit_onclick"/>
+        <Static id="lb_0000" taborder="19" left="25" top="176" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Button id="btn_delete" taborder="20" left="467" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="삭제" onclick="btn_delete_onclick" cursor="pointer"/>
+        <Static id="lb_title" taborder="21" text="제목" left="25" top="177" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="none"/>
+        <Edit id="ed_title" taborder="22" left="144" top="178" width="631" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
+        <FileUpload id="file_upload" taborder="23" left="146" top="663" width="629" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" visible="false"/>
+        <Grid id="Grid00" taborder="3" left="25" top="614" width="625" height="86" autofittype="col" binddataset="ds_file" onheadclick="Grid00_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="200"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell edittype="checkbox" displaytype="checkboxcontrol" onchanged="fn_allchk" expr="expr:FILE_CHK=='Y'?'1':'0'"/>
+                <Cell col="1" text="파일명"/>
+                <Cell col="2" text="크기"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FILE_CHK" expr="expr:FILE_CHK=='Y'?'1':'0'" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:BNF_NAME"/>
+                <Cell col="2" text="bind:BNF_SIZE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <FileDownload id="FileDownload00" taborder="11" text="다운로드" left="655" top="615" width="120" height="86" onclick="FileDownload00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -34,35 +60,163 @@
           <Column id="E_NAME" type="STRING" size="256"/>
           <Column id="BN_HIT" type="STRING" size="256"/>
           <Column id="BN_DATE" type="STRING" size="256"/>
+          <Column id="BN_NAME" type="STRING" size="256"/>
+          <Column id="BN_CONTENT" type="STRING" size="256"/>
+          <Column id="E_NO" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_file" oncolumnchanged="ds_file_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="FILE_CHK" type="STRING" size="256"/>
+          <Column id="BNF_NAME" type="STRING" size="256"/>
+          <Column id="BNF_SIZE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDownTransfer id="FileDownTransfer00"/>
     </Objects>
     <Bind>
       <BindItem id="item4" compid="lb_num" propid="text" datasetid="ds_board_notice" columnid="BN_NO"/>
       <BindItem id="item0" compid="lb_ename" propid="text" datasetid="ds_board_notice" columnid="E_NAME"/>
       <BindItem id="item1" compid="lb_date" propid="text" datasetid="ds_board_notice" columnid="BN_DATE"/>
       <BindItem id="item2" compid="lb_hit" propid="text" datasetid="ds_board_notice" columnid="BN_HIT"/>
+      <BindItem id="item3" compid="ta_content" propid="value" datasetid="ds_board_notice" columnid="BN_CONTENT"/>
+      <BindItem id="item5" compid="ed_title" propid="value" datasetid="ds_board_notice" columnid="BN_NAME"/>
     </Bind>
-    <Script type="xscript5.1"><![CDATA[
-this.lb_num_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.Main_Notice_Write_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	this.application = nexacro.getApplication();
+	this.ds_board_notice.clearData();
+	var objFrame = this.getOwnerFrame();
+	this.bn_no = objFrame.bn_no;
+	this.fn_notice_init(this.bn_no);
+};
+
+this.fn_notice_init = function(bn_no){
+	trace(bn_no);
+	var svcID = "getDetailSel" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/main/getDetailSel.mpg?no=" + svcID;
+	var data = "ds_board_notice=out_test";
+	var param = " bn_no=" + bn_no;
+	this.transaction(svcID, svcURL, "", data, param, "fn_text_init");
+}
+
+this.fn_text_init = function(){
+	var Login_ENO = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	if (this.ds_board_notice.getColumn(0, "E_NO") != Login_ENO && Login_ENO != 1){
+		this.ed_title.set_readonly(true);
+		this.ta_content.set_readonly(true);
+		this.btn_delete.set_visible(false);
+		this.btn_edit.set_visible(false);
+		this.file_upload.set_visible(false);
+	}
+	this.fn_file_init();
+};
+
+this.fn_file_init = function(){
+	var svcID = "getNBFileSel" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/main/getDetailSel.mpg?no=" + svcID;
+	var data = "ds_file=out_test";
+	var param = " bn_no=" + this.ds_board_notice.getColumn(0, "BN_NO") + " bnf_name=0";
+	this.transaction(svcID, svcURL, "", data, param, "");	
+}
+
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var svcID = "getNBDel" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/main/getNBDel.mpg?no=" + svcID;
+	var param = " bn_no=" + this.ds_board_notice.getColumn(0, "BN_NO");
+	if(!this.gfn_isNull(this.ds_board_notice.getColumn(0, "BNF_NAME"))){
+		param += " bnf_name=" + this.ds_board_notice.getColumn(0, "BNF_NAME");
+	}
+	this.transaction(svcID, svcURL, "", "", param, "fn_close");
+};
+
+this.btn_edit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var bn_name = this.ed_title.text;
+	var bn_content = this.ta_content.text;
+	var bn_no = this.ds_board_notice.getColumn(0, "BN_NO");
+	var svcID = "getNBUpd" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/main/getNBUpd.mpg?no=" + svcID;
+	var param = " bn_name=" + bn_name + " bn_content=" + bn_content + " bn_no=" + bn_no;
+	if(!this.gfn_isNull(this.ds_board_notice.getColumn(0, "BNF_NAME"))){
+		param += " bnf_name=" + this.file_upload.text;
+	}
+	this.transaction(svcID, svcURL, "", "", param, "fn_close");
+};
+
+this.fn_close = function(){
+	this.close();
+}
+
+this.FileDownload00_onclick = function(obj:nexacro.FileDownload,e:nexacro.ClickEventInfo)
+{
+	let count = this.application.transactionCount++;
+	let path = "";
+	path = "board_notice";
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		if(this.ds_file.getColumn(i, "FILE_CHK") == "Y"){
+			this.FileDownTransfer00.download('http://localhost:9000/fileBox/fileDownload.jsp?PATH=' + path + "&file_name=" + this.ds_file.getColumn(i, "BNF_NAME")) + "&no=" + count;
+		}
+	}
 	
 };
 
-this.lb_hit_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+this.ds_file_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
 {
-	
+	if(e.columnid == "FILE_CHK") {
+        // 다른 이벤트가 동작하지 않도록 설정
+        obj.enableevent = false;  //false can stop event temporarily 
+        // 변경된 값이 1(체크가 된 경우)인경우
+        if(e.newvalue == '1') {
+            // 1인 경우 Dataset의 chk 값을 Y로 변경
+            obj.setColumn(e.row,"FILE_CHK",'Y');
+        } else if(e.newvalue == '0') {
+            // 0인 경우 Dataset의 chk 값을 N로 변경
+            obj.setColumn(e.row,"FILE_CHK",'N'); 
+        }
+        // 다시 이벤트가 정상 동작하도록 설정
+        obj.enableevent = true;
+    }
 };
 
-this.btn_confirm00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	
-};
+this.fn_allchk = function(){
+	this.alert(123);
+}
 
-this.lb_date01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+//헤더 체크박스 클릭
+this.Grid00_onheadclick = function (obj:Grid, e:GridClickEventInfo)
 {
-	
-};
-]]></Script>
+ if (e.cell == 0) 
+ {
+  this.gf_SetGridCheckAll(obj, e);
+ }
+}
+
+//헤더체크박스 클릭 이벤트
+this.gv_IsGridCheckAll = 'Y';
+this.gf_SetGridCheckAll = function (obj:Grid, e:GridClickEventInfo){
+ var dsObj = eval("this." +obj.binddataset);
+ var v_Colid = obj.getCellProperty("body", e.cell, "text").split("bind:").join("");
+ this.gv_IsGridCheckAll = (this.gv_IsGridCheckAll ? 'Y' : 'N');
+ dsObj.set_enableevent(false);
+ for (var i = 0; i < dsObj.getRowCount(); i++) 
+ {
+  dsObj.setColumn(i, v_Colid, this.gv_IsGridCheckAll);
+ }
+ obj.setCellProperty("Head", 0, "expr", this.gv_IsGridCheckAll);
+ dsObj.set_enableevent(true);
+}]]></Script>
   </Form>
 </FDL>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="AC_St_Remit" width="550" height="550" titletext="New Form">
+  <Form id="AC_St_Remit" width="550" height="550" titletext="New Form" onload="AC_St_Remit_onload">
     <Layouts>
       <Layout height="550" width="550">
         <Static id="lb_bg1" taborder="0" left="25" top="112" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
@@ -25,37 +25,117 @@
         <Edit id="ed_date_pay" taborder="19" left="144" top="192" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_amount" taborder="20" text="금액" left="269" top="191" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_amount" taborder="21" left="390" top="192" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Combo id="cb_dept" taborder="22" left="144" top="153" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" displaynulltext="부서" onitemchanged="cb_dept_onitemchanged">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="datacolumn">인사팀</Col>
-                <Col id="codecolumn">dept_ac</Col>
-              </Row>
-              <Row>
-                <Col id="datacolumn">회계팀</Col>
-                <Col id="codecolumn">dep_hr</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Button id="btn_reject" taborder="23" left="449" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer"/>
-        <Static id="lb_bg2_01" taborder="24" left="26" top="423" width="499" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_file00" taborder="25" text="첨부파일" left="25" top="424" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <FileUpload id="file_upload" taborder="26" left="144" top="425" width="125" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Static id="lb_file00_01" taborder="27" left="269" top="424" width="256" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_approve" taborder="28" left="335" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer"/>
+        <Button id="btn_reject" taborder="22" left="239" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
+        <Static id="lb_bg2_01" taborder="23" left="26" top="423" width="499" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_file00" taborder="24" text="첨부파일" left="25" top="424" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <FileUpload id="file_upload" taborder="25" left="144" top="425" width="125" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="lb_file00_01" taborder="26" left="269" top="424" width="256" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_approve" taborder="27" left="105" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
+        <Edit id="ed_dept" taborder="28" left="144" top="154" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Button id="btn_close" taborder="29" left="369" top="490" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_close_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
-this.cb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+this.tabCount = 0;
+this.fi_no = "";//해당 신청서 번호
+
+this.AC_St_Remit_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	
+	this.application = nexacro.getApplication();
+	let objFrame = this.getOwnerFrame();
+	this.fn_text_init(objFrame);
+};
+//신청서 정보 로딩
+this.fn_text_init = function(objFrame){
+	this.fi_no = objFrame.fi_no;
+	if (objFrame.fi_state != "진행중"){//승인, 반려 상태는 확인창만 보이도록 만듬
+		this.btn_approve.set_visible(false);
+		this.btn_reject.set_visible(false);
+		this.btn_close.set_left(239);
+	}
+	let count = this.application.transactionCount++;
+	let svcID = "acStDetail" + count;
+	let svcURL = "SvcURL::/acst/acStDetail.ac?no=" + count;
+	let data = "ds_remit=out_test";
+	let param = " fi_no=" + this.fi_no + " ft_type=이체요청";
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+//승인
+this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") > 2){
+		let count = this.application.transactionCount++;
+		let svcID = "acStOkUpd" + count;
+		let svcURL = "SvcURL::/acst/acStOk.ac?no=" + count;
+		let data = "";
+		let param = " p_fino=" + this.fi_no + " p_fi_state=승인" + " ft_type=이체요청";//프로시저 사용
+// 		let param = " fi_state=승인" + " ft_type=이체요청" + " fi_no=" + this.fi_no;//UPDATE에 필요
+// 		param += " spe_date=" + this.ds_remit.getColumn(0, "FPE_DATE") 
+// 			+ " spe_sal=" + this.ds_remit.getColumn(0, "FPE_EXP") 
+// 			+ " spe_content=" + this.ds_remit.getColumn(0, "FPE_CONTENT") 
+// 			+ " spe_loc=" + this.ds_remit.getColumn(0, "FPE_NAME");//INSERT에 필요
+		this.transaction(svcID, svcURL, "", data, param, "fn_close");	
+	}
+	else{
+		this.alert("승인권한이 없습니다.");
+	}
+};
+
+//반려
+this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") > 2){
+		let count = this.application.transactionCount++;
+		let svcID = "acStNoUpd" + count;
+		let svcURL = "SvcURL::/acst/acStNo.ac?no=" + count;
+		let data = "";
+		let param = " fi_state=반려" + " fi_no=" + this.fi_no + " ft_type=이체요청";
+		this.transaction(svcID, svcURL, "", data, param, "fn_close");
+	}
+	else{
+		this.alert("반려권한이 없습니다.");
+	}
+};
+
+this.fn_close = function(){
+	let objReturn = { "modalName" : "remit" };
+	this.close(JSON.stringify(objReturn, null, "\t"));
+}
+
+
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
 };
 ]]></Script>
+    <Objects>
+      <Dataset id="ds_remit">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="FPE_NAME" type="STRING" size="256"/>
+          <Column id="FPE_DATE" type="STRING" size="256"/>
+          <Column id="FPE_EXP" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="FPE_CONTENT" type="STRING" size="256"/>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="ds_remit" columnid="E_NO"/>
+      <BindItem id="item1" compid="ed_date" propid="value" datasetid="ds_remit" columnid="FI_DATE"/>
+      <BindItem id="item2" compid="ed_dept" propid="value" datasetid="ds_remit" columnid="D_NAME"/>
+      <BindItem id="item3" compid="ed_partner" propid="value" datasetid="ds_remit" columnid="FPE_NAME"/>
+      <BindItem id="item4" compid="ed_date_pay" propid="value" datasetid="ds_remit" columnid="FPE_DATE"/>
+      <BindItem id="item5" compid="ed_amount" propid="value" datasetid="ds_remit" columnid="FPE_EXP"/>
+      <BindItem id="item6" compid="ed_title" propid="value" datasetid="ds_remit" columnid="FI_NAME"/>
+      <BindItem id="item7" compid="ta_content" propid="value" datasetid="ds_remit" columnid="FPE_CONTENT"/>
+    </Bind>
   </Form>
 </FDL>
