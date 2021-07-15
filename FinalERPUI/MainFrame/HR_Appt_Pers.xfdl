@@ -132,7 +132,7 @@ this.hrApptSel_load = function(){
    let objgdsLoginInfo = this.application.objgdsLoginInfo;
    let idCount = this.application.transactionCount++;
    let svcID = "HRAppSel" + idCount;
-   let svcURL = "SvcURL:://hrappt/hrApptSel.hr?no=" + idCount;
+   let svcURL = "SvcURL::/hrappt/hrApptSel.hr?no=" + svcID;
    let data = "DS_HR_Appt_Pers=out_test";
    this.DS_HR_Appt_Pers.clearData();
    this.transaction(svcID, svcURL, "", data, "", "");
