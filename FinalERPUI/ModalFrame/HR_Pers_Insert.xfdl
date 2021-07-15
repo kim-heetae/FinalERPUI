@@ -10,7 +10,7 @@
         <Static id="lb_dept" taborder="4" text="입사일" left="25" top="167" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
         <Edit id="ed_name" taborder="5" left="145" top="127" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="true"/>
         <Static id="lb_file00" taborder="6" text="성별" left="274" top="167" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Radio id="rd_gender" taborder="7" left="393" top="167" width="125" height="39" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="false" direction="vertical" font="20px/normal &quot;나눔바른펜&quot;">
+        <Radio id="rd_gender" taborder="7" left="410" top="167" width="125" height="39" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="false" direction="vertical" font="20px/normal &quot;나눔바른펜&quot;">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -46,9 +46,6 @@
             </ColumnInfo>
             <Rows>
               <Row>
-                <Col id="datacolumn">전체</Col>
-              </Row>
-              <Row>
                 <Col id="datacolumn">인사팀</Col>
               </Row>
               <Row>
@@ -58,18 +55,15 @@
           </Dataset>
         </Combo>
         <Static id="lb_dept00" taborder="21" text="사원명" left="25" top="127" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Calendar id="Calendar00" taborder="22" left="145" top="167" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;"/>
+        <Calendar id="Calendar00" taborder="22" left="145" top="167" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
         <Static id="lb_empno00" taborder="23" text="직급" left="270" top="88" width="123" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Combo id="cb_lev" taborder="24" text="전체" left="393" top="88" width="125" height="38" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+        <Combo id="cb_lev" taborder="24" text="전체" left="393" top="88" width="125" height="38" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" displaynulltext="전체">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
               <Column id="datacolumn" size="256"/>
             </ColumnInfo>
             <Rows>
-              <Row>
-                <Col id="datacolumn">전체</Col>
-              </Row>
               <Row>
                 <Col id="datacolumn">사장</Col>
               </Row>

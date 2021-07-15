@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="HR_St_Vacation" width="550" height="475" titletext="New Form" border="1px solid #999999">
+  <Form id="HR_St_Vacation" width="550" height="475" titletext="New Form" border="1px solid #999999" onload="HR_St_Vacation_onload">
     <Layouts>
       <Layout height="475" width="550">
         <Static id="lb_title_m" taborder="0" text="휴가 신청내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
@@ -9,42 +9,124 @@
         <Edit id="ed_empno" taborder="3" left="144" top="102" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg2" taborder="4" left="25" top="139" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_date" taborder="5" text="신청일" left="269" top="101" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_date" taborder="6" left="390" top="102" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_date_start" taborder="7" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7" text="휴가시작일"/>
-        <Edit id="ed_date_start" taborder="8" left="144" top="141" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_date_end" taborder="9" text="휴가종료일" left="269" top="140" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_date_end" taborder="10" left="390" top="141" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_bg2_00" taborder="11" left="270" top="214" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Edit id="ed_title" taborder="12" left="144" top="180" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
-        <TextArea id="ta_content" taborder="13" left="25" top="253" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
-        <Static id="lb_content" taborder="14" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_title" taborder="15" text="제목" left="25" top="178" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_content00" taborder="16" left="145" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_file00_00" taborder="17" left="144" top="216" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_reject" taborder="18" left="449" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer"/>
-        <Button id="btn_approve" taborder="19" left="335" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer"/>
+        <Static id="lb_date_start" taborder="6" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7" text="휴가시작일"/>
+        <Static id="lb_date_end" taborder="7" text="휴가종료일" left="269" top="140" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_bg2_00" taborder="8" left="270" top="214" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Edit id="ed_title" taborder="9" left="144" top="180" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
+        <TextArea id="ta_content" taborder="10" left="25" top="253" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
+        <Static id="lb_content" taborder="11" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_title" taborder="12" text="제목" left="25" top="178" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_content00" taborder="13" left="145" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_file00_00" taborder="14" left="144" top="216" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Calendar id="cal_date" taborder="15" left="390" top="103" width="135" height="35" enable="false" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;"/>
+        <Calendar id="cal_date_start" taborder="16" left="144" top="140" width="125" height="36" enable="false" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;"/>
+        <Calendar id="cal_date_end" taborder="17" left="390" top="141" width="135" height="36" enable="false" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btn_reject" taborder="18" left="336" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
+        <Button id="btn_approve" taborder="19" left="222" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
+        <Button id="btn_ok" taborder="20" left="448" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
-this.Static02_00_00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.HR_St_Vacation_onload = function (){
+	this.application = nexacro.getApplication();
+	let objFrame = this.getOwnerFrame();
+	this.e_no = objFrame.e_no;
+	this.fn_init(objFrame);
 };
 
-this.Static02_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
-{
-	
+this.fn_init = function(objFrame){
+	let fi_no = objFrame.FI_NO;
+	if (objFrame.FI_STATE != "진행중"){//승인, 반려 상태는 확인창만 보이도록 만듬
+		this.btn_approve.set_visible(false);
+		this.btn_reject.set_visible(false);
+		this.btn_ok.set_left(239);
+	}
+	let ft_type = "휴가";
+	let svcID = "getVacationSel" + this.application.transactionCount++;
+	let svcURL = "SvcURL::/hrst/hrDetailSel.hr?no=" + svcID;
+	let data = "DS_Vacation=out_test";
+	let param = " fi_no=" + fi_no + " ft_type=" + ft_type;
+	this.transaction(svcID, svcURL, "", data, param, "");
 };
 
-this.Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+/*승인버튼 클릭 시 승인 UPD*/
+this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	let p_fi_no = this.DS_Vacation.getColumn(0, "FI_NO");
+	let p_ft_type = "휴가";
+	let e_no = this.DS_Vacation.getColumn(0, "E_NO");
+	let svcID = "HRStVacationUpd" + this.application.transactionCount++;
+	let svcURL = "SvcURL::/hrst/hrOkUpd.hr?no=" + svcID;
+	let param = " p_fi_no=" + p_fi_no + " p_ft_type=" + p_ft_type + " p_fi_state=승인" + " p_e_no=" + e_no + " ft_type="+ p_ft_type;
 	
+	/*권한 선언*/
+	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
+	/*권한이 4이하라면 (사원, 대리, 과장)*/
+	if(login_auth < 4) {
+		alert("승인 권한이 부족합니다.");
+	} else {
+		/*권한이 4이상이면 (차장, 부장)*/
+		this.transaction(svcID, svcURL, "", "", param, "fn_close");
+	}
+};
+/*반려버튼 클릭 시 반려 UPD*/
+this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	let fi_no = this.DS_Vacation.getColumn(0, "FI_NO");
+	let svcID = "HRStVacationDels" + this.application.transactionCount++;
+	let svcURL = "SvcURL::/hrst/hrNoUpd.hr?no=" + svcID;
+	let data = "DS_Vacation=out_test";
+	let param = " fi_no=" + fi_no + " fi_state=반려";
+	
+	/*권한 선언*/
+	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
+	/*권한이 4이하라면 (사원, 대리, 과장)*/
+	if(login_auth < 4) {
+		alert("반려 권한이 부족합니다.");
+	} else {
+		/*권한이 4이상이면 (차장, 부장)*/
+		this.transaction(svcID, svcURL, "", data, param, "fn_close");
+	}
 };
 
-this.Common_onchanged = function(obj:nexacro.TextArea,e:nexacro.ChangeEventInfo)
+/*닫기 함수*/
+this.fn_close = function(){
+	this.close();
+}
+
+/*확인 버튼 클릭 시 닫기*/
+this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	this.close();
 };
 ]]></Script>
+    <Bind>
+      <BindItem id="item3" compid="ed_empno" propid="value" datasetid="DS_Vacation" columnid="E_NO"/>
+      <BindItem id="item0" compid="cal_date" propid="value" datasetid="DS_Vacation" columnid="FI_DATE"/>
+      <BindItem id="item1" compid="cal_date_start" propid="value" datasetid="DS_Vacation" columnid="FV_START"/>
+      <BindItem id="item2" compid="cal_date_end" propid="value" datasetid="DS_Vacation" columnid="FV_END"/>
+      <BindItem id="item4" compid="ed_title" propid="value" datasetid="DS_Vacation" columnid="FI_NAME"/>
+      <BindItem id="item5" compid="ta_content" propid="value" datasetid="DS_Vacation" columnid="FV_CONTENT"/>
+    </Bind>
+    <Objects>
+      <Dataset id="DS_Vacation">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="FV_START" type="STRING" size="256"/>
+          <Column id="FV_END" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="FV_CONTENT" type="STRING" size="256"/>
+          <Column id="FI_NO" type="STRING" size="256"/>
+          <Column id="FI_STATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

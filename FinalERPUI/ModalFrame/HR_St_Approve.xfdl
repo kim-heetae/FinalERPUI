@@ -18,11 +18,12 @@
         <Static id="lb_title" taborder="12" text="제목" left="25" top="178" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_content00" taborder="13" left="145" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_file00_00" taborder="14" left="144" top="216" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_reject" taborder="15" left="449" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
+        <Button id="btn_reject" taborder="15" left="336" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
         <FileUpload id="file_upload" taborder="16" left="390" top="141" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_approve" taborder="17" left="335" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
+        <Button id="btn_approve" taborder="17" left="222" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
         <Calendar id="cal_date" taborder="18" left="390" top="103" width="135" height="35" enable="false"/>
-        <Edit id="ed_empno00" taborder="19" left="144" top="142" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Edit id="ed_dept" taborder="19" left="144" top="142" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Button id="btn_Ok" taborder="20" left="449" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_Ok_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -34,6 +35,7 @@ this.application = null;
 this.HR_ApproveSel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
    this.application = nexacro.getApplication();
+/*   let objFrame = this.getOwnerFrame();*/
    let objFrame = this.getOwnerFrame();
    this.e_no = objFrame.e_no;
    this.fn_init(objFrame);
@@ -41,6 +43,11 @@ this.HR_ApproveSel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.fn_init = function(objFrame){
 	let fi_no = objFrame.FI_NO;
+	if (objFrame.FI_STATE != "진행중"){//승인, 반려 상태는 확인창만 보이도록 만듬
+		this.btn_approve.set_visible(false);
+		this.btn_reject.set_visible(false);
+		this.btn_Ok.set_left(239);
+	}
 	let ft_type = "전자결재_인사";
 	let svcID = "getHRApproveSel" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrDetailSel.hr?no=" + svcID;
@@ -52,38 +59,44 @@ this.fn_init = function(objFrame){
 /*승인버튼 클릭 시 승인 UPD*/
 this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let fi_no = objFrame.FI_NO;
+	let fi_no = this.HRStApprove.getColumn(0, "FI_NO");
 	let ft_type = "전자결재_인사";
 	let svcID = "HRStApproveUpd" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrOkUpd.hr?no=" + svcID;
-	let param = " fi_no=" + fi_no + "ft_type" + ft_type;
+	let param = " fi_no=" + fi_no + " ft_type=" + ft_type + " fi_state=승인";
 	
 	/*로그인한 E_NO 선언*/
-	let login_ENO = this.application.objgdjsLoginInfo.getColumn(0, "E_NO");
-	/*사원번호가 1(사장) 또는 7(인사부장) 이 아니라면*/
-	if(this.HRStApprove.getColumn(0, "E_NO") != login_ENO && login_ENO != 1, 7) {
-		this.alert("권한이 부족합니다.");
+	/*let login_ENO = this.application.objgdsLoginInfo.getColumn(0, "E_NO");*/
+	
+	/*권한 선언*/
+	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
+	/*권한이 4이하라면 (사원, 대리, 과장)*/
+	if(login_auth < 4) {
+		alert("승인 권한이 부족합니다.");
 	} else {
-		/*사원번호가 1(사장) 또는 7(인사부장) 이라면*/
+		/*권한이 4이상이면 (차장, 부장)*/
 		this.transaction(svcID, svcURL, "", "", param, "fn_close");
 	}
 };
 /*반려버튼 클릭 시 반려 UPD*/
 this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let fi_no = objFrame.FI_NO;
+	let fi_no = this.HRStApprove.getColumn(0, "FI_NO");
 	let svcID = "getHRAccountDels" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrNoUpd.hr?no=" + svcID;
 	let data = "HRStApprove=out_test";
-	let param = " fi_no=" + fi_no;
+	let param = " fi_no=" + fi_no + " fi_state=반려";
 	
 	/*로그인한 E_NO 선언*/
-	let login_ENO = this.application.objgdjsLoginInfo.getColumn(0, "E_NO");
-	/*사원번호가 1(사장) 또는 7(인사부장) 이 아니라면*/
-	if(this.HRStApprove.getColumn(0, "E_NO") != login_ENO && login_ENO != 1, 7) {
-		this.alert("권한이 부족합니다.");
+	/*let login_ENO = this.application.objgdjsLoginInfo.getColumn(0, "E_NO");*/
+	
+	/*권한 선언*/
+	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
+	/*권한이 4이하라면 (사원, 대리, 과장)*/
+	if(login_auth < 4) {
+		alert("반려 권한이 부족합니다.");
 	} else {
-		/*사원번호가 1(사장) 또는 7(인사부장) 이라면*/
+		/*권한이 4이상이면 (차장, 부장)*/
 		this.transaction(svcID, svcURL, "", data, param, "fn_close");
 	}
 };
@@ -91,7 +104,14 @@ this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 /*닫기 함수*/
 this.fn_close = function(){
 	this.close();
-}]]></Script>
+}
+
+/*확인 버튼 클릭 시 닫기*/
+this.btn_Ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
     <Objects>
       <Dataset id="HRStApprove">
         <ColumnInfo>
@@ -101,6 +121,8 @@ this.fn_close = function(){
           <Column id="FI_NAME" type="STRING" size="256"/>
           <Column id="FAH_CONTENT" type="STRING" size="256"/>
           <Column id="FF_NAME" type="STRING" size="256"/>
+          <Column id="FI_STATE" type="STRING" size="256"/>
+          <Column id="FI_NO" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -110,8 +132,7 @@ this.fn_close = function(){
       <BindItem id="item2" compid="file_upload" propid="accessibilityaction" datasetid="HRStApprove" columnid="FF_NAME"/>
       <BindItem id="item3" compid="ed_title" propid="value" datasetid="HRStApprove" columnid="FI_NAME"/>
       <BindItem id="item4" compid="ta_content" propid="value" datasetid="HRStApprove" columnid="FAH_CONTENT"/>
-      <BindItem id="item5" compid="ed_empno00" propid="value" datasetid="HRStApprove" columnid="E_NO"/>
-      <BindItem id="item6" compid="ed_empno00" propid="accessibilityaction" datasetid="HRStApprove" columnid="D_NAME"/>
+      <BindItem id="item5" compid="ed_dept" propid="value" datasetid="HRStApprove" columnid="D_NAME"/>
     </Bind>
   </Form>
 </FDL>
