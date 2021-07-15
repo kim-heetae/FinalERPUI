@@ -37,23 +37,23 @@
               </Columns>
               <Rows>
                 <Row size="36" band="head"/>
-                <Row size="32"/>
+                <Row size="30"/>
               </Rows>
               <Band id="head">
-                <Cell text="No"/>
-                <Cell col="1" text="유형"/>
-                <Cell col="2" text="사원번호"/>
-                <Cell col="3" text="제목"/>
-                <Cell col="4" text="신청일"/>
-                <Cell col="5" text="상태여부" comboautoselect="true" displaytype="normal" combodataset="ds_state" combodatacol="STATE" combocodecol="NUM" combopopuptype="normal" combotype="dropdown" edittype="none" combodisplaynulltype="none"/>
+                <Cell text="No" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="1" text="유형" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="2" text="사원번호" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="3" text="제목" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="4" text="신청일" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="5" text="상태여부" comboautoselect="true" displaytype="normal" combodataset="ds_state" combodatacol="STATE" combocodecol="NUM" combopopuptype="normal" combotype="dropdown" edittype="none" combodisplaynulltype="none" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:FI_NO"/>
-                <Cell col="1" text="bind:FT_TYPE"/>
-                <Cell col="2" text="bind:E_NO"/>
-                <Cell col="3" text="bind:FI_NAME"/>
-                <Cell col="4" text="bind:FI_DATE" displaytype="date" edittype="date" calendardateformat="yyyy-MM-dd" calendarpopuptype="none"/>
-                <Cell col="5" text="bind:FI_STATE"/>
+                <Cell text="bind:FI_NO" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="1" text="bind:FT_TYPE" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="2" text="bind:E_NO" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="3" text="bind:FI_NAME" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="4" text="bind:FI_DATE" displaytype="date" edittype="date" calendardateformat="yyyy-MM-dd" calendarpopuptype="none" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="5" text="bind:FI_STATE" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
@@ -61,13 +61,13 @@
         <Static id="lb_route" taborder="3" text="회계 &gt; 신청 현황" left="1433" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
         <Button id="btn_sel" taborder="4" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
         <Edit id="ed_empno" taborder="5" left="1187" top="160" width="253" height="40" displaynulltext="사원번호를 입력해주세요" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_3" taborder="9" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_4" taborder="10" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_5" taborder="11" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_3" taborder="9" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_4" taborder="10" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_5" taborder="11" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";

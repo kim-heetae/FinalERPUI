@@ -69,10 +69,15 @@ this.macCon = function(){
 	} else{
 		/*경조비 insert parameter ==> fpc_self: 대상자 사원번호 , fpc_date: 경조사 일자 , fpc_loc: 발생지역
 		, fpc_rela: 대상자와의 관계 , fpc_content: 내용 */
-		let param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
-				+ " ff_name=" + file + " ff_size=" + 0
-				+ " fpc_self=" + person + " fpc_date=" + dateOccur + " fpc_loc=" + place 
-				+ " fpc_rela=" + relation + " fpc_content=" + content;
+		title = this.application.gfn_quote("fi_name", title);
+		person = this.application.gfn_quote("fpc_self", person);
+		place = this.application.gfn_quote("fpc_loc", place);
+		relation = this.application.gfn_quote("fpc_rela", relation);
+		content = this.application.gfn_quote("fpc_content", content);
+		let param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
+				/*+ " ff_name=" + file + " ff_size=" + 0*/
+				+ person + " fpc_date=" + dateOccur + place 
+				+ relation + content;
 		this.transaction(svcID, svcURL, "", "", param, "");
 		this.alert("경조비 신청이 완료됐습니다.");
 		this.close();

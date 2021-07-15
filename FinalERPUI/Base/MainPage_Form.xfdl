@@ -22,21 +22,21 @@
                         </Columns>
                         <Rows>
                           <Row size="36" band="head"/>
-                          <Row size="32"/>
+                          <Row size="30"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="글번호"/>
-                          <Cell col="1" text="제목"/>
-                          <Cell col="2" text="작성자"/>
-                          <Cell col="3" text="작성일"/>
-                          <Cell col="4" text="조회수"/>
+                          <Cell text="글번호" font="16px/normal &quot;Gulim&quot;"/>
+                          <Cell col="1" text="제목" font="16px/normal &quot;Gulim&quot;"/>
+                          <Cell col="2" text="작성자" font="16px/normal &quot;Gulim&quot;"/>
+                          <Cell col="3" text="작성일" font="16px/normal &quot;Gulim&quot;"/>
+                          <Cell col="4" text="조회수" font="16px/normal &quot;Gulim&quot;"/>
                         </Band>
                         <Band id="body">
-                          <Cell text="bind:BN_NO" textAlign="center"/>
-                          <Cell col="1" text="bind:BN_NAME" textAlign="center"/>
-                          <Cell col="2" text="bind:E_NAME" textAlign="center"/>
-                          <Cell col="3" text="bind:BN_DATE" textAlign="center"/>
-                          <Cell col="4" text="bind:BN_HIT" textAlign="center"/>
+                          <Cell text="bind:BN_NO" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="1" text="bind:BN_NAME" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="2" text="bind:E_NAME" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="3" text="bind:BN_DATE" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="4" text="bind:BN_HIT" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -59,21 +59,21 @@
                         </Columns>
                         <Rows>
                           <Row size="36" band="head"/>
-                          <Row size="32"/>
+                          <Row size="30"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="글번호"/>
-                          <Cell col="1" text="글제목"/>
-                          <Cell col="2" text="작성자"/>
-                          <Cell col="3" text="작성일"/>
-                          <Cell col="4" text="조회수"/>
+                          <Cell text="글번호" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="1" text="글제목" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="2" text="작성자" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="3" text="작성일" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="4" text="조회수" font="normal 16px/normal &quot;Arial&quot;"/>
                         </Band>
                         <Band id="body">
-                          <Cell text="bind:BW_NO" textAlign="center"/>
-                          <Cell col="1" text="bind:BW_NAME" textAlign="center"/>
-                          <Cell col="2" text="bind:E_NAME" textAlign="center"/>
-                          <Cell col="3" text="bind:BW_DATE" textAlign="center"/>
-                          <Cell col="4" text="bind:BW_HIT" textAlign="center"/>
+                          <Cell text="bind:BW_NO" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="1" text="bind:BW_NAME" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="2" text="bind:E_NAME" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="3" text="bind:BW_DATE" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Cell col="4" text="bind:BW_HIT" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -86,13 +86,13 @@
         <Button id="btn_write" taborder="3" text="작성글" left="1451" top="690" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;" cursor="pointer" onclick="btn_write_onclick"/>
         <Button id="btn_ins" taborder="4" text="입력" left="1350" top="690" width="80" height="40" font="20px/normal &quot;나눔바른펜&quot;" cursor="pointer" onclick="btn_ins_onclick"/>
         <Combo id="cb_dept" taborder="5" left="965" top="99" width="150" height="40" font="20px/normal &quot;나눔바른펜&quot;" innerdataset="DS_Combo" codecolumn="CODECOLUMN" datacolumn="DATACOLUMN" index="0" value="DEPT" type="dropdown" onitemchanged="cb_dept_onitemchanged" text="부서목록"/>
-        <Static id="Static00" taborder="6" text="&lt;" left="655" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00" taborder="7" text="1" left="720" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00" taborder="8" text="2" left="785" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00_00" taborder="9" text="3" left="850" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00_00_00" taborder="10" text="4" left="915" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00_00_00_00" taborder="11" text="5" left="980" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00_00_00_00_00" taborder="12" text="&gt;" left="1045" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Static id="Static00" taborder="6" text="&lt;" left="655" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="Static00_00" taborder="7" text="1" left="720" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="Static00_00_00" taborder="8" text="2" left="785" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="Static00_00_00_00" taborder="9" text="3" left="850" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="Static00_00_00_00_00" taborder="10" text="4" left="915" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="Static00_00_00_00_00_00" taborder="11" text="5" left="980" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="Static00_00_00_00_00_00_00" taborder="12" text="&gt;" left="1045" top="690" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -224,32 +224,37 @@ this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 }
 
 this.fn_bnDetailSel = function(){
-	var edContent = this.ed_content.value;
-	var bnparam1 = " bn_no=" + 0 + " bn_name=" + edContent;
-	var idCount = this.application.transactionCount++;
-	var svcID = "bnDetailSel" + idCount;
+	let bn_name = this.ed_content.value;
+	bn_name = this.application.gfn_quote("bn_name", bn_name);
+	let bn_no = " bn_no=0"; 
+	let param = bn_name + bn_no;
+	let idCount = this.application.transactionCount++;
+	let svcID = "bnDetailSel" + idCount;
 	this.transaction(svcID
 		,"SvcURL::/main/getAllSel.mpg?no=" + idCount
 		,""
 		,"DS_INFO=out_test"
-		,bnparam1
+		,param
 		,"");
 }
 
 this.fn_bwDetailSel = function(){
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var edContent = this.ed_content.value;
-	var bwparam = "";//부서별로 다른 정보를 가져온다.
+	let objgdsLoginInfo = this.application.objgdsLoginInfo;
+	let edContent = this.ed_content.value;
+	var param = "";//부서별로 다른 정보를 가져온다.
 	if (this.cb_dept.value == "TITLE"){
-		bwparam += " bw_name=" + edContent;
+		edContent = this.application.gfn_quote("bw_name", edContent);
+		param += edContent;
 	}
 	else if(this.cb_dept.value == "DEPT"){
-		bwparam += " d_name=" + edContent;
+		edContent = this.application.gfn_quote("d_name", edContent);
+		param += edContent;
 	}
 	else if(this.cb_dept.value == "NAME"){
-		bwparam += " e_name=" + edContent;
+		edContent = this.application.gfn_quote("e_name", edContent);
+		param += edContent;
 	}
-	bwparam += " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO");
+	param += " d_no=" + objgdsLoginInfo.getColumn(0, "D_NO");
 	var idCount = this.application.transactionCount++;
 	var svcID = "bwDetailSel" + idCount;
 	this.transaction(svcID
@@ -257,7 +262,7 @@ this.fn_bwDetailSel = function(){
 			,"SvcURL::/main/getAllSel.mpg?no=" + idCount
 			,""
 			,"DS_WORK=out_test"
-			,bwparam
+			,param
 			,"");
 }
 

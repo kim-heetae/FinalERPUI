@@ -10,26 +10,21 @@
         <Button id="btn_ok" taborder="4" left="449" top="700" width="76" height="46" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer" onclick="btn_ok_onclick"/>
         <Static id="lb_real_label" taborder="5" text="실수령액" left="25" top="638" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_content00" taborder="6" left="145" top="317" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_real" taborder="7" left="144" top="638" width="321" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7"/>
-        <Static id="lb_title_m" taborder="8" text="급여명세서" left="165" top="38" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
-        <Static id="lb_dept_label" taborder="9" text="부서명" left="25" top="162" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_pos_label" taborder="10" text="직급" left="279" top="162" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_date_sal_label" taborder="11" text="지급날짜" left="25" top="201" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_state_label" taborder="12" text="지급상태" left="279" top="201" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_ok00" taborder="13" left="334" top="700" width="76" height="46" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="Excel&#13;&#10;Down" cursor="pointer" onclick="btn_ok00_onclick"/>
-        <Static id="lb_sduc_sum" taborder="14" left="144" top="599" width="321" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7"/>
-        <Static id="lb_deduct_label" taborder="15" text="공제합계" left="25" top="599" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_bg2_01" taborder="16" left="25" top="637" width="500" height="40" border="2px solid #000000, 0px none&#9;" text="" onclick="lb_bg2_01_onclick"/>
-        <Static id="lb_sal_sum" taborder="17" left="139" top="399" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7" onclick="lb_basic_onclick" text=""/>
-        <Static id="lb_ename" taborder="18" left="400" top="123" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text=""/>
-        <Static id="lb_dept" taborder="19" left="145" top="162" width="135" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_date_sal" taborder="20" left="145" top="201" width="135" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="lb_date_sal_onclick"/>
-        <Static id="lb_pos" taborder="21" left="400" top="162" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_state" taborder="22" left="400" top="201" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_basic_label00_00" taborder="23" text="원" left="465" top="399" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_basic_label00_00_00" taborder="24" text="원" left="465" top="599" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_basic_label00_00_01" taborder="25" text="원" left="465" top="639" width="60" height="36" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Grid id="Grid00" taborder="26" left="573" top="137" width="835" height="204" binddataset="ds_pay_stub" visible="false">
+        <Static id="lb_title_m" taborder="7" text="급여명세서" left="165" top="38" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_dept_label" taborder="8" text="부서명" left="25" top="162" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_pos_label" taborder="9" text="직급" left="279" top="162" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_date_sal_label" taborder="10" text="지급날짜" left="25" top="201" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_state_label" taborder="11" text="지급상태" left="279" top="201" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_ok00" taborder="12" left="334" top="700" width="76" height="46" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="Excel&#13;&#10;Down" cursor="pointer" onclick="btn_ok00_onclick"/>
+        <Static id="lb_deduct_label" taborder="13" text="공제합계" left="25" top="599" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_ename" taborder="14" left="400" top="123" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text=""/>
+        <Static id="lb_dept" taborder="15" left="145" top="162" width="135" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_pos" taborder="16" left="400" top="162" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_state" taborder="17" left="400" top="201" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00" taborder="18" text="원" left="465" top="399" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_00" taborder="19" text="원" left="465" top="599" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_01" taborder="20" text="원" left="465" top="639" width="60" height="36" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Grid id="Grid00" taborder="21" left="573" top="137" width="835" height="204" binddataset="ds_pay_stub" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -91,43 +86,48 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="lb_basic_label01" taborder="27" text="기본급" left="25" top="240" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_sal" taborder="28" left="139" top="240" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7" onclick="lb_basic_onclick" text=""/>
-        <Static id="lb_basic_label00_00_02" taborder="29" text="원" left="465" top="240" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_basic_label02" taborder="30" text="야근수당" left="25" top="280" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_overtime" taborder="31" left="139" top="280" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7" onclick="lb_basic_onclick" text=""/>
-        <Static id="lb_basic_label00_00_03" taborder="32" text="원" left="465" top="280" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_basic_label03" taborder="33" text="경조비" left="25" top="319" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_private_cost" taborder="34" left="139" top="319" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7" onclick="lb_basic_onclick" text=""/>
-        <Static id="lb_basic_label00_00_04" taborder="35" text="원" left="465" top="319" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_basic_label04" taborder="36" text="사비정산" left="25" top="360" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_private_expenses" taborder="37" left="139" top="360" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7" onclick="lb_basic_onclick" text=""/>
-        <Static id="lb_basic_label00_00_05" taborder="38" text="원" left="465" top="360" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_basic_label05" taborder="39" text="국민연금" left="25" top="439" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_pen" taborder="40" left="139" top="439" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7" onclick="lb_basic_onclick" text=""/>
-        <Static id="lb_basic_label00_00_06" taborder="41" text="원" left="465" top="439" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_basic_label06" taborder="42" text="건강보험" left="25" top="479" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_health" taborder="43" left="139" top="479" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7" onclick="lb_basic_onclick" text=""/>
-        <Static id="lb_basic_label00_00_07" taborder="44" text="원" left="465" top="479" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_basic_label07" taborder="45" text="고용보험" left="25" top="519" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_hire" taborder="46" left="139" top="519" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7" onclick="lb_basic_onclick" text=""/>
-        <Static id="lb_basic_label00_00_08" taborder="47" text="원" left="465" top="519" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_basic_label08" taborder="48" text="산재보험" left="25" top="559" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_indu" taborder="49" left="139" top="559" width="326" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="right" background="#f7f7f7" onclick="lb_basic_onclick" text=""/>
-        <Static id="lb_basic_label00_00_09" taborder="50" text="원" left="465" top="559" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_0000" taborder="51" left="25" top="598" width="500" height="40" border="2px solid #000000,0px none,1px solid #c7c7c7" text=""/>
-        <Static id="lb_0000_03" taborder="52" left="25" top="558" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
-        <Static id="lb_0000_02" taborder="53" left="25" top="518" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
-        <Static id="lb_0000_01" taborder="54" left="25" top="478" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
-        <Static id="lb_0000_00" taborder="55" left="25" top="438" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
-        <Static id="lb_bg1_00_00_00_00_00" taborder="56" left="25" top="399" width="500" height="40"/>
-        <Static id="lb_bg2_00_00_00" taborder="57" left="25" top="359" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" onclick="lb_bg2_onclick"/>
-        <Static id="lb_bg1_00_00_00_00" taborder="58" left="25" top="319" width="500" height="40"/>
-        <Static id="lb_bg2_00" taborder="59" left="25" top="279" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" onclick="lb_bg2_onclick"/>
-        <Static id="lb_bg1_00_00_00" taborder="60" left="25" top="240" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_bg1_00_00" taborder="61" left="25" top="200" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_bg1_00" taborder="62" left="25" top="161" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_bg1" taborder="63" left="25" top="122" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Static id="lb_basic_label01" taborder="22" text="기본급" left="25" top="240" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_02" taborder="23" text="원" left="465" top="240" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label02" taborder="24" text="야근수당" left="25" top="280" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_03" taborder="25" text="원" left="465" top="280" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label03" taborder="26" text="경조비" left="25" top="319" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_04" taborder="27" text="원" left="465" top="319" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label04" taborder="28" text="사비정산" left="25" top="360" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_05" taborder="29" text="원" left="465" top="360" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label05" taborder="30" text="국민연금" left="25" top="439" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_06" taborder="31" text="원" left="465" top="439" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label06" taborder="32" text="건강보험" left="25" top="479" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_07" taborder="33" text="원" left="465" top="479" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label07" taborder="34" text="고용보험" left="25" top="519" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_08" taborder="35" text="원" left="465" top="519" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label08" taborder="36" text="산재보험" left="25" top="559" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_basic_label00_00_09" taborder="37" text="원" left="465" top="559" width="60" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Static id="lb_bg1_00" taborder="38" left="25" top="161" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_bg1" taborder="39" left="25" top="122" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <MaskEdit id="me_sal" taborder="40" left="139" top="240" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_over" taborder="41" left="139" top="280" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_cost" taborder="42" left="139" top="320" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_exp" taborder="43" left="139" top="360" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_basic" taborder="44" left="139" top="400" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_pen" taborder="45" left="139" top="440" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_health" taborder="46" left="139" top="480" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_hire" taborder="47" left="139" top="520" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_indu" taborder="48" left="139" top="560" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_duc" taborder="49" left="139" top="600" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <MaskEdit id="me_real" taborder="50" left="139" top="640" width="326" height="38" format="#,#" background="#f7f7f7" border="0px none"/>
+        <Static id="lb_bg1_00_00_00" taborder="51" left="25" top="240" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_bg2_00" taborder="52" left="25" top="279" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" onclick="lb_bg2_onclick"/>
+        <Static id="lb_bg1_00_00_00_00" taborder="53" left="25" top="319" width="500" height="40"/>
+        <Static id="lb_bg2_00_00_00" taborder="54" left="25" top="359" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" onclick="lb_bg2_onclick"/>
+        <Static id="lb_bg1_00_00_00_00_00" taborder="55" left="25" top="399" width="500" height="40"/>
+        <Static id="lb_0000_00" taborder="56" left="25" top="438" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Static id="lb_0000_01" taborder="57" left="25" top="478" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Static id="lb_0000_02" taborder="58" left="25" top="518" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Static id="lb_0000_03" taborder="59" left="25" top="558" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
+        <Static id="lb_0000" taborder="60" left="25" top="598" width="500" height="40" border="2px solid #000000,0px none,1px solid #c7c7c7" text=""/>
+        <Static id="lb_bg2_01" taborder="61" left="25" top="637" width="500" height="40" border="2px solid #000000, 0px none&#9;" text="" onclick="lb_bg2_01_onclick"/>
+        <MaskEdit id="me_date" taborder="62" left="145" top="201" width="135" height="38" border="0px none" background="#f7f7f7" format="####'-'##'-'##" type="string" maskchar=" " textAlign="center"/>
+        <Static id="lb_bg1_00_00" taborder="63" left="25" top="200" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -257,19 +257,19 @@ this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEve
       <BindItem id="item1" compid="lb_ename" propid="text" datasetid="gdsLoginInfo" columnid="E_NAME"/>
       <BindItem id="item2" compid="lb_dept" propid="text" datasetid="gdsLoginInfo" columnid="D_NAME"/>
       <BindItem id="item3" compid="lb_pos" propid="text" datasetid="gdsLoginInfo" columnid="E_POS"/>
-      <BindItem id="item4" compid="lb_date_sal" propid="text" datasetid="ds_pay_stub" columnid="SB_DATE"/>
       <BindItem id="item5" compid="lb_state" propid="text" datasetid="ds_pay_stub" columnid="SS_STATE"/>
-      <BindItem id="item6" compid="lb_sal" propid="text" datasetid="ds_pay_stub" columnid="SB_SAL"/>
-      <BindItem id="item7" compid="lb_overtime" propid="text" datasetid="ds_pay_stub" columnid="SS_OVER"/>
-      <BindItem id="item8" compid="lb_private_cost" propid="text" datasetid="ds_pay_stub" columnid="SS_COST"/>
-      <BindItem id="item9" compid="lb_private_expenses" propid="text" datasetid="ds_pay_stub" columnid="SS_EXP"/>
-      <BindItem id="item10" compid="lb_sal_sum" propid="text" datasetid="ds_pay_stub" columnid="SS_BASIC"/>
-      <BindItem id="item11" compid="lb_pen" propid="text" datasetid="ds_pay_stub" columnid="SDUC_PEN"/>
-      <BindItem id="item12" compid="lb_health" propid="text" datasetid="ds_pay_stub" columnid="SDUC_HEALTH"/>
-      <BindItem id="item13" compid="lb_hire" propid="text" datasetid="ds_pay_stub" columnid="SDUC_HIRE"/>
-      <BindItem id="item14" compid="lb_indu" propid="text" datasetid="ds_pay_stub" columnid="SDUC_INDU"/>
-      <BindItem id="item15" compid="lb_sduc_sum" propid="text" datasetid="ds_pay_stub" columnid="SS_DUC"/>
-      <BindItem id="item16" compid="lb_real" propid="text" datasetid="ds_pay_stub" columnid="SS_REAL"/>
+      <BindItem id="item17" compid="me_sal" propid="value" datasetid="ds_pay_stub" columnid="SB_SAL"/>
+      <BindItem id="item6" compid="me_over" propid="value" datasetid="ds_pay_stub" columnid="SS_OVER"/>
+      <BindItem id="item7" compid="me_cost" propid="value" datasetid="ds_pay_stub" columnid="SS_COST"/>
+      <BindItem id="item8" compid="me_exp" propid="value" datasetid="ds_pay_stub" columnid="SS_EXP"/>
+      <BindItem id="item9" compid="me_basic" propid="value" datasetid="ds_pay_stub" columnid="SS_BASIC"/>
+      <BindItem id="item10" compid="me_pen" propid="value" datasetid="ds_pay_stub" columnid="SDUC_PEN"/>
+      <BindItem id="item11" compid="me_health" propid="value" datasetid="ds_pay_stub" columnid="SDUC_HEALTH"/>
+      <BindItem id="item12" compid="me_hire" propid="value" datasetid="ds_pay_stub" columnid="SDUC_HIRE"/>
+      <BindItem id="item13" compid="me_indu" propid="value" datasetid="ds_pay_stub" columnid="SDUC_INDU"/>
+      <BindItem id="item14" compid="me_duc" propid="value" datasetid="ds_pay_stub" columnid="SS_DUC"/>
+      <BindItem id="item15" compid="me_real" propid="value" datasetid="ds_pay_stub" columnid="SS_REAL"/>
+      <BindItem id="item4" compid="me_date" propid="value" datasetid="ds_pay_stub" columnid="SB_DATE"/>
     </Bind>
   </Form>
 </FDL>

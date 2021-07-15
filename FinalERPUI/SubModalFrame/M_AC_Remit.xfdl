@@ -20,11 +20,10 @@
         <Static id="lb_bg1_00" taborder="14" left="25" top="170" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_date_pay" taborder="15" text="사용일자" left="25" top="171" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_amount" taborder="16" text="금액" left="270" top="171" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_amount" taborder="17" left="390" top="172" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Static id="lb_bg1_01" taborder="18" left="25" top="92" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_empno" taborder="19" text="사원번호" left="25" top="93" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_empno" taborder="20" left="144" top="94" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Combo id="cb_dept" taborder="21" left="144" top="133" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" displaynulltext="회계팀">
+        <Static id="lb_bg1_01" taborder="17" left="25" top="92" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_empno" taborder="18" text="사원번호" left="25" top="93" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Edit id="ed_empno" taborder="19" left="144" top="94" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Combo id="cb_dept" taborder="20" left="144" top="133" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" displaynulltext="회계팀">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -42,11 +41,12 @@
             </Rows>
           </Dataset>
         </Combo>
-        <FileUpload id="file_upload" taborder="22" left="390" top="248" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_confirm" taborder="23" left="336" top="440" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_confirm_onclick"/>
-        <Static id="lb_date" taborder="24" text="해당일자" left="269" top="93" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Calendar id="cal_date" taborder="25" left="390" top="95" width="135" height="35" font="15px/normal &quot;나눔바른펜&quot;" enable="true" border="1px solid #999999"/>
-        <Calendar id="cal_date_pay" taborder="26" left="144" top="173" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;" enable="true" border="1px solid #999999"/>
+        <FileUpload id="file_upload" taborder="21" left="390" top="248" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Button id="btn_confirm" taborder="22" left="336" top="440" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_confirm_onclick"/>
+        <Static id="lb_date" taborder="23" text="해당일자" left="269" top="93" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Calendar id="cal_date" taborder="24" left="390" top="95" width="135" height="35" font="15px/normal &quot;나눔바른펜&quot;" enable="true" border="1px solid #999999"/>
+        <Calendar id="cal_date_pay" taborder="25" left="144" top="173" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;" enable="true" border="1px solid #999999"/>
+        <MaskEdit id="ed_amount" taborder="26" left="390" top="172" width="135" height="36" maskchar=" " format="#,#"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -66,9 +66,9 @@ this.macRemit_board_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 this.macRemit = function(){
 	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
 	var theDate = this.cal_date.value;
-	var parTner = this.ed_partner.text;
+	var partner = this.ed_partner.text;
 	var payDate = this.cal_date_pay.value;
-	var Amount = this.ed_amount.text;
+	var Amount = this.ed_amount.value;
 	var title = this.ed_title.text;
 	var file = this.file_upload.text;
 	var content = this.ta_content.text;
@@ -77,13 +77,17 @@ this.macRemit = function(){
 	var svcID = "macRemitTraction" + this.application.transactionCount++;
 	var svcURL = "SvcURL::/macst/subTransferReq.mpg?no=" + svcID;
 	
-	if(this.gfn_isNull(this.file_upload.text)){
-		alert("파일을 첨부해주세요.");
+	if(this.gfn_isNull(this.file_upload.text) || this.gfn_isNull(theDate) || this.gfn_isNull(partner) 
+		|| this.gfn_isNull(payDate) || this.gfn_isNull(Amount) || this.gfn_isNull(title) || this.gfn_isNull(content)){
+		alert("항목을 모두 작성해주세요.");
 	} else {
 /*	fpe_name: 거래처명 , fpe_date: 사용날짜, fpe_exp: 신청금액, fpe_content: 내용 */
-	var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
-				+ " ff_name=" + file + " ff_size=" + 0
-				+ " fpe_name=" + parTner + " fpe_date=" + payDate + " fpe_exp=" + Amount + " fpe_content=" + content ;
+	title = this.application.gfn_quote("fi_name", title);
+	partner = this.application.gfn_quote("fpe_name", partner);
+	content = this.application.gfn_quote("fpe_content", content);
+	var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
+				/*+ " ff_name=" + file + " ff_size=" + 0*/
+				+ partner + " fpe_date=" + payDate + " fpe_exp=" + Amount + content ;
 	this.transaction(svcID, svcURL, "", "", param, "");
 	this.alert("이체요청이 완료됐습니다.");
 	this.close();
@@ -98,6 +102,8 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
 };
+
+
 ]]></Script>
   </Form>
 </FDL>

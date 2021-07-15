@@ -80,7 +80,7 @@ this.btn_myInfo_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 	var Main_Frame = this.application.Main_Frame;
 // 	Main_Frame.form.fn_MyPage_init();
 	var Left_Frame = this.application.Left_Frame;
-	Left_Frame.form.fn_openMenu("0005");
+	Left_Frame.form.fn_openMenu("0050");
 };
 ]]></Script>
     <Objects>
