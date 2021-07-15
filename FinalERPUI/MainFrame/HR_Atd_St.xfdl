@@ -5,7 +5,7 @@
       <Layout height="835" width="1670">
         <Static id="lb_title" taborder="0" text="근태정보" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
         <Static id="lb_myPage" taborder="1" text="인사 &gt; 근태정보" left="1369" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
-        <Grid id="gr_atd" taborder="2" left="150" top="200" width="1370" height="400" border="1px solid #c7c7c7" binddataset="HR_TA_Mgt" autofittype="col">
+        <Grid id="gr_atd" taborder="2" left="150" top="200" width="1370" height="400" border="1px solid #c7c7c7" binddataset="HR_TA_Mgt" autofittype="col" treeusecheckbox="true" treeuseexpandkey="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -87,16 +87,13 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="cb_dept00" taborder="15" text="직급 전체" left="693" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" onitemchanged="cb_dept00_onitemchanged">
+        <Combo id="cb_lev" taborder="15" text="직급 전체" left="693" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" onitemchanged="cb_dept00_onitemchanged" displaynulltext="전체">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
               <Column id="datacolumn" size="256"/>
             </ColumnInfo>
             <Rows>
-              <Row>
-                <Col id="datacolumn">전체</Col>
-              </Row>
               <Row>
                 <Col id="datacolumn">사장</Col>
               </Row>
@@ -118,7 +115,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="Edit00" taborder="16" left="860" top="164" width="577" height="36" displaynulltext="내용을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Edit id="ed_eno" taborder="16" left="860" top="164" width="577" height="36" displaynulltext="사원번호를 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
         <Button id="btn_Sel" taborder="17" left="1440" top="164" width="80" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조회" cursor="pointer" onclick="btn_Sel_onclick"/>
       </Layout>
     </Layouts>
@@ -155,44 +152,41 @@ this.HR_Atd_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 /*근태정보 전체조회*/
 this.hrAtdSel_load = function(){
-   var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var idCount = this.application.transactionCount++;
-   var svcID = "hrAtdStSel" + idCount;
+   let objgdsLoginInfo = this.application.objgdsLoginInfo;
+   let idCount = this.application.transactionCount++;
+   let svcID = "hrAtdStSel" + idCount;
+   let svcURL = "SvcURL:://hratdst/hrAtdStSel.hr?no=" + idCount;
+   let data = "HR_TA_Mgt=out_test";
    this.HR_TA_Mgt.clearData();
-   this.transaction(svcID
-   ,"SvcURL::/hratdst/hrAtdStSel.hr?no=" + idCount
-   ,""
-   ,"HR_TA_Mgt=out_test"
-   ,""
-   ,"");
+   this.transaction(svcID, svcURL, "", data, "", "");
 };
 
 /*사원정보 부서별 조회*/
 this.cb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
 {
    this.hrAtdSel_load = function(){
-   var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var selectedCombo = this.cb_dept.text;
+   let objgdsLoginInfo = this.application.objgdsLoginInfo;
+   let selectedCombo = this.cb_dept.text;
+   
    if(selectedCombo === "부서전체"){
    this.hrPersInfoSel_load();
    }
    else if(selectedCombo === "인사팀"){
-		var hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
+		let hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
    }
    else if(selectedCombo === "회계팀"){
-		var hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
+		let hrpiSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
    }
-   var idCount = this.application.transactionCount++;
-   var svcID = "hrPISearch" + idCount;
+   
+   let idCount = this.application.transactionCount++;
+   let svcID = "hrPISearch" + idCount;
+   let svcURL = "SvcURL::/hrpi/hrPISearch.hr?no=" + idCount;
+   let data = "HR_TA_Mgt=out_test";
+   
    this.HR_TA_Mgt.clearData();
    
-   this.transaction(svcID
-   ,"SvcURL::/hrpi/hrPISearch.hr?no=" + idCount
-   ,""
-   ,"HR_TA_Mgt=out_test"
-   ,hrpiSelparam
-   ,"");
-};
+   this.transaction(svcID, svcURL, "", data, hrpiSelparam, "");
+	};
 };
 
 /*사원정보 직급별조회*/
@@ -200,76 +194,59 @@ this.cb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEven
 this.cb_dept00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
 {
 	this.hrAtdSel_load = function(){
-   var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var selectedCombo = this.cb_dept00.text;
-   if(selectedCombo === "직급전체"){
-   this.hrAtdSel_load();
-   }
-   else if(selectedCombo === "사장"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "부장"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "차장"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "과장"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "대리"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-      else if(selectedCombo === "사원"){
-		var hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
-   }
-   var idCount = this.application.transactionCount++;
-   var svcID = "hrPISearch" + idCount;
+	let objgdsLoginInfo = this.application.objgdsLoginInfo;
+	let selectedCombo = this.cb_dept00.text;
+	if(selectedCombo === "직급전체"){
+		this.hrAtdSel_load();
+	}
+	else if(selectedCombo === "사장"){
+		let hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "부장"){
+		let hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "차장"){
+		let hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "과장"){
+		let hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "대리"){
+		let hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "사원"){
+		let hrpiSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+   
+   let idCount = this.application.transactionCount++;
+   let svcID = "hrPISearch" + idCount;
+   let svcURL = "SvcURL::/hrpi/hrPISearch.hr?no=" + idCount;
+   let data = "HR_TA_Mgt=out_test";
    this.HR_TA_Mgt.clearData();
    
-   this.transaction(svcID
-   ,"SvcURL::/hrpi/hrPISearch.hr?no=" + idCount
-   ,""
-   ,"HR_TA_Mgt=out_test"
-   ,hrpiSelparam
-   ,"");
+   this.transaction(svcID, svcURL, "", data, hrpiSelparam,"");
+	};
 };
-};
-
-
 
 /*사원명 조회*/
 
-
 this.hrPersInfoSel_load = function(){
-
-   var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var hrpiSelparam = this.ed_ename.text;
-   
-   var idCount = this.application.transactionCount++;
-   var svcID = "hrPISearch" + idCount;
+   let objgdsLoginInfo = this.application.objgdsLoginInfo;
+   let hrpiSelparam = this.ed_ename.text;
+   let idCount = this.application.transactionCount++;
+   let svcID = "hrPISearch" + idCount;
+   let svcURL = "SvcURL::/hrpi/hrPISearch.hr?no=" + idCount;
+   let data = "HR_TA_Mgt=out_test";
    this.HR_TA_Mgt.clearData();
-   
-   this.transaction(svcID
-   ,"SvcURL::/hrpi/hrPISearch.hr?no=" + idCount
-   ,""
-   ,"HR_TA_Mgt=out_test"
-   ,hrpiSelparam
-   ,"");
+   this.transaction(svcID, svcURL, "", data, hrpiSelparam, "");
 };
-
-	
 
 /*사원정보 전체조회*/
 
 this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-   alert("조회를 시작합니다.");
-   /*사원명 조회 함수 호출*/
    this.hrAtdSel_load();
 };
-
-
 
 this.btn_upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {

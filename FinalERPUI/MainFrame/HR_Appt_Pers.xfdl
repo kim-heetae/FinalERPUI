@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="HR_Appt_Pers" width="1670" height="835" titletext="New Form">
+  <Form id="HR_Appt_Pers" width="1670" height="835" titletext="New Form" onload="HR_Appt_Pers_onload">
     <Layouts>
       <Layout height="835" width="1670">
         <Static id="lb_title" taborder="0" text="인사발령" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
@@ -8,16 +8,13 @@
         <Static id="lb_bg1" taborder="2" left="150" top="162" width="1367" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept" taborder="3" text="부서" left="150" top="165" width="186" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_lev" taborder="4" text="직급" left="507" top="164" width="186" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Combo id="cb_dept" taborder="5" text="부서전체" left="336" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" value="" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="cb_dept" taborder="5" left="336" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" value="" index="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" displaynulltext="전체" onitemchanged="cb_dept_onitemchanged" text="">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
               <Column id="datacolumn" size="256"/>
             </ColumnInfo>
             <Rows>
-              <Row>
-                <Col id="datacolumn">부서전체</Col>
-              </Row>
               <Row>
                 <Col id="datacolumn">인사팀</Col>
               </Row>
@@ -27,7 +24,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="cb_dept00" taborder="6" text="직급 전체" left="693" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" displaynulltext="전체">
+        <Combo id="cb_emp" taborder="6" text="직급 전체" left="693" top="164" width="170" height="36" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" displaynulltext="전체" onitemchanged="cb_emp_onitemchanged">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -55,10 +52,10 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="Edit00" taborder="7" left="863" top="164" width="574" height="36" displaynulltext="내용을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
-        <Button id="btn_Sel" taborder="8" left="1437" top="164" width="80" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조회" cursor="pointer"/>
-        <Button id="btn_Ins" taborder="9" left="1337" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="발령" cursor="pointer"/>
-        <Button id="btn_Del" taborder="10" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="삭제" cursor="pointer"/>
+        <Edit id="ed_eno" taborder="7" left="863" top="164" width="574" height="36" displaynulltext="사원번호를 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btn_Sel" taborder="8" left="1437" top="164" width="80" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="조회" cursor="pointer" onclick="btn_Sel_onclick"/>
+        <Button id="btn_Ins" taborder="9" left="1337" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="발령" cursor="pointer" onclick="btn_Ins_onclick"/>
+        <Button id="btn_Del" taborder="10" left="1437" top="630" width="80" height="40" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="삭제" cursor="pointer" onclick="btn_Del_onclick"/>
         <Static id="Static00" taborder="11" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00" taborder="12" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="Static00_00_00" taborder="13" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -70,35 +67,35 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="120"/>
-                <Column size="120"/>
-                <Column size="150"/>
-                <Column size="150"/>
-                <Column size="150"/>
-                <Column size="150"/>
-                <Column size="150"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
               </Columns>
               <Rows>
                 <Row size="30" band="head"/>
                 <Row size="30"/>
               </Rows>
               <Band id="head">
-                <Cell text="사원번호" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="사원명" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="이전부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="변경부서" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="이전직급" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="변경직급" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="6" text="변경일" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell text="사원번호" background="linear-gradient(to top,#eff0f0,#f9fafa)" border="1px solid #cacaca" color="#2f2f2f" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="사원명" background="linear-gradient(to top,#eff0f0,#f9fafa)" border="1px solid #cacaca" color="#2f2f2f" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="이전부서" background="linear-gradient(to top,#eff0f0,#f9fafa)" border="1px solid #cacaca" color="#2f2f2f" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="변경부서" background="linear-gradient(to top,#eff0f0,#f9fafa)" border="1px solid #cacaca" color="#2f2f2f" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="이전직급" background="linear-gradient(to top,#eff0f0,#f9fafa)" border="1px solid #cacaca" color="#2f2f2f" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="변경직급" background="linear-gradient(to top,#eff0f0,#f9fafa)" border="1px solid #cacaca" color="#2f2f2f" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="6" text="변경일" background="linear-gradient(to top,#eff0f0,#f9fafa)" border="1px solid #cacaca" color="#2f2f2f" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:e_no" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="bind:e_name" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="bind:edh_dept_pre" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="bind:edh_dept_aft" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="bind:edh_pos_pre" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="bind:edh_pos_aft" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="6" text="bind:dc_date" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell text="bind:E_NO" textAlign="center" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="bind:E_NAME" textAlign="center" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="bind:EDH_DEPT_PRE" textAlign="center" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="bind:EDH_DEPT_AFT" textAlign="center" font="20px/normal &quot;나눔바른펜&quot;" displaytype="combocontrol"/>
+                <Cell col="4" text="bind:EDH_POS_PRE" textAlign="center" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="bind:EDH_POS_AFT" textAlign="center" font="20px/normal &quot;나눔바른펜&quot;" displaytype="combocontrol"/>
+                <Cell col="6" text="bind:DC_DATE" displaytype="date" textAlign="center" font="20px/normal &quot;나눔바른펜&quot;"/>
               </Band>
             </Format>
           </Formats>
@@ -108,15 +105,176 @@
     <Objects>
       <Dataset id="DS_HR_Appt_Pers">
         <ColumnInfo>
-          <Column id="e_no" type="STRING" size="256"/>
-          <Column id="e_name" type="STRING" size="256"/>
-          <Column id="edh_dept_pre" type="STRING" size="256"/>
-          <Column id="edh_dept_aft" type="STRING" size="256"/>
-          <Column id="edh_pos_pre" type="STRING" size="256"/>
-          <Column id="edh_pos_aft" type="STRING" size="256"/>
-          <Column id="dc_date" type="STRING" size="256"/>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="EDH_DEPT_PRE" type="STRING" size="256"/>
+          <Column id="EDH_DEPT_AFT" type="STRING" size="256"/>
+          <Column id="EDH_POS_PRE" type="STRING" size="256"/>
+          <Column id="EDH_POS_AFT" type="STRING" size="256"/>
+          <Column id="DC_DATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+
+this.HR_Appt_Pers_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+   this.application = nexacro.getApplication();
+   this.hrAtdSel_load();
+};
+
+/*인사발령 전체조회*/
+this.hrApptSel_load = function(){
+   let objgdsLoginInfo = this.application.objgdsLoginInfo;
+   let idCount = this.application.transactionCount++;
+   let svcID = "HRAppSel" + idCount;
+   let svcURL = "SvcURL:://hrappt/hrApptSel.hr?no=" + idCount;
+   let data = "DS_HR_Appt_Pers=out_test";
+   this.DS_HR_Appt_Pers.clearData();
+   this.transaction(svcID, svcURL, "", data, "", "");
+};
+
+/*사원정보 부서별 조회*/
+this.cb_emp_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+   this.hrApptSel_load = function(){
+   let objgdsLoginInfo = this.application.objgdsLoginInfo;
+   let selectedCombo = this.cb_dept.text;
+   
+   if(selectedCombo === "부서전체"){
+		this.hrApptSel_load();
+   }
+   else if(selectedCombo === "인사팀"){
+		let hrApptSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
+   }
+   else if(selectedCombo === "회계팀"){
+		let hrApptSelparam = " d_name=" + objgdsLoginInfo.getColumn(0,"D_NAME");
+   }
+   
+   let idCount = this.application.transactionCount++;
+   let svcID = "hrEmpchk" + idCount;
+   let svcURL = "SvcURL::/hrappt/hrApptSearch.hr" + idCount;
+   let data = "DS_HR_Appt_Pers=out_test";
+   this.DS_HR_Appt_Pers.clearData();
+   
+   this.transaction(svcID, svcURL, "", data, hrApptSelparam, "");
+	};
+};
+
+/*사원정보 직급별조회*/
+
+this.cb_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	this.hrAtdSel_load = function(){
+	let objgdsLoginInfo = this.application.objgdsLoginInfo;
+	let selectedCombo = this.cb_dept00.text;
+	if(selectedCombo === "직급전체"){
+		this.hrApptSel_load();
+	}
+	else if(selectedCombo === "사장"){
+		let hrApptSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "부장"){
+		let hrApptSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "차장"){
+		let hrApptSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "과장"){
+		let hrApptSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "대리"){
+		let hrApptSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+    else if(selectedCombo === "사원"){
+		let hrApptSelparam = " e_pos=" + objgdsLoginInfo.getColumn(0,"E_POS") ;
+	}
+   
+   let idCount = this.application.transactionCount++;
+   let svcID = "hrDeptChk" + idCount;
+   let svcURL = "SvcURL::/hrappt/hrApptSearch.hr" + idCount;
+   let data = "DS_HR_Appt_Pers=out_test";
+   this.DS_HR_Appt_Pers.clearData();
+   
+   this.transaction(svcID, svcURL, "", data, hrApptSelparam,"");
+	};
+};
+
+/*사원명 조회*/
+this.hrApptInfoSel_load = function(){
+   let objgdsLoginInfo = this.application.objgdsLoginInfo;
+   let hrApptSelparam = this.ed_eno.text;
+   let idCount = this.application.transactionCount++;
+   let svcID = "hrApptInfoSel" + idCount;
+   let svcURL = "SvcURL::/hrappt/hrApptSearch.hr" + idCount;
+   let data = "DS_HR_Appt_Pers=out_test";
+   this.DS_HR_Appt_Pers.clearData();
+   this.transaction(svcID, svcURL, "", data, hrApptSelparam, "");
+};
+\
+/*발령 버튼에 대한 함수*/
+this.hrApptIns_load = function(){
+	let p_e_no = this.DS_HR_Appt_Pers.getColumn(0, "E_NO");
+	let p_edh_dept_pre = this.DS_HR_Appt_Pers.getColumn(0, "EDH_DEPT_PRE");
+	let p_edh_dept_aft = this.DS_HR_Appt_Pers.getColumn(0, "EDH_DEPT_AFT");
+	let p_edh_pos_pre = this.DS_HR_Appt_Pers.getColumn(0, "EDH_POS_PRE");
+	let p_edh_pos_aft = this.DS_HR_Appt_Pers.getColumn(0, "EDH_POS_AFT");
+	let dc_date = this.DS_HR_Appt_Pers.getColumn(0, "DC_DATE");
+	let param = " p_e_no=" + p_e_no + " p_edh_dept_pre=" + p_edh_dept_pre
+				+" p_edh_dept_aft=" + p_edh_dept_aft + " p_edh_pos_pre=" + p_edh_pos_pre
+				+" p_edh_pos_aft=" + p_edh_pos_aft + " dc_date=" + dc_date;
+	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
+	/*권한이 4이하라면 (사원, 대리, 과장)*/
+	if(login_auth < 4) {
+		alert("승인 권한이 부족합니다.");
+	} else {
+		/*권한이 4이상이면 (차장, 부장)*/
+		this.transaction(svcID, svcURL, "", "", param, "fn_close");
+	}	
+};
+
+/*삭제 버튼에 대한 함수*/
+this.hrApptDel_load = function() {
+	let svcID = "gethrApptDel" + this.application.transactionCount++;
+	let svcURL = "SvcURL::/hrappt/hrApptDel.hr?no=" + svcID;
+	let param = " p_e_no=" + this.DS_HR_Appt_Pers.getColumn(0, "E_NO");
+	/*권한 선언*/
+	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
+	/*권한이 4이하라면 (사원, 대리, 과장)*/
+	if(login_auth < 4) {
+		alert("승인 권한이 부족합니다.");
+	} else {
+		/*권한이 4이상이면 (차장, 부장)*/
+		this.transaction(svcID, svcURL, "", "", param, "fn_close");
+	}
+};
+
+/*사원정보 전체조회*/
+
+this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   this.hrApptSel_load();
+};
+
+/*발령 버튼 클릭 시*/
+this.btn_Ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.hrApptIns_load();
+};
+
+/*삭제 버튼 클릭 시*/
+this.btn_Del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.hrApptDel_load();
+};
+
+/*닫기 함수*/
+this.fn_close = function(){
+	this.close();
+};]]></Script>
   </Form>
 </FDL>
