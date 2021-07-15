@@ -56,9 +56,11 @@ this.macApprove = function(){
 		this.alert("해당 일자를 선택해주세요.");
    } else{
 		/*전자결재 파라미터 ====> faa_content : 내용*/
-		let param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no 
-				+ " ff_name=" + file + " ff_size=" + 0
-				+ " faa_content=" + content;
+		title = this.application.gfn_quote("fi_name", title);
+		content = this.application.gfn_quote("faa_content", content);
+		let param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no 
+				/*+ " ff_name=" + file + " ff_size=" + 0*/
+				+ content;
 		/*var Integparam = */
 		this.transaction(svcID, svcURL, "", "", param, "");
 		this.alert("전자결재 신청이 완료됐습니다.");

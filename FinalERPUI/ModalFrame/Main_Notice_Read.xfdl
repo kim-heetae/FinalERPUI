@@ -63,15 +63,17 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		alert("권한을 확인해주세요.");
 	}
 	else{
-		var title = this.ed_title.text;
-		var content = this.ta_content.text;
-		var file = this.file_upload.text;
-		var filePath = this.file_upload.uploadurl;
-		var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-		var d_no = this.application.objgdsLoginInfo.getColumn(0, "D_NO");
-		var svcID = "getNBIns" + this.application.transactionCount++;
-		var SvcURL = "SvcURL::/main/getNBIns.mpg?no=" + svcID;
-		var param = " bn_name=" + title + " bn_content=" + content + " e_no=" + e_no;
+		let title = this.ed_title.text;
+		title = this.application.gfn_quote("bn_name", title);
+		let content = this.ta_content.text;
+		content = this.application.gfn_quote("bn_content", content);
+		let file = this.file_upload.text;
+		let filePath = this.file_upload.uploadurl;
+		let e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+		let d_no = this.application.objgdsLoginInfo.getColumn(0, "D_NO");
+		let svcID = "getNBIns" + this.application.transactionCount++;
+		let SvcURL = "SvcURL::/main/getNBIns.mpg?no=" + svcID;
+		let param = title + content + " e_no=" + e_no;
 		
 		this.transaction(svcID, SvcURL, "", "", param, "fn_file_for");
 	}
@@ -91,6 +93,10 @@ this.fn_file_for = function(){
 }
 
 this.fn_file_ins = function(bnf_num){
+	let bnf_name = this.Dataset00.getColumn(bnf_num, "BNF_NAME");
+	bnf_name = this.application.gfn_quote("bnf_name", bnf_name);
+	let bnf_size = this.Dataset00.getColumn(bnf_num, "BNF_size");
+	bnf_size = this.application.gfn_quote("bnf_size", bnf_size);
 	let svcID = "";
 	let svcURL = "";
 	let param = "";
@@ -98,7 +104,7 @@ this.fn_file_ins = function(bnf_num){
 /*	if(!this.gfn_isNull(this.Dataset00.getColumn(bnf_num, "BNF_NAME"))){*/
 	svcID = "getNBFileIns" + this.application.transactionCount++;
 	svcURL = "SvcURL::/main/getNBIns.mpg?no=" + svcID;
-	param = " bnf_name=" + this.Dataset00.getColumn(bnf_num, "BNF_NAME") + " bnf_size=" + this.Dataset00.getColumn(bnf_num, "BNF_SIZE");			
+	param = bnf_name + bnf_size;			
 	this.transaction(svcID, svcURL, "", "", param, "");
 /*	}*/
 }
@@ -179,17 +185,17 @@ this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 this.FileUpTransfer00_onprogress = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferProgressEventInfo)
 {
-	this.fn_addlog(e.loaded+"/"+e.total);
+	/*this.fn_addlog(e.loaded+"/"+e.total);*/
 };
 this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferEventinfo)
 {
-	this.fn_addlog(e.code);
-	this.fn_addlog(e.message);
+// 	this.fn_addlog(e.code);
+// 	this.fn_addlog(e.message);
 };
 this.FileUpTransfer00_onerror = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferErrorEventInfo)
 {
-	this.fn_addlog(e.errormsg);
-	this.fn_addlog(e.statuscode);
+// 	this.fn_addlog(e.errormsg);
+// 	this.fn_addlog(e.statuscode);
 };
 this.fn_addlog = function(strMessage)
 {

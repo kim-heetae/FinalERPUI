@@ -3,7 +3,7 @@
   <Form id="Main_Notice_Write" width="800" height="800" titletext="New Form" onload="Main_Notice_Write_onload">
     <Layouts>
       <Layout height="800" mobileorientation="landscape" width="800">
-        <Static id="lb_title_m" taborder="0" text="공지사항 게시글 조회" left="290" top="50" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
+        <Static id="lb_title_m" taborder="0" text="공지사항 게시글 조회" left="290" top="50" width="270" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
         <Static id="lb_bg1" taborder="1" left="25" top="139" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_ename_label" taborder="2" text="작성자" left="125" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_date_label" taborder="4" text="작성일" left="345" top="140" width="100" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
@@ -25,7 +25,7 @@
         <Static id="lb_title" taborder="21" text="제목" left="25" top="177" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="none"/>
         <Edit id="ed_title" taborder="22" left="144" top="178" width="631" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
         <FileUpload id="file_upload" taborder="23" left="146" top="663" width="629" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" visible="false"/>
-        <Grid id="Grid00" taborder="3" left="25" top="614" width="625" height="86" autofittype="col" binddataset="ds_file" onheadclick="Grid00_onheadclick">
+        <Grid id="Grid00" taborder="3" left="25" top="614" width="625" height="86" autofittype="col" binddataset="ds_file" onheadclick="Grid00_onheadclick" readonly="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -50,7 +50,7 @@
             </Format>
           </Formats>
         </Grid>
-        <FileDownload id="FileDownload00" taborder="11" text="다운로드" left="655" top="615" width="120" height="86" onclick="FileDownload00_onclick"/>
+        <FileDownload id="FileDownload00" taborder="11" text="다운로드" left="655" top="615" width="120" height="86" onclick="FileDownload00_onclick" enable="true"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -137,7 +137,9 @@ this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var svcURL = "SvcURL::/main/getNBDel.mpg?no=" + svcID;
 	var param = " bn_no=" + this.ds_board_notice.getColumn(0, "BN_NO");
 	if(!this.gfn_isNull(this.ds_board_notice.getColumn(0, "BNF_NAME"))){
-		param += " bnf_name=" + this.ds_board_notice.getColumn(0, "BNF_NAME");
+		let bnf_name = this.ds_board_notice.getColumn(0, "BNF_NAME");
+		bnf_name = this.application.quote("bnf_name", bnf_name);
+		param += bnf_name;
 	}
 	this.transaction(svcID, svcURL, "", "", param, "fn_close");
 };
@@ -145,11 +147,13 @@ this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_edit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var bn_name = this.ed_title.text;
+	bn_name = this.application.gfn_quote("bn_name", bn_name);
 	var bn_content = this.ta_content.text;
+	bn_content = this.application.gfn_quote("bn_content", bn_content);
 	var bn_no = this.ds_board_notice.getColumn(0, "BN_NO");
 	var svcID = "getNBUpd" + this.application.transactionCount++;
 	var svcURL = "SvcURL::/main/getNBUpd.mpg?no=" + svcID;
-	var param = " bn_name=" + bn_name + " bn_content=" + bn_content + " bn_no=" + bn_no;
+	var param = bn_name + bn_content + " bn_no=" + bn_no;
 	if(!this.gfn_isNull(this.ds_board_notice.getColumn(0, "BNF_NAME"))){
 		param += " bnf_name=" + this.file_upload.text;
 	}
