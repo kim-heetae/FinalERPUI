@@ -53,11 +53,8 @@ this.Main_Work_Read_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.application = nexacro.getApplication();
 };
 
-this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.close();
-};
-this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
+
+this.fn_work_ins = function(){
 	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") < 2){
 		alert("권한을 확인해주세요.");
 	}
@@ -66,20 +63,18 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		title = this.application.gfn_quote("bw_name", title);
 		var content = this.ta_content.text;
 		content = this.application.gfn_quote("bw_content", content);
-		var file = this.file_upload.text;
-		var filePath = this.file_upload.uploadurl;
+		/*var file = this.file_upload.text;*/
+		/*var filePath = this.file_upload.uploadurl;*/
 		var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
 		var d_no = this.application.objgdsLoginInfo.getColumn(0, "D_NO");
 		var svcID = "getWBIns" + this.application.transactionCount++;
 		var SvcURL = "SvcURL::/main/getWBIns.mpg?no=" + svcID;
 		var param = title + content + " d_no=" + d_no + " e_no=" + e_no;
-		this.transaction(svcID, SvcURL, "", "", param, "fn_file_for");
+		this.transaction(svcID, SvcURL, "", "", param, "");
 	}
-};
+}
+
 this.fn_file_for = function(){
-	objReturn = {
-			"popuptype" : "work"
-			};
 	let count = this.application.transactionCount++;
 	let path = "";
 	if (this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 10){
@@ -91,11 +86,7 @@ this.fn_file_for = function(){
 	else if(this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 99){
 		path = "board_work_one";
 	}
-	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + count);
-	for(let i = 0; i < this.Dataset00.getRowCount(); i++){
-		this.fn_file_ins(i);
-	}
-	this.close(JSON.stringify(objReturn, null, "\t"));
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path);
 }
 
 this.fn_file_ins = function(bbf_num){
@@ -106,12 +97,28 @@ this.fn_file_ins = function(bbf_num){
 	let svcID = "";
 	let svcURL = "";
 	let param = "";
-	var objReturn;
 	svcID = "getWBFileIns" + this.application.transactionCount++;
 	svcURL = "SvcURL::/main/getWBIns.mpg?no=" + svcID;
 	param = bbf_name + bbf_size;			
 	this.transaction(svcID, svcURL, "", "", param, "");
 }
+this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
+	var objReturn;
+	objReturn = {
+			"popuptype" : "work"
+	};
+	this.fn_work_ins();
+	this.fn_file_for();
+	for(let i = 0; i < this.Dataset00.getRowCount(); i++){
+		this.fn_file_ins(i);
+	}
+	this.close(JSON.stringify(objReturn, null, "\t"));
+};
+
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
 ////////////////////////////////////////////////////////
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {

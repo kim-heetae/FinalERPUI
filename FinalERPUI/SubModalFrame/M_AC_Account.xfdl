@@ -113,7 +113,7 @@ this.macAccount = function(){
 	let bank = this.ed_bank.text;
 	let account = this.ed_account.text;
 	let title = this.ed_title.text;
-	/*let file = this.file_upload.text;*/
+	let file = this.ds_file.getRowCount();
 	let content = this.ta_content.text;
 	let type = "계좌정보변경";
 	let svcID = "macAccountTraction" + this.application.transactionCount++;
@@ -129,6 +129,8 @@ this.macAccount = function(){
 		alert("제목를 입력해주세요.");
 	}else if (this.gfn_isNull(content)){
 		alert("내용을 입력해주세요.");
+	}else if (file == 0){
+		alert("파일을 첨부해주세요.");
 	}else {
 		title = this.application.gfn_quote("fi_name", title);
 		content = this.application.gfn_quote("fac_content", content);
@@ -136,7 +138,7 @@ this.macAccount = function(){
 		var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
 				   /*+ " ff_name=" + file + " ff_size=" + 0*/
 				   + " fac_bank=" + bank + " fac_account=" + account + content;
-		this.transaction(svcID, svcURL, "", "", param, "fn_file_upload");
+		this.transaction(svcID, svcURL, "", "", param, "");
 		this.alert("계좌정보 변경을 신청했습니다.");
 		this.close();
 	}
@@ -166,6 +168,7 @@ this.fn_file_upload = function(){
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.macAccount();
+	this.fn_file_upload();
 	for(let i = 0; i < this.ds_file.getRowCount(); i++){
 		this.fn_Account_file(i);
 	}

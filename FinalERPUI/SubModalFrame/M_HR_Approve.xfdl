@@ -85,7 +85,7 @@ this.mhrApprove = function(){
 				/*+ " ff_name=" + file + " ff_size=" + 0*/
 				+ content;
 		/*var Integparam = */
-		this.transaction(svcID, svcURL, "", "", param, "fn_file_upload");
+		this.transaction(svcID, svcURL, "", "", param, "");
 	}
 	/*fi_name : 제목, fi_state : 상태여부, sysdate: 현재날짜 ft_type: 신청서유형, e_no : 사원번호*/	
 };
@@ -113,6 +113,7 @@ this.fn_file_upload = function(){
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.mhrApprove();
+	this.fn_file_upload();
 	for(let i = 0; i < this.ds_file.getRowCount(); i++){
 		this.fn_mhrApprove_file(i);
 	}

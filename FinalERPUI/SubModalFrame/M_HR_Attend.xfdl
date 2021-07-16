@@ -111,7 +111,7 @@ this.mhrIntegration = function(){
 // 				+ " ff_name=" + file + " ff_size=" + 0
  				+ " fr_type=" + combotype + content + " fr_date=" + this.cal_date.value;
 		/*var Integparam = */
-		this.transaction(svcID, svcURL, "", "", param, "fn_file_upload");
+		this.transaction(svcID, svcURL, "", "", param, "");
 		/*this.close();*/
 	}
 	/*this.alert("근태사유서 제출이 완료됐습니다.");*/
@@ -192,6 +192,7 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*확인 버튼 눌렀을 때 Insert되는 함수 호출하기*/
 	this.mhrIntegration();
+	this.fn_file_upload();
 	for(let i = 0; i < this.ds_file.getRowCount(); i++){
 		this.fn_mhrAttend_file(i);
 		/*this.fn_mhrAttend_file();*/
