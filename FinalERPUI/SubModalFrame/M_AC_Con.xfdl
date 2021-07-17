@@ -72,7 +72,7 @@ this.macCon = function(){
 	let title = this.ed_title.value;
 	let file = this.ds_file.getRowCount();
 	let content = this.ta_content.text;
-	let person = this.ed_person.text;
+	let empno = this.ed_empno.text;
 	let dateOccur = this.cal_date_occur.value;
 	let relation = this.ed_relation.text;
 	let place = this.ed_place.text;
@@ -90,7 +90,7 @@ this.macCon = function(){
 		this.alert("제목을 작성해주세요.");
 	} else if(this.gfn_isNull(content)){
 		this.alert("내용을 작성해주세요.");
-	}else if(this.gfn_isNull(person)){
+	}else if(this.gfn_isNull(empno)){
 		this.alert("대상자를 입력해주세요.");
 	}else if(file == 0){
 		this.alert("파일을 첨부해주세요.");
@@ -102,17 +102,17 @@ this.macCon = function(){
 		/*경조비 insert parameter ==> fpc_self: 대상자 사원번호 , fpc_date: 경조사 일자 , fpc_loc: 발생지역
 		, fpc_rela: 대상자와의 관계 , fpc_content: 내용 */
 		title = this.application.gfn_quote("fi_name", title);
-		person = this.application.gfn_quote("fpc_self", person);
+		empno = this.application.gfn_quote("fpc_self", empno);
 		place = this.application.gfn_quote("fpc_loc", place);
 		relation = this.application.gfn_quote("fpc_rela", relation);
 		content = this.application.gfn_quote("fpc_content", content);
 		let param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
 				/*+ " ff_name=" + file + " ff_size=" + 0*/
-				+ person + " fpc_date=" + dateOccur + place 
+				+ empno + " fpc_date=" + dateOccur + place 
 				+ relation + content;
-		this.transaction(svcID, svcURL, "", "", param, "");
+		this.transaction(svcID, svcURL, "", "", param, "fn_file_upload");
 		this.alert("경조비 신청이 완료됐습니다.");
-		this.close();
+		/*this.close();*/
 	}
 };
 
@@ -140,7 +140,7 @@ this.fn_file_upload = function(){
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.macCon();
-	this.fn_file_upload();
+	/*this.fn_file_upload();*/
 	for(let i = 0; i < this.ds_file.getRowCount(); i++){
 		this.fn_Con_file(i);
 	}
