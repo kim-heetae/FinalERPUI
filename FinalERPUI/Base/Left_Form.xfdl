@@ -162,6 +162,13 @@
             <Col id="MENU_LEV">0</Col>
             <Col id="MENU_CD">0040</Col>
           </Row>
+          <Row>
+            <Col id="MENU_CD">0050</Col>
+            <Col id="MENU_MN">내정보관리</Col>
+            <Col id="MENU_LEV">0</Col>
+            <Col id="PGM_PATH">MainFrame</Col>
+            <Col id="PGM_ID">My_Page.xfdl</Col>
+          </Row>
         </Rows>
       </Dataset>
     </Objects>

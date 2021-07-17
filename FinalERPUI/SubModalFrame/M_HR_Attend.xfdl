@@ -3,7 +3,7 @@
   <Form id="M_HR_Attend" width="550" height="700" titletext="New Form" border="1px solid #999999" onload="mhrAttend_board_load">
     <Layouts>
       <Layout height="700" width="550">
-        <Static id="lb_title_m" taborder="0" text="근태사유서 제출" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_title_m" taborder="0" text="근태사유서 신청" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
         <Static id="lb_bg1" taborder="1" left="25" top="110" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="111" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="3" left="144" top="111" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
@@ -83,9 +83,10 @@ this.mhrIntegration = function(){
 	var svcID = "mhrAtTraction" + this.application.transactionCount++;
 	var file = this.ds_file.getRowCount();
 	var svcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + svcID;
-	var title = this.ed_title.text;
+	var title = this.ed_title.value;
 	var combotype = this.cb_type.text;
-	
+	let content = this.ta_content.text;
+	alert(title);
 	//var type = this.cb_type.text;
 	var type = "근태사유서"
 	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
@@ -104,11 +105,13 @@ this.mhrIntegration = function(){
    } else if(this.gfn_isNull(this.ta_content)){
 		this.alert("내용을 작성해주세요.");
    }else{
-		var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
+		title = this.application.gfn_quote("fi_name", title);
+		content = this.application.gfn_quote("fr_reason", content);
+		var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
 // 				+ " ff_name=" + file + " ff_size=" + 0
- 				+ " fr_type=" + combotype + " fr_reason=" + this.ta_content.text + " fr_date=" + this.cal_date.value;
+ 				+ " fr_type=" + combotype + content + " fr_date=" + this.cal_date.value;
 		/*var Integparam = */
-		this.transaction(svcID, svcURL, "", "", param, "fn_mhrAttend_file");
+		this.transaction(svcID, svcURL, "", "", param, "");
 		/*this.close();*/
 	}
 	/*this.alert("근태사유서 제출이 완료됐습니다.");*/
@@ -147,32 +150,21 @@ this.mhrAttend = function(){
 }
 
 //근태사유서 첨부파일 제출
-this.fn_mhrAttend_file = function(){
-	let ff_name = "";
-	let ff_size = "";
-	let count = "";
-	let svcID = "";
-	let svcURL = "";
-	let param = "";
-	let path = "hr_form";
-	this.fn_file_upload(path);
-	for(let i = 0; i < this.ds_file.getRowCount(); i++){
-		alert(i);
-		count = this.application.transactionCount++;
-		svcID = "subFileIns" + count;
-		svcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + count;
-		ff_name = this.ds_file.getColumn(i, "FF_NAME");
-		ff_size = this.ds_file.getColumn(i, "FF_SIZE");
-		param = " ff_name" + ff_name + " ff_size=" + ff_size;
-		this.fn_Attend_file_transaction(svcID, svcURL, param);
-	}
-};
-
-this.fn_Attend_file_transaction = function(svcID, svcURL, param){
+this.fn_mhrAttend_file = function(i){
+	let count = this.application.transactionCount++;
+	let svcID = "subFileIns" + count;
+	let svcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + count;
+	let ff_name = this.ds_file.getColumn(i, "FF_NAME");
+	let ff_size = this.ds_file.getColumn(i, "FF_SIZE");
+	ff_name = this.application.gfn_quote("ff_name", ff_name);
+	ff_size = this.application.gfn_quote("ff_size", ff_size);
+	let param = ff_name + ff_size;
 	this.transaction(svcID, svcURL, "", "", param, "");
 };
 
-this.fn_file_upload = function(path){
+
+this.fn_file_upload = function(){
+	let path = "hr_form";
 	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path);
 }
 
@@ -200,6 +192,12 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*확인 버튼 눌렀을 때 Insert되는 함수 호출하기*/
 	this.mhrIntegration();
+	this.fn_file_upload();
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		this.fn_mhrAttend_file(i);
+		/*this.fn_mhrAttend_file();*/
+	}
+	this.close();
 	/*this.mhrAttend();*/
 };
 

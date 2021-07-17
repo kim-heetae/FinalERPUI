@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_Account" width="550" height="475" titletext="New Form" onload="macAccount_board_load">
+  <Form id="M_AC_Account" width="550" height="700" titletext="New Form" onload="macAccount_board_load">
     <Layouts>
-      <Layout height="475" width="550">
+      <Layout height="700" width="550">
         <Static id="lb_title_m" taborder="0" text="계좌정보 변경신청" left="171" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
         <Static id="lb_bg1" taborder="1" left="25" top="101" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="102" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
@@ -10,21 +10,90 @@
         <Static id="lb_bg2" taborder="4" left="269" top="216" width="256" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_date" taborder="5" text="해당일자" left="269" top="102" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Static id="lb_file" taborder="6" text="첨부파일" left="269" top="218" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_cancel" taborder="7" left="449" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
-        <Button id="btn_confirm" taborder="8" left="336" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_confirm_onclick"/>
+        <Button id="btn_cancel" taborder="7" left="449" top="630" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
+        <Button id="btn_confirm" taborder="8" left="336" top="630" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_confirm_onclick"/>
         <Edit id="ed_title" taborder="9" left="144" top="181" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
-        <TextArea id="ta_content" taborder="10" left="25" top="255" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <TextArea id="ta_content" taborder="10" left="25" top="255" width="500" height="230" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
         <Static id="lb_content" taborder="11" text="내용" left="25" top="217" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_title" taborder="12" text="제목" left="25" top="179" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_content00" taborder="13" left="144" top="218" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_file00" taborder="14" left="144" top="218" width="126" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Static id="lb_bg1_00" taborder="15" left="25" top="140" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_bank" taborder="16" text="은행명" left="25" top="141" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_bank" taborder="17" left="144" top="142" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <Static id="lb_account" taborder="18" text="계좌번호" left="269" top="141" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_account" taborder="19" left="390" top="142" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
-        <FileUpload id="file_upload" taborder="20" left="390" top="218" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Calendar id="cal_date" taborder="21" left="390" top="104" width="135" height="35" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;"/>
+        <Static id="lb_account" taborder="17" text="계좌번호" left="269" top="141" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Edit id="ed_account" taborder="18" left="390" top="142" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="true"/>
+        <FileUpload id="file_upload" taborder="19" left="390" top="218" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Calendar id="cal_date" taborder="20" left="390" top="104" width="135" height="35" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;"/>
+        <Combo id="ed_bank" taborder="21" text="은행명" left="144" top="142" width="125" height="36" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="0">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">0</Col>
+                <Col id="datacolumn">은행명</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">KB국민은행</Col>
+                <Col id="codecolumn">1</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">신한은행</Col>
+                <Col id="codecolumn">2</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">기업은행</Col>
+                <Col id="codecolumn">3</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">수협</Col>
+                <Col id="codecolumn">4</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">카카오뱅크</Col>
+                <Col id="codecolumn">5</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">NH농협</Col>
+                <Col id="codecolumn">6</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">우리은행</Col>
+                <Col id="codecolumn">7</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">하나은행</Col>
+                <Col id="codecolumn">8</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="Static00" taborder="5" text="Drop Files Here" left="25" top="515" width="403" height="75" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
+        <Button id="btn_ins_file" taborder="0" text="파일첨부" left="435" top="490" width="90" height="120" onclick="btn_ins_file_onclick"/>
+        <Grid id="Grid00" taborder="2" left="25" top="490" width="407" height="120" binddataset="ds_file" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="200"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="파일명"/>
+                <Cell col="1" text="크기"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FF_NAME"/>
+                <Cell col="1" text="bind:FF_SIZE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -44,7 +113,7 @@ this.macAccount = function(){
 	let bank = this.ed_bank.text;
 	let account = this.ed_account.text;
 	let title = this.ed_title.text;
-	let file = this.file_upload.text;
+	let file = this.ds_file.getRowCount();
 	let content = this.ta_content.text;
 	let type = "계좌정보변경";
 	let svcID = "macAccountTraction" + this.application.transactionCount++;
@@ -52,32 +121,148 @@ this.macAccount = function(){
 	
 	if(this.gfn_isNull(theDate)){
 		alert("해당일자를 선택해주세요.");
-	} else if(this.gfn_isNull(bank)){
-		alert("은행명을 입력해주세요.");
+	} else if(bank == "은행명"){
+		alert("은행명을 선택해주세요.");
 	} else if (this.gfn_isNull(account)){
 		alert("계좌번호를 입력해주세요.");
-	} else {
+	}else if (this.gfn_isNull(title)){
+		alert("제목를 입력해주세요.");
+	}else if (this.gfn_isNull(content)){
+		alert("내용을 입력해주세요.");
+	}else if (file == 0){
+		alert("파일을 첨부해주세요.");
+	}else {
+		title = this.application.gfn_quote("fi_name", title);
+		content = this.application.gfn_quote("fac_content", content);
 	/* fac_bank: 희망 은행명 , fac_account: 희망계좌 , fac_content: 내용 */
-		var param =  " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
-				   + " ff_name=" + file + " ff_size=" + 0
-				   + " fac_bank=" + bank + " fac_account=" + account +" fac_content="+ content;
+		var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
+				   /*+ " ff_name=" + file + " ff_size=" + 0*/
+				   + " fac_bank=" + bank + " fac_account=" + account + content;
 		this.transaction(svcID, svcURL, "", "", param, "");
 		this.alert("계좌정보 변경을 신청했습니다.");
 		this.close();
 	}
-}
+};
+
+//전자결재 첨부파일 제출
+this.fn_Account_file = function(i){
+	let count = this.application.transactionCount++;
+	let svcID = "subFileIns" + count;
+	let svcURL = "SvcURL::/mhrst/subEPReq.mpg?no=" + count;
+	let ff_name = "";
+	let ff_size = "";
+	let param = "";
+	ff_name = this.ds_file.getColumn(i, "FF_NAME");
+	ff_size = this.ds_file.getColumn(i, "FF_SIZE");
+	ff_name = this.application.gfn_quote("ff_name", ff_name);
+	ff_size = this.application.gfn_quote("ff_size", ff_size);
+	param += ff_name + ff_size;
+	this.transaction(svcID, svcURL, "", "", param, "");
+};
+
+this.fn_file_upload = function(){
+	let path = "ac_form";
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path);
+};
+
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.macAccount();
+	this.fn_file_upload();
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		this.fn_Account_file(i);
+	}
+	this.close();
 };
 
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
 };
-]]></Script>
+
+
+/////////////////////파일업로드관련//////////////////////////////////
+this.btn_ins_file_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.FileDialog00.open('nexacro17', FileDialog.MULTILOAD);
+};
+this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	this.addFileList(e.virtualfiles);
+};
+this.addFileList = function(filelist)
+{
+	for (var i = 0, len = filelist.length, vFile; i < len; i++)
+	{
+		vFile = filelist[i];
+		vFile.addEventHandler("onsuccess", this.FileList_onsuccess, this);
+		vFile.addEventHandler("onerror", this.FileList_onerror , this);
+		
+		vFile.open(null, 1);
+	}
+}
+this.FileList_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileEventInfo)
+{
+	switch (e.reason)
+	{
+		case 1:
+			obj.getFileSize();
+			break;
+		case 9:
+			var nRowIdx = this.ds_file.addRow();
+			this.ds_file.setColumn(nRowIdx, 0, obj.filename);
+			this.ds_file.setColumn(nRowIdx, 1, this.cutFileSize(e.filesize));
+			this.FileUpTransfer00.addFile(obj.filename, obj);
+			break;
+	}
+}
+this.FileList_onerror = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileErrorEventInfo)
+{
+	trace("errortype: "+e.errortype);
+	trace("errormsg: "+e.errormsg);
+	trace("statuscode: "+e.statuscode);
+}
+// https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#Example_Showing_file(s)_size
+this.cutFileSize = function(filesize)
+{
+	var sOutput = filesize + " bytes";
+	for (var aMultiples = ["KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"], nMultiple = 0, nApprox = filesize / 1024; nApprox > 1; nApprox /= 1024, nMultiple++)
+	{
+		sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple];
+	}
+	return sOutput;
+};
+this.Grid00_ondragenter = function(obj:nexacro.Grid,e:nexacro.DragEventInfo)
+{
+	if(e.datatype == "file")
+	{
+		this.Grid00.set_opacity(0.5);
+	}
+};
+this.Grid00_ondragleave = function(obj:nexacro.Grid,e:nexacro.DragEventInfo)
+{
+	this.Grid00.set_opacity(1);
+};
+this.Grid00_ondrop = function(obj:nexacro.Grid,e:nexacro.GridDragEventInfo)
+{
+	this.Grid00.set_opacity(1);
+	if(e.datatype == "file")
+	{
+		this.addFileList(e.filelist);
+	}
+};]]></Script>
     <Bind>
       <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
     </Bind>
+    <Objects>
+      <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
+      <Dataset id="ds_file">
+        <ColumnInfo>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+          <Column id="FF_SIZE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileUpTransfer id="FileUpTransfer00" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess" onerror="FileUpTransfer00_onerror"/>
+    </Objects>
   </Form>
 </FDL>

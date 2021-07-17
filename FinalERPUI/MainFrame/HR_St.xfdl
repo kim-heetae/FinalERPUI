@@ -285,21 +285,20 @@ this.gr_hr_st_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 	oArg.FI_STATE = this.ds_hr_ap.getColumn(e.row,"FI_STATE");
 	
 	let checkData = this.ds_hr_ap.getColumn(e.row,"FI_NO");
-	
 	if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "근태사유서" && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Attend.xfdl", "", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Attend.xfdl", "HR_St_Attend_onload", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "연장근무" && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Overtime.xfdl", "", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Overtime.xfdl", "HR_St_Attend_onload", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "전자결재"  && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Approve.xfdl", "", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Approve.xfdl", "hr_st_ep_board_load", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "휴가"  && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::M_AC_Type.xfdl", "", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Vacation.xfdl", "HR_St_Vacation_onload", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "퇴직"  && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Retire.xfdl", "", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Retire.xfdl", "HR_St_Retire_onload", this, 550, 30, true, true, null);
 	}
 };
 ]]></Script>

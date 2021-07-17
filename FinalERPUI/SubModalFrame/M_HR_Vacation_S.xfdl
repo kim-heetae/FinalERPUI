@@ -3,7 +3,7 @@
   <Form id="M_HR_Vacation_S" width="550" height="500" titletext="New Form" border="1px solid #999999" onload="M_HR_VacationSel_onload">
     <Layouts>
       <Layout height="500" width="550">
-        <Static id="lb_title_m" taborder="0" text="연장근무 신청내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_title_m" taborder="0" text="휴가 신청내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
         <Static id="lb_bg1" taborder="1" left="25" top="100" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="101" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="3" left="144" top="102" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>

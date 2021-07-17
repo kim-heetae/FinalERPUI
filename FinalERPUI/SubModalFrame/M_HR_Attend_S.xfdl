@@ -3,7 +3,7 @@
   <Form id="M_HR_Attend_S" width="550" height="475" titletext="New Form" border="1px solid #999999" cursor="pointer" onload="M_HR_St_onload">
     <Layouts>
       <Layout height="475" width="550">
-        <Static id="lb_title_m" taborder="0" text="근태사유서 제출내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
+        <Static id="lb_title_m" taborder="0" text="근태사유서 신청내역" left="145" top="28" width="255" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
         <Static id="lb_bg1" taborder="1" left="25" top="110" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="111" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="3" left="144" top="112" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
@@ -43,7 +43,8 @@ this.fn_init = function(objFrame){
 	var svcID = "getDetailSels" + this.application.transactionCount++;
 	var svcURL = "SvcURL::/mhrst/getDetailSel.mpg?no=" + svcID;
 	var data = "mhrAttendSel=out_test";
-	var param = " fi_no=" + fi_no + " ft_type=" + ft_type + " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	/*var param = " fi_no=" + fi_no + " ft_type=" + ft_type + " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");*/
+	var param = " fi_no=" + fi_no + " ft_type=" + ft_type;
 	this.transaction(svcID, svcURL, "", data, param, "");
 };
 
@@ -60,16 +61,16 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="FF_NAME" type="STRING" size="256"/>
           <Column id="FI_NAME" type="STRING" size="256"/>
           <Column id="FR_REASON" type="STRING" size="256"/>
+          <Column id="E_NO" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
     <Bind>
-      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="mhrAttendSel" columnid="E_NO"/>
       <BindItem id="item1" compid="cal_date" propid="value" datasetid="mhrAttendSel" columnid="FI_DATE"/>
       <BindItem id="item2" compid="ed_state" propid="value" datasetid="mhrAttendSel" columnid="FI_STATE"/>
       <BindItem id="item3" compid="ed_title" propid="value" datasetid="mhrAttendSel" columnid="FI_NAME"/>
       <BindItem id="item4" compid="ta_content" propid="value" datasetid="mhrAttendSel" columnid="FR_REASON"/>
-      <BindItem id="item5" compid="file_upload" propid="accessibilityaction" datasetid="mhrAttendSel" columnid="FF_NAME"/>
     </Bind>
   </Form>
 </FDL>

@@ -17,7 +17,7 @@
         <Static id="lb_title" taborder="11" text="제목" left="25" top="218" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_content00" taborder="12" left="145" top="256" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_file00_00" taborder="13" left="144" top="256" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_title_m" taborder="14" text="계좌정보변경 신청내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_title_m" taborder="14" text="계좌정보변경 신청내역" left="135" top="28" width="292" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
         <Static id="lb_bg1_00" taborder="15" left="25" top="140" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_bank" taborder="16" text="은행명" left="25" top="141" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_bank" taborder="17" left="144" top="142" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
