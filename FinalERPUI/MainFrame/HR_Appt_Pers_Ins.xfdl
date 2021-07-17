@@ -5,9 +5,9 @@
       <Layout height="835" width="1670">
         <Static id="lb_title" taborder="0" text="인사발령 등록" left="30" top="40" width="200" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
         <Static id="lb_myPage" taborder="1" text="인사 &gt; 인사발령 &gt; 인사발령 등록" left="1317" top="49" width="200" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
-        <Button id="btn_Com" taborder="2" left="1437" top="630" width="80" height="40" background="#0000FF" border="1px solid #c7c7c7" font="bold 16px/normal &quot;나눔바른펜&quot;" color="white" text="완료" cursor="pointer" onclick="btn_Com_onclick"/>
-        <Static id="lb_dept" taborder="3" text="부서" left="154" top="164" width="80" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#8000FF" onclick="Static02_onclick"/>
-        <Static id="lb_pos" taborder="4" text="직급" left="336" top="164" width="80" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#8000FF"/>
+        <Button id="btn_Com" taborder="2" left="1437" top="630" width="80" height="40" background="#0000FF" border="1px solid #0000FF" font="bold 16px/normal &quot;나눔바른펜&quot;" color="white" text="완료" cursor="pointer" onclick="btn_Com_onclick"/>
+        <Static id="lb_dept" taborder="3" text="부서" left="154" top="164" width="80" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" onclick="Static02_onclick"/>
+        <Static id="lb_pos" taborder="4" text="직급" left="336" top="164" width="80" height="36" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C"/>
         <Combo id="cb_dept" taborder="5" text="부서전체" left="234" top="164" width="100" height="36" font="16px/normal &quot;나눔바른펜&quot;" value="" index="0" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
@@ -20,11 +20,11 @@
                 <Col id="codecolumn">0</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">인사팀</Col>
+                <Col id="datacolumn">인사과</Col>
                 <Col id="codecolumn">10</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">회계팀</Col>
+                <Col id="datacolumn">회계과</Col>
                 <Col id="codecolumn">20</Col>
               </Row>
             </Rows>
@@ -68,8 +68,8 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="ed_eno" taborder="7" left="516" top="164" width="214" height="36" displaynulltext="사원번호를 입력해주세요." font="16px/normal &quot;나눔바른펜&quot;"/>
-        <Button id="btn_Sel" taborder="8" left="730" top="164" width="70" height="36" background="#82FA58" border="1px solid #c7c7c7" font="bold 16px/normal &quot;나눔바른펜&quot;" color="white" text="조회" cursor="pointer" onclick="btn_Sel_onclick"/>
+        <Edit id="ed_eno" taborder="7" left="516" top="164" width="214" height="36" displaynulltext="사원번호를 입력해주세요." font="14px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btn_Sel" taborder="8" left="730" top="164" width="70" height="36" background="#82FA58" border="1px solid #82FA58" font="bold 16px/normal &quot;나눔바른펜&quot;" color="#1c1c1c" text="조회" cursor="pointer" onclick="btn_Sel_onclick"/>
         <Grid id="gr_Ins" taborder="9" left="153" top="200" width="647" height="390" border="1px solid #c7c7c7" binddataset="DS_HRIns" autofittype="col" nodatatext="조회결과가 없습니다." fillareatype="allrow">
           <Formats>
             <Format id="default">
@@ -84,10 +84,10 @@
                 <Row size="30"/>
               </Rows>
               <Band id="head">
-                <Cell text="사원번호" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
-                <Cell col="1" text="사원명" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
-                <Cell col="2" text="부서" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
-                <Cell col="3" text="직급" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
+                <Cell text="사원번호" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="1" text="사원명" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="2" text="부서" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="3" text="직급" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:e_no" font="16px/normal &quot;나눔바른펜&quot;"/>
@@ -100,7 +100,7 @@
         </Grid>
         <Button id="btn_ins" taborder="10" text="&gt;" left="800" top="163" width="90" height="213" onclick="btn_ins_onclick" background="#0000FF" color="white" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
         <Button id="btn_del" taborder="11" text="&lt;" left="800" top="377" width="90" height="213" onclick="btn_del_onclick" background="#ff0000" color="white" font="bold 20px/normal &quot;나눔바른펜&quot;"/>
-        <Grid id="gr_upd" taborder="12" left="890" top="163" width="630" height="429" border="1px solid #c7c7c7" binddataset="DS_HRUpd" autofittype="col" autoupdatetype="none" nodatatext="조회결과가 없습니다." fillareatype="allrow">
+        <Grid id="gr_upd" taborder="12" left="890" top="163" width="630" height="429" border="1px solid #c7c7c7" binddataset="DS_HRUpd" autofittype="col" autoupdatetype="none" nodatatext="조회결과가 없습니다." fillareatype="none">
           <Formats>
             <Format id="default">
               <Columns>
@@ -117,13 +117,13 @@
                 <Row size="30"/>
               </Rows>
               <Band id="head">
-                <Cell text="사원번호" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
-                <Cell col="1" text="사원명" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
-                <Cell col="2" text="이전부서" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
-                <Cell col="3" text="변경부서" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
-                <Cell col="4" text="이전직급" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
-                <Cell col="5" text="변경직급" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
-                <Cell col="6" text="변경일" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#8000FF" color="white"/>
+                <Cell text="사원번호" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="1" text="사원명" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="2" text="이전부서" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="3" text="변경부서" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="4" text="이전직급" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="5" text="변경직급" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="6" text="변경일" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:e_no" font="16px/normal &quot;나눔바른펜&quot;"/>
