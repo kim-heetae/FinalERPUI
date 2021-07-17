@@ -3,14 +3,14 @@
   <Form id="Top_Form" width="1920" height="50" titletext="New Form" onload="Top_Form_onload" scrolltype="none">
     <Layouts>
       <Layout height="50" width="1920">
-        <Button id="btn_logout" taborder="0" text="로그아웃" left="1477" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;&#9;" color="black" cursor="pointer" onclick="btn_logout_onclick"/>
-        <Button id="btn_myInfo" taborder="1" text="내정보" left="1327" top="4" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" onclick="btn_myInfo_onclick"/>
-        <Static id="lb_topTitle" taborder="2" text="님 환영합니다." left="1157" top="0" width="120" height="50" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center" textDecoration="none" wordSpacing="4px"/>
-        <Edit id="ed_name" taborder="3" left="1070" top="5" width="87" height="40" background="none" font="16px/normal &quot;나눔바른펜&quot;" border="0px none" readonly="true" onchanged="ed_name_onchanged" textAlign="right" borderRadius="30px" letterSpacing="5px"/>
-        <Edit id="ed_no" taborder="4" left="1003" top="4" width="50" height="40" background="none" font="16px/normal &quot;나눔바른펜&quot;" border="0px none" readonly="true" borderRadius="30px" letterSpacing="5px" textAlign="center"/>
-        <Button id="btn_myPage" taborder="5" text="마이페이지" left="26" top="3" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
-        <Button id="btn_HR" taborder="6" text="인사" left="180" top="2" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
-        <Button id="btn_AC" taborder="7" text="회계" left="334" top="2" width="120" height="40" font="16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
+        <Button id="btn_logout" taborder="0" text="로그아웃" left="1477" top="4" width="120" height="40" font="bold 16px/normal &quot;나눔바른펜&quot;" color="white" cursor="pointer" onclick="btn_logout_onclick" background="#ff0000" border="1px solid #ff0000"/>
+        <Button id="btn_myInfo" taborder="1" text="내정보" left="1327" top="4" width="120" height="40" font="bold 16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" onclick="btn_myInfo_onclick" background="#F5DF4D" border="1px solid #F5DF4D"/>
+        <Static id="lb_topTitle" taborder="2" text="님 환영합니다." left="1157" top="0" width="120" height="50" font="bold 16px/normal &quot;나눔바른펜&quot;" textAlign="center" textDecoration="none" wordSpacing="4px"/>
+        <Edit id="ed_name" taborder="3" left="1070" top="5" width="87" height="40" font="bold 18px/normal &quot;나눔바른펜&quot;" readonly="true" onchanged="ed_name_onchanged" textAlign="center" letterSpacing="5px" background="white" border="1px solid white"/>
+        <Edit id="ed_no" taborder="4" left="1020" top="4" width="50" height="40" font="bold 18px/normal &quot;나눔바른펜&quot;" readonly="true" letterSpacing="5px" textAlign="center" background="white" border="1px solid white"/>
+        <Button id="btn_myPage" taborder="5" text="마이페이지" left="26" top="3" width="120" height="40" font="bold 16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
+        <Button id="btn_HR" taborder="6" text="인사" left="180" top="2" width="120" height="40" font="bold 16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
+        <Button id="btn_AC" taborder="7" text="회계" left="334" top="2" width="120" height="40" font="bold 16px/normal &quot;나눔바른펜&quot;" color="black" cursor="pointer" background="none" border="0px none"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";

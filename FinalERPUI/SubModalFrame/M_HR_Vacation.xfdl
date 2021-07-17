@@ -48,8 +48,8 @@ this.mhrVacation = function(){
 	var title = this.ed_title.text;
 	/*내용*/
 	var content = this.ta_content.text;
-	var svcID = "mhrRetireTc" + this.application.transactionCount++;
-	var svcURL = "SvcURL::/mhrst/subRetire.mpg?no=" + svcID;
+	var svcID = "mhrVacationTc" + this.application.transactionCount++;
+	var svcURL = "SvcURL::/mhrst/subVacation.mpg?no=" + svcID;
 	var type = "휴가";
 	
 	if(this.gfn_isNull(headangDay)){
@@ -67,7 +67,7 @@ this.mhrVacation = function(){
 		title = this.application.gfn_quote("fi_name", title);
 		content = this.application.gfn_quote("fv_content", content);
 		var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
-				+ " fv_start=" + vaStart + " fv_end=" + vaEnd + content;
+				+ " fv_start=" + vaStart + " fv_end=" + vaEnd + " fv_content=" + content;
 		this.transaction(svcID, svcURL, "", "", param, "");
 	}
 	this.alert("휴가 신청이 완료됐습니다.");
