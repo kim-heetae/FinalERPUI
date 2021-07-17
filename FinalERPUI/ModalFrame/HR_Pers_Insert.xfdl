@@ -19,11 +19,11 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">남</Col>
-                <Col id="codecolumn"/>
+                <Col id="codecolumn">남</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">여</Col>
-                <Col id="codecolumn"/>
+                <Col id="codecolumn">여</Col>
               </Row>
             </Rows>
           </Dataset>
@@ -120,15 +120,46 @@ this.application = null;
 this.HR_Pers_Insert_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
-	this.btn_confirm();
 }
+
+//주민등록상 주소 검색
+this.iv_searchs_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	let oArg = {};
+				
+	this.gfn_showModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 550, true, true, null);
+	/*this.application.gfnShowModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 550, 550, true, true, null);*/
+};
+
+//실 거주지 주소 검색
+this.iv_searchr_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	let oArg = {};
+	this.gfn_showModal("popupRealPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 550, false, false, null);
+};
+
+/**
+ * @description POPUP CALLBACK
+ */
+this.popupCallBack = function(sFormId, sArg)
+{
+	if(sFormId=="popupPostcode")
+	{
+		this.DS_hrpersins.setColumn(0,"E_POSTCODE", this.postcode);
+		this.DS_hrpersins.setColumn(0,"E_LOC",this.address1);
+	}
+	else if(sFormId=="popupRealPostcode"){
+		this.DS_hrpersins.setColumn(0,"E_REAL_POSTCODE",this.postcode);
+		this.DS_hrpersins.setColumn(0,"E_REAL_LOC",this.address1);
+	}
+}; 
+
 
 this.hrpersIns = function(){
 		let count = this.application.transactionCount++;
 		let svcID = "hrPIIns" + count;
 		let svcURL = "SvcURL::/hrpi/hrPIIns.hr?no=" + count;
 		let data = "DS_hrpersins=out_test";
-		let param = "";
 		let dname = this.cb_dept.text;
 		let pos = this.cb_pos.text;
 		let ename = this.ed_name.text;
@@ -137,7 +168,7 @@ this.hrpersIns = function(){
 		let email = this.ed_email.text;
 		let phone = this.ed_phone.text;
 		let bDay = this.Cal_bDay.value;
-		let socailno = ed_social_no.text;
+		let socialno = ed_social_no.text;
 		let loc_postcode = this.ed_loc_postcode.value;
 		let loc_address = this.ed_loc_findresult.value;
 		let loc_detail = this.ed_loc_detail.value;
@@ -151,6 +182,16 @@ this.hrpersIns = function(){
 		if(pos != "전체"){
 			param += " e_pos"  + pos; 
 		}
+		if(this.gfn_isNull(joinDate)){
+			alert("날짜를 선택해주세요.");
+		}
+		
+		let param = " e_name" + ename + " ed_join_date" + joinDate + " e_gender" + gender + " e_email" + email 
+					+ " e_phone" + ephone + " e_birth" + bDay + " e_social_no" + socialno 
+					+ " e_loc" + loc_address + " e_postcode" + loc_postcode + " e_loc_detail" + loc_detail 
+					+ " e_real_loc" + loc_real_address + " e_real_postcode" + loc_real_postcode + " e_real_detail" + loc_real_detail;
+					
+		
 		this.transaction(svcID, svcURL, "", data, param, "")
 
 
@@ -163,18 +204,12 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.hrpersIns();
 };
 
+//취소 버튼 클릭
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
 };
 
-
-	
-
-this.ed_address_r_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
-{
-	
-};
 ]]></Script>
     <Objects>
       <Dataset id="DS_hrpersins" loadfiltermode="reset"/>

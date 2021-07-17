@@ -178,7 +178,7 @@ this.btn_Ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btn_Upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Update.xfdl", "hrPerInfo_load", this, 550, 30, true, true, null);
+	this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Update1.xfdl", "hrPerInfo_load", this, 550, 30, true, true, null);
 };
 ]]></Script>
   </Form>
