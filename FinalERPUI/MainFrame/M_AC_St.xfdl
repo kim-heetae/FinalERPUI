@@ -34,7 +34,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_ac" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" oncelldblclick="macSt_dbclick" nodatatext="조회결과가 없습니다.">
+        <Grid id="gr_my_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_ac" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" oncelldblclick="macSt_dbclick" nodatatext="조회결과가 없습니다." fillareatype="allrow" border="1px solid slategray">
           <Formats>
             <Format id="default">
               <Columns>
@@ -50,12 +50,12 @@
                 <Row size="30"/>
               </Rows>
               <Band id="head" font="bold 20px/normal &quot;나눔바른펜&quot;">
-                <Cell text="No" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
-                <Cell col="1" text="유형" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
-                <Cell col="2" text="제목" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
-                <Cell col="3" text="담당부서" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
-                <Cell col="4" text="신청일" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
-                <Cell col="5" text="상태여부" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
+                <Cell text="No" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="1" text="유형" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="2" text="제목" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="3" text="담당부서" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="4" text="신청일" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="5" text="상태여부" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
               </Band>
               <Band id="body" font="20px/normal &quot;나눔바른펜&quot;">
                 <Cell text="bind:FI_NO" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
@@ -69,7 +69,7 @@
           </Formats>
         </Grid>
         <Static id="lb_route" taborder="3" text="마이페이지 &gt; 회계 신청 현황" left="1373" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_sel" taborder="4" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
+        <Button id="btn_sel" taborder="4" text="조회" left="1440" top="160" width="80" height="40" border="1px solid  #82FA58" background=" #82FA58" color="#1c1c1c" font="bold 18px/normal &quot;나눔바른펜&quot;" onclick="btn_sel_onclick" cursor="pointer"/>
         <Static id="lb_left" taborder="5" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
         <Static id="lb_1" taborder="6" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
         <Static id="lb_2" taborder="7" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
@@ -77,7 +77,7 @@
         <Static id="lb_4" taborder="9" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
         <Static id="lb_5" taborder="10" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
         <Static id="lb_right" taborder="11" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
-        <Button id="btn_apply" taborder="12" text="신청" left="1440" top="631" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="black" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_apply_onclick" cursor="pointer"/>
+        <Button id="btn_apply" taborder="12" text="신청" left="1440" top="631" width="80" height="40" border="1px solid #0000FF" background="#0000FF" color="white" font="bold 20px/normal &quot;나눔바른펜&quot;" onclick="btn_apply_onclick" cursor="pointer"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";

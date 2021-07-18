@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="50" width="1280">
         <Static id="Static00" taborder="0" left="0" top="0" height="50" right="0"/>
-        <Tab id="tabMdi" taborder="1" tabindex="0" left="0" top="0" right="95" height="320" showextrabutton="true" tabbuttonheight="50" tabbuttonwidth="170" onchanged="tabMdi_onchanged" onextrabuttonclick="tabMdi_onextrabuttonclick">
+        <Tab id="tabMdi" taborder="1" tabindex="0" left="0" top="0" right="95" height="320" showextrabutton="true" tabbuttonheight="50" tabbuttonwidth="170" onchanged="tabMdi_onchanged" onextrabuttonclick="tabMdi_onextrabuttonclick" font="bold 16px/normal &quot;나눔바른펜&quot;">
           <Tabpages>
             <Tabpage id="Tabpage1" text="Tabpage1"/>
           </Tabpages>

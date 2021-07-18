@@ -5,25 +5,25 @@
       <Layout height="475" width="550">
         <Static id="lb_title_m" taborder="0" text="전자결재 요청내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
         <Static id="lb_bg1" taborder="1" left="25" top="100" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="101" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="101" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" onclick="Static02_onclick" border="1px solid beige"/>
         <Edit id="ed_empno" taborder="3" left="144" top="102" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg2" taborder="4" left="25" top="139" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_date" taborder="5" text="신청일" left="269" top="101" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_dept" taborder="6" text="신청부서" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_file" taborder="7" text="첨부파일" left="269" top="140" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_date" taborder="5" text="신청일" left="269" top="101" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" border="1px solid beige"/>
+        <Static id="lb_dept" taborder="6" text="신청부서" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1C1C1C" border="1px solid beige"/>
+        <Static id="lb_file" taborder="7" text="첨부파일" left="269" top="140" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" border="1px solid beige"/>
         <Static id="lb_bg2_00" taborder="8" left="270" top="214" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Edit id="ed_title" taborder="9" left="144" top="180" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
         <TextArea id="ta_content" taborder="10" left="25" top="253" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
-        <Static id="lb_content" taborder="11" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_title" taborder="12" text="제목" left="25" top="178" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_content" taborder="11" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" onclick="Static02_onclick" border="1px solid beige"/>
+        <Static id="lb_title" taborder="12" text="제목" left="25" top="178" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" onclick="Static02_onclick" border="1px solid beige"/>
         <Static id="lb_content00" taborder="13" left="145" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_file00_00" taborder="14" left="144" top="216" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_reject" taborder="15" left="336" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
+        <Static id="lb_file00_00" taborder="14" left="144" top="216" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" border="1px solid beige, 1px solid beige, 1px solid beige, 0px solid beige"/>
+        <Button id="btn_reject" taborder="15" left="335" top="410" width="76" height="36" background="#ff0000" border="1px solid #ff0000" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
         <FileUpload id="file_upload" taborder="16" left="390" top="141" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_approve" taborder="17" left="222" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
-        <Calendar id="cal_date" taborder="18" left="390" top="103" width="135" height="35" enable="false"/>
+        <Button id="btn_approve" taborder="17" left="222" top="410" width="76" height="36" background="#0000FF" border="1px solid #0000FF" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
+        <Calendar id="cal_date" taborder="18" left="390" top="102" width="135" height="36" enable="false"/>
         <Edit id="ed_dept" taborder="19" left="144" top="142" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Button id="btn_Ok" taborder="20" left="449" top="410" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_Ok_onclick"/>
+        <Button id="btn_Ok" taborder="20" left="448" top="410" width="76" height="36" background="#F5DF4D" border="1px solid #F5DF4D" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="확인" cursor="pointer" onclick="btn_Ok_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
