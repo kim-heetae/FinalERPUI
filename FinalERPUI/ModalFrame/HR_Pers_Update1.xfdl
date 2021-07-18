@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="HR_Pers_Insert" width="550" height="560" titletext="New Form">
+  <Form id="HR_Pers_Insert" width="550" height="560" titletext="New Form" onload="HR_Pers_Update1_onload">
     <Layouts>
       <Layout height="560" width="550">
         <Static id="lb_bg1" taborder="0" left="25" top="87" width="495" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
@@ -8,9 +8,9 @@
         <Static id="lb_bg2" taborder="2" left="29" top="126" width="491" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_bg2_00" taborder="3" left="29" top="166" width="491" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
         <Static id="lb_dept" taborder="4" text="입사일" left="25" top="167" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_ename" taborder="5" left="145" top="127" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="true"/>
+        <Edit id="ed_name" taborder="5" left="145" top="127" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="true"/>
         <Static id="lb_file00" taborder="6" text="성별" left="274" top="167" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Radio id="rd_gender" taborder="7" left="393" top="167" width="125" height="39" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="false" direction="vertical" font="20px/normal &quot;나눔바른펜&quot;" enable="false">
+        <Radio id="rd_gender" taborder="7" left="393" top="167" width="125" height="39" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="false" direction="vertical" font="20px/normal &quot;나눔바른펜&quot;" enable="false" onitemchanged="rd_gender_onitemchanged" index="-1" text="" value="">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -19,26 +19,28 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">남</Col>
+                <Col id="codecolumn">남</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">여</Col>
+                <Col id="codecolumn">여</Col>
               </Row>
             </Rows>
           </Dataset>
         </Radio>
         <Static id="lb_bg2_01" taborder="8" left="28" top="205" width="491" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept01" taborder="9" text="이메일" left="25" top="206" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_email" taborder="10" left="145" top="206" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="true"/>
+        <Edit id="ed_mail" taborder="10" left="145" top="206" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="true"/>
         <Static id="lb_file01" taborder="11" text="전화번호" left="270" top="206" width="123" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Static id="lb_bg2_01_00_00_00_00" taborder="12" left="26" top="285" width="494" height="81" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
         <Static id="lb_dept01_00_00_00_00" taborder="13" text="주민등록&#13;&#10;거주지" left="20" top="286" width="125" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Edit id="ed_empno00_01_00_00_00_00" taborder="14" left="145" top="287" width="85" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Edit id="ed_date01_00_00_00_00" taborder="15" left="270" top="287" width="249" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Edit id="ed_empno00_01_00_00_00_00_00" taborder="16" left="145" top="326" width="374" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Edit id="ed_loc_postcode" taborder="14" left="145" top="287" width="85" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Edit id="ed_loc" taborder="15" left="270" top="287" width="249" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Edit id="ed_loc_detail" taborder="16" left="145" top="326" width="374" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <ImageViewer id="iv_search" taborder="17" left="230" top="287" width="40" height="38" image="url('imagerc::img_WF_search01.png')" cursor="pointer" border="1px solid #999999" enableevent="false"/>
         <Static id="lb_bg2_01_00_00_00_00_00" taborder="18" left="24" top="364" width="496" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept01_00_00_00_00_00" taborder="19" text="실 거주지" left="20" top="365" width="125" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Combo id="cb_dept" taborder="20" text="전체" left="145" top="88" width="125" height="38" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+        <Combo id="cb_dept" taborder="20" text="전체" left="145" top="88" width="125" height="38" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="0">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -47,20 +49,27 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">전체</Col>
+                <Col id="codecolumn">0</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">인사팀</Col>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">사장실</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">회계팀</Col>
+                <Col id="datacolumn">인사과</Col>
+                <Col id="codecolumn">2</Col>
+              </Row>
+              <Row>
+                <Col id="datacolumn">회계과</Col>
+                <Col id="codecolumn">3</Col>
               </Row>
             </Rows>
           </Dataset>
         </Combo>
         <Static id="lb_dept00" taborder="21" text="사원명" left="25" top="127" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Calendar id="Calendar00" taborder="22" left="145" top="167" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
+        <Calendar id="Cal_join_date" taborder="22" left="145" top="167" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
         <Static id="lb_empno00" taborder="23" text="직급" left="270" top="88" width="123" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Combo id="cb_lev" taborder="24" text="전체" left="393" top="88" width="125" height="38" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="">
+        <Combo id="cb_pos" taborder="24" text="전체" left="393" top="88" width="125" height="38" font="16px/normal &quot;나눔바른펜&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="0">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -69,43 +78,50 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">전체</Col>
+                <Col id="codecolumn">0</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">사장</Col>
+                <Col id="codecolumn">1</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">부장</Col>
+                <Col id="codecolumn">2</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">차장</Col>
+                <Col id="codecolumn">3</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">과장</Col>
+                <Col id="codecolumn">4</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">대리</Col>
+                <Col id="codecolumn">5</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">사원</Col>
+                <Col id="codecolumn">6</Col>
               </Row>
             </Rows>
           </Dataset>
         </Combo>
         <Static id="lb_empno00_00" taborder="25" text="사원번호" left="270" top="126" width="123" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_empno" taborder="26" left="393" top="127" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
-        <Edit id="ed_empno00_01_00" taborder="27" left="393" top="206" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Edit id="ed_no" taborder="26" left="393" top="127" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Edit id="ed_phone" taborder="27" left="393" top="206" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
         <Static id="lb_bg2_01_00" taborder="28" left="28" top="244" width="491" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_file01_00" taborder="29" text="주민등록번호" left="270" top="245" width="123" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_empno00_01_00_00" taborder="30" left="393" top="246" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
+        <Edit id="ed_social_no" taborder="30" left="393" top="246" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #d5d5d5" enable="false"/>
         <Static id="lb_dept01_00" taborder="31" text="생년월일" left="25" top="246" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Calendar id="Calendar00_00" taborder="32" left="145" top="245" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
-        <Button id="btn_update" taborder="33" left="178" top="470" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="수정" cursor="pointer"/>
-        <Button id="btn_cancel" taborder="34" left="294" top="470" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="취소" cursor="pointer"/>
+        <Calendar id="Cal_bDay" taborder="32" left="145" top="245" width="125" height="38" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
+        <Button id="btn_update" taborder="33" left="178" top="470" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="수정" cursor="pointer" onclick="btn_update_onclick"/>
+        <Button id="btn_cancel" taborder="34" left="294" top="470" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="20px/normal &quot;나눔바른펜&quot;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
         <Static id="lb_title" taborder="35" text="인사카드 수정" left="185" top="10" width="180" height="60" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_onclick"/>
-        <Edit id="ed_empno00_01_00_00_00_00_01" taborder="36" left="145" top="366" width="85" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Edit id="ed_realloc_postcode" taborder="36" left="145" top="366" width="85" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <ImageViewer id="iv_search00" taborder="37" left="230" top="366" width="40" height="38" image="url('imagerc::img_WF_search01.png')" cursor="pointer" border="1px solid #999999" enableevent="false"/>
-        <Edit id="ed_date01_00_00_00_00_00" taborder="38" left="270" top="366" width="249" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Edit id="ed_empno00_01_00_00_00_00_00_00" taborder="39" left="145" top="407" width="374" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Edit id="ed_real_loc" taborder="38" left="270" top="366" width="249" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Edit id="ed_realloc_detail" taborder="39" left="145" top="407" width="374" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -120,38 +136,79 @@ this.HR_Pers_Update1_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
 	let objFrame = this.getOwnerFrame();
-	this.hrPerSel_load(objFrame); //모달창에 해당하는 사원번호의 정보를 조회하는 쿼리문 마이바티스에 추가해야 할 것으로 보임. 
+	this.hrPerSel_load(objFrame); 
 }
 
 // 사원 정보 상세 조회
 this.hrPerSel_load = function(objFrame){
-	let e_no = objFrame.e_no; //사원번호 어떻게 뽑아옴?
+	let e_no = objFrame.e_no; 
 	let count = this.application.transactionCount++;
 	let svcID = "hrPIDetailSel" + count;
 	let svcURL = "SvcURL::/hrpi/hrPIDetailSel.hr?no=" + count;
-	let param = ""
+	let param = " e_no=" + e_no;
 	
-	this.transaction(svcID, svcURL, "", "", param, "hrPersUpd");
+	this.transaction(svcID, svcURL, "", "DS_PersUpd=out_test", param, "fn_combo_init");
 };
+this.fn_combo_init = function(){
+	//부서
+	if(this.DS_PersUpd.getColumn(0, "D_NAME") == "사장실"){
+		this.cb_dept.set_index(1);
+	}else if(this.DS_PersUpd.getColumn(0, "D_NAME") == "인사과"){
+		this.cb_dept.set_index(2);
+	}else if(this.DS_PersUpd.getColumn(0, "D_NAME") == "회계과"){
+		this.cb_dept.set_index(3);
+	}
+	
+	//직급
+	if(this.DS_PersUpd.getColumn(0, "E_POS") == "사장"){
+		this.cb_pos.set_index(1);
+	}else if(this.DS_PersUpd.getColumn(0, "E_POS") == "부장"){
+		this.cb_pos.set_index(2);
+	}else if(this.DS_PersUpd.getColumn(0, "E_POS") == "차장"){
+		this.cb_pos.set_index(3);
+	}else if(this.DS_PersUpd.getColumn(0, "E_POS") == "과장"){
+		this.cb_pos.set_index(4);
+	}else if(this.DS_PersUpd.getColumn(0, "E_POS") == "대리"){
+		this.cb_pos.set_index(5);
+	}else if(this.DS_PersUpd.getColumn(0, "E_POS") == "사원"){
+		this.cb_pos.set_index(6);
+	}
+	
+	//성별
+	if(this.DS_PersUpd.getColumn(0, "E_GENDER") === "남"){
+	this.rd_gender.set_index(0);
+	}
+	else{
+		this.rd_gender.set_index(1);
+	}		
+}
 
+/* 사원 정보 수정 함수*/
 this.btn_update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
+	let eno = this.DS_PersUpd.getColumn(0, "E_NO"); //새로 추가 
 	let count = this.application.transactionCount++;
 	let svcID = "hrPIUpd" + count;
-	let svcURL = "SvcURL::/hrpi/hrPIUpd.hr?no=" + count;
+	let svcURL = "SvcURL::/hrpi/hrPIUpd.hr?no=" + svcID;
 	let dname = this.cb_dept.text;
 	let pos = this.cb_pos.text;
-	let ename = this.ed_ename.text;
-	let email = this.ed_email.text;
+	let ename = this.ed_name.text;
+	let email = this.ed_mail.text;
+	let param = " p_eno=" + eno + " p_dname" + dname + " p_epos=" + pos + " p_ename=" + ename + " p_eemail=" + email;
 	
-	if(dname != "전체"){//선택한 부서가 전체일때
-		param += " d_name=" + dname;
+	alert("p_ename : " + ename);
+	
+	if(dname != "전체"){//선택한 부서가 전체가 아니라면
+		param += " p_dname=" + dname;
 	}
-	if(pos != "전체"){//선택한 직급이 전체일때
-		param += " e_pos=" + pos;
+	if(pos != "전체"){//선택한 직급이 전체가 아니라면
+		param += " p_epos=" + pos;
 	}
 	
-	let param = " d_name" + dname + " e_pos" + pos + " e_name" + ename + " e_email" + email
+	alert("수정되었습니다.")
+	
 	this.transaction(svcID, svcURL, "", "", param, "");
+	
+	this.close();
 };
 
 //취소 버튼 클릭시 창 종료
@@ -165,24 +222,42 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
     <Objects>
       <Dataset id="DS_PersUpd">
         <ColumnInfo>
-          <ConstColumn id="D_NAME" type="STRING" size="30"/>
-          <ConstColumn id="E_POS" type="STRING" size="30"/>
-          <ConstColumn id="E_NAME" type="STRING" size="30"/>
-          <ConstColumn id="E_NO" type="STRING" size="30"/>
-          <ConstColumn id="ED_JOIN_DATE" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn5" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn6" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn7" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn8" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn9" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn10" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn11" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn12" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn13" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn14" type="STRING" size="30"/>
-          <ConstColumn id="ConstColumn15" type="STRING" size="30"/>
+          <Column id="D_NAME" type="STRING" size="256"/>
+          <Column id="E_POS" type="STRING" size="256"/>
+          <Column id="E_NAME" type="STRING" size="256"/>
+          <Column id="E_NO" type="INT" size="256"/>
+          <Column id="ED_JOIN_DATE" type="STRING" size="256"/>
+          <Column id="E_GENDER" type="STRING" size="256"/>
+          <Column id="E_EMAIL" type="STRING" size="256"/>
+          <Column id="E_PHONE" type="STRING" size="256"/>
+          <Column id="E_BIRTH" type="STRING" size="256"/>
+          <Column id="E_SOCIAL_NO" type="STRING" size="256"/>
+          <Column id="E_POSTCODE" type="STRING" size="256"/>
+          <Column id="E_LOC" type="STRING" size="256"/>
+          <Column id="E_LOC_DETAIL" type="STRING" size="256"/>
+          <Column id="E_REAL_POSTCODE" type="STRING" size="256"/>
+          <Column id="E_REAL_LOC" type="STRING" size="256"/>
+          <Column id="E_REAL_DETAIL" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_no" propid="value" datasetid="DS_PersUpd" columnid="E_NO"/>
+      <BindItem id="item1" compid="cb_dept" propid="value" datasetid="DS_PersUpd" columnid="D_NAME"/>
+      <BindItem id="item2" compid="cb_pos" propid="value" datasetid="DS_PersUpd" columnid="E_POS"/>
+      <BindItem id="item3" compid="ed_name" propid="value" datasetid="DS_PersUpd" columnid="E_NAME"/>
+      <BindItem id="item4" compid="Cal_join_date" propid="value" datasetid="DS_PersUpd" columnid="ED_JOIN_DATE"/>
+      <BindItem id="item5" compid="rd_gender" propid="value" datasetid="DS_PersUpd" columnid="E_GENDER"/>
+      <BindItem id="item6" compid="ed_mail" propid="value" datasetid="DS_PersUpd" columnid="E_EMAIL"/>
+      <BindItem id="item7" compid="ed_phone" propid="value" datasetid="DS_PersUpd" columnid="E_PHONE"/>
+      <BindItem id="item8" compid="Cal_bDay" propid="value" datasetid="DS_PersUpd" columnid="E_BIRTH"/>
+      <BindItem id="item9" compid="ed_loc_postcode" propid="value" datasetid="DS_PersUpd" columnid="E_POSTCODE"/>
+      <BindItem id="item10" compid="ed_loc" propid="value" datasetid="DS_PersUpd" columnid="E_LOC"/>
+      <BindItem id="item11" compid="ed_loc_detail" propid="value" datasetid="DS_PersUpd" columnid="E_LOC_DETAIL"/>
+      <BindItem id="item12" compid="ed_realloc_postcode" propid="value" datasetid="DS_PersUpd" columnid="E_REAL_POSTCODE"/>
+      <BindItem id="item13" compid="ed_real_loc" propid="value" datasetid="DS_PersUpd" columnid="E_REAL_LOC"/>
+      <BindItem id="item14" compid="ed_realloc_detail" propid="value" datasetid="DS_PersUpd" columnid="E_REAL_DETAIL"/>
+      <BindItem id="item15" compid="ed_social_no" propid="value" datasetid="DS_PersUpd" columnid="E_SOCIAL_NO"/>
+    </Bind>
   </Form>
 </FDL>

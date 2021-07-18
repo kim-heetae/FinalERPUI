@@ -178,7 +178,10 @@ this.btn_Ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btn_Upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Update1.xfdl", "hrPerInfo_load", this, 550, 30, true, true, null);
+	let selectedRow = this.gr_HR_PersInfo.getSelectedDatasetRows();
+	let selectedEno = this.DS_HR_PersInfo.getColumn(selectedRow[0], "E_NO");
+	let args = { "e_no" : selectedEno};
+	this.application.gfnShowModal("popupModal", args, "ModalFrame::HR_Pers_Update1.xfdl", "hrPerInfo_load", this, 550, 30, true, true, null);
 };
 ]]></Script>
   </Form>
