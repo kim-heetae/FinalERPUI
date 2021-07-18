@@ -107,14 +107,9 @@ this.macCon = function(){
 		relation = this.application.gfn_quote("fpc_rela", relation);
 		content = this.application.gfn_quote("fpc_content", content);
 		let param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
-				/*+ " ff_name=" + file + " ff_size=" + 0*/
 				+ empno + " fpc_date=" + dateOccur + place 
 				+ relation + content;
-		this.fn_file_upload();
-		for(let i = 0; i < this.ds_file.getRowCount(); i++){
-			this.fn_Con_file(i);
-		}
-		this.transaction(svcID, svcURL, "", "", param, "");
+		this.transaction(svcID, svcURL, "", "", param, "fn_file_upload");
 		this.alert("경조비 신청이 완료됐습니다.");
 		
 	}
@@ -143,11 +138,14 @@ this.fn_file_upload = function(){
 	let path = "ac_form";
 	trace(count);
 	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + count);
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		this.fn_Con_file(i);
+	}
+	this.close();
 };
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.macCon();
-	this.close();
 };
 
 

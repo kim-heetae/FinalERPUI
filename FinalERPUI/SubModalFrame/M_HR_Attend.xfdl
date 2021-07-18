@@ -131,9 +131,8 @@ this.fn_mhrAttend_file = function(i){
 
 this.fn_file_upload = function(){
 	let count = this.application.transactionCount++;
-	count = this.application.gfn_file_quote("no", count);
 	let path = "hr_form";
-	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + count);
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + count);
 	for(let i = 0; i < this.ds_file.getRowCount(); i++){
 			this.fn_mhrAttend_file(i);
 	}

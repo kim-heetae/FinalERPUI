@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="HR_Pers_Insert" width="550" height="560" titletext="New Form" onload="HR_Pers_Update1_onload">
+  <Form id="HR_Pers_Update1" width="550" height="560" titletext="New Form" onload="HR_Pers_Update1_onload">
     <Layouts>
       <Layout height="560" width="550">
         <Static id="lb_bg1" taborder="0" left="25" top="87" width="495" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
