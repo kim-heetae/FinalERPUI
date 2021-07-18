@@ -111,10 +111,13 @@ this.macRemit = function(){
 	content = this.application.gfn_quote("fpe_content", content);
 	var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
 				/*+ " ff_name=" + file + " ff_size=" + 0*/
-				+ partner + " fpe_date=" + payDate + " fpe_exp=" + Amount + content ;
+				+ partner + " fpe_date=" + payDate + " fpe_exp=" + Amount + content;
+	this.fn_file_upload();
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		this.fn_Remit_file(i);
+	}
 	this.transaction(svcID, svcURL, "", "", param, "");
 	this.alert("이체요청이 완료됐습니다.");
-	this.close();
 	}
 }
 
@@ -135,16 +138,14 @@ this.fn_Remit_file = function(i){
 };
 
 this.fn_file_upload = function(){
+	let count = this.application.transactionCount++;
+	count = this.application.gfn_file_quote("no", count);
 	let path = "ac_form";
-	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path);
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + count);
 };
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.macRemit();
-	this.fn_file_upload();
-	for(let i = 0; i < this.ds_file.getRowCount(); i++){
-		this.fn_Remit_file(i);
-	}
 	this.close();
 };
 

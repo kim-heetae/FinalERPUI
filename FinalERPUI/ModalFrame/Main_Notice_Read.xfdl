@@ -64,18 +64,20 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 	else{
 		let title = this.ed_title.text;
-		title = this.application.gfn_quote("bn_name", title);
 		let content = this.ta_content.text;
-		content = this.application.gfn_quote("bn_content", content);
-		let file = this.file_upload.text;
-		let filePath = this.file_upload.uploadurl;
-		let e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-		let d_no = this.application.objgdsLoginInfo.getColumn(0, "D_NO");
-		let svcID = "getNBIns" + this.application.transactionCount++;
-		let SvcURL = "SvcURL::/main/getNBIns.mpg?no=" + svcID;
-		let param = title + content + " e_no=" + e_no;
-		
-		this.transaction(svcID, SvcURL, "", "", param, "fn_file_for");
+		if(!this.gfn_isNull(title) && !this.gfn_isNull(content)){
+			title = this.application.gfn_quote("bn_name", title);
+			content = this.application.gfn_quote("bn_content", content);
+			let e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+			let d_no = this.application.objgdsLoginInfo.getColumn(0, "D_NO");
+			let svcID = "getNBIns" + this.application.transactionCount++;
+			let SvcURL = "SvcURL::/main/getNBIns.mpg?no=" + svcID;
+			let param = title + content + " e_no=" + e_no;
+			this.transaction(svcID, SvcURL, "", "", param, "fn_file_for");
+		}
+		else{
+			this.alert("제목과 내용을 입력해주세요.");
+		}
 	}
 };
 
@@ -84,8 +86,9 @@ this.fn_file_for = function(){
 			"popuptype" : "notice"
 			};
 	let count = this.application.transactionCount++;
+	count = this.application.gfn_file_quote("no", count);
 	let path = "board_notice";
-	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + count);
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + count);
 	for(let i = 0; i < this.Dataset00.getRowCount(); i++){
 		this.fn_file_ins(i);
 	}

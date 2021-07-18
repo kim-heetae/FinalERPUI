@@ -76,6 +76,7 @@ this.fn_work_ins = function(){
 
 this.fn_file_for = function(){
 	let count = this.application.transactionCount++;
+	count = this.application.gfn_file_quote("no", count);
 	let path = "";
 	if (this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 10){
 		path = "board_work_hr";
@@ -86,7 +87,7 @@ this.fn_file_for = function(){
 	else if(this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 99){
 		path = "board_work_one";
 	}
-	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path);
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + count);
 }
 
 this.fn_file_ins = function(bbf_num){
@@ -103,16 +104,23 @@ this.fn_file_ins = function(bbf_num){
 	this.transaction(svcID, svcURL, "", "", param, "");
 }
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
-	var objReturn;
-	objReturn = {
-			"popuptype" : "work"
-	};
-	this.fn_work_ins();
-	this.fn_file_for();
-	for(let i = 0; i < this.Dataset00.getRowCount(); i++){
-		this.fn_file_ins(i);
+	var title = this.ed_title.text;
+	var content = this.ta_content.text;
+	if(!this.gfn_isNull(title) && !this.gfn_isNull(content)){
+		var objReturn;
+		objReturn = {
+				"popuptype" : "work"
+		};
+		this.fn_work_ins();
+		this.fn_file_for();
+		for(let i = 0; i < this.Dataset00.getRowCount(); i++){
+			this.fn_file_ins(i);
+		}
+		this.close(JSON.stringify(objReturn, null, "\t"));
 	}
-	this.close(JSON.stringify(objReturn, null, "\t"));
+	else{
+		this.alert("제목과 내용을 입력해주세요");
+	}
 };
 
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)

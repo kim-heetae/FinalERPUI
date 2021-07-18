@@ -18,9 +18,9 @@
         <Static id="lb_content" taborder="13" text="내용" left="25" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c" onclick="Static02_onclick"/>
         <Static id="lb_content00" taborder="14" left="144" top="216" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_file00" taborder="15" left="144" top="216" width="631" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text=""/>
-        <Button id="btn_edit" taborder="16" left="583" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="수정" cursor="pointer" onclick="btn_edit_onclick"/>
+        <!--<Button id="btn_edit" taborder="16" left="583" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="수정" cursor="pointer" onclick="btn_edit_onclick"/>-->
         <Static id="lb_0000" taborder="17" left="25" top="176" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
-        <Button id="btn_delete" taborder="18" left="467" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="삭제" onclick="btn_delete_onclick" cursor="pointer"/>
+        <!--<Button id="btn_delete" taborder="18" left="467" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="삭제" onclick="btn_delete_onclick" cursor="pointer"/>-->
         <Static id="lb_title" taborder="19" text="제목" left="25" top="177" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="none"/>
         <Edit id="ed_title" taborder="20" left="144" top="178" width="631" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
         <Static id="lb_dept_label" taborder="21" text="담당부서" left="445" top="215" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
@@ -140,31 +140,40 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let bbf_name =  this.ds_board_work.getColumn(0, "BBF_NAME");
-	bbf_name = this.application.gfn_quote("bbf_name", bbf_name);
-	var svcID = "getWBDel" + this.application.transactionCount++;
-	var svcURL = "SvcURL::/main/getWBDel.mpg?no=" + svcID;
-	var param = " bw_no=" + this.ds_board_notice.getColumn(0, "BW_NO");
-	if(!this.gfn_isNull(this.ds_board_work.getColumn(0, "BBF_NAME"))){
-		param += bbf_name;
+	let rtn = this.confirm("이 게시글을 삭제하시겠습니까?");
+	if(rtn){
+		let bbf_name =  this.ds_board_work.getColumn(0, "BBF_NAME");
+		bbf_name = this.application.gfn_quote("bbf_name", bbf_name);
+		var svcID = "getWBDel" + this.application.transactionCount++;
+		var svcURL = "SvcURL::/main/getWBDel.mpg?no=" + svcID;
+		var param = " bw_no=" + this.ds_board_notice.getColumn(0, "BW_NO");
+		if(!this.gfn_isNull(this.ds_board_work.getColumn(0, "BBF_NAME"))){
+			param += bbf_name;
+		}
+		this.transaction(svcID, svcURL, "", "", param, "fn_close");
 	}
-	this.transaction(svcID, svcURL, "", "", param, "fn_close");
 };
 
 this.btn_edit_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var bw_name = this.ed_title.text;
-	bw_name = this.application.gfn_quote("bn_name", bw_name);
 	var bw_content = this.ta_content.text;
-	bw_content = this.application.gfn_quote("bn_content", bw_content);
-	var bw_no = this.ds_board_notice.getColumn(0, "BW_NO");
-	var svcID = "getWBUpd" + this.application.transactionCount++;
-	var svcURL = "SvcURL::/main/getWBUpd.mpg?no=" + svcID;
-	var param = bw_name + bw_content + " bw_no=" + bw_no;
-	if(!this.gfn_isNull(this.ds_board_work.getColumn(0, "BWF_NAME"))){
-		param += " bbf_name=" + this.file_upload.text;
+	var bw_no = this.ds_board_work.getColumn(0, "BW_NO");
+	let rtn = this.confirm("이 게시글을 위의 내용으로 수정하시겠습니까?");
+	if(rtn && !this.gfn_isNull(bw_name) && !this.gfn_isNull(bw_content)){
+		bw_name = this.application.gfn_quote("bw_name", bw_name);
+		bw_content = this.application.gfn_quote("bw_content", bw_content);
+		var svcID = "getWBUpd" + this.application.transactionCount++;
+		var svcURL = "SvcURL::/main/getWBUpd.mpg?no=" + svcID;
+		var param = bw_name + bw_content + " bw_no=" + bw_no;
+		if(!this.gfn_isNull(this.ds_board_work.getColumn(0, "BWF_NAME"))){
+			param += " bbf_name=" + this.file_upload.text;
+		}
+		this.transaction(svcID, svcURL, "", "", param, "fn_close");
 	}
-	this.transaction(svcID, svcURL, "", "", param, "fn_close");
+	else{
+		this.alert("제목과 내용을 입력해주세요.");
+	}
 };
 
 this.fn_close = function(){
