@@ -23,8 +23,8 @@
                 <Column size="80"/>
               </Columns>
               <Rows>
-                <Row size="36" band="head"/>
-                <Row size="36"/>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
               </Rows>
               <Band id="head">
                 <Cell text="사원번호" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1c1c1c" color="white"/>
@@ -41,18 +41,18 @@
                 <Cell col="11" text="휴가" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1c1c1c" color="white"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:E_NO" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="bind:E_NAME" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="bind:D_NAME" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="bind:E_POS" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="bind:W_DATE" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="bind:W_ATTEND" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="6" text="bind:W_LATE" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="7" text="bind:W_OUT" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="8" text="bind:W_WORK_OUT" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="9" text="bind:W_EALRY_LEAVE" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="10" text="bind:W_LEAVE" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="11" text="bind:W_VACATION" font="16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell text="bind:E_NO" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="1" text="bind:E_NAME" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="2" text="bind:D_NAME" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="3" text="bind:E_POS" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="4" text="bind:W_DATE" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="5" text="bind:W_ATTEND" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="6" text="bind:W_LATE" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="7" text="bind:W_OUT" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="8" text="bind:W_WORK_OUT" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="9" text="bind:W_EALRY_LEAVE" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="10" text="bind:W_LEAVE" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
+                <Cell col="11" text="bind:W_VACATION" font="14px/normal &quot;나눔바른펜&quot;" textAlign="center" verticalAlign="middle"/>
               </Band>
             </Format>
           </Formats>
@@ -141,6 +141,7 @@
           <Column id="W_EALRY_LEAVE" type="STRING" size="256"/>
           <Column id="W_LEAVE" type="STRING" size="256"/>
           <Column id="W_VACATION" type="STRING" size="256"/>
+          <Column id="FI_NO" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -202,42 +203,42 @@ this.hrAtdSel_load = function ()
 /************************************************************************
  * 수정하기
  ************************************************************************/
-// this.hrAtdUpd_load = function ()
-// {
-// 	this.HR_TA_Mgt.clearData();
-// 	let idCount = this.application.transactionCount++;
-// 	let svcID = "hRAtdDetailSel" + idCount;
-// 	let svcURL = "SvcURL::/hratdst/hrAtdStSearch.hr?no=" + svcID;
-// 	let data = "HR_TA_Mgt=out_test";
-// 	/*파라미터값 넣기(물어보기 - 프로시저인데 xml에 없음)*/
-// 	let p_fi_state = "승인";
-// 	let p_ft_type = "";
-// 	let p_fi_no = "";
-// 	let p_e_no = this.HR_TA_Mgt.getColumn(0, "E_NO");
-// 	let param = " p_fi_state=" + p_fi_state + " p_ft_type=" + p_ft_type + " p_fi_no=" + p_fi_no + " p_e_no=" + p_e_no;
-// 	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
-// 	if(login_auth < 4) {
-// 		alert("승인 권한이 부족합니다.");
-// 	} else {
-// 		this.confirm("해당 내용을 수정하시겠습니까?", "근태 수정하기");
-// 		this.transaction(svcID, svcURL, "", data, param, "");
-// 	}
-// };
+this.hrAtdUpd_load = function ()
+{
+	this.HR_TA_Mgt.clearData();
+	let idCount = this.application.transactionCount++;
+	let svcID = "hRAtdDetailSel" + idCount;
+	let svcURL = "SvcURL::/hratdst/hrAtdStSearch.hr?no=" + svcID;
+	let data = "HR_TA_Mgt=out_test";
+	/*파라미터값 넣기(물어보기 - 프로시저인데 xml에 없음)*/
+	let p_fi_state = "승인";
+	let p_ft_type = "근태사유서";
+	let p_fi_no = this.HR_TA_Mgt.getColumn(0, "FI_NO");
+	let p_e_no = this.HR_TA_Mgt.getColumn(0, "E_NO");
+	let param = " p_fi_state=" + p_fi_state + " p_ft_type=" + p_ft_type + " p_fi_no=" + p_fi_no + " p_e_no=" + p_e_no;
+	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
+	if(login_auth < 4) {
+		alert("승인 권한이 부족합니다.");
+	} else {
+		this.confirm("해당 내용을 수정하시겠습니까?", "근태 수정하기");
+		this.transaction(svcID, svcURL, "", data, param, "");
+	}
+};
 
 this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.hrAtdSel_load();
 };
-// 
-// this.btn_upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-// {
-// 	this.hrAtdUpd_load();
-// };
+
+this.btn_upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.hrAtdUpd_load();
+};
  
-// this.fn_refresh = function ()
-// {
-// 	this.HR_TA_Mgt.clearData();
-// };
+this.fn_refresh = function ()
+{
+	this.HR_TA_Mgt.clearData();
+};
 ]]></Script>
   </Form>
 </FDL>
