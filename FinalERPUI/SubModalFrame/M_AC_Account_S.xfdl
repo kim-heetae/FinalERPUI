@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_Account_S" width="550" height="500" titletext="계좌정보변경 신청내역" onload="M_AC_AccountSel_onload">
+  <Form id="M_AC_Account_S" width="550" height="800" titletext="계좌정보변경 신청내역" onload="M_AC_AccountSel_onload">
     <Layouts>
-      <Layout height="500" width="550">
+      <Layout height="800" width="550">
         <Static id="lb_bg1" taborder="0" left="25" top="101" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_empno" taborder="1" text="사원번호" left="25" top="102" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="2" left="144" top="103" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg2" taborder="3" left="25" top="179" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept" taborder="4" text="상태" left="25" top="180" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
         <Static id="lb_file" taborder="5" text="첨부파일" left="269" top="180" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_ok" taborder="6" left="449" top="440" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
+        <Button id="btn_ok" taborder="6" left="449" top="720" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
         <Static id="lb_bg2_00" taborder="7" left="270" top="254" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Edit id="ed_title" taborder="8" left="144" top="220" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
-        <TextArea id="ta_content" taborder="9" left="25" top="293" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
+        <TextArea id="ta_content" taborder="9" left="25" top="293" width="500" height="250" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
         <Static id="lb_content" taborder="10" text="내용" left="25" top="255" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Static id="lb_title" taborder="11" text="제목" left="25" top="218" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_content00" taborder="12" left="145" top="256" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
@@ -27,6 +27,32 @@
         <FileUpload id="file_upload" taborder="21" left="390" top="181" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
         <Static id="lb_date" taborder="22" text="해당일자" left="269" top="102" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Calendar id="cal_date" taborder="23" left="390" top="104" width="135" height="36" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
+        <Grid id="Grid00" taborder="5" left="25" top="550" width="420" height="146" autofittype="col" binddataset="ds_file" onheadclick="Grid00_onheadclick" readonly="false" border="1px solid slategray">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="200"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell edittype="checkbox" displaytype="checkboxcontrol" onchanged="fn_allchk" expr="expr:FILE_CHK=='Y'?'1':'0'" background="#1c1c1c"/>
+                <Cell col="1" text="파일명" background="#1c1c1c" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="크기" background="#1c1c1c" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FILE_CHK" expr="expr:FILE_CHK=='Y'?'1':'0'" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:FF_NAME"/>
+                <Cell col="2" text="bind:FF_SIZE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <FileDownload id="FileDownload00" taborder="12" text="다운로드" left="449" top="550" width="76" height="146" onclick="FileDownload00_onclick" enable="true" border="1px solid #82FA58" background="#82FA58" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -40,6 +66,7 @@ this.M_AC_AccountSel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
    this.application = nexacro.getApplication();
    var objFrame = this.getOwnerFrame();
    this.fn_init(objFrame);
+   this.fn_file_init(objFrame);
 };
 
 this.fn_init = function(objFrame){
@@ -56,7 +83,72 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
 };
-]]></Script>
+
+this.fn_file_init = function (objFrame){
+	let fi_no = objFrame.fi_no;
+	let count = this.application.transactionCount++;
+	let svcID = "fileSelecter" + count;
+	let svcURL = "SvcURL::/mhrst/fileSelecter.mpg?no=" + count;
+	let data = "ds_file=out_test";
+	let param = " fi_no=" + fi_no;
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+
+this.FileDownload00_onclick = function(obj:nexacro.FileDownload,e:nexacro.ClickEventInfo)
+{
+	let count = this.application.transactionCount++;
+	let path = "ac_form";
+	let file_name = "";
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		if(this.ds_file.getColumn(i, "FILE_CHK") == "Y"){
+			file_name = this.ds_file.getColumn(i, "FF_NAME");
+			this.FileDownTransfer00.download('http://localhost:9000/fileBox/download.jsp?PATH=' + path + "&file_name=" + file_name + "&no=" + count);
+		}
+	}
+};
+
+
+
+this.ds_file_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid == "FILE_CHK") {
+        // 다른 이벤트가 동작하지 않도록 설정
+        obj.enableevent = false;  //false can stop event temporarily 
+        // 변경된 값이 1(체크가 된 경우)인경우
+        if(e.newvalue == '1') {
+            // 1인 경우 Dataset의 chk 값을 Y로 변경
+            obj.setColumn(e.row,"FILE_CHK",'Y');
+        } else if(e.newvalue == '0') {
+            // 0인 경우 Dataset의 chk 값을 N로 변경
+            obj.setColumn(e.row,"FILE_CHK",'N'); 
+        }
+        // 다시 이벤트가 정상 동작하도록 설정
+        obj.enableevent = true;
+    }
+};
+//헤더 체크박스 클릭
+this.Grid00_onheadclick = function (obj:Grid, e:GridClickEventInfo)
+{
+ if (e.cell == 0) 
+ {
+  this.gf_SetGridCheckAll(obj, e);
+ }
+}
+
+//헤더체크박스 클릭 이벤트
+this.gv_IsGridCheckAll = 'Y';
+this.gf_SetGridCheckAll = function (obj:Grid, e:GridClickEventInfo){
+ var dsObj = eval("this." +obj.binddataset);
+ var v_Colid = obj.getCellProperty("body", e.cell, "text").split("bind:").join("");
+ this.gv_IsGridCheckAll = (this.gv_IsGridCheckAll ? 'Y' : 'N');
+ dsObj.set_enableevent(false);
+ for (var i = 0; i < dsObj.getRowCount(); i++) 
+ {
+  dsObj.setColumn(i, v_Colid, this.gv_IsGridCheckAll);
+ }
+ obj.setCellProperty("Head", 0, "expr", this.gv_IsGridCheckAll);
+ dsObj.set_enableevent(true);
+}]]></Script>
     <Objects>
       <Dataset id="macAccountSel">
         <ColumnInfo>
@@ -70,6 +162,14 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="FI_STATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_file" oncolumnchanged="ds_file_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="FILE_CHK" type="STRING" size="256"/>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+          <Column id="FF_SIZE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDownTransfer id="FileDownTransfer00"/>
     </Objects>
     <Bind>
       <BindItem id="item0" compid="ed_empno" propid="value" datasetid="gdsLoginInfo" columnid="E_NO"/>

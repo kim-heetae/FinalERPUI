@@ -111,7 +111,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="ed_ename" taborder="18" left="1014" top="164" width="424" height="36" displaynulltext="내용을 입력해주세요." font="16px/normal &quot;나눔바른펜&quot;" onchanged="ed_ename_onchanged"/>
+        <Edit id="ed_ename" taborder="18" left="987" top="164" width="450" height="36" displaynulltext="사원명을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;" onchanged="ed_ename_onchanged"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -137,93 +137,71 @@ this.application = null;
 
 this.HR_Pers_Info_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-   this.application = nexacro.getApplication();
-   /*사원정보 전체조회*/
-   this.hrPersInfo_board_load();
+	this.application = nexacro.getApplication();
+	/*사원정보 전체 조회*/
+	this.hrPerInfo_load();
 };
 
-/*사원정보 전체조회*/
-this.hrPersInfo_board_load = function(){
-   var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var idCount = this.application.transactionCount++;
-   var svcID = "hrPISel" + idCount;
-   this.DS_HR_PersInfo.clearData();
-   this.transaction(svcID
-   ,"SvcURL::/hrpi/hrPISel.hr?no=" + idCount
-   ,""
-   ,"DS_HR_PersInfo=out_test"
-   ,""
-   ,"");
-};
-
-/*선택 정보에 따른 사원정보 조회*/
-
-this.hrPersInfoSel_load = function(deptCombo, posCombo, editText){
-   var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var hrpiSelparam;
-   var idCount = this.application.transactionCount++;
-   var svcID = "hrPISearch" + idCount; 
-   this.DS_HR_PersInfo.clearData();
-
-	if(!this.gfn_isNull(editText)){
-		if(deptCombo === "부서전체" && posCombo === "직급전체"){
-			hrpiSelparam = " e_name=" + editText;
-		}
-		else if(deptCombo === "부서전체"){
-			hrpiSelparam = " e_pos=" + posCombo + " e_name=" + editText;
-		}
-		else if(posCombo === "직급전체"){
-			hrpiSelparam = " d_name=" + deptCombo + " e_name=" + editText;
-		}else{
-		hrpiSelparam = " d_name=" + deptCombo + " e_pos=" + posCombo + " e_name=" + editText;
-		}
+/*사원번호 전체조회*/
+this.hrPerInfo_load = function(){
+	this.DS_HR_PersInfo.clearData();
+	this.gr_HR_PersInfo.set_nodatatext("조회하신 결과가 없습니다.");
+	let count = this.application.transactionCount++;
+	let svcID = "hrPISel" + count;
+	let svcURL = "SvcURL::/hrpi/hrPISel.hr?no=" + count;
+	let data = "DS_HR_PersInfo=out_test";
+	let param = "";
+	let dname = this.cb_dept.text;
+	let pos = this.cb_pos.text;
+	let ename = this.ed_ename.text;
+	if(dname != "부서전체"){//선택한 부서가 전체일때
+		param += " d_name=" + dname;
 	}
-	else{
-		if(deptCombo === "부서전체" && posCombo === "직급전체"){
-			hrpiSelparam = "";
-		}
-		else if(deptCombo === "부서전체"){
-			hrpiSelparam = " e_pos=" + posCombo;
-		}
-		else if(posCombo === "직급전체"){
-			hrpiSelparam = " d_name=" + deptCombo;
-		}else{
-		hrpiSelparam = " d_name=" + deptCombo + " e_pos=" + posCombo;
-		}
+	if(pos != "직급전체"){//선택한 직급이 전체일때
+		param += " e_pos=" + pos;
 	}
-   console.log(deptCombo, posCombo, editText);
-   this.transaction(svcID
-   ,"SvcURL::/hrpi/hrPISearch.hr?no=" + idCount
-   ,""
-   ,"DS_HR_PersInfo=out_test"
-   ,hrpiSelparam
-   ,"");
+	if(!this.gfn_isNull(ename) || ename != " "){//입력한 사원명이 없을때
+		param += " e_name=" + ename;
+	}
+	this.transaction(svcID, svcURL, "", data, param, "");
 };
-
-
-/*선택된 사원 정보 조회*/
 
 this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-   alert("조회를 시작합니다.");
-   /*사원명 조회 함수 호출*/
-	var deptCombo = this.cb_dept.text;
-	var posCombo = this.cb_pos.text;
-	var editText = this.ed_ename.text;
-	this.hrPersInfoSel_load(deptCombo, posCombo, editText);
+	this.hrPerInfo_load();
 };
-
 
 this.btn_Ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-   this.alert(" 인사 카드를 등록합니다.");
-   this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Insert.xfdl", "", this, 550, 30, true, true, null);
+	//this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Insert.xfdl", "hrPerInfo_load", this, 550, 30, true, true, null);
+	
+	/*권한 선언*/
+	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
+	/*권한이 3이하라면 (사원, 대리)*/
+	if(login_auth < 3) {
+		alert("승인 권한이 부족합니다.");
+	} else {
+		/*권한이 4이상이면 (과장, 차장, 부장)*/
+    this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Insert.xfdl", "hrPerInfo_load", this, 550, 30, true, true, null);
+	}
+
 };
 
 this.btn_Upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-   this.alert(" 인사 카드를 수정합니다.");
-   this.application.gfnShowModal("popupModal", null, "ModalFrame::HR_Pers_Update1.xfdl", "", this, 550, 30, true, true, null);
+	let selectedRow = this.gr_HR_PersInfo.getSelectedDatasetRows();
+	let selectedEno = this.DS_HR_PersInfo.getColumn(selectedRow[0], "E_NO");
+	let args = { "e_no" : selectedEno};
+	
+	/*권한 선언*/
+	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
+	/*권한이 3이하라면 (사원, 대리)*/
+	if(login_auth < 3) {
+		alert("승인 권한이 부족합니다.");
+	} else {
+	/*권한이 4이상이면 (과장, 차장, 부장)*/
+	this.application.gfnShowModal("popupModal", args, "ModalFrame::HR_Pers_Update1.xfdl", "hrPerInfo_load", this, 550, 30, true, true, null);
+	}
 };
 ]]></Script>
   </Form>

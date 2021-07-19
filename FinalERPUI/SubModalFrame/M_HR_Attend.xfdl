@@ -86,9 +86,8 @@ this.mhrIntegration = function(){
 	var title = this.ed_title.value;
 	var combotype = this.cb_type.text;
 	let content = this.ta_content.text;
-	alert(title);
 	//var type = this.cb_type.text;
-	var type = "근태사유서"
+	var type = "근태사유서";
 	var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
 	
 	if(this.fn_Today <= this.cal_date.value){
@@ -108,64 +107,36 @@ this.mhrIntegration = function(){
 		title = this.application.gfn_quote("fi_name", title);
 		content = this.application.gfn_quote("fr_reason", content);
 		var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
-// 				+ " ff_name=" + file + " ff_size=" + 0
  				+ " fr_type=" + combotype + content + " fr_date=" + this.cal_date.value;
 		/*var Integparam = */
-		this.transaction(svcID, svcURL, "", "", param, "");
-		/*this.close();*/
+		this.transaction(svcID, svcURL, "", "", param, "fn_file_upload");
+		/*return "ok";*/
 	}
-	/*this.alert("근태사유서 제출이 완료됐습니다.");*/
-    /*this.close();*/
-	/*fi_name : 제목, fi_state : 상태여부, sysdate: 현재날짜 ft_type: 신청서유형, e_no : 사원번호*/	
-}
-
-/*근태사유서 제출하는 함수(마이페이지 인사 신청현황)*//////////////////////////////////사용안함
-this.mhrAttend = function(){
-   let e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-   let date = this.cal_date.value;
-   let title = this.ed_title.text;
-   let content = this.ta_content.text;
-   
-   let file = "";
-   let type = this.cb_type.text;
-   let SvcID = "HRAttendIns" + this.application.transactionCount++;
-   let SvcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + SvcID;
-   let callback = "";
-   /*var param = " bw_name=" + title + " bw_content=" + content + " d_no=" + d_no + " e_no=" + e_no;*/
-   /*근태 유형(fr_type), 사유(fr_reason), 해당 날짜(fr_date), 첨부파일(fr_doc)*/
-   
-   /*첨부파일이 쿼리에 있던 경우*/
-   let mhrAtSbmit = " fr_type=" + type + " fr_reason=" + content + " fr_date=" + date + " fr_doc=" + file;
-   
-   /*첨부파일이 쿼리에 없는 경우*/
-   /*var mhrAtSbmit = " fr_type" + type + " fr_reason" + content + " fr_date" + date;*/
-   if(!this.gfn_isNull(file)){
-		callback = "mhrFile";
-   }
-
-   this.transaction(SvcID, SvcURL, "", "", mhrAtSbmit, callback);
-//    this.file_upload.upload("http://192.168.0.243/fileBox");
-   this.alert("근태사유서 신청이 완료됐습니다.");
-   this.close();
+	/*return "no";*/
 }
 
 //근태사유서 첨부파일 제출
 this.fn_mhrAttend_file = function(i){
-	let count = this.application.transactionCount++;
-	let svcID = "subFileIns" + count;
-	let svcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + count;
-	let ff_name = this.ds_file.getColumn(i, "FF_NAME");
-	let ff_size = this.ds_file.getColumn(i, "FF_SIZE");
-	ff_name = this.application.gfn_quote("ff_name", ff_name);
-	ff_size = this.application.gfn_quote("ff_size", ff_size);
-	let param = ff_name + ff_size;
-	this.transaction(svcID, svcURL, "", "", param, "");
+		let count = this.application.transactionCount++;
+		let svcID = "subFileIns" + count;
+		let svcURL = "SvcURL::/mhrst/subAtt.mpg?no=" + count;
+		let ff_name = this.ds_file.getColumn(i, "FF_NAME");
+		let ff_size = this.ds_file.getColumn(i, "FF_SIZE");
+		ff_name = this.application.gfn_quote("ff_name", ff_name);
+		ff_size = this.application.gfn_quote("ff_size", ff_size);
+		let param = ff_name + ff_size;
+		this.transaction(svcID, svcURL, "", "", param, "");
 };
 
 
 this.fn_file_upload = function(){
+	let count = this.application.transactionCount++;
 	let path = "hr_form";
-	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path);
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + count);
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+			this.fn_mhrAttend_file(i);
+	}
+	this.close();
 }
 
 /***********************************************
@@ -192,12 +163,9 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	/*확인 버튼 눌렀을 때 Insert되는 함수 호출하기*/
 	this.mhrIntegration();
-	this.fn_file_upload();
-	for(let i = 0; i < this.ds_file.getRowCount(); i++){
-		this.fn_mhrAttend_file(i);
-		/*this.fn_mhrAttend_file();*/
-	}
-	this.close();
+	/*if(result === "ok"){*/
+	/*	this.fn_file_upload();*/
+	/*}*/
 	/*this.mhrAttend();*/
 };
 

@@ -134,11 +134,9 @@ this.macAccount = function(){
 		content = this.application.gfn_quote("fac_content", content);
 	/* fac_bank: 희망 은행명 , fac_account: 희망계좌 , fac_content: 내용 */
 		var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
-				   /*+ " ff_name=" + file + " ff_size=" + 0*/
 				   + " fac_bank=" + bank + " fac_account=" + account + content;
-		this.transaction(svcID, svcURL, "", "", param, "");
+		this.transaction(svcID, svcURL, "", "", param, "fn_file_upload");
 		this.alert("계좌정보 변경을 신청했습니다.");
-		this.close();
 	}
 };
 
@@ -159,18 +157,19 @@ this.fn_Account_file = function(i){
 };
 
 this.fn_file_upload = function(){
+	let count = this.application.transactionCount++;
+	count = this.application.gfn_file_quote("no", count);
 	let path = "ac_form";
-	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path);
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + count);
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		this.fn_Account_file(i);
+	}
+	this.close();
 };
 
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.macAccount();
-	this.fn_file_upload();
-	for(let i = 0; i < this.ds_file.getRowCount(); i++){
-		this.fn_Account_file(i);
-	}
-	this.close();
 };
 
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
