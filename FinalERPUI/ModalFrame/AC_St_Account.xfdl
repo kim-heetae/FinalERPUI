@@ -213,7 +213,12 @@ this.gf_SetGridCheckAll = function (obj:Grid, e:GridClickEventInfo){
  }
  obj.setCellProperty("Head", 0, "expr", this.gv_IsGridCheckAll);
  dsObj.set_enableevent(true);
-}]]></Script>
+}
+this.FileUpload00_onitemchanged = function(obj:nexacro.FileUpload,e:nexacro.FileUploadItemChangeEventInfo)
+{
+	
+};
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="ed_empno" propid="value" datasetid="ds_account" columnid="E_NO"/>
       <BindItem id="item1" compid="ed_date" propid="value" datasetid="ds_account" columnid="FI_DATE"/>
