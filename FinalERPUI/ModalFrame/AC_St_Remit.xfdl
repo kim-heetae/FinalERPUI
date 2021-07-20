@@ -84,7 +84,7 @@ this.fn_text_init = function(objFrame){
 	let svcID = "acStDetail" + count;
 	let svcURL = "SvcURL::/acst/acStDetail.ac?no=" + count;
 	let data = "ds_remit=out_test";
-	let param = " fi_no=" + this.fi_no + " ft_type=이체요청";
+	let param = " fi_no=" + objFrame.fi_no + " ft_type=이체요청";
 	this.transaction(svcID, svcURL, "", data, param, "");
 };
 //승인
@@ -132,11 +132,11 @@ this.fn_close = function(){
 
 this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.close();
+	this.fn_close();
 };
 
 this.fn_file_init = function (objFrame){
-	let fi_no = objFrame.FI_NO;
+	let fi_no = objFrame.fi_no;
 	let count = this.application.transactionCount++;
 	let svcID = "fileSelecter" + count;
 	let svcURL = "SvcURL::/mhrst/fileSelecter.mpg?no=" + count;
