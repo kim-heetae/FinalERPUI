@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="260" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
-        <Grid id="M_Pay_Stub_grid" taborder="1" left="153" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col" oncelldblclick="m_pay_stub_grid_dbclick" readonly="true" fillareatype="allrow" border="1px solid slategray">
+        <Grid id="M_Pay_Stub_grid" taborder="1" left="153" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col" oncelldblclick="m_pay_stub_grid_dbclick" readonly="true" fillareatype="none" border="1px solid slategray">
           <Formats>
             <Format id="default">
               <Columns>

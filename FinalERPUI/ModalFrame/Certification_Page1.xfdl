@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="My_Page" width="1670" height="835" titletext="New Form" cursor="pointer">
+  <Form id="My_Page" width="1670" height="835" titletext="New Form" cursor="pointer" onload="CertificationPage_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_title" taborder="0" text="증명서 조회" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
@@ -146,14 +146,15 @@ this.fn_init = function(objFrame){
 /*확인버튼 클릭 시 이벤트처리*/
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	this.alert("발급이 완료되었습니다.");
+	this.close();
 };
 
 /*취소버튼 클릭 시 이벤트처리*/
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.alert("발급이 취소되었습니다.");
-	this.go("SubModalFrame::M_AC_Approve.xfdl");
+	this.close();
 };
 ]]></Script>
   </Form>
