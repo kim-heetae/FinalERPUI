@@ -172,14 +172,15 @@ this.fn_close = function(){
 this.FileDownload00_onclick = function(obj:nexacro.FileDownload,e:nexacro.ClickEventInfo)
 {
 	let count = this.application.transactionCount++;
+	count = this.application.gfn_file_quote("no", count);
 	let path = "";
 	path = "board_notice";
 	for(let i = 0; i < this.ds_file.getRowCount(); i++){
 		if(this.ds_file.getColumn(i, "FILE_CHK") == "Y"){
 			let file_name = this.ds_file.getColumn(i, "BNF_NAME");
 			file_name = this.application.gfn_file_quote("file_name", file_name);
-			/*this.FileDownTransfer00.download('http://localhost:9000/fileBox/download.jsp?PATH=' + path + "&file_name=" + this.ds_file.getColumn(i, "BNF_NAME") + "&no=" + count);*/
-			this.FileDownTransfer00.download('http://localhost:9000/fileBox/download.jsp?PATH=' + path + file_name + "&no=" + count);
+			this.FileDownTransfer00.download('http://localhost:9000/fileBox/download.jsp?PATH=' + path 
+											+ file_name + "&no=" + count);
 		}
 	}
 };
