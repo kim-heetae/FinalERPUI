@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_AC_St" width="1670" height="835" titletext="New Form" borderRadius="10px" onload="M_AC_St_onload">
+  <Form id="M_AC_St" width="1670" height="835" titletext="회계신청 현황" borderRadius="10px" onload="M_AC_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_my_ap_ac" taborder="0" text="회계 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" color="#000000"/>
-        <Combo id="cb_type" taborder="1" text="신청서 종류" left="1241" top="160" width="200" height="40" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="20px/normal &quot;나눔바른펜&quot;&#9;">
+        <Combo id="cb_type" taborder="1" text="신청서 종류" left="1241" top="160" width="200" height="40" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="" font="16px/normal &quot;나눔바른펜&quot;&#9;" displaynulltext="신청서종류">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -24,7 +24,7 @@
                 <Col id="codecolumn">remit</Col>
               </Row>
               <Row>
-                <Col id="datacolumn">계좌 정보 변경</Col>
+                <Col id="datacolumn">계좌정보변경</Col>
                 <Col id="codecolumn">account</Col>
               </Row>
               <Row>
@@ -34,7 +34,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Grid id="gr_my_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_ac" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;">
+        <Grid id="gr_my_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" binddataset="ds_my_ap_ac" autofittype="col" font="20px/normal &quot;나눔바른펜&quot;" oncelldblclick="macSt_dbclick" nodatatext="조회결과가 없습니다." fillareatype="allrow" border="1px solid slategray">
           <Formats>
             <Format id="default">
               <Columns>
@@ -47,37 +47,37 @@
               </Columns>
               <Rows>
                 <Row size="36" band="head"/>
-                <Row size="32"/>
+                <Row size="30"/>
               </Rows>
-              <Band id="head">
-                <Cell text="No"/>
-                <Cell col="1" text="유형"/>
-                <Cell col="2" text="제목"/>
-                <Cell col="3" text="담당부서"/>
-                <Cell col="4" text="신청일"/>
-                <Cell col="5" text="상태여부"/>
+              <Band id="head" font="bold 20px/normal &quot;나눔바른펜&quot;">
+                <Cell text="No" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="1" text="유형" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="2" text="제목" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="3" text="담당부서" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="4" text="신청일" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
+                <Cell col="5" text="상태여부" font="bold 18px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1c1c1c" color="white"/>
               </Band>
-              <Band id="body">
-                <Cell text="bind:FI_NO"/>
-                <Cell col="1" text="bind:FT_TYPE"/>
-                <Cell col="2" text="bind:FI_NAME"/>
-                <Cell col="3" text="bind:D_NAME"/>
-                <Cell col="4" text="bind:FI_DATE"/>
-                <Cell col="5" text="bind:FI_STATE"/>
+              <Band id="body" font="20px/normal &quot;나눔바른펜&quot;">
+                <Cell text="bind:FI_NO" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
+                <Cell col="1" text="bind:FT_TYPE" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
+                <Cell col="2" text="bind:FI_NAME" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
+                <Cell col="3" text="bind:D_NAME" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
+                <Cell col="4" text="bind:FI_DATE" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
+                <Cell col="5" text="bind:FI_STATE" font="normal 16px/normal &quot;Arial&quot;" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Static id="lb_route" taborder="3" text="마이페이지 &gt; 회계 신청 현황" left="1373" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_sel" taborder="4" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
-        <Static id="lb_left" taborder="5" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_1" taborder="6" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_2" taborder="7" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_3" taborder="8" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_4" taborder="9" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_5" taborder="10" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_right" taborder="11" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Button id="btn_apply" taborder="12" text="신청" left="1440" top="631" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="black" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_apply_onclick"/>
+        <Button id="btn_sel" taborder="4" text="조회" left="1440" top="160" width="80" height="40" border="1px solid  #82FA58" background=" #82FA58" color="#1c1c1c" font="bold 18px/normal &quot;나눔바른펜&quot;" onclick="btn_sel_onclick" cursor="pointer"/>
+        <Static id="lb_left" taborder="5" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_1" taborder="6" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_2" taborder="7" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_3" taborder="8" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_4" taborder="9" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_5" taborder="10" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_right" taborder="11" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Button id="btn_apply" taborder="12" text="신청" left="1440" top="631" width="80" height="40" border="1px solid #0000FF" background="#0000FF" color="white" font="bold 20px/normal &quot;나눔바른펜&quot;" onclick="btn_apply_onclick" cursor="pointer"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -85,6 +85,7 @@ include "lib::lib_date.xjs";
 include "lib::lib_base.xjs";
 
 this.application = null;
+this.selectNo;
 
 this.M_AC_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -96,18 +97,31 @@ this.M_AC_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 /*회계 신청현황(전체 조회)*/
 this.mac_board_load = function(){
-   var objgdsLoginInfo = this.application.objgdsLoginInfo;
-   var macNparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=회계과";
-   var idCount = this.application.transactionCount++;
-   var svcID = "getAllSel" + idCount;
-   this.ds_my_ap_ac.clearData();
-   
-   this.transaction(svcID
-   ,"SvcURL::/macst/getAllSel.mpg?no=" + idCount
-   ,""
-   ,"ds_my_ap_ac=out_test"
-   ,macNparam
-   ,"");
+	let objgdsLoginInfo = this.application.objgdsLoginInfo;
+	let selectedCombo = this.cb_type.text;
+	let param = "";
+	let idCount = this.application.transactionCount++;
+	let svcID = "getAllSel" + idCount;
+	this.ds_my_ap_ac.clearData();
+	param = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=회계과";
+	if(selectedCombo == "신청서 종류"){
+		param = param;
+	}
+	else if(selectedCombo == "전자결재"){
+		selectedCombo += "_회계";
+		selectedCombo = this.application.gfn_quote("ft_type", selectedCombo);
+		param += selectedCombo;
+	}
+	else{
+	selectedCombo = this.application.gfn_quote("ft_type", selectedCombo);
+	param += selectedCombo;
+	}
+	this.transaction(svcID
+	,"SvcURL::/macst/getAllSel.mpg?no=" + idCount
+	,""
+	,"ds_my_ap_ac=out_test"
+	,param
+	,"");
 };
 
 /*신청 버튼*/
@@ -115,16 +129,14 @@ this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    /*회계 신청 모달 출력*/
    this.application.gfnShowModal("popupModal", null, "ModalFrame::M_AC_Type.xfdl", "", this, 550, 30, true, true, null);
-   alert("456");
 };
 
 
 
-/*회계 신청현황(조회 버튼 선택 시 함수)*/
+/*회계 신청현황(조회 버튼 선택 시 함수)*/ ////////////////////////////사용안함 - 전체조회랑 통합/////////////
 this.macSel_load = function(){
    var objgdsLoginInfo = this.application.objgdsLoginInfo;
    var selectedCombo = this.cb_type.text;
-	alert(selectedCombo);
    if(selectedCombo === "신청서 종류"){
    var macSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=회계과";
    }
@@ -140,7 +152,6 @@ this.macSel_load = function(){
    else{
 		var macSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " d_name=회계과" + " ft_type=" + selectedCombo;
    }
-   /*var mhrSelparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + "ft_type=" + objgdsLoginInfo.getColumn(0,"FT_TYPE");*/
    var idCount = this.application.transactionCount++;
    var svcID = "macSelType" + idCount;
    this.ds_my_ap_ac.clearData();
@@ -155,10 +166,23 @@ this.macSel_load = function(){
 
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-   alert(this.cb_type.id);
-   alert("조회를 시작합니다.");
-   /*인사 신청현황(전체 조회) 함수 호출*/
-   this.macSel_load();
+   this.mac_board_load();
+};
+
+/*더블클릭 이벤트 처리*/
+this.macSt_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo){
+	var selectedNo = this.ds_my_ap_ac.getColumn(e.row, "FI_NO");
+	var selectedType = this.ds_my_ap_ac.getColumn(e.row, "FT_TYPE");
+	var arg = { "fi_no" : selectedNo };
+	if(selectedType == "전자결재_회계"){
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_AC_Approve_S.xfdl", "mac_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "이체요청"){
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_AC_Remit_S.xfdl", "mac_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "계좌정보변경"){
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_AC_Account_S.xfdl", "mac_board_load", this, 550, 30, true, true, null);
+	} else if (selectedType == "경조비") {
+		this.application.gfnShowModal("popupModal", arg, "SubModalFrame::M_AC_Con_S.xfdl", "mac_board_load", this, 550, 30, true, true, null);
+	}
 };
 ]]></Script>
     <Objects>

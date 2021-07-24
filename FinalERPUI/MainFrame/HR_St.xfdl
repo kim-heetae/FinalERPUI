@@ -3,7 +3,7 @@
   <Form id="HR_St" width="1670" height="835" titletext="New Form" onload="HR_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Tab id="tb_hr_apply" taborder="0" tabindex="0" left="150" top="163" width="1370" height="400" onchanged="tb_apply_onchanged" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;">
+        <Tab id="tb_hr_apply" taborder="0" tabindex="0" left="150" top="163" width="1370" height="400" onchanged="tb_apply_onchanged" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;" showextrabutton="true" multiline="false">
           <Tabpages>
             <Tabpage id="tb_hr_att" text="근태사유서">
               <Layouts>
@@ -32,9 +32,9 @@
             </Tabpage>
           </Tabpages>
         </Tab>
-        <Edit id="ed_empno" taborder="1" left="1241" top="160" width="200" height="40" displaynulltext="사원번호를 입력해주세요" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Edit id="ed_empno" taborder="1" left="1241" top="160" width="200" height="40" displaynulltext="사원번호를 입력해주세요" font="16px/normal &quot;나눔바른펜&quot;&#9;"/>
         <Static id="lb_title" taborder="2" text="인사 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
-        <Grid id="gr_hr_st" taborder="3" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_hr_ap" font="20px/normal &quot;나눔바른펜&quot;" oncelldblclick="gr_hr_st_dbclick">
+        <Grid id="gr_hr_st" taborder="3" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_hr_ap" font="20px/normal &quot;나눔바른펜&quot;" oncelldblclick="gr_hr_st_dbclick" fillareatype="allrow" border="1px solid slategray">
           <Formats>
             <Format id="default">
               <Columns>
@@ -50,26 +50,26 @@
                 <Row size="32"/>
               </Rows>
               <Band id="head" font="20px/normal &quot;나눔바른펜&quot;">
-                <Cell text="NO" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="유형" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="사원번호" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="제목" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="날짜" font="20px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="상태" font="20px/normal &quot;나눔바른펜&quot;"/>
+                <Cell text="NO" font="bold 18px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="1" text="유형" font="bold 18px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="2" text="사원번호" font="bold 18px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="3" text="제목" font="bold 18px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="4" text="날짜" font="bold 18px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
+                <Cell col="5" text="상태" font="bold 18px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
               </Band>
               <Band id="body" font="20px/normal &quot;나눔바른펜&quot;">
-                <Cell text="bind:FI_NO" textAlign="center"/>
-                <Cell col="1" text="bind:FT_TYPE" textAlign="center"/>
-                <Cell col="2" text="bind:E_NO" textAlign="center"/>
-                <Cell col="3" text="bind:FI_NAME" textAlign="center"/>
-                <Cell col="4" text="bind:FI_DATE" textAlign="center"/>
-                <Cell col="5" text="bind:FI_STATE" textAlign="center"/>
+                <Cell text="bind:FI_NO" textAlign="center" font="18px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="bind:FT_TYPE" textAlign="center" font="18px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="bind:E_NO" textAlign="center" font="18px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="bind:FI_NAME" textAlign="center" font="18px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="bind:FI_DATE" textAlign="center" font="18px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="bind:FI_STATE" textAlign="center" font="18px/normal &quot;나눔바른펜&quot;"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="lb_route" taborder="4" text="인사 &gt; 신청현황" left="1438" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
+        <Static id="lb_route" taborder="4" text="인사 &gt; 신청현황" left="1438" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;" onclick="lb_route_onclick"/>
+        <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #82FA58" background="#82FA58" color="black" font="bold 18px/normal &quot;나눔바른펜&quot;" onclick="btn_sel_onclick" cursor="pointer"/>
         <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
         <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
@@ -103,31 +103,26 @@ this.HR_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 		if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "근태사유서"){
 			this.ds_hr_ap.clearData();
-
 			this.hr_st_att_board_load();
 
 		}
 		else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "연장근무"){
 			this.ds_hr_ap.clearData();
-
 			this.hr_st_ott_board_load();
 
 		}
 		else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "전자결재"){
 			this.ds_hr_ap.clearData();
-
 			this.hr_st_ep_board_load();
 
 		}
 		else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "휴가"){
 			this.ds_hr_ap.clearData();
-
 			this.hr_st_vacation_board_load();
 
 		}
 		else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "퇴직"){
 			this.ds_hr_ap.clearData();
-			
 			this.hr_st_retire_board_load();
 		}
 }
@@ -163,121 +158,93 @@ this.tb_apply_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEvent
 	
 }
 
-
 /************************************************************************
- * 근태사유서 조회 
+ * 근태사유서 조회 (수정)
  ************************************************************************/
  
  this.hr_st_att_board_load = function() {
- 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var hrstattSelParam = "";
-	var textselect = this.ed_empno.value;
-	var idCount = this.application.transactionCount++;
-	var svcID = "HRStAtt" + idCount;
+ 	let objgdsLoginInfo = this.application.objgdsLoginInfo;
+	let hrstattSelParam = "";
+	let textselect = this.ed_empno.value;
+	let idCount = this.application.transactionCount++;
+	let svcID = "HRStAtt" + idCount;
+	let svcURL = "SvcURL::/hrst/hrAllSel.hr?no=" + idCount;
+	let date = "ds_hr_ap=out_test";
 	this.ds_hr_ap.clearData();
 
 	if(this.gfn_isNull(textselect)){
 		hrstattSelParam = " ft_type=근태사유서";
-	} 
-	else{
+	} else{
 		hrstattSelParam = " e_no=" + textselect + " ft_type=근태사유서";
-	
 	}
-	
-	this.transaction(svcID
-	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
-	,""
-	,"ds_hr_ap=out_test"
-	,hrstattSelParam
-	,"");
-	
+	this.transaction(svcID, svcURL, "", date, hrstattSelParam, "");
 }
 
 /************************************************************************
- * 연장근무 조회 
+ * 연장근무 조회(수정) 
  ************************************************************************/
  
  this.hr_st_ott_board_load = function() {
- 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var textselect = this.ed_empno.value;
-	var hrstottSelParam = null;
-	var idCount = this.application.transactionCount++;
-	var svcID = "HRStOTA" + idCount;
+ 	let objgdsLoginInfo = this.application.objgdsLoginInfo;
+	let textselect = this.ed_empno.value;
+	let hrstottSelParam = null;
+	let idCount = this.application.transactionCount++;
+	let svcID = "HRStOTA" + idCount;
+	let svcURL = "SvcURL::/hrst/hrAllSel.hr?no=" + idCount;
+	let date = "ds_hr_ap=out_test";
 	this.ds_hr_ap.clearData();
 	
 	if(this.gfn_isNull(textselect)){
 		hrstottSelParam = " ft_type=연장근무";
-	}
-	else{
+	}else{
 		hrstottSelParam = " e_no=" + textselect + " ft_type=연장근무";
-	 
-	}
-	
-	this.transaction(svcID
-	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
-	,""
-	,"ds_hr_ap=out_test"
-	,hrstottSelParam
-	,"");
+	}	
+	this.transaction(svcID, svcURL, "", date, hrstottSelParam, "");
 	
 }
 
 /************************************************************************
- * 전자결재 조회 
+ * 전자결재 조회 (수정)
  ************************************************************************/
  
  this.hr_st_ep_board_load = function() {
- 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var textselect = this.ed_empno.value;
-	var hrstepSelParam = null;
-	var idCount = this.application.transactionCount++;
-	var svcID = "HRStEP" + idCount;
+ 	let objgdsLoginInfo = this.application.objgdsLoginInfo;
+	let textselect = this.ed_empno.value;
+	let hrstepSelParam = null;
+	let idCount = this.application.transactionCount++;
+	let svcID = "HRStEP" + idCount;
+	let svcURL = "SvcURL::/hrst/hrAllSel.hr?no=" + idCount;
+	let date = "ds_hr_ap=out_test";
 	this.ds_hr_ap.clearData();
 	
 	if(this.gfn_isNull(textselect)){
 		hrstepSelParam = " ft_type=전자결재_인사";
-	}
-	else{
+	} else{
 		hrstepSelParam = " e_no=" + textselect + " ft_type=전자결재_인사";
-
 	}
-	
-	this.transaction(svcID
-	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
-	,""
-	,"ds_hr_ap=out_test"
-	,hrstepSelParam
-	,"");
-	
+	this.transaction(svcID, svcURL, "", date, hrstepSelParam, "");
 }
 
 /************************************************************************
- * 휴가 전체조회 
+ * 휴가 전체조회 (수정)
  ************************************************************************/
  
  this.hr_st_vacation_board_load = function() {
- 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var textselect = this.ed_empno.value;
-	var hrstvacationSelParam = null;
-	var idCount = this.application.transactionCount++;
-	var svcID = "HRStVacation" + idCount;
+ 	let objgdsLoginInfo = this.application.objgdsLoginInfo;
+	let textselect = this.ed_empno.value;
+	let hrstvacationSelParam = null;
+	let idCount = this.application.transactionCount++;
+	let svcID = "HRStVacation" + idCount;
+	let svcURL = "SvcURL::/hrst/hrAllSel.hr?no=" + idCount;
+	let date = "ds_hr_ap=out_test";
 	this.ds_hr_ap.clearData();
 	
 	if(this.gfn_isNull(textselect)){
 		hrstvacationSelParam = " ft_type=휴가";
-	}
-	else{
-		hrstvacationSelParam = " e_no=" + textselect+ " ft_type=휴가";
-	}
-	
-	
-	this.transaction(svcID
-	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
-	,""
-	,"ds_hr_ap=out_test"
-	,hrstvacationSelParam
-	,"");
-	
+	} else{
+		hrstvacationSelParam = " e_no=" + textselect + " ft_type=휴가";
+	}		
+	this.transaction(svcID, svcURL, "", date, hrstvacationSelParam, "");
 }
 
 /************************************************************************
@@ -285,27 +252,21 @@ this.tb_apply_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEvent
  ************************************************************************/
  
  this.hr_st_retire_board_load = function() {
- 	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var textselect = this.ed_empno.value;
-	var hrstretireSelParam = null;
-	var idCount = this.application.transactionCount++;
-	var svcID = "HRStRetire" + idCount;
+ 	let objgdsLoginInfo = this.application.objgdsLoginInfo;
+	let textselect = this.ed_empno.value;
+	let hrstretireSelParam = null;
+	let idCount = this.application.transactionCount++;
+	let svcID = "HRStRetire" + idCount;
+	let svcURL = "SvcURL::/hrst/hrAllSel.hr?no=" + svcID;
+	let date = "ds_hr_ap=out_test";
 	this.ds_hr_ap.clearData();
 	
 	if(this.gfn_isNull(textselect)){
 		hrstretireSelParam = " ft_type=퇴직";
-	}
-	else{
+	} else{
 		hrstretireSelParam = " e_no=" + textselect + " ft_type=퇴직";
-	}
-	
-	this.transaction(svcID
-	,"SvcURL::/hrst/hrAllSel.hr?no=" + idCount
-	,""
-	,"ds_hr_ap=out_test"
-	,hrstretireSelParam
-	,"");
-	
+	}	
+	this.transaction(svcID, svcURL, "", date, hrstretireSelParam, "");	
 }
 
 /************************************************************************
@@ -314,7 +275,7 @@ this.tb_apply_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEvent
  
 this.gr_hr_st_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	var oArg = {"FI_NO" : "", "FT_TYPE" : "", "E_NO" : "", "FI_NAME" : "", "FI_DATE" : "", "FI_STATE" : ""}
+	let oArg = {"FI_NO" : "", "FT_TYPE" : "", "E_NO" : "", "FI_NAME" : "", "FI_DATE" : "", "FI_STATE" : ""}
 	
 	oArg.FI_NO = this.ds_hr_ap.getColumn(e.row,"FI_NO");
 	oArg.FT_TYPE = this.ds_hr_ap.getColumn(e.row,"FT_TYPE");
@@ -323,26 +284,21 @@ this.gr_hr_st_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 	oArg.FI_DATE = this.ds_hr_ap.getColumn(e.row,"FI_DATE");
 	oArg.FI_STATE = this.ds_hr_ap.getColumn(e.row,"FI_STATE");
 	
-	var checkData = this.ds_hr_ap.getColumn(e.row,"FI_NO");
-	
+	let checkData = this.ds_hr_ap.getColumn(e.row,"FI_NO");
 	if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "근태사유서" && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Attend.xfdl", "", this, 550, 30, true, true, null);
-
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Attend.xfdl", "HR_St_Attend_onload", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "연장근무" && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Overtime.xfdl", "", this, 550, 30, true, true, null);
-
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Overtime.xfdl", "HR_St_Attend_onload", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "전자결재"  && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Approve.xfdl", "", this, 550, 30, true, true, null);
-
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Approve.xfdl", "hr_st_ep_board_load", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "휴가"  && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::M_AC_Type.xfdl", "", this, 550, 30, true, true, null);
-
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Vacation.xfdl", "HR_St_Vacation_onload", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "퇴직"  && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Retire.xfdl", "", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Retire.xfdl", "HR_St_Retire_onload", this, 550, 30, true, true, null);
 	}
 };
 ]]></Script>
