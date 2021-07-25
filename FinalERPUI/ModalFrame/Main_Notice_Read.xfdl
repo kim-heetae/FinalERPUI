@@ -95,7 +95,7 @@ this.fn_file_for = function(){
 this.fn_file_ins = function(bnf_num){
 	let bnf_name = this.Dataset00.getColumn(bnf_num, "BNF_NAME");
 	bnf_name = this.application.gfn_quote("bnf_name", bnf_name);
-	let bnf_size = this.Dataset00.getColumn(bnf_num, "BNF_size");
+	let bnf_size = this.Dataset00.getColumn(bnf_num, "BNF_SIZE");
 	bnf_size = this.application.gfn_quote("bnf_size", bnf_size);
 	let svcID = "";
 	let svcURL = "";
@@ -153,8 +153,8 @@ this.FileList_onerror = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileE
 // https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#Example_Showing_file(s)_size
 this.cutFileSize = function(filesize)
 {
-	var sOutput = filesize + " bytes";
-	for (var aMultiples = ["KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"], nMultiple = 0, nApprox = filesize / 1024; nApprox > 1; nApprox /= 1024, nMultiple++)
+	let sOutput = filesize + " bytes";
+	for (let aMultiples = ["KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"], nMultiple = 0, nApprox = filesize / 1024; nApprox > 1; nApprox /= 1024, nMultiple++)
 	{
 		sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple];
 	}

@@ -161,6 +161,9 @@ this.fn_load = function(){
 	if(!this.gfn_isNull(ename) || ename != " "){
 		param += " e_name=" + ename;
 	}
+	//모든 조건을 만족한다는 가정 : param = " d_name=" + dname 
+	//									+ " e_pos=" + pos 
+	//									+ " e_name=" + ename; 으로 완성됨
 	this.transaction(svcID, svcURL, "", data, param, "");
 };
 this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
