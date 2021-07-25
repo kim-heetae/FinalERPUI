@@ -195,7 +195,10 @@ this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 /*발령 버튼 클릭 시*/
 this.btn_Ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.go("MainFrame::HR_Appt_Pers_Ins.xfdl");
+	trace(this.parent.id);
+	this.application.gfnShowModal("popupModal", null, "MainFrame::HR_Appt_Pers_Ins.xfdl", "", this, 550, 30, true, true, null);
+	/*this.parent.set_url("MainFrame::HR_Appt_Pers_Ins.xfdl");*/
+	/*this.go("MainFrame::HR_Appt_Pers_Ins.xfdl");*/
 };
 
 /*삭제 버튼 클릭 시*/

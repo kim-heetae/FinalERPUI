@@ -50,7 +50,7 @@ this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 };
 
 this.fn_formLoad = function(objFrame){
-	if(this.popuptype=="modify"){
+	if(objFrame.popuptype=="modify"){
 		this.scheduleId = objFrame.scheduleid;
 		this.edtTitle.set_value(objFrame.TITLE);
 		this.calSDate.set_value(objFrame.SDATE);
@@ -72,7 +72,7 @@ this.fn_formLoad = function(objFrame){
 			this.btnDel.set_visible(false);
 		}
 	}
-	else if(this.popuptype=="new"){
+	else if(objFrame.popuptype=="new"){
 		if(objFrame.SDATE){
 			this.calSDate.set_value(objFrame.SDATE);
 			this.calEDate.set_value(objFrame.SDATE);
@@ -92,18 +92,21 @@ this.fn_formLoad = function(objFrame){
 this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(this.btnOk.text == "수정"){
-		var objReturn;
-		objReturn = {
-				"popuptype" : "modify",
-				"ID" : this.scheduleId,
-				"SDATE" : this.calSDate.value,
-				"EDATE" : this.calEDate.value,
-				"TYPE" : this.cmbType.value,
-				"TITLE" : this.edtTitle.value,
-				"CONTENT" : this.teaContent.value,
-				"E_NAME" : this.edtName.value
-				};
-		this.close(JSON.stringify(objReturn, null, "\t"));
+		let check = this.confirm("수정하시겠습니까?");
+		if(check){
+			var objReturn;
+			objReturn = {
+					"popuptype" : "modify",
+					"ID" : this.scheduleId,
+					"SDATE" : this.calSDate.value,
+					"EDATE" : this.calEDate.value,
+					"TYPE" : this.cmbType.value,
+					"TITLE" : this.edtTitle.value,
+					"CONTENT" : this.teaContent.value,
+					"E_NAME" : this.edtName.value
+					};
+			this.close(JSON.stringify(objReturn, null, "\t"));
+		}
 	}
 	else if(this.btnOk.text == "등록"){
 		var objReturn;
@@ -128,11 +131,14 @@ this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var objReturn;
 	if(this.btnDel.text == "삭제"){
-		objReturn = {
-				"popuptype" : "delete",
-				"ID" : this.scheduleId
-				};
-		this.close(JSON.stringify(objReturn, null, "\t"));
+		let check = this.confirm("삭제하시겠습니까?");
+		if(check){
+			objReturn = {
+					"popuptype" : "delete",
+					"ID" : this.scheduleId
+					};
+			this.close(JSON.stringify(objReturn, null, "\t"));
+		}
 	}
 	else if(this.btnDel.text == "취소"){
 		this.close();
