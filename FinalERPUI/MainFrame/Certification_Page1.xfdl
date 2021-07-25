@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="My_Page" width="1670" height="835" titletext="New Form" cursor="pointer">
+  <Form id="My_Page" width="1670" height="835" titletext="New Form" cursor="pointer" onload="CertificationPage_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="lb_title" taborder="0" text="증명서 조회" left="30" top="40" width="182" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
@@ -55,12 +55,12 @@
         <Edit id="ed_loc_postcode" taborder="34" left="574" top="431" width="257" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Edit id="ed_loc_findresult" taborder="35" left="833" top="431" width="489" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Edit id="ed_loc_detail" taborder="36" left="574" top="470" width="746" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <ImageViewer id="iv_search" taborder="37" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer"/>
+        <ImageViewer id="iv_search" taborder="37" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" enable="false"/>
         <Static id="lb_bg2_01_00_00_00_00_00" taborder="38" left="384" top="508" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept01_00_00_00_00_00" taborder="39" text="실 거주지" left="386" top="509" width="186" height="79" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1c1c1c"/>
         <Edit id="ed_realloc_postcode" taborder="40" left="573" top="510" width="257" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Edit id="ed_realloc_findresult" taborder="41" left="830" top="510" width="489" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <ImageViewer id="iv_search00" taborder="42" left="789" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer"/>
+        <ImageViewer id="iv_search00" taborder="42" left="789" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" enable="false"/>
         <Edit id="ed_realloc_detail" taborder="43" left="573" top="550" width="746" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_CTitle" taborder="44" text="마이페이지 &gt; 증명서조회" left="1171" top="49" width="148" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
         <MaskEdit id="me_birth" taborder="45" left="1020" top="272" width="301" height="37" readonly="true" type="string" format="#### '년' ## '월' ## '일'" maskchar=" " font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
@@ -136,24 +136,27 @@ this.CertificationPage_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInf
 this.fn_init = function(objFrame){
 	let objgdsLoginInfo = this.application.objgdsLoginInfo;
 	let idCount = this.application.transactionCount++;
-	let svcID = "getAccountSels" + idCount;
+	let svcID = "CertificationPage" + idCount;
 	let svcURL = "SvcURL::/my/getCertification.mpg?no=" + svcID;
 	let data = "DS_Certification=out_test";
+	/*let param = " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");*/
 	let param = " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	this.alert(this.application.objgdsLoginInfo.getColumn(0, "E_NO"));
 	this.transaction(svcID, svcURL, "", data, param, "");
 };
 
 /*확인버튼 클릭 시 이벤트처리*/
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	this.alert("발급이 완료되었습니다.");
+	this.close();
 };
 
 /*취소버튼 클릭 시 이벤트처리*/
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.alert("발급이 취소되었습니다.");
-	this.go("SubModalFrame::M_AC_Approve.xfdl");
+	this.close();
 };
 ]]></Script>
   </Form>

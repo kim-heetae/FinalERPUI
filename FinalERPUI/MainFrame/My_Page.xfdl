@@ -199,12 +199,13 @@ this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.alert("증명서를 출력합니다.11111");
+	this.alert("증명서를 출력합니다.");
+	/*this.application.WorkFrame.set_formurl("ModalFrame::Certification_Page1.xfdl");*/
 	/*this.parent.setAttribute(formurl,"ModalFrame::Certification_Page1.xfdl");*/
 	/*let selectedNo = this.DS_MyInfo.getColumn(e.row, "E_NO");*/
  	/*let arg = { "E_NO" : selectedNo };*/
  	/*this.application.gfnShowModal("popupModal", arg, "ModalFrame::Certification_Page1.xfdl", "CertificationPage_onload", this, 550, 30, true, true, null);*/
-	this.go("ModalFrame::Certification_Page1.xfdl");
+	this.go("MainFrame::Certification_Page1.xfdl");
 };
 ]]></Script>
     <Objects>
