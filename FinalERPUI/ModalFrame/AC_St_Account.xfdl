@@ -1,33 +1,231 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="AC_St_Account" width="550" height="500" titletext="New Form">
+  <Form id="AC_St_Account" width="550" height="800" titletext="New Form" onload="AC_St_Account_onload">
     <Layouts>
-      <Layout height="500" width="550">
+      <Layout height="800" width="550">
         <Static id="lb_bg1" taborder="0" left="25" top="111" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_empno" taborder="1" text="사원번호" left="25" top="112" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_empno" taborder="1" text="사원번호" left="25" top="112" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="2" left="144" top="113" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_date" taborder="3" text="신청일" left="269" top="112" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_date" taborder="3" text="신청일" left="269" top="112" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c"/>
         <Edit id="ed_date" taborder="4" left="390" top="113" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Button id="btn_reject" taborder="5" left="449" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="반려" cursor="pointer"/>
-        <Static id="lb_bg2_00" taborder="6" left="270" top="225" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Edit id="ed_title" taborder="7" left="144" top="191" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
-        <TextArea id="ta_content" taborder="8" left="25" top="264" width="500" height="120" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
-        <Static id="lb_content" taborder="9" text="내용" left="25" top="226" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_title" taborder="10" text="제목" left="25" top="189" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_content00" taborder="11" left="145" top="227" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_file00_00" taborder="12" left="144" top="227" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Static id="lb_title_m" taborder="13" text="계좌정보변경 신청내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
-        <Static id="lb_bg1_00" taborder="14" left="25" top="150" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_bank" taborder="15" text="은행명" left="25" top="151" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Edit id="ed_bank" taborder="16" left="144" top="152" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_account" taborder="17" text="계좌번호" left="269" top="151" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_account" taborder="18" left="390" top="152" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Button id="btn_approve" taborder="19" left="335" top="439" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="승인" cursor="pointer"/>
-        <Static id="lb_bg2_01" taborder="20" left="26" top="383" width="499" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_file00" taborder="21" text="첨부파일" left="25" top="384" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <FileUpload id="file_upload" taborder="22" left="144" top="385" width="125" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Static id="lb_file00_01" taborder="23" left="269" top="384" width="256" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Button id="btn_reject" taborder="5" left="249" top="719" width="76" height="36" background="#ff0000" border="1px solid #ff0000" font="bold 16px/normal &quot;나눔바른펜&quot;" color="white" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
+        <Static id="lb_bg2_00" taborder="7" left="270" top="225" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Edit id="ed_title" taborder="8" left="144" top="191" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
+        <TextArea id="ta_content" taborder="9" left="25" top="264" width="500" height="280" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
+        <Static id="lb_content" taborder="10" text="내용" left="25" top="226" width="119" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c" onclick="Static02_onclick"/>
+        <Static id="lb_title" taborder="11" text="제목" left="25" top="189" width="119" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_content00" taborder="12" left="145" top="227" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_file00_00" taborder="14" left="144" top="227" width="381" height="37" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c"/>
+        <Static id="lb_title_m" taborder="15" text="계좌정보변경 신청내역" left="145" top="28" width="275" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_bg1_00" taborder="16" left="25" top="150" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="lb_bank" taborder="17" text="은행명" left="25" top="151" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c" onclick="Static02_onclick"/>
+        <Edit id="ed_bank" taborder="18" left="144" top="152" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_account" taborder="19" text="계좌번호" left="269" top="151" width="120" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c"/>
+        <Edit id="ed_account" taborder="20" left="390" top="152" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Button id="btn_approve" taborder="21" left="105" top="719" width="76" height="36" background="#0000FF" border="1px solid #0000FF" font="bold 16px/normal &quot;나눔바른펜&quot;" color="white" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
+        <Button id="btn_close" taborder="22" left="399" top="719" width="76" height="36" background="#F5DF4D" border="1px solid #F5DF4D" font="bold 16px/normal &quot;나눔바른펜&quot;" color="white" text="확인" cursor="pointer" onclick="btn_close_onclick"/>
+        <Grid id="Grid00" taborder="6" left="25" top="550" width="420" height="146" autofittype="col" binddataset="ds_file" onheadclick="Grid00_onheadclick" readonly="false" border="1px solid slategray">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="200"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell edittype="checkbox" displaytype="checkboxcontrol" onchanged="fn_allchk" expr="expr:FILE_CHK=='Y'?'1':'0'" background="#1c1c1c"/>
+                <Cell col="1" text="파일명" background="#1c1c1c" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="크기" background="#1c1c1c" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FILE_CHK" expr="expr:FILE_CHK=='Y'?'1':'0'" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:FF_NAME"/>
+                <Cell col="2" text="bind:FF_SIZE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <FileDownload id="FileDownload00" taborder="13" text="다운로드" left="449" top="550" width="76" height="146" onclick="FileDownload00_onclick" enable="true" border="1px solid #82FA58" background="#82FA58" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="ds_account">
+        <ColumnInfo>
+          <Column id="E_NO" type="STRING" size="256"/>
+          <Column id="FI_DATE" type="STRING" size="256"/>
+          <Column id="FAC_BANK" type="STRING" size="256"/>
+          <Column id="FAC_ACCOUNT" type="STRING" size="256"/>
+          <Column id="FI_NAME" type="STRING" size="256"/>
+          <Column id="FAC_CONTENT" type="STRING" size="256"/>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_file" oncolumnchanged="ds_file_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="FILE_CHK" type="STRING" size="256"/>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+          <Column id="FF_SIZE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDownTransfer id="FileDownTransfer00"/>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+this.tabCount = 0;
+this.fi_no = "";//해당 신청서 번호
+
+this.AC_St_Account_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.application = nexacro.getApplication();
+	let objFrame = this.getOwnerFrame();
+	this.fn_text_init(objFrame);
+	this.fn_file_init(objFrame);
+};
+//신청서 정보 로딩
+this.fn_text_init = function(objFrame){
+	this.fi_no = objFrame.fi_no;
+	if (objFrame.fi_state != "진행중"){//승인, 반려 상태는 확인창만 보이도록 만듬
+		this.btn_approve.set_visible(false);
+		this.btn_reject.set_visible(false);
+		this.btn_close.set_left(239);
+	}
+	let count = this.application.transactionCount++;
+	let svcID = "acStDetail" + count;
+	let svcURL = "SvcURL::/acst/acStDetail.ac?no=" + count;
+	let data = "ds_account=out_test";
+	let param = " fi_no=" + objFrame.fi_no + " ft_type=계좌";
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+//승인
+this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") > 2){
+		let count = this.application.transactionCount++;
+		let svcID = "acStOkUpd" + count;
+		let svcURL = "SvcURL::/acst/acStOk.ac?no=" + count;
+		let data = "";
+		let param = " p_fi_no=" + this.fi_no + " p_fi_state=승인"
+				+ " p_e_no=" + this.ds_account.getColumn(0,"E_NO") 
+				+ " p_ea_name=" + this.ds_account.getColumn(0,"FAC_BANK")
+				+ " p_ea_no=" + this.ds_account.getColumn(0,"FAC_ACCOUNT")
+				+ " ft_type=계좌" ;//어떤신청인지 자바에서 IF문으로 판단
+		this.transaction(svcID, svcURL, "", data, param, "fn_close");	
+	}
+	else{
+		this.alert("승인권한이 없습니다.");
+	}
+};
+
+//반려
+this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH") > 2){
+		let count = this.application.transactionCount++;
+		let svcID = "acStNoUpd" + count;
+		let svcURL = "SvcURL::/acst/acStNo.ac?no=" + count;
+		let data = "";
+		let param = " fi_state=반려" + " fi_no=" + this.fi_no + " ft_type=계좌";
+		this.transaction(svcID, svcURL, "", data, param, "fn_close");
+	}
+	else{
+		this.alert("반려권한이 없습니다.");
+	}
+};
+
+this.fn_close = function(){
+	let objReturn = { "modalName" : "account" };
+	this.close(JSON.stringify(objReturn, null, "\t"));
+};
+
+//확인
+this.btn_close_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fn_close();
+};
+this.fn_file_init = function (objFrame){
+	let fi_no = objFrame.fi_no;
+	let count = this.application.transactionCount++;
+	let svcID = "fileSelecter" + count;
+	let svcURL = "SvcURL::/mhrst/fileSelecter.mpg?no=" + count;
+	let data = "ds_file=out_test";
+	let param = " fi_no=" + fi_no;
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+
+this.FileDownload00_onclick = function(obj:nexacro.FileDownload,e:nexacro.ClickEventInfo)
+{
+	let count = this.application.transactionCount++;
+	let path = "ac_form";
+	let file_name = "";
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		if(this.ds_file.getColumn(i, "FILE_CHK") == "Y"){
+			file_name = this.ds_file.getColumn(i, "FF_NAME");
+			this.FileDownTransfer00.download('http://localhost:9000/fileBox/download.jsp?PATH=' + path + "&file_name=" + file_name + "&no=" + count);
+		}
+	}
+};
+
+
+
+this.ds_file_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid == "FILE_CHK") {
+        // 다른 이벤트가 동작하지 않도록 설정
+        obj.enableevent = false;  //false can stop event temporarily 
+        // 변경된 값이 1(체크가 된 경우)인경우
+        if(e.newvalue == '1') {
+            // 1인 경우 Dataset의 chk 값을 Y로 변경
+            obj.setColumn(e.row,"FILE_CHK",'Y');
+        } else if(e.newvalue == '0') {
+            // 0인 경우 Dataset의 chk 값을 N로 변경
+            obj.setColumn(e.row,"FILE_CHK",'N'); 
+        }
+        // 다시 이벤트가 정상 동작하도록 설정
+        obj.enableevent = true;
+    }
+};
+//헤더 체크박스 클릭
+this.Grid00_onheadclick = function (obj:Grid, e:GridClickEventInfo)
+{
+ if (e.cell == 0) 
+ {
+  this.gf_SetGridCheckAll(obj, e);
+ }
+}
+
+//헤더체크박스 클릭 이벤트
+this.gv_IsGridCheckAll = 'Y';
+this.gf_SetGridCheckAll = function (obj:Grid, e:GridClickEventInfo){
+ var dsObj = eval("this." +obj.binddataset);
+ var v_Colid = obj.getCellProperty("body", e.cell, "text").split("bind:").join("");
+ this.gv_IsGridCheckAll = (this.gv_IsGridCheckAll ? 'Y' : 'N');
+ dsObj.set_enableevent(false);
+ for (var i = 0; i < dsObj.getRowCount(); i++) 
+ {
+  dsObj.setColumn(i, v_Colid, this.gv_IsGridCheckAll);
+ }
+ obj.setCellProperty("Head", 0, "expr", this.gv_IsGridCheckAll);
+ dsObj.set_enableevent(true);
+}
+this.FileUpload00_onitemchanged = function(obj:nexacro.FileUpload,e:nexacro.FileUploadItemChangeEventInfo)
+{
+	
+};
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="ed_empno" propid="value" datasetid="ds_account" columnid="E_NO"/>
+      <BindItem id="item1" compid="ed_date" propid="value" datasetid="ds_account" columnid="FI_DATE"/>
+      <BindItem id="item2" compid="ed_bank" propid="value" datasetid="ds_account" columnid="FAC_BANK"/>
+      <BindItem id="item3" compid="ed_account" propid="value" datasetid="ds_account" columnid="FAC_ACCOUNT"/>
+      <BindItem id="item4" compid="ed_title" propid="value" datasetid="ds_account" columnid="FI_NAME"/>
+      <BindItem id="item5" compid="ta_content" propid="value" datasetid="ds_account" columnid="FAC_CONTENT"/>
+    </Bind>
   </Form>
 </FDL>

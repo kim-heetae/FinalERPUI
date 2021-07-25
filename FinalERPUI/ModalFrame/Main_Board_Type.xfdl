@@ -3,8 +3,8 @@
   <Form id="Main_Board_Type" width="550" height="400" titletext="New Form" onload="Main_Board_Type_onload">
     <Layouts>
       <Layout height="400" width="550">
-        <Button id="btn_notice" taborder="0" text="공지 게시판" left="90" top="180" width="140" height="110" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onclick="btn_notice_onclick"/>
-        <Button id="btn_work" taborder="1" text="업무 게시판" left="320" top="180" width="140" height="110" background="#ffffff" border="1px solid #c7c7c7" font="18px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onclick="btn_work_onclick"/>
+        <Button id="btn_notice" taborder="0" text="공지 게시판" left="90" top="180" width="140" height="110" background="#81DAF5" border="1px solid #81DAF5" font="bold 18px/normal &quot;나눔바른펜&quot;" color="#1c1c1c" cursor="pointer" onclick="btn_notice_onclick"/>
+        <Button id="btn_work" taborder="1" text="업무 게시판" left="320" top="180" width="140" height="110" background="#81DAF5" border="1px solid #81DAF5" font="bold 18px/normal &quot;나눔바른펜&quot;" color="#000000" cursor="pointer" onclick="btn_work_onclick"/>
         <Static id="lb_title" taborder="2" text="게시판 작성" left="188" top="45" width="175" height="65" font="bold 25px/normal &quot;나눔바른펜&quot;" color="#000000" textAlign="center" verticalAlign="middle"/>
       </Layout>
     </Layouts>

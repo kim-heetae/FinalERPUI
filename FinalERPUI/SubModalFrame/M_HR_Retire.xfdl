@@ -3,14 +3,14 @@
   <Form id="M_HR_Retire" width="550" height="501" titletext="New Form" border="1px solid #999999" onload="mhrRetire_board_load">
     <Layouts>
       <Layout height="501" width="550">
-        <Static id="lb_title_m" taborder="0" text="퇴직서 제출" left="169" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="lb_title_m" taborder="0" text="퇴직 신청" left="169" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
         <Static id="lb_bg1" taborder="1" left="25" top="100" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="101" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="3" left="144" top="102" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg2" taborder="4" left="25" top="139" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_date" taborder="5" text="해당 일자" left="269" top="101" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Static id="lb_dept" taborder="6" text="부서" left="25" top="140" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Combo id="cb_dept" taborder="7" text="부서명" left="144" top="141" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" displaynulltext="인사과" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+        <Combo id="cb_dept" taborder="7" text="부서명" left="144" top="141" width="125" height="36" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" displaynulltext="인사팀" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -161,9 +161,11 @@ this.mhrRetire = function(){
    } else if(this.gfn_isNull(title)){
 		this.alert("제목을 작성해주세요.");
    } else{
+		title = this.application.gfn_quote("fi_name", title);
+		content = this.application.gfn_quote("ret_reason", content);
 		/*ret_reason: 사유 / ret_date : 퇴직희망날짜*/
-		var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
-				+ " ret_reason=" + content + " ret_date=" + aplyReday;
+		var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no
+				+ content + " ret_date=" + aplyReday;
 		this.transaction(svcID, svcURL, "", "", param, "");
 	}
 	this.alert("퇴직 신청이 완료됐습니다.");

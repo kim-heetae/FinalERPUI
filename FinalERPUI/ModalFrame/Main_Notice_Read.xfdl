@@ -3,19 +3,40 @@
   <Form id="Main_Notice_Read" width="800" height="800" titletext="New Form" onload="Main_Notice_Read_onload">
     <Layouts>
       <Layout height="800" mobileorientation="landscape" width="800">
-        <Static id="lb_title_m" taborder="0" text="공지사항 게시글 등록" left="290" top="50" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
-        <Static id="lb_bg1" taborder="1" left="25" top="633" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_file" taborder="2" text="첨부파일" left="25" top="634" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_cancel" taborder="3" left="699" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
-        <TextArea id="ta_content" taborder="4" left="25" top="225" width="750" height="409" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
-        <Static id="lb_content" taborder="5" text="내용" left="25" top="187" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_content00" taborder="6" left="144" top="188" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_file00" taborder="7" left="144" top="188" width="631" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" text=""/>
-        <FileUpload id="file_upload" taborder="8" left="146" top="635" width="629" height="36" itemheight="36" buttontext="+" buttonsize="36" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_confirm" taborder="9" left="584" top="734" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="등록" cursor="pointer" onclick="btn_confirm_onclick"/>
+        <Static id="lb_title_m" taborder="1" text="공지사항 게시글 등록" left="290" top="50" width="260" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
+        <Button id="btn_cancel" taborder="4" left="699" top="724" width="76" height="36" background="#ff0000" border="1px solid #ff0000" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
+        <TextArea id="ta_content" taborder="5" left="25" top="225" width="750" height="295" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요"/>
+        <Static id="lb_content" taborder="6" text="내용" left="25" top="187" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c" onclick="Static02_onclick"/>
+        <Static id="lb_content00" taborder="7" left="144" top="188" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_file00" taborder="8" left="144" top="188" width="631" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c" text=""/>
+        <Button id="btn_confirm" taborder="9" left="584" top="724" width="76" height="36" background="#0000FF" border="1px solid #0000FF" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="등록" cursor="pointer" onclick="btn_confirm_onclick"/>
         <Static id="lb_bg1_00" taborder="10" left="25" top="148" width="750" height="40" border="1px solid #c7c7c7, 0px none&#9;" onclick="lb_bg1_00_onclick"/>
-        <Static id="lb_title" taborder="11" text="제목" left="25" top="149" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="none"/>
+        <Static id="lb_title" taborder="11" text="제목" left="25" top="149" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c" onclick="Static02_onclick" border="none"/>
         <Edit id="ed_title" taborder="12" left="144" top="150" width="631" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged"/>
+        <Static id="Static00" taborder="3" text="Drop Files Here" left="25" top="551" width="620" height="121" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
+        <Button id="Button00" taborder="0" text="파일첨부" left="655" top="526" width="120" height="167" onclick="Button00_onclick" background="#F5DF4D" border="1px solid #F5DF4D" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+        <Grid id="Grid00" taborder="2" left="25" top="526" width="624" height="166" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" border="1px solid slategray">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="200"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="파일명" background="#1C1C1C" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="크기" background="#1C1C1C" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:BNF_NAME"/>
+                <Cell col="1" text="bind:BNF_SIZE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -39,28 +60,162 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		alert("권한을 확인해주세요.");
 	}
 	else{
-		var title = this.ed_title.text;
-		var content = this.ta_content.text;
-		var file = this.file_upload.text;
-		var filePath = this.file_upload.uploadurl;
-		var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-		var d_no = this.application.objgdsLoginInfo.getColumn(0, "D_NO");
-		var svcID = "getNBIns" + this.application.transactionCount++;
-		var SvcURL = "SvcURL::/main/getNBIns.mpg?no=" + svcID;
-		var param = " bn_name=" + title + " bn_content=" + content + " e_no=" + e_no;
-		var objReturn;
-		if(!this.gfn_isNull(file)){
-			param += " path=" + filePath;
-			SvcURL = "http://localhost:9000/fileBox/save.jsp";
+		let title = this.ed_title.text;
+		let content = this.ta_content.text;
+		if(!this.gfn_isNull(title) && !this.gfn_isNull(content)){
+			title = this.application.gfn_quote("bn_name", title);
+			content = this.application.gfn_quote("bn_content", content);
+			let e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+			let d_no = this.application.objgdsLoginInfo.getColumn(0, "D_NO");
+			let svcID = "getNBIns" + this.application.transactionCount++;
+			let SvcURL = "SvcURL::/main/getNBIns.mpg?no=" + svcID;
+			let param = title + content + " e_no=" + e_no;
+			this.transaction(svcID, SvcURL, "", "", param, "fn_file_for");
 		}
-		objReturn = {
+		else{
+			this.alert("제목과 내용을 입력해주세요.");
+		}
+	}
+};
+
+this.fn_file_for = function(){
+	objReturn = {
 			"popuptype" : "notice"
 			};
-		this.transaction(svcID, SvcURL, "", "", param, "");
+	let count = this.application.transactionCount++;
+	count = this.application.gfn_file_quote("no", count);
+	let path = "board_notice";
+	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + count);
+	for(let i = 0; i < this.Dataset00.getRowCount(); i++){
+		this.fn_file_ins(i);
 	}
-	
 	this.close(JSON.stringify(objReturn, null, "\t"));
+}
+
+this.fn_file_ins = function(bnf_num){
+	let bnf_name = this.Dataset00.getColumn(bnf_num, "BNF_NAME");
+	bnf_name = this.application.gfn_quote("bnf_name", bnf_name);
+	let bnf_size = this.Dataset00.getColumn(bnf_num, "BNF_SIZE");
+	bnf_size = this.application.gfn_quote("bnf_size", bnf_size);
+	let svcID = "";
+	let svcURL = "";
+	let param = "";
+	var objReturn;
+/*	if(!this.gfn_isNull(this.Dataset00.getColumn(bnf_num, "BNF_NAME"))){*/
+	svcID = "getNBFileIns" + this.application.transactionCount++;
+	svcURL = "SvcURL::/main/getNBIns.mpg?no=" + svcID;
+	param = bnf_name + bnf_size;			
+	this.transaction(svcID, svcURL, "", "", param, "");
+/*	}*/
+}
+
+//////////////////////////////////////
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.FileDialog00.open('nexacro17', FileDialog.MULTILOAD);
 };
-]]></Script>
+this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	this.addFileList(e.virtualfiles);
+};
+this.addFileList = function(filelist)
+{
+	for (var i = 0, len = filelist.length, vFile; i < len; i++)
+	{
+		vFile = filelist[i];
+		vFile.addEventHandler("onsuccess", this.FileList_onsuccess, this);
+		vFile.addEventHandler("onerror", this.FileList_onerror , this);
+		
+		vFile.open(null, 1);
+	}
+}
+this.FileList_onsuccess = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileEventInfo)
+{
+	switch (e.reason)
+	{
+		case 1:
+			obj.getFileSize();
+			break;
+		case 9:
+			var nRowIdx = this.Dataset00.addRow();
+			this.Dataset00.setColumn(nRowIdx, 0, obj.filename);
+			this.Dataset00.setColumn(nRowIdx, 1, this.cutFileSize(e.filesize));
+			this.FileUpTransfer00.addFile(obj.filename, obj);
+			break;
+	}
+}
+this.FileList_onerror = function(obj:nexacro.VirtualFile, e:nexacro.VirtualFileErrorEventInfo)
+{
+	trace("errortype: "+e.errortype);
+	trace("errormsg: "+e.errormsg);
+	trace("statuscode: "+e.statuscode);
+}
+// https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#Example_Showing_file(s)_size
+this.cutFileSize = function(filesize)
+{
+	let sOutput = filesize + " bytes";
+	for (let aMultiples = ["KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"], nMultiple = 0, nApprox = filesize / 1024; nApprox > 1; nApprox /= 1024, nMultiple++)
+	{
+		sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple];
+	}
+	return sOutput;
+};
+this.Grid00_ondragenter = function(obj:nexacro.Grid,e:nexacro.DragEventInfo)
+{
+	if(e.datatype == "file")
+	{
+		this.Grid00.set_opacity(0.5);
+	}
+};
+this.Grid00_ondragleave = function(obj:nexacro.Grid,e:nexacro.DragEventInfo)
+{
+	this.Grid00.set_opacity(1);
+};
+this.Grid00_ondrop = function(obj:nexacro.Grid,e:nexacro.GridDragEventInfo)
+{
+	this.Grid00.set_opacity(1);
+	if(e.datatype == "file")
+	{
+		this.addFileList(e.filelist);
+	}
+};
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	/*this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp');*/
+};
+this.FileUpTransfer00_onprogress = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferProgressEventInfo)
+{
+	/*this.fn_addlog(e.loaded+"/"+e.total);*/
+};
+this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferEventinfo)
+{
+// 	this.fn_addlog(e.code);
+// 	this.fn_addlog(e.message);
+};
+this.FileUpTransfer00_onerror = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferErrorEventInfo)
+{
+// 	this.fn_addlog(e.errormsg);
+// 	this.fn_addlog(e.statuscode);
+};
+this.fn_addlog = function(strMessage)
+{
+}]]></Script>
+    <Objects>
+      <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="BNF_NAME" type="STRING" size="256"/>
+          <Column id="BNF_SIZE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileUpTransfer id="FileUpTransfer00" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess" onerror="FileUpTransfer00_onerror"/>
+      <Dataset id="Dataset01">
+        <ColumnInfo>
+          <Column id="FILENAME" type="STRING" size="256"/>
+          <Column id="FILETYPE" type="STRING" size="256"/>
+          <Column id="FILESIZE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

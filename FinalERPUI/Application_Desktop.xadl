@@ -144,5 +144,10 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
 	childFrame.showModal(parentFrame, arrArguments, obj, popupCallback, true);
 };
 
-]]></Script>
+this.gfn_quote = function(key, value){
+	return " " + key + "=" + nexacro.wrapQuote(value);
+}
+this.gfn_file_quote = function(key, value){
+	return "&" + key + "=" + value;
+}]]></Script>
 </ADL>
