@@ -52,7 +52,10 @@ this.Main_Notice_Read_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo
 
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.close();
+	let check = this.confirm("취소하시겠습니까?");
+	if(check){
+		this.close();
+	}
 };
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {

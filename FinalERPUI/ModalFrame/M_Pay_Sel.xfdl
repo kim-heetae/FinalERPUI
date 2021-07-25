@@ -230,8 +230,9 @@ this.btn_ok00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	this.exportObj.set_exportfilename(this.ds_pay_stub.getColumn(0, "E_NO") + this.ds_pay_stub.getColumn(0, "SB_DATE"));
 	/*this.exportObj.set_exporturl("http://demo.nexacro.com/developer_guide/XExportImport");*/
-	this.exportObj.set_exporturl("http://localhost:9000/XExportImport");
-	/*this.exportObj.set_exporturl("http://192.168.0.23:9000/XExportImport");*/
+	/*this.exportObj.set_exporturl("http://localhost:9000/XExportImport");*/
+	/*this.exportObj.set_exporturl("SvcURL::/XExportImport");*/
+	this.exportObj.set_exporturl("http://192.168.0.23:9000/XExportImport");
 	
 	this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid00, "Sheet1!A1");
 	this.addEventHandler("onsuccess", this.Export00_onsuccess, this);
@@ -239,7 +240,7 @@ this.btn_ok00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	var intExportedItem = this.exportObj.exportData();
 	
-	trace("Number of Exported Item: " + intExportedItem);
+	/*trace("Number of Exported Item: " + intExportedItem);*/
 };
 
 

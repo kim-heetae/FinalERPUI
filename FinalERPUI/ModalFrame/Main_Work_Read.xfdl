@@ -122,7 +122,10 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.close();
+	let check = this.confirm("취소하시겠습니까?");
+	if(check){
+		this.close();
+	}
 };
 ////////////////////////////////////////////////////////
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)

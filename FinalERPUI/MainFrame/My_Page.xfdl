@@ -178,21 +178,24 @@ this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		alert("비밀번호를 확인해주세요");
 	}
 	if(check == 2){
-		phone = this.application.gfn_quote("e_phone", phone);
-		ed_email = this.application.gfn_quote("e_email", e_email);
-		loc_address = this.application.gfn_quote("e_loc", loc_address);
-		loc_postcode = this.application.gfn_quote("e_postcode", loc_postcode);
-		loc_detail = this.application.gfn_quote("e_loc_detail", loc_detail);
-		loc_real_address = this.application.gfn_quote("e_real_loc", loc_real_address);
-		loc_real_postcode = this.application.gfn_quote("e_real_postcode", loc_real_postcode);
-		loc_real_detail = this.application.gfn_quote("e_real_detail", loc_real_detail);
-		let svcID = "getmyPageUpd" + this.application.transactionCount++;
-		let svcURL = "SvcURL::/my/getmyPageUpd.mpg?no=" + svcID;
-		let param = phone + ed_email + loc_address + loc_postcode + loc_detail 
-				+ loc_real_address + loc_real_postcode + loc_real_detail
-				+ " e_no=" + ed_empno + " e_pw=" + ed_password;
-		this.transaction(svcID, svcURL, "", "", param, "");
-		alert("수정되었습니다");
+		let checkupd = this.confirm("수정하시겠습니까?");
+		if(checkupd){
+			phone = this.application.gfn_quote("e_phone", phone);
+			ed_email = this.application.gfn_quote("e_email", e_email);
+			loc_address = this.application.gfn_quote("e_loc", loc_address);
+			loc_postcode = this.application.gfn_quote("e_postcode", loc_postcode);
+			loc_detail = this.application.gfn_quote("e_loc_detail", loc_detail);
+			loc_real_address = this.application.gfn_quote("e_real_loc", loc_real_address);
+			loc_real_postcode = this.application.gfn_quote("e_real_postcode", loc_real_postcode);
+			loc_real_detail = this.application.gfn_quote("e_real_detail", loc_real_detail);
+			let svcID = "getmyPageUpd" + this.application.transactionCount++;
+			let svcURL = "SvcURL::/my/getmyPageUpd.mpg?no=" + svcID;
+			let param = phone + ed_email + loc_address + loc_postcode + loc_detail 
+					+ loc_real_address + loc_real_postcode + loc_real_detail
+					+ " e_no=" + ed_empno + " e_pw=" + ed_password;
+			this.transaction(svcID, svcURL, "", "", param, "");
+			alert("수정되었습니다");
+		}
 	}
 };
 

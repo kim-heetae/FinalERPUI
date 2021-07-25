@@ -149,5 +149,20 @@ this.gfn_quote = function(key, value){
 }
 this.gfn_file_quote = function(key, value){
 	return "&" + key + "=" + value;
+}
+
+
+/******************************************************************************************
+ * 기능 : 문자열의 위치를 대소문자 구별하여 찾는다
+ * 인자 : 1. sOrg   : 원래 문자열( 예 : "aaBBbbcc" )
+          2. sFind  : 찾고자 하는 문자열( 예 : "bb" )
+          3. nStart : 검색 시작위치 (옵션 : Default=0) ( 예 : 1 )
+ * 리턴 : 성공 = 찾고자 하는 문자열의 시작위치 ( 예 : 4 )
+          실패 = -1
+ *****************************************************************************************/
+function gfn_Pos(sOrg, sFind, nStart){
+    if( fn_IsNull(sOrg) || fn_IsNull(sFind) )  return -1;
+    if( fn_IsNull(nStart) ) nStart = 0;
+    return sOrg.indexOf(sFind, nStart);
 }]]></Script>
 </ADL>
