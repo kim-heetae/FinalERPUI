@@ -410,10 +410,11 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 * @param sContent    	: 일정 내용
 * @return             	: 없음
 */
-this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sType, sTitle, sContent, sSch_No, sE_No, sE_Name)
-{
-	var oArg = { "popuptype" : sPopupType, "scheduleid" : "", "SDATE" : "", "EDATE" : "", "TYPE" : "", "TITLE" : "", "CONTENT" : "", "SCH_NO" : "", "E_NO" : "", "E_NAME" : "" };
-	
+this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sType
+									, sTitle, sContent, sSch_No, sE_No, sE_Name){
+	var oArg = { "popuptype" : sPopupType, "scheduleid" : "", "SDATE" : "", "EDATE" : ""
+				, "TYPE" : "", "TITLE" : "", "CONTENT" : "", "SCH_NO" : "", "E_NO" : "", "E_NAME" : "" };
+				
 	if(sId)oArg.scheduleid = sId;
 	if(sSDate)oArg.SDATE = sSDate;
 	if(sEDate)oArg.EDATE = sEDate;
@@ -425,7 +426,7 @@ this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sType, sTitle
 	if(sE_Name)oArg.E_NAME = sE_Name;
 	
 	this.gfnShowModal("popupModal", oArg, "ModalFrame::M_SC_Sel.xfdl", "fnPopupCallBack", this, 400, 300, true, true, null);
-}
+};
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
 * @description 	      	: 팝업 콜백 함수

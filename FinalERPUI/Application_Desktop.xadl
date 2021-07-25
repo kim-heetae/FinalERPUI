@@ -148,6 +148,6 @@ this.gfn_quote = function(key, value){
 	return " " + key + "=" + nexacro.wrapQuote(value);
 }
 this.gfn_file_quote = function(key, value){
-	return "&" + key + "=" + nexacro.wrapQuote(value);
+	return "&" + key + "=" + value;
 }]]></Script>
 </ADL>

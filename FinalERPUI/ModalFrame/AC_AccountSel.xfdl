@@ -22,11 +22,11 @@
         <Static id="lb_ssCost" taborder="16" text="경조비" left="326" top="299" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c" verticalAlign="middle"/>
         <Static id="lb_Hap" taborder="17" text="합계" left="51" top="337" width="80" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="#1c1c1c" textAlign="center" background="#F5DF4D"/>
         <Button id="btn_Com" taborder="18" left="524" top="414" width="76" height="36" background="#0000FF" border="1px solid #0000FF" font="bold 16px/normal &quot;나눔바른펜&quot;" color="white" text="확인" cursor="pointer" onclick="btn_Com_onclick"/>
-        <MaskEdit id="me_sbSal" taborder="19" left="131" top="260" width="195" height="38" readonly="true" format="#,#" type="number"/>
-        <MaskEdit id="me_ssover" taborder="20" left="405" top="260" width="195" height="38" readonly="true" format="#,#" type="number"/>
-        <MaskEdit id="me_exp" taborder="21" left="131" top="299" width="195" height="38" readonly="true" format="#,#" type="number"/>
-        <MaskEdit id="me_cost" taborder="22" left="405" top="299" width="195" height="38" readonly="true" format="#,#" type="number"/>
-        <MaskEdit id="me_sum" taborder="23" left="131" top="337" width="195" height="38" readonly="true" format="#,#" type="number"/>
+        <MaskEdit id="me_sbSal" taborder="19" left="131" top="260" width="195" height="38" readonly="true" format="#,#" type="number" displaynulltext="0"/>
+        <MaskEdit id="me_ssover" taborder="20" left="405" top="260" width="195" height="38" readonly="true" format="#,#" type="number" displaynulltext="0"/>
+        <MaskEdit id="me_exp" taborder="21" left="131" top="299" width="195" height="38" readonly="true" format="#,#" type="number" displaynulltext="0"/>
+        <MaskEdit id="me_cost" taborder="22" left="405" top="299" width="195" height="38" readonly="true" format="#,#" type="number" displaynulltext="0"/>
+        <MaskEdit id="me_sum" taborder="23" left="131" top="337" width="195" height="38" readonly="true" format="#,#" type="number" displaynulltext="0"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";

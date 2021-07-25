@@ -29,7 +29,7 @@
         <Edit id="ed_bank" taborder="23" left="400" top="166" width="125" height="38" border="1px solid #d5d5d5" enable="true" readonly="true"/>
         <Static id="lb_company" taborder="24" text="회사명 : 어디든지문    (인)" left="180" top="305" width="250" height="45" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" color="black"/>
         <ImageViewer id="ImageViewer00" taborder="25" left="355" top="300" width="66" height="54" background="none" image="url('imagerc::FPsignature.png')" stretch="fit" border="0px none"/>
-        <Grid id="gr_today" taborder="26" left="197" top="356" width="203" height="36" background="none" border="0px none" font="bold 20px/normal &quot;나눔바른펜&quot;" binddataset="DS_date" visible="false">
+        <Grid id="gr_today" taborder="26" left="577" top="34" width="203" height="36" background="none" border="0px none" font="bold 20px/normal &quot;나눔바른펜&quot;" binddataset="DS_date" visible="false">
           <Formats>
             <Format id="default">
               <Columns>

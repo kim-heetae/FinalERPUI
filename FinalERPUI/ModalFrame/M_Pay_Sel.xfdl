@@ -152,7 +152,7 @@
           <Column id="SS_REAL" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <ExcelExportObject id="ExcelExportObject00"/>
+      <ExcelExportObject id="ExcelExportObject00" onerror="Export00_onerror" onprogress="ExcelExportObject00_onprogress" onsuccess="ExcelExportObject00_onsuccess"/>
     </Objects>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
 include "lib::lib_date.xjs";
@@ -231,9 +231,9 @@ this.btn_ok00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.exportObj.set_exportfilename(this.ds_pay_stub.getColumn(0, "E_NO") + this.ds_pay_stub.getColumn(0, "SB_DATE"));
 	/*this.exportObj.set_exporturl("http://demo.nexacro.com/developer_guide/XExportImport");*/
 	this.exportObj.set_exporturl("http://localhost:9000/XExportImport");
+	/*this.exportObj.set_exporturl("http://192.168.0.23:9000/XExportImport");*/
 	
 	this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid00, "Sheet1!A1");
-	alert("!23");
 	this.addEventHandler("onsuccess", this.Export00_onsuccess, this);
 	this.addEventHandler("onerror", this.Export00_onerror, this);
 	
@@ -251,7 +251,17 @@ this.Export00_onsuccess = function(obj:ExcelExportObject, e:nexacro.ExcelExportE
 this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
 {
 	trace("Export00_onerror");
-}]]></Script>
+}
+this.ExcelExportObject00_onprogress = function(obj:nexacro.ExcelExportObject,e:nexacro.ExcelExportProgressEventInfo)
+{
+	
+};
+
+this.ExcelExportObject00_onsuccess = function(obj:nexacro.ExcelExportObject,e:nexacro.ExcelExportEventInfo)
+{
+	
+};
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="lb_empno" propid="text" datasetid="gdsLoginInfo" columnid="E_NO"/>
       <BindItem id="item1" compid="lb_ename" propid="text" datasetid="gdsLoginInfo" columnid="E_NAME"/>

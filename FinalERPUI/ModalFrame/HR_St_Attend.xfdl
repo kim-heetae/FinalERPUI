@@ -1,30 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="HR_St_Attend" width="550" height="475" titletext="New Form" border="1px solid #999999" onload="HR_St_Attend_onload">
+  <Form id="HR_St_Attend" width="550" height="800" titletext="New Form" border="1px solid #999999" onload="HR_St_Attend_onload">
     <Layouts>
-      <Layout height="475" width="550">
-        <Static id="lb_title_m" taborder="0" text="근태사유서 제출내역" left="165" top="28" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
+      <Layout height="800" width="550">
+        <Static id="lb_title_m" taborder="0" text="근태사유서 제출내역" left="165" top="28" width="245" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center" onclick="lb_title_m_onclick"/>
         <Static id="lb_bg1" taborder="1" left="26" top="90" width="498" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_empno" taborder="2" text="사원번호" left="25" top="91" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" onclick="Static02_onclick" border="1px solid #1C1C1C"/>
         <Edit id="ed_empno" taborder="3" left="144" top="92" width="125" height="35" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" onchanged="ed_empno_onchanged"/>
         <Static id="lb_date" taborder="4" text="신청일" left="269" top="91" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" border="1px solid #1C1C1C"/>
-        <Static id="lb_bg2_00" taborder="5" left="270" top="201" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Edit id="ed_title" taborder="6" left="143" top="167" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
-        <TextArea id="ta_content" taborder="7" left="25" top="240" width="500" height="102" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
+        <TextArea id="ta_content" taborder="7" left="25" top="240" width="500" height="302" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
         <Static id="lb_content" taborder="8" text="내용" left="25" top="202" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" onclick="Static02_onclick" border="1px solid #1C1C1C"/>
         <Static id="lb_title" taborder="9" text="제목" left="25" top="165" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" onclick="Static02_onclick" border="1px solid #1C1C1C"/>
-        <Static id="lb_content00" taborder="10" left="145" top="203" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_file00_00" taborder="11" left="144" top="203" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" border="1px solid #1C1C1C"/>
-        <Button id="btn_reject" taborder="12" left="336" top="410" width="76" height="36" background="#ff0000" border="1px solid #ff0000" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
-        <Static id="lb_bg2_01" taborder="13" left="26" top="341" width="499" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_file00" taborder="14" text="첨부파일" left="25" top="342" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" border="1px solid #1C1C1C"/>
-        <FileUpload id="file_upload" taborder="15" left="143" top="343" width="381" height="36" itemheight="36" buttontext="+" buttonsize="36" enableevent="true" enable="false"/>
-        <Button id="btn_approve" taborder="16" left="222" top="410" width="76" height="36" background="#0000FF" border="1px solid #0000FF" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
-        <Calendar id="cal_date" taborder="17" left="389" top="92" width="135" height="35" enable="false"/>
-        <Static id="lb_dept" taborder="18" text="신청부서" left="25" top="128" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1C1C1C" border="1px solid #1C1C1C"/>
-        <Edit id="ed_dept" taborder="19" left="144" top="131" width="125" height="35" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Static id="lb_file00_01_00" taborder="20" left="269" top="130" width="257" height="35" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" border="1px solid #1C1C1C"/>
-        <Button id="btn_ok" taborder="21" left="448" top="410" width="76" height="36" background="#F5DF4D" border="1px solid #F5DF4D" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
+        <Static id="lb_file00_00" taborder="10" left="144" top="203" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" border="1px solid #1C1C1C"/>
+        <Button id="btn_reject" taborder="11" left="336" top="730" width="76" height="36" background="#ff0000" border="1px solid #ff0000" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="반려" cursor="pointer" onclick="btn_reject_onclick"/>
+        <Button id="btn_approve" taborder="13" left="222" top="730" width="76" height="36" background="#0000FF" border="1px solid #0000FF" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="승인" cursor="pointer" onclick="btn_approve_onclick"/>
+        <Calendar id="cal_date" taborder="14" left="389" top="92" width="135" height="35" enable="false"/>
+        <Static id="lb_dept" taborder="15" text="신청부서" left="25" top="128" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1C1C1C" border="1px solid #1C1C1C"/>
+        <Edit id="ed_dept" taborder="16" left="144" top="131" width="125" height="35" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
+        <Static id="lb_file00_01_00" taborder="17" left="269" top="130" width="257" height="35" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C" border="1px solid #1C1C1C"/>
+        <Button id="btn_ok" taborder="18" left="448" top="730" width="76" height="36" background="#F5DF4D" border="1px solid #F5DF4D" font="bold 15px/normal &quot;나눔바른펜&quot;" color="white" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
+        <Grid id="Grid00" taborder="5" left="25" top="550" width="420" height="146" autofittype="col" binddataset="ds_file" onheadclick="Grid00_onheadclick" readonly="false" border="1px solid slategray">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="200"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell edittype="checkbox" displaytype="checkboxcontrol" onchanged="fn_allchk" expr="expr:FILE_CHK=='Y'?'1':'0'" background="#1c1c1c"/>
+                <Cell col="1" text="파일명" background="#1c1c1c" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="크기" background="#1c1c1c" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FILE_CHK" expr="expr:FILE_CHK=='Y'?'1':'0'" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:FF_NAME"/>
+                <Cell col="2" text="bind:FF_SIZE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <FileDownload id="FileDownload00" taborder="12" text="다운로드" left="449" top="550" width="76" height="146" onclick="FileDownload00_onclick" enable="true" border="1px solid #82FA58" background="#82FA58" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -38,6 +59,7 @@ this.HR_St_Attend_onload = function (){
 	let objFrame = this.getOwnerFrame();
 	this.e_no = objFrame.e_no;
 	this.fn_init(objFrame);
+	this.fn_file_init(objFrame);
 };
 
 this.fn_init = function(objFrame){
@@ -105,7 +127,71 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
 };
-]]></Script>
+
+this.fn_file_init = function (objFrame){
+	let fi_no = objFrame.FI_NO;
+	let count = this.application.transactionCount++;
+	let svcID = "fileSelecter" + count;
+	let svcURL = "SvcURL::/mhrst/fileSelecter.mpg?no=" + count;
+	let data = "ds_file=out_test";
+	let param = " fi_no=" + fi_no;
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+this.FileDownload00_onclick = function(obj:nexacro.FileDownload,e:nexacro.ClickEventInfo)
+{
+	let count = this.application.transactionCount++;
+	let path = "hr_form";
+	let file_name = "";
+	for(let i = 0; i < this.ds_file.getRowCount(); i++){
+		if(this.ds_file.getColumn(i, "FILE_CHK") == "Y"){
+			file_name = this.ds_file.getColumn(i, "FF_NAME");
+			this.FileDownTransfer00.download('http://localhost:9000/fileBox/download.jsp?PATH=' + path + "&file_name=" + file_name + "&no=" + count);
+		}
+	}
+};
+
+
+
+this.ds_file_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid == "FILE_CHK") {
+        // 다른 이벤트가 동작하지 않도록 설정
+        obj.enableevent = false;  //false can stop event temporarily 
+        // 변경된 값이 1(체크가 된 경우)인경우
+        if(e.newvalue == '1') {
+            // 1인 경우 Dataset의 chk 값을 Y로 변경
+            obj.setColumn(e.row,"FILE_CHK",'Y');
+        } else if(e.newvalue == '0') {
+            // 0인 경우 Dataset의 chk 값을 N로 변경
+            obj.setColumn(e.row,"FILE_CHK",'N'); 
+        }
+        // 다시 이벤트가 정상 동작하도록 설정
+        obj.enableevent = true;
+    }
+};
+//헤더 체크박스 클릭
+this.Grid00_onheadclick = function (obj:Grid, e:GridClickEventInfo)
+{
+ if (e.cell == 0) 
+ {
+  this.gf_SetGridCheckAll(obj, e);
+ }
+}
+
+//헤더체크박스 클릭 이벤트
+this.gv_IsGridCheckAll = 'Y';
+this.gf_SetGridCheckAll = function (obj:Grid, e:GridClickEventInfo){
+ var dsObj = eval("this." +obj.binddataset);
+ var v_Colid = obj.getCellProperty("body", e.cell, "text").split("bind:").join("");
+ this.gv_IsGridCheckAll = (this.gv_IsGridCheckAll ? 'Y' : 'N');
+ dsObj.set_enableevent(false);
+ for (var i = 0; i < dsObj.getRowCount(); i++) 
+ {
+  dsObj.setColumn(i, v_Colid, this.gv_IsGridCheckAll);
+ }
+ obj.setCellProperty("Head", 0, "expr", this.gv_IsGridCheckAll);
+ dsObj.set_enableevent(true);
+}]]></Script>
     <Objects>
       <Dataset id="DS_HRAttend">
         <ColumnInfo>
@@ -118,6 +204,14 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="D_NAME" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_file" oncolumnchanged="ds_file_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="FILE_CHK" type="STRING" size="256"/>
+          <Column id="FF_NAME" type="STRING" size="256"/>
+          <Column id="FF_SIZE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDownTransfer id="FileDownTransfer00"/>
     </Objects>
     <Bind>
       <BindItem id="item0" compid="ed_empno" propid="value" datasetid="DS_HRAttend" columnid="E_NO"/>
@@ -125,7 +219,6 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       <BindItem id="item2" compid="ed_dept" propid="value" datasetid="DS_HRAttend" columnid="D_NAME"/>
       <BindItem id="item3" compid="ed_title" propid="value" datasetid="DS_HRAttend" columnid="FI_NAME"/>
       <BindItem id="item4" compid="ta_content" propid="value" datasetid="DS_HRAttend" columnid="FR_REASON"/>
-      <BindItem id="item5" compid="file_upload" propid="accessibilityaction" datasetid="DS_HRAttend" columnid="FF_NAME"/>
     </Bind>
   </Form>
 </FDL>

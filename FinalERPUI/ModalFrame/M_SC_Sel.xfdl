@@ -45,12 +45,12 @@
 this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {	
 	this.application = nexacro.getApplication();
-	var objFrame = this.getOwnerFrame();
-	
-	this.popuptype = objFrame.popuptype;
-	
-	if(this.popuptype=="modify")
-	{
+	let objFrame = this.getOwnerFrame();
+	this.fn_formLoad(objFrame);
+};
+
+this.fn_formLoad = function(objFrame){
+	if(this.popuptype=="modify"){
 		this.scheduleId = objFrame.scheduleid;
 		this.edtTitle.set_value(objFrame.TITLE);
 		this.calSDate.set_value(objFrame.SDATE);
@@ -59,7 +59,8 @@ this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		this.teaContent.set_value(objFrame.CONTENT);
 		this.edtName.set_value(objFrame.E_NAME);
 		this.btnOk.set_text("수정");
-		if(objFrame.E_NAME != this.application.objgdsLoginInfo.getColumn(0,"E_NAME") && this.application.objgdsLoginInfo.getColumn(0, "E_NO") != 1 ){
+		if(objFrame.E_NAME != this.application.objgdsLoginInfo.getColumn(0,"E_NAME") 
+			&& this.application.objgdsLoginInfo.getColumn(0, "E_NO") != 1 ){
 			this.edtTitle.set_readonly(true);
 			this.calSDate.set_readonly(true);
 			this.calEDate.set_readonly(true);
@@ -70,22 +71,18 @@ this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			this.btnOk.set_left(163);
 			this.btnDel.set_visible(false);
 		}
-	}else if(this.popuptype=="new")
-	{
-		if(objFrame.SDATE)
-		{
+	}
+	else if(this.popuptype=="new"){
+		if(objFrame.SDATE){
 			this.calSDate.set_value(objFrame.SDATE);
 			this.calEDate.set_value(objFrame.SDATE);
 			this.edtName.set_value(this.application.objgdsLoginInfo.getColumn(0,"E_NAME"));
 			this.btnOk.set_text("등록");
-			/*this.btnOk.set_left(163);*/
-			/*this.btnDel.set_visible(false);*/
 			this.btnDel.set_text("취소");
 			if(this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 10){
 				this.dsType.deleteRow(2);
 			}
-			else if (this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 20)
-			{
+			else if (this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 20){
 				this.dsType.deleteRow(1);
 			}
 		}
