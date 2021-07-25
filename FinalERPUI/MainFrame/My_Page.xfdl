@@ -60,7 +60,7 @@
         <Edit id="ed_loc_detail" taborder="5" left="574" top="470" width="746" height="38" font="16px/normal &quot;나눔바른펜&quot;" border="1px solid #999999" enable="true" displaynulltext="상세주소를 입력해주세요" textAlign="left"/>
         <ImageViewer id="iv_search" taborder="4" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search_onclick" text=""/>
         <Static id="lb_bg2_01_00_00_00_00_00" taborder="43" left="384" top="508" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_dept01_00_00_00_00_00" taborder="44" text="실 거주지" left="385" top="509" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1C1C1C"/>
+        <Static id="lb_dept01_00_00_00_00_00" taborder="44" text="실 거주지" left="387" top="509" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1C1C1C"/>
         <Edit id="ed_realloc_postcode" taborder="45" left="575" top="510" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true" onchanged="ed_realloc_find_onchanged" textAlign="left"/>
         <Edit id="ed_realloc_findresult" taborder="46" left="832" top="510" width="489" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true" textAlign="left"/>
         <ImageViewer id="iv_search00" taborder="6" left="791" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search00_onclick"/>
@@ -202,10 +202,10 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.alert("증명서를 출력합니다.");
 	/*this.application.WorkFrame.set_formurl("ModalFrame::Certification_Page1.xfdl");*/
 	/*this.parent.setAttribute(formurl,"ModalFrame::Certification_Page1.xfdl");*/
-	/*let selectedNo = this.DS_MyInfo.getColumn(e.row, "E_NO");*/
- 	/*let arg = { "E_NO" : selectedNo };*/
- 	/*this.application.gfnShowModal("popupModal", arg, "ModalFrame::Certification_Page1.xfdl", "CertificationPage_onload", this, 550, 30, true, true, null);*/
-	this.go("MainFrame::Certification_Page1.xfdl");
+	let selectedNo = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+ 	let arg = { "E_NO" : selectedNo };
+ 	this.application.gfnShowModal("popupModal", arg, "ModalFrame::Certification_Page1.xfdl", "CertificationPage_onload", this, 550, 30, true, true, null);
+	/*this.go("MainFrame::Certification_Page1.xfdl");*/
 };
 ]]></Script>
     <Objects>
