@@ -188,14 +188,25 @@ this.fn_getWorkOutIns = function(){
 	if(this.M_TA_MGT.getColumn(0, "W_DATE") != this.today){
 		this.alert("출근상태가 아닙니다.");
 	}
-	else if(this.gfn_isNull(this.M_TA_MGT.getColumn(0, "W_WORK_OUT"))){
+	else if(this.gfn_isNull(this.M_TA_MGT.getColumn(0, "W_WORK_OUT")) || this.M_TA_MGT.getColumn(0, "W_WORK_OUT") == " "){
 		this.alert("외근상태가 아닙니다.");
 	}
 	else{
 		let check = this.confirm("외근복귀하시겠습니까?");
 		if(check){
+			let w_work_out = "";
+			let outtime = this.application.gfn_PosCase(this.M_TA_MGT.getColumn(0, "W_WORK_OUT"), "~", 0);
+			if(outtime == -1){//복귀하지 않은 상태일때
+				w_work_out = this.M_TA_MGT.getColumn(0, "W_WORK_OUT");
+			}
+			else{//복귀한 상태일때
+				let checkout = this.confirm("이미 복귀하셨습니다. \n복귀시간을 변경하시겠습니까?");
+				if(checkout){
+					w_work_out = this.application.gfn_MidCase(this.M_TA_MGT.getColumn(0, "W_WORK_OUT"), "", "~", 0);
+				}
+			}
 			var objgdsLoginInfo = this.application.objgdsLoginInfo;
-			var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_work_out=" + this.M_TA_MGT.getColumn(0, "W_WORK_OUT");
+			var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_work_out=" + w_work_out;
 			var idCount = this.application.transactionCount++;0
 			var svcID = "getWorkOutIns" + idCount;
 			this.transaction(svcID
@@ -244,16 +255,28 @@ this.fn_getOutIns = function(){
 	else{
 		let check = this.confirm("외출복귀하시겠습니까?");
 		if(check){
+			let w_out = "";
+			let outtime = this.application.gfn_PosCase(this.M_TA_MGT.getColumn(0, "W_OUT"), "~", 0);
+			if(outtime == -1){//복귀하지 않은 상태일때
+				w_out = this.M_TA_MGT.getColumn(0, "W_OUT");
+			}
+			else{//복귀한 상태일때
+				let checkout = this.confirm("이미 복귀하셨습니다. \n복귀시간을 변경하시겠습니까?");
+				if(checkout){
+					w_out = this.application.gfn_MidCase(this.M_TA_MGT.getColumn(0, "W_OUT"), "", "~", 0);
+				}
+			}
 			var objgdsLoginInfo = this.application.objgdsLoginInfo;
-			var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_out=" + this.M_TA_MGT.getColumn(0, "W_OUT");
+			/*var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_out=" + this.M_TA_MGT.getColumn(0, "W_OUT")*/;
+			var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_out=" + w_out;
 			var idCount = this.application.transactionCount++;
 			var svcID = "getOutIns" + idCount;
 			this.transaction(svcID
-			,"SvcURL::/mtamgt/getOutIns.mpg?no=" + idCount
-			,""
-			,""
-			,mtaparam
-			,"mta_board_load");
+				,"SvcURL::/mtamgt/getOutIns.mpg?no=" + idCount
+				,""
+				,""
+				,mtaparam
+				,"mta_board_load");
 		}
 	}
 }

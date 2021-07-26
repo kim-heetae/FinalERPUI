@@ -143,7 +143,7 @@ this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		bbf_name = this.application.gfn_quote("bbf_name", bbf_name);
 		var svcID = "getWBDel" + this.application.transactionCount++;
 		var svcURL = "SvcURL::/main/getWBDel.mpg?no=" + svcID;
-		var param = " bw_no=" + this.ds_board_notice.getColumn(0, "BW_NO");
+		var param = " bw_no=" + this.ds_board_work.getColumn(0, "BW_NO");
 		if(!this.gfn_isNull(this.ds_board_work.getColumn(0, "BBF_NAME"))){
 			param += bbf_name;
 		}
