@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="AC_St" width="1670" height="835" titletext="New Form">
+  <Form id="AC_St" width="1670" height="835" titletext="New Form" onload="AC_St_onload">
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
-        <Tab id="tb_ac_apply" taborder="0" tabindex="0" left="150" top="163" width="1370" height="400" onchanged="Tab00_onchanged" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;">
+        <Tab id="tb_ac_apply" taborder="0" tabindex="0" left="150" top="163" width="1370" height="400" onchanged="tb_ac_apply_onchanged" font="bold 20px/normal &quot;나눔바른펜&quot;&#9;">
           <Tabpages>
             <Tabpage id="tb_ac_approve" text="전자결재"/>
             <Tabpage id="tb_ac_remit" text="이체요청" formscrolltype="none">
@@ -24,7 +24,7 @@
           </Tabpages>
         </Tab>
         <Static id="lb_title" taborder="1" text="회계 신청 현황" left="30" top="40" width="281" height="57" font="bold 30px/normal &quot;나눔바른펜&quot;&#9;" onclick="Static00_onclick" color="#000000"/>
-        <Grid id="gr_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_ac_ap" font="20px/normal &quot;나눔바른펜&quot;&#9;">
+        <Grid id="gr_ac_apply" taborder="2" left="150" top="200" width="1370" height="400" autofittype="col" binddataset="ds_ac_ap" font="20px/normal &quot;나눔바른펜&quot;&#9;" oncelldblclick="gr_approve_dbclick" readonly="true">
           <Formats>
             <Format id="default">
               <Columns>
@@ -37,44 +37,195 @@
               </Columns>
               <Rows>
                 <Row size="36" band="head"/>
-                <Row size="32"/>
+                <Row size="30"/>
               </Rows>
               <Band id="head">
-                <Cell text="No"/>
-                <Cell col="1" text="유형"/>
-                <Cell col="2" text="사원번호"/>
-                <Cell col="3" text="제목"/>
-                <Cell col="4" text="신청일"/>
-                <Cell col="5" text="상태여부"/>
+                <Cell text="No" font="bold 16px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1C1C1C" color="white"/>
+                <Cell col="1" text="유형" font="bold 16px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1C1C1C" color="white"/>
+                <Cell col="2" text="사원번호" font="bold 16px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1C1C1C" color="white"/>
+                <Cell col="3" text="제목" font="bold 16px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1C1C1C" color="white"/>
+                <Cell col="4" text="신청일" font="bold 16px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1C1C1C" color="white"/>
+                <Cell col="5" text="상태여부" comboautoselect="true" displaytype="normal" combodataset="ds_state" combodatacol="STATE" combocodecol="NUM" combopopuptype="normal" combotype="dropdown" edittype="none" combodisplaynulltype="none" font="bold 16px/normal &quot;나눔바른펜&quot;" textAlign="center" background="#1C1C1C" color="white"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:FI_NO"/>
-                <Cell col="1" text="bind:FT_TYPE"/>
-                <Cell col="2" text="bind:E_NO"/>
-                <Cell col="3" text="bind:FI_NAME"/>
-                <Cell col="4" text="bind:FI_DATE"/>
-                <Cell col="5" text="bind:FI_STATE"/>
+                <Cell text="bind:FI_NO" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="1" text="bind:FT_TYPE" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="2" text="bind:E_NO" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="3" text="bind:FI_NAME" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="4" text="bind:FI_DATE" displaytype="date" edittype="date" calendardateformat="yyyy-MM-dd" calendarpopuptype="none" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+                <Cell col="5" text="bind:FI_STATE" font="16px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Static id="lb_route" taborder="3" text="회계 &gt; 신청 현황" left="1433" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Button id="btn_sel" taborder="4" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #c7c7c7" background="#ffffff" color="#000000" font="18px/normal &quot;나눔바른펜&quot;&#9;" onclick="btn_sel_onclick" cursor="pointer"/>
-        <Edit id="ed_empno" taborder="5" left="1241" top="160" width="200" height="40" displaynulltext="사원번호를 입력해주세요" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_3" taborder="9" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_4" taborder="10" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_5" taborder="11" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
+        <Button id="btn_sel" taborder="4" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #82FA58" background="#82FA58" color="#1c1c1c" font="bold 18px/normal &quot;나눔바른펜&quot;" onclick="btn_sel_onclick" cursor="pointer"/>
+        <Edit id="ed_empno" taborder="5" left="1187" top="160" width="253" height="40" displaynulltext="사원번호를 입력해주세요" font="20px/normal &quot;나눔바른펜&quot;&#9;"/>
+        <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_3" taborder="9" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_4" taborder="10" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_5" taborder="11" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
+        <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
-this.Tab00_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
+this.tabCount = 0;
+
+this.AC_St_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	
+	this.application = nexacro.getApplication();
+	this.fn_approval_ac_init();
 };
+
+//탭 변경시 호출
+this.tb_ac_apply_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo){
+	trace(e.postindex);
+	this.ds_ac_ap.clearData();
+	if (e.postindex == 0){
+		this.tabCount = 0;
+		this.fn_approval_ac_init();
+	}
+	else if(e.postindex == 1){
+		this.tabCount = 1;
+		this.fn_private_expenses_init();
+	}
+	else if(e.postindex == 2){
+		this.tabCount = 2;
+		this.fn_account_change_init();
+	}
+	else if(e.postindex == 3){
+		this.tabCount = 3;
+		this.fn_private_cost_init();
+	}
+}
+
+//전자결재_회계 신청서 전체조회
+this.fn_approval_ac_init = function(){
+	this.ds_ac_ap.clearData();
+	this.gr_ac_apply.set_nodatatext("조회하신 결과가 없습니다.");
+	let count = this.application.transactionCount++;
+	let svcID = "acStSel" + count;
+	let svcURL = "SvcURL::/acst/acStSel.ac?no=" + count;
+	let data = "ds_ac_ap=out_test";
+	let param = " ft_type=전자결재_회계";
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+
+//이체요청 신청서 전체조회
+this.fn_private_expenses_init = function(){
+	this.ds_ac_ap.clearData();
+	this.gr_ac_apply.set_nodatatext("조회하신 결과가 없습니다.");
+	let count = this.application.transactionCount++;
+	let svcID = "acStSel" + count;
+	let svcURL = "SvcURL::/acst/acStSel.ac?no=" + count;
+	let data = "ds_ac_ap=out_test";
+	let param = " ft_type=이체요청";
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+
+//계좌정보변경 신청서 전체조회
+this.fn_account_change_init = function(){
+	this.ds_ac_ap.clearData();
+	this.gr_ac_apply.set_nodatatext("조회하신 결과가 없습니다.");
+	let count = this.application.transactionCount++;
+	let svcID = "acStSel" + count;
+	let svcURL = "SvcURL::/acst/acStSel.ac?no=" + count;
+	let data = "ds_ac_ap=out_test";
+	let param = " ft_type=계좌";
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+
+//경조비 신청서 전체조회
+this.fn_private_cost_init = function(){
+	this.ds_ac_ap.clearData();
+	this.gr_ac_apply.set_nodatatext("조회하신 결과가 없습니다.");
+	let count = this.application.transactionCount++;
+	let svcID = "acStSel" + count;
+	let svcURL = "SvcURL::/acst/acStSel.ac?no=" + count;
+	let data = "ds_ac_ap=out_test";
+	let param = " ft_type=경조비";
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+
+
+this.btn_sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	this.ds_ac_ap.clearData();
+	let selectedTab = "";
+	switch(this.tabCount) {
+	case 0 : 
+		selectedTab = "전자결재_회계";
+		break;
+	case 1 :
+		selectedTab = "이체요청";
+		break;
+	case 2 :
+		selectedTab = "계좌";
+		break;
+	case 3 :
+		selectedTab = "경조비";
+		break;
+	default:
+	}
+	let e_no = this.ed_empno.value;
+	let count = this.application.transactionCount++;
+	let svcID = "acStSearch" + count;
+	let svcURL = "SvcURL::/acst/acStSearch.ac?no=" + count;
+	let data = "ds_ac_ap=out_test";
+	let param = " ft_type=" + selectedTab;
+	if(!this.gfn_isNull(e_no) || e_no == " "){
+		param += " e_no=" + e_no;
+	}
+	this.transaction(svcID, svcURL, "", data, param, "");
+};
+
+this.gr_approve_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo){
+	let selectedNo = this.ds_ac_ap.getColumn(e.row, "FI_NO");
+	let selectedState = this.ds_ac_ap.getColumn(e.row, "FI_STATE");
+	let modal = "";
+	switch(this.tabCount) {
+	case 0:
+		modal = "ModalFrame::AC_St_Approve.xfdl";
+		break;
+	case 1:
+		modal = "ModalFrame::AC_St_Remit.xfdl";
+		break;
+	case 2:
+		modal = "ModalFrame::AC_St_Account.xfdl";
+		break;
+	case 3:
+		modal = "ModalFrame::AC_St_Con.xfdl";
+		break;
+	default:
+	}
+	let arg = { "fi_no" : selectedNo , "fi_state" : selectedState };
+	this.application.gfnShowModal("popupModal", arg, modal, "fn_modal_callback", this, 550, 30, true, true, null);
+};
+
+this.fn_modal_callback = function(sFormId, sArg){
+	let objReturn = JSON.parse(sArg);
+	switch(objReturn.modalName) {
+	case "approve":
+		this.fn_approval_ac_init();
+		break;
+	case "remit":
+		this.fn_private_expenses_init();
+		break;
+	case "account":
+		this.fn_account_change_init();
+		break;
+	case "con":
+		this.fn_private_cost_init();
+		break;
+	default:
+	}
+}
 ]]></Script>
     <Objects>
       <Dataset id="ds_ac_ap">
@@ -86,6 +237,26 @@ this.Tab00_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInf
           <Column id="FI_DATE" type="STRING" size="256"/>
           <Column id="FI_STATE" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_state">
+        <ColumnInfo>
+          <Column id="NUM" type="STRING" size="256"/>
+          <Column id="STATE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="STATE">진행중</Col>
+            <Col id="NUM">0</Col>
+          </Row>
+          <Row>
+            <Col id="STATE">승인</Col>
+            <Col id="NUM">1</Col>
+          </Row>
+          <Row>
+            <Col id="STATE">반려</Col>
+            <Col id="NUM">2</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
   </Form>

@@ -410,10 +410,11 @@ this.grpScheduler_ondblclick = function(obj:nexacro.Graphics,e:nexacro.MouseEven
 * @param sContent    	: 일정 내용
 * @return             	: 없음
 */
-this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sType, sTitle, sContent, sSch_No, sE_No, sE_Name)
-{
-	var oArg = { "popuptype" : sPopupType, "scheduleid" : "", "SDATE" : "", "EDATE" : "", "TYPE" : "", "TITLE" : "", "CONTENT" : "", "SCH_NO" : "", "E_NO" : "", "E_NAME" : "" };
-	
+this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sType
+									, sTitle, sContent, sSch_No, sE_No, sE_Name){
+	var oArg = { "popuptype" : sPopupType, "scheduleid" : "", "SDATE" : "", "EDATE" : ""
+				, "TYPE" : "", "TITLE" : "", "CONTENT" : "", "SCH_NO" : "", "E_NO" : "", "E_NAME" : "" };
+				
 	if(sId)oArg.scheduleid = sId;
 	if(sSDate)oArg.SDATE = sSDate;
 	if(sEDate)oArg.EDATE = sEDate;
@@ -425,7 +426,7 @@ this.fnOpenSchedulePop = function(sPopupType, sId, sSDate, sEDate, sType, sTitle
 	if(sE_Name)oArg.E_NAME = sE_Name;
 	
 	this.gfnShowModal("popupModal", oArg, "ModalFrame::M_SC_Sel.xfdl", "fnPopupCallBack", this, 400, 300, true, true, null);
-}
+};
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
 * @description 	      	: 팝업 콜백 함수
@@ -458,23 +459,28 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				nRow = this.dsSchedule.findRow("ID", objRtn.ID);
 				
 				//일정 정보 변경
-// 				this.dsSchedule.setColumn(nRow, "TITLE", objRtn.TITLE);
-// 				this.dsSchedule.setColumn(nRow, "SDATE", objRtn.SDATE);
-// 				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
-// 				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
-// 				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
+				this.dsSchedule.setColumn(nRow, "TITLE", objRtn.TITLE);
+				this.dsSchedule.setColumn(nRow, "SDATE", objRtn.SDATE);
+				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
+				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
+				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
 				var sch_date = this.dsSchedule.getColumn(nRow, "SDATE");
 				var sch_no = this.dsSchedule.getColumn(nRow, "SCH_NO");
 				var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
 				var new_sch_date = objRtn.SDATE;
 				var new_sch_enddate = objRtn.EDATE;
 				var new_sch_name = objRtn.TITLE;
+				new_sch_name = this.application.gfn_quote("new_sch_name", new_sch_name);
 				var new_sch_content = objRtn.CONTENT;
+				new_sch_content = this.application.gfn_quote("new_sch_content", new_sch_content);
 				var new_scht_no = objRtn.TYPE;
 				this.dsSchedule.clearData();
 				svcID = "getOSUpd" + this.application.transactionCount++;
 				svcURL = "SvcURL::/mscmgt/getOSUpd.mpg?no=" + svcID;
-				param = " new_sch_date=" + new_sch_date + " new_sch_enddate=" + new_sch_enddate  + " new_sch_name=" + new_sch_name + " new_sch_content=" + new_sch_content + " new_scht_no=" + new_scht_no + " sch_date=" + sch_date + " sch_no=" + sch_no + " e_no=" + e_no;
+				param = " new_sch_date=" + new_sch_date + " new_sch_enddate=" + new_sch_enddate  
+					+ new_sch_name + new_sch_content 
+					+ " new_scht_no=" + new_scht_no + " sch_date=" + sch_date 
+					+ " sch_no=" + sch_no + " e_no=" + e_no;
 				this.transaction(svcID, svcURL, "", "", param, "fn_LoadScheduler");
 			}
 			//신규일 경우
@@ -487,21 +493,16 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				nRow = this.dsSchedule.addRow();
 				
 				//일정 정보 등록
-// 				this.dsSchedule.setColumn(nRow, "ID", nexacro.round(Math.random()*1000, 0));
-// 				this.dsSchedule.setColumn(nRow, "TITLE", objRtn.TITLE);
-// 				this.dsSchedule.setColumn(nRow, "SDATE", objRtn.SDATE);
-// 				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
-// 				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
-// 				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
-// 				this.dsSchedule.setColumn(nRow, "SCH_NO", sch_no);
-// 				this.dsSchedule.setColumn(nRow, "E_NO", objgdsLoginInfo.getColumn(0, "E_NO"));
-// 				this.dsSchedule.setColumn(nRow, "E_NAME", objgdsLoginInfo.getColumn(0, "E_NAME"));
+				let sch_name = objRtn.TITLE;
+				sch_name = this.application.gfn_quote("sch_name", sch_name);
+				let sch_content = objRtn.CONTENT;
+				sch_content = this.application.gfn_quote("sch_content", sch_content);
 				this.dsSchedule.clearData();
 				trace(this.dsSchedule.getCaseCount(" SDATE == '"+ objRtn.SDATE +"' ") + 1);
 				svcID = "getOSIns" + this.application.transactionCount++;
 				svcURL = "SvcURL::/mscmgt/getOSIns.mpg?no=" + svcID;
-				param = " sch_date=" + objRtn.SDATE + " sch_no=" + sch_no + " sch_name=" + objRtn.TITLE + " scht_no=" + objRtn.TYPE +
-							" sch_content=" + objRtn.CONTENT + " sch_enddate=" + objRtn.EDATE + " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
+				param = " sch_date=" + objRtn.SDATE + " sch_no=" + sch_no + sch_name + " scht_no=" + objRtn.TYPE +
+							sch_content + " sch_enddate=" + objRtn.EDATE + " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");
 				this.transaction(svcID, svcURL, "", "", param, "fn_LoadScheduler");
 			}
 			else if(objRtn.popuptype == "delete"){

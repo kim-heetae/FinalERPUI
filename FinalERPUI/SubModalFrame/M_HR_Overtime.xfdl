@@ -63,8 +63,10 @@ this.mhrOvertime = function(){
 		this.alert("내용을 작성해주세요.");
 	} else{
 		/*연장근무 신청 insert parameter ==> fe_content : 업무내용, fe_date : 연장근무 날짜, fe_hour: 연장근무 시간*/
-		var param = " fi_name=" + title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no 
-				+ " fe_content=" + content + " fe_date=" + workday + " fe_hour=" + time;
+		title = this.application.gfn_quote("fi_name", title);
+		content = this.application.gfn_quote("fe_content", content);
+		var param = title + " fi_state=진행중" + " ft_type=" + type + " e_no=" + e_no 
+				+ content + " fe_date=" + workday + " fe_hour=" + time;
 		this.transaction(svcID, svcURL, "", "", param, "");
 	}
 	this.alert("연장근무 신청이 완료됐습니다.");

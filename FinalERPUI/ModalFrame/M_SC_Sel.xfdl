@@ -3,20 +3,20 @@
   <Form id="M_SC_Sel" width="550" height="400" titletext="New Form" onload="M_SC_Sel_onload">
     <Layouts>
       <Layout height="300" width="400">
-        <Static id="Static00" taborder="0" text="제목" left="10" top="10" width="40" height="20"/>
-        <Edit id="edtTitle" taborder="1" left="70" top="10" width="320" height="20"/>
-        <Static id="Static00_00" taborder="2" text="일자" left="10" top="40" width="40" height="20"/>
-        <Calendar id="calSDate" taborder="3" left="70" top="40" width="140" height="20"/>
-        <Static id="Static00_00_00" taborder="4" text="관련부서" left="10" top="70" width="60" height="20"/>
-        <Combo id="cmbType" taborder="5" text="공통" left="70" top="70" width="140" height="20" innerdataset="dsType" codecolumn="code" datacolumn="value" index="0" value="0"/>
-        <Static id="Static00_01" taborder="6" text="내용" left="10" top="100" width="40" height="20"/>
-        <TextArea id="teaContent" taborder="7" left="10" top="130" height="120" width="380"/>
-        <Button id="btnOk" taborder="8" text="확인" left="113" top="259" width="80" height="30" onclick="btnOk_onclick"/>
-        <Calendar id="calEDate" taborder="9" left="250" top="40" width="140" height="20"/>
+        <Static id="Static00" taborder="0" text="제목" left="10" top="10" width="40" height="20" font="bold 14px/normal &quot;나눔바른펜&quot;"/>
+        <Edit id="edtTitle" taborder="1" left="70" top="10" width="320" height="20" font="14px/normal &quot;나눔바른펜&quot;"/>
+        <Static id="Static00_00" taborder="2" text="일자" left="10" top="40" width="40" height="20" font="bold 14px/normal &quot;나눔바른펜&quot;"/>
+        <Calendar id="calSDate" taborder="3" left="70" top="40" width="140" height="20" font="14px/normal &quot;나눔바른펜&quot;"/>
+        <Static id="Static00_00_00" taborder="4" text="관련부서" left="10" top="70" width="60" height="20" font="bold 14px/normal &quot;나눔바른펜&quot;"/>
+        <Combo id="cmbType" taborder="5" text="공통" left="70" top="70" width="140" height="20" innerdataset="dsType" codecolumn="code" datacolumn="value" index="0" value="0" font="14px/normal &quot;나눔바른펜&quot;"/>
+        <Static id="Static00_01" taborder="6" text="내용" left="10" top="100" width="40" height="20" font="bold 14px/normal &quot;나눔바른펜&quot;"/>
+        <TextArea id="teaContent" taborder="7" left="10" top="130" height="120" width="380" font="14px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btnOk" taborder="8" text="확인" left="113" top="259" width="80" height="30" onclick="btnOk_onclick" background="#0000FF" border="1px solid #0000FF" font="bold 12px/normal &quot;나눔바른펜&quot;" color="white"/>
+        <Calendar id="calEDate" taborder="9" left="250" top="40" width="140" height="20" font="14px/normal &quot;나눔바른펜&quot;"/>
         <Static id="Static00_00_01" taborder="10" text="~" left="225" top="40" width="10" height="20"/>
-        <Edit id="edtName" taborder="11" left="293" top="70" width="97" height="20" textAlign="left" readonly="true"/>
-        <Static id="Static00_00_00_00" taborder="12" text="작성자" left="250" top="70" width="60" height="20"/>
-        <Button id="btnDel" taborder="13" text="삭제" left="203" top="259" width="80" height="30" onclick="btnDel_onclick"/>
+        <Edit id="edtName" taborder="11" left="293" top="70" width="97" height="20" textAlign="left" readonly="true" font="14px/normal &quot;나눔바른펜&quot;"/>
+        <Static id="Static00_00_00_00" taborder="12" text="작성자" left="250" top="70" width="60" height="20" font="bold 14px/normal &quot;나눔바른펜&quot;"/>
+        <Button id="btnDel" taborder="13" text="삭제" left="203" top="259" width="80" height="30" onclick="btnDel_onclick" background="#ff0000" border="1px solid #ff0000" font="bold 12px/normal &quot;나눔바른펜&quot;" color="white"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -41,16 +41,20 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
 this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {	
 	this.application = nexacro.getApplication();
-	var objFrame = this.getOwnerFrame();
-	
-	this.popuptype = objFrame.popuptype;
-	
-	if(this.popuptype=="modify")
-	{
+	let objFrame = this.getOwnerFrame();
+	this.fn_formLoad(objFrame);
+};
+
+this.fn_formLoad = function(objFrame){
+	if(objFrame.popuptype=="modify"){
 		this.scheduleId = objFrame.scheduleid;
 		this.edtTitle.set_value(objFrame.TITLE);
 		this.calSDate.set_value(objFrame.SDATE);
@@ -59,7 +63,8 @@ this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		this.teaContent.set_value(objFrame.CONTENT);
 		this.edtName.set_value(objFrame.E_NAME);
 		this.btnOk.set_text("수정");
-		if(objFrame.E_NAME != this.application.objgdsLoginInfo.getColumn(0,"E_NAME") && this.application.objgdsLoginInfo.getColumn(0, "E_NO") != 1 ){
+		if(objFrame.E_NAME != this.application.objgdsLoginInfo.getColumn(0,"E_NAME") 
+			&& this.application.objgdsLoginInfo.getColumn(0, "E_NO") != 1 ){
 			this.edtTitle.set_readonly(true);
 			this.calSDate.set_readonly(true);
 			this.calEDate.set_readonly(true);
@@ -70,22 +75,18 @@ this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			this.btnOk.set_left(163);
 			this.btnDel.set_visible(false);
 		}
-	}else if(this.popuptype=="new")
-	{
-		if(objFrame.SDATE)
-		{
+	}
+	else if(objFrame.popuptype=="new"){
+		if(objFrame.SDATE){
 			this.calSDate.set_value(objFrame.SDATE);
 			this.calEDate.set_value(objFrame.SDATE);
 			this.edtName.set_value(this.application.objgdsLoginInfo.getColumn(0,"E_NAME"));
 			this.btnOk.set_text("등록");
-			/*this.btnOk.set_left(163);*/
-			/*this.btnDel.set_visible(false);*/
 			this.btnDel.set_text("취소");
 			if(this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 10){
 				this.dsType.deleteRow(2);
 			}
-			else if (this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 20)
-			{
+			else if (this.application.objgdsLoginInfo.getColumn(0, "D_NO") == 20){
 				this.dsType.deleteRow(1);
 			}
 		}
@@ -95,32 +96,47 @@ this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(this.btnOk.text == "수정"){
-		var objReturn;
-		objReturn = {
-				"popuptype" : "modify",
-				"ID" : this.scheduleId,
-				"SDATE" : this.calSDate.value,
-				"EDATE" : this.calEDate.value,
-				"TYPE" : this.cmbType.value,
-				"TITLE" : this.edtTitle.value,
-				"CONTENT" : this.teaContent.value,
-				"E_NAME" : this.edtName.value
-				};
-		this.close(JSON.stringify(objReturn, null, "\t"));
+		let check = this.confirm("수정하시겠습니까?");
+		if(check){
+			if(!this.gfn_isNull(this.edtTitle.text) && !this.gfn_isNull(this.teaContent.text)
+				&& !this.gfn_isNull(this.calSDate.value) &&!this.gfn_isNull(this.calEDate.value)){
+				var objReturn;
+				objReturn = {
+						"popuptype" : "modify",
+						"ID" : this.scheduleId,
+						"SDATE" : this.calSDate.value,
+						"EDATE" : this.calEDate.value,
+						"TYPE" : this.cmbType.value,
+						"TITLE" : this.edtTitle.value,
+						"CONTENT" : this.teaContent.value,
+						"E_NAME" : this.edtName.value
+						};
+				this.close(JSON.stringify(objReturn, null, "\t"));
+			}
+			else{
+				this.alert("제목, 내용, 시작날짜, 종료날짜를 입력해주세요.");	
+			}
+		}
 	}
 	else if(this.btnOk.text == "등록"){
-		var objReturn;
-		objReturn = {
-				"popuptype" : "new",
-				"ID" : this.scheduleId,
-				"SDATE" : this.calSDate.value,
-				"EDATE" : this.calEDate.value,
-				"TYPE" : this.cmbType.value,
-				"TITLE" : this.edtTitle.value,
-				"CONTENT" : this.teaContent.value,
-				"E_NAME" : this.edtName.value
-				};
-		this.close(JSON.stringify(objReturn, null, "\t"));
+		if(!this.gfn_isNull(this.edtTitle.text) && !this.gfn_isNull(this.teaContent.text) 
+			&& !this.gfn_isNull(this.calSDate.value) &&!this.gfn_isNull(this.calEDate.value)){
+			var objReturn;
+			objReturn = {
+					"popuptype" : "new",
+					"ID" : this.scheduleId,
+					"SDATE" : this.calSDate.value,
+					"EDATE" : this.calEDate.value,
+					"TYPE" : this.cmbType.value,
+					"TITLE" : this.edtTitle.value,
+					"CONTENT" : this.teaContent.value,
+					"E_NAME" : this.edtName.value
+					};
+			this.close(JSON.stringify(objReturn, null, "\t"));
+		}
+		else{
+			this.alert("제목, 내용, 시작날짜, 종료날짜를 입력해주세요.");	
+		}
 	}
 	else if(this.btnOk.text == "확인"){
 		this.close();
@@ -131,11 +147,14 @@ this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var objReturn;
 	if(this.btnDel.text == "삭제"){
-		objReturn = {
-				"popuptype" : "delete",
-				"ID" : this.scheduleId
-				};
-		this.close(JSON.stringify(objReturn, null, "\t"));
+		let check = this.confirm("삭제하시겠습니까?");
+		if(check){
+			objReturn = {
+					"popuptype" : "delete",
+					"ID" : this.scheduleId
+					};
+			this.close(JSON.stringify(objReturn, null, "\t"));
+		}
 	}
 	else if(this.btnDel.text == "취소"){
 		this.close();

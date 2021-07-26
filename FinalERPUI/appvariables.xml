@@ -26,13 +26,13 @@
           <Col id="MENU_MN">인사 신청현황</Col>
           <Col id="MENU_LEV">2</Col>
           <Col id="PGM_ID">M_HR_St.xfdl</Col>
-          <Col id="MENU_CD">0111</Col>
+          <Col id="MENU_CD">0012</Col>
           <Col id="PGM_PATH">MainFrame</Col>
         </Row>
         <Row>
           <Col id="MENU_MN">회계 신청현황</Col>
           <Col id="MENU_LEV">2</Col>
-          <Col id="MENU_CD">0112</Col>
+          <Col id="MENU_CD">0013</Col>
           <Col id="PGM_ID">M_AC_St.xfdl</Col>
           <Col id="PGM_PATH">MainFrame</Col>
         </Row>
@@ -41,26 +41,26 @@
           <Col id="MENU_LEV">1</Col>
           <Col id="PGM_PATH">MainFrame</Col>
           <Col id="PGM_ID">M_SC_Mgt.xfdl</Col>
-          <Col id="MENU_CD">0012</Col>
+          <Col id="MENU_CD">0014</Col>
         </Row>
         <Row>
           <Col id="MENU_MN">근태관리</Col>
           <Col id="MENU_LEV">1</Col>
           <Col id="PGM_PATH">MainFrame</Col>
           <Col id="PGM_ID">M_TA_Mgt.xfdl</Col>
-          <Col id="MENU_CD">0013</Col>
+          <Col id="MENU_CD">0015</Col>
         </Row>
         <Row>
           <Col id="MENU_MN">급여명세서 발급</Col>
           <Col id="MENU_LEV">1</Col>
           <Col id="PGM_PATH">MainFrame</Col>
           <Col id="PGM_ID">M_Pay_Stub.xfdl</Col>
-          <Col id="MENU_CD">0014</Col>
+          <Col id="MENU_CD">0016</Col>
         </Row>
         <Row>
           <Col id="MENU_MN">인사</Col>
           <Col id="MENU_LEV">0</Col>
-          <Col id="MENU_CD">0002</Col>
+          <Col id="MENU_CD">0020</Col>
         </Row>
         <Row>
           <Col id="MENU_MN">신청현황</Col>
@@ -77,23 +77,37 @@
           <Col id="MENU_CD">0022</Col>
         </Row>
         <Row>
-          <Col id="MENU_MN">인사발령</Col>
+          <Col id="MENU_MN">인사발령내역</Col>
           <Col id="MENU_LEV">1</Col>
           <Col id="PGM_PATH">MainFrame</Col>
           <Col id="PGM_ID">HR_Appt_Pers.xfdl</Col>
           <Col id="MENU_CD">0023</Col>
         </Row>
         <Row>
+          <Col id="MENU_CD">0024</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">HR_Appt_Pers.xfdl</Col>
+          <Col id="MENU_MN">인사발령 조회</Col>
+          <Col id="MENU_LEV">2</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_CD">0025</Col>
+          <Col id="PGM_PATH">MainFrame</Col>
+          <Col id="PGM_ID">HR_Appt_Pers_Ins.xfdl</Col>
+          <Col id="MENU_MN">인사발령 등록</Col>
+          <Col id="MENU_LEV">2</Col>
+        </Row>
+        <Row>
           <Col id="MENU_MN">근태관리</Col>
           <Col id="MENU_LEV">1</Col>
           <Col id="PGM_PATH">MainFrame</Col>
           <Col id="PGM_ID">HR_Atd_St.xfdl</Col>
-          <Col id="MENU_CD">0024</Col>
+          <Col id="MENU_CD">0026</Col>
         </Row>
         <Row>
           <Col id="MENU_MN">회계</Col>
           <Col id="MENU_LEV">0</Col>
-          <Col id="MENU_CD">0003</Col>
+          <Col id="MENU_CD">0030</Col>
         </Row>
         <Row>
           <Col id="MENU_MN">신청현황</Col>
@@ -126,10 +140,10 @@
         <Row>
           <Col id="MENU_MN">화상회의</Col>
           <Col id="MENU_LEV">0</Col>
-          <Col id="MENU_CD">0004</Col>
+          <Col id="MENU_CD">0040</Col>
         </Row>
         <Row>
-          <Col id="MENU_CD">0005</Col>
+          <Col id="MENU_CD">0050</Col>
           <Col id="MENU_MN">내정보관리</Col>
           <Col id="MENU_LEV">0</Col>
           <Col id="PGM_PATH">MainFrame</Col>
@@ -174,4 +188,5 @@
     <Variable id="gvLoginAuth"/>
     <Variable id="gvTransactionCount" initval="0"/>
   </Variables>
+  <DataObjects/>
 </AppVariables>

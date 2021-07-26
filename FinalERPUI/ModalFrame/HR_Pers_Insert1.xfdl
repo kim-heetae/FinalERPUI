@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="HR_Pers_Insert" width="550" height="560" titletext="New Form" onload="HR_Pers_Insert_onload">
+    <Layouts>
+      <Layout height="560" width="550">
+        <Static id="lb_title" taborder="0" text="인사카드 등록" left="185" top="10" width="180" height="60" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
+        <Static id="Static00" taborder="1" text="Static00" left="54" top="68" width="92" height="82"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+/* 사원 등록 모달창*/
+this.application = null;
+
+this.HR_Pers_Insert_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.alert("123");
+	this.application = nexacro.getApplication();
+	/*let objFrame = this.getOwnerFrame();*/
+	/*this.hrpersIns(objFrame);*/
+}
+
+//주민등록상 주소 검색
+this.iv_searchs_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	let oArg = {};
+				
+	this.gfn_showModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 550, true, true, null);
+	/*this.application.gfnShowModal("popupPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 550, 550, true, true, null);*/
+};
+
+//실 거주지 주소 검색
+this.iv_searchr_onclick = function(obj:nexacro.ImageViewer,e:nexacro.ClickEventInfo)
+{
+	let oArg = {};
+	this.gfn_showModal("popupRealPostcode", oArg, "ModalFrame::PostCode.xfdl", "popupCallBack", this, 540, 550, false, false, null);
+};
+
+/**
+ * @description POPUP CALLBACK
+ */
+this.popupCallBack = function(sFormId, sArg)
+{
+	if(sFormId=="popupPostcode")
+	{
+		this.DS_hrpersins.setColumn(0,"E_POSTCODE", this.postcode);
+		this.DS_hrpersins.setColumn(0,"E_LOC",this.address1);
+	}
+	else if(sFormId=="popupRealPostcode"){
+		this.DS_hrpersins.setColumn(0,"E_REAL_POSTCODE",this.postcode);
+		this.DS_hrpersins.setColumn(0,"E_REAL_LOC",this.address1);
+	}
+}; 
+
+
+this.hrpersIns = function(){
+		let count = this.application.transactionCount++;
+		let svcID = "hrPIIns" + count;
+		let svcURL = "SvcURL::/hrpi/hrPIIns.hr?no=" + svcID;
+		let data = "DS_hrpersins=out_test";
+		let dname = this.cb_dept.text;
+		let pos = this.cb_pos.text;
+		let ename = this.ed_name.text;
+		let joinDate = this.Cal_join.value;
+		let gender = this.rd_gender.index;
+		let email = this.ed_email.text;
+		let phone = this.ed_phone.text;
+		let bDay = this.Cal_bDay.value;
+		let socialno = ed_social_no.text;
+		let loc_postcode = this.ed_loc_postcode.value;
+		let loc_address = this.ed_loc.value;
+		let loc_detail = this.ed_loc_detail.value;
+		let loc_real_postcode = this.ed_realloc_postcode.value;
+		let loc_real_address = this.ed_real_loc.value;
+		let loc_real_detail = this.ed_realloc_detail.value;
+		if(gender == 0){
+			gender = "M";
+		}
+		else{
+			gender = "F";
+		}
+					
+		let param = " p_dname" + dname + " p_epos=" + pos
+					+ " p_ename=" + ename + " p_edjoindate=" + joinDate + " p_egender=" + gender + " p_eemail=" + email
+					+ " p_ephone=" + ephone + " p_ebirth=" + bDay + " p_esocialno=" + socialno 
+					+ " p_eloc=" + loc_address + " p_epostcode=" + loc_postcode + " p_elocdetail=" + loc_detail 
+					+ " p_erealoc=" + loc_real_address + " p_realpostcode=" + loc_real_postcode + " p_realdetail=" + loc_real_detail;
+					
+		
+		if(dname != "전체"){
+			param += " p_dname" + dname; 
+		}
+		if(pos != "전체"){
+			param += " p_epos"  + pos; 
+		}
+
+
+
+		this.transaction(svcID, svcURL, "", data, param, "")
+
+}
+
+
+//등록 버튼 클릭
+this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.hrpersIns();
+	
+};
+
+//취소 버튼 클릭
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.alert("qwe");
+	this.close();
+};
+
+
+]]></Script>
+    <Objects>
+      <Dataset id="Dataset00"/>
+    </Objects>
+  </Form>
+</FDL>
