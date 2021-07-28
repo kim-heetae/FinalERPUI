@@ -93,9 +93,28 @@ this.M_Pay_Stub_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
  ************************************************************************/
 this.btn_issue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let no_arr = new String[10];
-	let args = { "" : "" };
-	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_Pay_Issue.xfdl", "", this, 550, 30, true, true, null);
+// 	let checkCount = 0;
+// 	for(let i = 0; i < this.ds_pay_stub.getRowCount(); i++){
+// 		if(this.ds_pay_stub.getColumn(i, "CHK") == 'Y'){
+// 			checkCount++;
+// 		}
+// 	}
+// 	let no_arr = new Array(checkCount);
+// 	let k = 0;
+// 	for(let j = 0; j < this.ds_pay_stub.getRowCount(); j++){
+// 		if(this.ds_pay_stub.getColumn(j, "CHK") == 'Y'){
+// 			no_arr[k] = this.ds_pay_stub.getColumn(j, "SB_NO");
+// 			k++;
+// 		}
+// 	}
+	let no_arr = new Array();
+	for(let i = 0; i < this.ds_pay_stub.getRowCount(); i++){
+		if(this.ds_pay_stub.getColumn(i, "CHK") == 'Y'){
+			no_arr.push(this.ds_pay_stub.getColumn(i, "SB_NO"));
+		}
+	}
+	let args = { "no_arr" : no_arr };
+	this.application.gfnShowModal("popupModal", args, "SubModalFrame::M_Pay_Issue.xfdl", "", this, 550, 30, true, true, null);
 };
 
 /************************************************************************

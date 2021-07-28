@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="M_Pay_Issue" width="1000" height="600" titletext="New Form" color="#000000" onload="M_Pay_Issue_onload">
+  <Form id="M_Pay_Issue" width="550" height="310" titletext="New Form" color="#000000" onload="M_Pay_Issue_onload">
     <Layouts>
-      <Layout height="600" mobileorientation="landscape" width="1000">
+      <Layout height="310" mobileorientation="landscape" width="550">
         <Static id="lb_pay_stub" taborder="0" text="급여명세서 발급" left="165" top="38" width="221" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
-        <Static id="Static01" taborder="1" left="75" top="130" width="400" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_email" taborder="2" text="이메일" left="75" top="131" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Edit id="ed_id" taborder="3" left="175" top="132" width="120" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" autoselect="false" enable="true" onchanged="ed_id_onchanged"/>
-        <Button id="btn_send" taborder="4" text="발급" left="174" top="220" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onclick="m_pay_issue_email_onclick"/>
-        <Static id="lb_at" taborder="5" text="@" left="298" top="132" width="24" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" textAlign="center"/>
-        <Combo id="cb_domain" taborder="6" left="324" top="132" width="151" height="36" displaynulltext="선택" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" border="1px solid #999999" text="" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="-1" value="">
+        <Static id="Static01" taborder="1" left="572" top="202" width="400" height="40" border="1px solid #c7c7c7, 0px none&#9;" visible="false"/>
+        <Static id="lb_email" taborder="2" text="이메일" left="572" top="203" width="100" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" visible="false"/>
+        <Edit id="ed_id" taborder="3" left="672" top="204" width="120" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" autoselect="false" enable="true" onchanged="ed_id_onchanged" visible="false"/>
+        <Button id="btn_send" taborder="4" text="발급" left="174" top="252" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onclick="m_pay_issue_email_onclick"/>
+        <Static id="lb_at" taborder="5" text="@" left="795" top="204" width="24" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" textAlign="center" visible="false"/>
+        <Combo id="cb_domain" taborder="6" left="821" top="204" width="151" height="36" displaynulltext="선택" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" border="1px solid #999999" text="" onitemchanged="Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="-1" value="" visible="false">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -43,10 +43,10 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Button id="btn_cancel" taborder="7" text="취소" left="293" top="220" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onclick="btn_cancel_onClick"/>
-        <Static id="Static00" taborder="5" text="Drop Files Here" left="400" top="222" width="620" height="41" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
-        <Button id="Button00" taborder="0" text="파일첨부" left="1030" top="197" width="120" height="87" onclick="Button00_onclick"/>
-        <Grid id="Grid00" taborder="2" left="400" top="197" width="624" height="86" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col">
+        <Button id="btn_cancel" taborder="7" text="취소" left="293" top="252" width="76" height="36" border="1px solid #c7c7c7" background="#ffffff" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" cursor="pointer" onclick="btn_cancel_onClick"/>
+        <Static id="Static00" taborder="5" text="Drop Files Here" left="-2" top="552" width="620" height="41" visible="false" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
+        <Button id="Button00" taborder="0" text="파일첨부" left="628" top="527" width="120" height="87" onclick="Button00_onclick" visible="false"/>
+        <Grid id="Grid00" taborder="2" left="-2" top="527" width="624" height="86" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -68,7 +68,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01" taborder="26" left="-5" top="316" width="835" height="204" binddataset="ds_pay_stub" visible="true">
+        <Grid id="Grid01" taborder="26" left="-5" top="316" width="835" height="204" binddataset="ds_pay_stub" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -130,6 +130,7 @@
             </Format>
           </Formats>
         </Grid>
+        <Static id="Static02" taborder="12" text="Static02" left="50" top="110" width="460" height="112" font="24px/normal &quot;Gulim&quot;" textAlign="center" fittocontents="none" verticalAlign="middle" wordWrap="char"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -137,7 +138,7 @@ include "lib::lib_date.xjs";
 include "lib::lib_base.xjs";
 
 this.application = null;
-
+this.objFrame = null;
 /*
  *	첫 화면 클릭 시 - 근태사유서 전체조회.
  *  다른 화면 클릭 시 - data clear, 이후에 각 전체 조회로 작동
@@ -146,6 +147,7 @@ this.application = null;
 this.M_Pay_Issue_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 	this.application = nexacro.getApplication();	
 	//해당사원의 모든 급여명세서 가져오기
+		this.objFrame = this.getOwnerFrame();
 		this.fn_payallsel();
 }
 
@@ -153,39 +155,16 @@ this.M_Pay_Issue_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
  * 이메일로 보내기 - 구현 중(2차부터)
  ************************************************************************/
 
-this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var textInputCheck = this.ed_id.text;
-	var comboSelectCheck = this.cb_domain.text;
-	let comboSelectIndex = this.cb_domain.index;
-	var mpayissueEmailParam = null;
-	var idCount = this.application.transactionCount++;
-	var svcID = "MPayIssueEmail" + idCount;
+this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 	
-	if(!this.gfn_isNull(textInputCheck) && comboSelectIndex > 0){
-	/////////////엑셀 서버에 다운받기 test중/////
-	
-// 	//엑셀로 만들기
-// 		this.exportObj = new ExcelExportObject("Export00", this);
-// 		
-// 		this.exportObj.set_exportfilename(this.ds_pay_stub.getColumn(0, "E_NO") + this.ds_pay_stub.getColumn(0, "SB_DATE"));
-// 		this.exportObj.set_exporturl("SvcURL::/XExportImport");
-// 		
-// 		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid01, "Sheet1!A1");
-// 		this.exportObj.exportData();
-		if(!this.Import00){			
-			this.importObj = new ExcelImportObject("Import00",this);
-			this.addChild("Import00", this.importObj);                                          //속성 지정
-			this.importObj.set_importfilemode("server");  
-			this.importObj.set_importtype(nexacro.ImportTypes.EXCEL2007);
-			this.importObj.set_importurl("SvcURL::/XImport");               //동적으로 이벤트 연결
-// 			this.importObj.addEventHandler("onsuccess", this.fn_excel_successII, this);
-// 			this.importObj.addEventHandler("onerror", this.fn_excel_onerror, this);
-		}
-		this.importObj.importData("SvcURL::/fileBox", "Body=Sheet1!A2", "Grid01" ,"");
-	}else{
-		alert("이메일을 정확하게 입력하여 주십시오.");
+	let check = this.confirm("Excel파일의 다운로드가 진행됩니다.");
+	if(check){
+ 	//엑셀로 만들기
+		this.exportObj = new ExcelExportObject("Export00", this);
+		this.exportObj.set_exportfilename(this.ds_pay_stub.getColumn(0, "E_NO") + this.ds_pay_stub.getColumn(0, "SB_DATE"));
+		this.exportObj.set_exporturl("SvcURL::/XExportImport");
+		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid01, "Sheet1!A1");
+		this.exportObj.exportData();
 	}
 
 };
@@ -204,11 +183,32 @@ this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEve
 
 //엑셀파일을 만들기 위해 해당사원의 모든 급여명세서를 조회
 this.fn_payallsel = function(){
+	let selectedNo = "";
+	let sort_arr = new Array();
+	for(let j = this.objFrame.no_arr.length - 1; j >= 0; j--){
+		sort_arr.push(this.objFrame.no_arr[j]);
+	}
+	
+	for(let i = 0; i < sort_arr.length; i++){
+		if(i != sort_arr.length -1){
+			selectedNo += sort_arr[i] + ", ";
+		}
+		else{
+			selectedNo += sort_arr[i];
+		}
+	}
+	let text = "선택하신 급여명세서의 번호는 \n" + selectedNo + "\n 입니다. \n 발급 받으시겠습니까?"
+	/*text = nexacro.wrapQuote(text);*/
+	this.Static02.set_text(text);
 	let count = this.application.transactionCount++;
 	let svcID = "subPayAllSel" + count;
 	let svcURL = "SvcURL::/mpaystub/subPayAllSel.mpg?no=" + svcID;
 	let data = "ds_pay_stub=out_test";
 	let param = " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+	
+	////////////////////test//////////////////////////
+	param += " sb_no=" + this.objFrame.no_arr;
+	////////////////////test end////////////////////
 	this.transaction(svcID, svcURL, "", data, param, "");
 }
 /************************************************************************
