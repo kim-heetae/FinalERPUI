@@ -166,42 +166,24 @@ this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 	if(!this.gfn_isNull(textInputCheck) && comboSelectIndex > 0){
 	/////////////엑셀 서버에 다운받기 test중/////
 	
-	//엑셀로 만들기
-		this.exportObj = new ExcelExportObject("Export00", this);
-		
-		this.exportObj.set_exportfilename(this.ds_pay_stub.getColumn(0, "E_NO") + this.ds_pay_stub.getColumn(0, "SB_DATE"));
-		/*this.exportObj.set_exporturl("http://demo.nexacro.com/developer_guide/XExportImport");*/
-		this.exportObj.set_exporturl("http://localhost:9000/XExportImport");
-		
-		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid01, "Sheet1!A1");
-		/*this.exportObj.set_exportfilepath("http:\\192.168.0.171:9000\\fileBox");*/
-		/*this.exportObj.set_exportfilepath("C:\\FinalProject\\FinalProject\\FinalProject_ERP\\WebContent\\fileBox");*/
-		this.exportObj.exportData();
-		
-// 		trace("!23");
-// 		this.exportObj.addEventHandler("onsuccess", this.Export00_onsuccess, this);
-// 		trace("실ㅍ??");
-// 		this.exportObj.addEventHandler("onerror", this.Export00_onerror, this);
-		/*this.addFileList(this.exportObj);*/
-	//만들어진 엑셀을 목록에 추가
-		/*this.addFileList(this.exportObj.exportData());*/
-		/*this.addFileList(this.exportObj);*/
-		/*this.FileUpTransfer00.addFile(this.exportObj.exportfilename, this.exportObj);*/
-	//서버에 엑셀파일 업로드
-// 		let path = "pay_excel";
-// 		this.FileUpTransfer00.upload('http://192.168.0.171:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + idCount);
-// // 	
-	//test떄문에 주석 2줄
-// 		mpayissueEmailParam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " e_email=" + textInputCheck + "@" + comboSelectCheck;
-// 		alert(mpayissueEmailParam);
-
-	/*	this.transaction(svcID
-		,"SvcURL::/mpaystub/getPayStubSel.mpg?no=" + idCount
-		,""
-		,""
-		,mpayissueEmailParam
-		,""); */
-		
+// 	//엑셀로 만들기
+// 		this.exportObj = new ExcelExportObject("Export00", this);
+// 		
+// 		this.exportObj.set_exportfilename(this.ds_pay_stub.getColumn(0, "E_NO") + this.ds_pay_stub.getColumn(0, "SB_DATE"));
+// 		this.exportObj.set_exporturl("SvcURL::/XExportImport");
+// 		
+// 		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid01, "Sheet1!A1");
+// 		this.exportObj.exportData();
+		if(!this.Import00){			
+			this.importObj = new ExcelImportObject("Import00",this);
+			this.addChild("Import00", this.importObj);                                          //속성 지정
+			this.importObj.set_importfilemode("server");  
+			this.importObj.set_importtype(nexacro.ImportTypes.EXCEL2007);
+			this.importObj.set_importurl("SvcURL::/XImport");               //동적으로 이벤트 연결
+// 			this.importObj.addEventHandler("onsuccess", this.fn_excel_successII, this);
+// 			this.importObj.addEventHandler("onerror", this.fn_excel_onerror, this);
+		}
+		this.importObj.importData("SvcURL::/fileBox", "Body=Sheet1!A2", "Grid01" ,"");
 	}else{
 		alert("이메일을 정확하게 입력하여 주십시오.");
 	}
