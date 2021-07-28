@@ -281,14 +281,15 @@ this.fn_Upd = function ()
 
 this.btn_ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.DS_HRUpd.clearData(); // Row 쌓임 방지
+	//this.DS_HRUpd.clearData(); // Row 쌓임 방지
 	let selectedRows = this.gr_Ins.getSelectedDatasetRows();
 // 	let selectedRows = this.gr_Ins.get();
 // 	this.alert(selectedRows);
 // 	this.DS_HRUpd.copyRow(selectedRows[0],this.DS_HRIns,selectedRows[0]);
 // 	this.alert(selectedRows[0],this.DS_HRIns,selectedRows[0]);
+	
 	for (let i=0; i<selectedRows.length; i++) {
-
+			trace("여기여기111"+selectedRows.length);	
         		let eno = this.DS_HRIns.getColumn(selectedRows[i], "E_NO");
         		let name = this.DS_HRIns.getColumn(selectedRows[i], "E_NAME");
         		let deptpre = this.DS_HRIns.getColumn(selectedRows[i], "D_NAME");
@@ -302,7 +303,8 @@ this.btn_ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
         		let upd_rowcount = this.DS_HRUpd.getRowCount();
         		let checkdata = this.DS_HRUpd.findRow("E_NO", eno);
-        		if(checkdata != -1){
+        		trace("asdadadada  " + checkdata);
+				if(checkdata != -1){
         			this.DS_HRUpd.deleteRow(checkdata);
         		}
 				
