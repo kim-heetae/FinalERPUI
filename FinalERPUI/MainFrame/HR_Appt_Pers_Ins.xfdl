@@ -68,7 +68,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="ed_eno" taborder="7" left="516" top="164" width="214" height="36" displaynulltext="사원번호를 입력해주세요." font="14px/normal &quot;나눔바른펜&quot;"/>
+        <Edit id="ed_eno" taborder="7" left="516" top="164" width="214" height="36" displaynulltext="사원명을 입력해주세요." font="14px/normal &quot;나눔바른펜&quot;"/>
         <Button id="btn_Sel" taborder="8" left="730" top="164" width="70" height="36" background="#82FA58" border="1px solid #82FA58" font="bold 16px/normal &quot;나눔바른펜&quot;" color="#1c1c1c" text="조회" cursor="pointer" onclick="btn_Sel_onclick"/>
         <Grid id="gr_Ins" taborder="9" left="153" top="200" width="647" height="390" border="1px solid #c7c7c7" binddataset="DS_HRIns" autofittype="col" nodatatext="조회결과가 없습니다." fillareatype="none" selecttype="multirow">
           <Formats>
