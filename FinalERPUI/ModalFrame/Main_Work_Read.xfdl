@@ -104,7 +104,7 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var title = this.ed_title.text;
 	var content = this.ta_content.text;
 	if(!this.gfn_isNull(title) && !this.gfn_isNull(content)){
-		var objReturn;
+		/*var objReturn;*/
 		objReturn = {
 				"popuptype" : "work"
 		};

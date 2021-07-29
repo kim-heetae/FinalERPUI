@@ -41,7 +41,11 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
 this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {	
 	this.application = nexacro.getApplication();
@@ -94,9 +98,32 @@ this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	if(this.btnOk.text == "수정"){
 		let check = this.confirm("수정하시겠습니까?");
 		if(check){
+			if(!this.gfn_isNull(this.edtTitle.text) && !this.gfn_isNull(this.teaContent.text)
+				&& !this.gfn_isNull(this.calSDate.value) &&!this.gfn_isNull(this.calEDate.value)){
+				var objReturn;
+				objReturn = {
+						"popuptype" : "modify",
+						"ID" : this.scheduleId,
+						"SDATE" : this.calSDate.value,
+						"EDATE" : this.calEDate.value,
+						"TYPE" : this.cmbType.value,
+						"TITLE" : this.edtTitle.value,
+						"CONTENT" : this.teaContent.value,
+						"E_NAME" : this.edtName.value
+						};
+				this.close(JSON.stringify(objReturn, null, "\t"));
+			}
+			else{
+				this.alert("제목, 내용, 시작날짜, 종료날짜를 입력해주세요.");	
+			}
+		}
+	}
+	else if(this.btnOk.text == "등록"){
+		if(!this.gfn_isNull(this.edtTitle.text) && !this.gfn_isNull(this.teaContent.text) 
+			&& !this.gfn_isNull(this.calSDate.value) &&!this.gfn_isNull(this.calEDate.value)){
 			var objReturn;
 			objReturn = {
-					"popuptype" : "modify",
+					"popuptype" : "new",
 					"ID" : this.scheduleId,
 					"SDATE" : this.calSDate.value,
 					"EDATE" : this.calEDate.value,
@@ -107,20 +134,9 @@ this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 					};
 			this.close(JSON.stringify(objReturn, null, "\t"));
 		}
-	}
-	else if(this.btnOk.text == "등록"){
-		var objReturn;
-		objReturn = {
-				"popuptype" : "new",
-				"ID" : this.scheduleId,
-				"SDATE" : this.calSDate.value,
-				"EDATE" : this.calEDate.value,
-				"TYPE" : this.cmbType.value,
-				"TITLE" : this.edtTitle.value,
-				"CONTENT" : this.teaContent.value,
-				"E_NAME" : this.edtName.value
-				};
-		this.close(JSON.stringify(objReturn, null, "\t"));
+		else{
+			this.alert("제목, 내용, 시작날짜, 종료날짜를 입력해주세요.");	
+		}
 	}
 	else if(this.btnOk.text == "확인"){
 		this.close();

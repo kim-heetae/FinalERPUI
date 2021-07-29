@@ -4,10 +4,11 @@
     <Layouts>
       <Layout height="835" mobileorientation="landscape" width="1670">
         <Static id="Static00" taborder="0" text="급여 명세서 발급" left="30" top="40" width="260" height="37" font="bold 30px/normal &quot;나눔바른펜&quot;" color="#000000"/>
-        <Grid id="M_Pay_Stub_grid" taborder="1" left="153" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col" oncelldblclick="m_pay_stub_grid_dbclick" readonly="true" fillareatype="none" border="1px solid slategray">
+        <Grid id="M_Pay_Stub_grid" taborder="1" left="153" top="200" width="1370" height="400" binddataset="ds_pay_stub" autofittype="col" oncelldblclick="m_pay_stub_grid_dbclick" readonly="false" fillareatype="none" border="1px solid slategray" onheadclick="M_Pay_Stub_grid_onheadclick" oncellclick="pay_grid_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="48"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -23,26 +24,28 @@
                 <Row size="30"/>
               </Rows>
               <Band id="head">
-                <Cell text="지급번호" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="사원명" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="부서명" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="직급" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="4" text="지급날짜" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="기본급합계" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="6" text="공제액합계" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="7" text="실수령액" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="8" text="지급상태" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell displaytype="checkboxcontrol" edittype="none" background="#1C1C1C" color="white" checkboxfalsevalue="N" checkboxtruevalue="Y"/>
+                <Cell col="1" text="지급번호" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="사원명" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="부서명" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="4" text="직급" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="지급날짜" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="6" text="기본급합계" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="7" text="공제액합계" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="8" text="실수령액" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="9" text="지급상태" background="#1C1C1C" color="white" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:SB_NO" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
-                <Cell col="1" text="bind:E_NAME" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
-                <Cell col="2" text="bind:D_NAME" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
-                <Cell col="3" text="bind:E_POS" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
-                <Cell col="4" text="bind:SB_DATE" textAlign="center" displaytype="date" edittype="date" calendardateformat="yyyy-MM-dd" font="normal 16px/normal &quot;Arial&quot;"/>
-                <Cell col="5" text="bind:SS_BASIC" textAlign="center" displaytype="mask" edittype="mask" maskeditformat="#,#" font="normal 16px/normal &quot;Arial&quot;"/>
-                <Cell col="6" text="bind:SS_DUC" textAlign="center" maskeditformat="#,#" edittype="mask" displaytype="mask" font="normal 16px/normal &quot;Arial&quot;"/>
-                <Cell col="7" text="bind:SS_REAL" textAlign="center" maskeditformat="#,#" edittype="mask" displaytype="mask" font="normal 16px/normal &quot;Arial&quot;"/>
-                <Cell col="8" text="bind:SS_STATE" textAlign="center" font="normal 16px/normal &quot;Arial&quot;"/>
+                <Cell text="bind:CHK" displaytype="checkboxcontrol" edittype="none" expr="expr:CHK=='Y'?'1':'0'" readonly="true"/>
+                <Cell col="1" text="bind:SB_NO" textAlign="center" font="normal 16px/normal &quot;Arial&quot;" readonly="true"/>
+                <Cell col="2" text="bind:E_NAME" textAlign="center" font="normal 16px/normal &quot;Arial&quot;" readonly="true"/>
+                <Cell col="3" text="bind:D_NAME" textAlign="center" font="normal 16px/normal &quot;Arial&quot;" readonly="true"/>
+                <Cell col="4" text="bind:E_POS" textAlign="center" font="normal 16px/normal &quot;Arial&quot;" readonly="true"/>
+                <Cell col="5" text="bind:SB_DATE" textAlign="center" displaytype="date" edittype="date" calendardateformat="yyyy-MM-dd" font="normal 16px/normal &quot;Arial&quot;" readonly="true"/>
+                <Cell col="6" text="bind:SS_BASIC" textAlign="center" displaytype="mask" edittype="mask" maskeditformat="#,#" font="normal 16px/normal &quot;Arial&quot;" readonly="true"/>
+                <Cell col="7" text="bind:SS_DUC" textAlign="center" maskeditformat="#,#" edittype="mask" displaytype="mask" font="normal 16px/normal &quot;Arial&quot;" readonly="true"/>
+                <Cell col="8" text="bind:SS_REAL" textAlign="center" maskeditformat="#,#" edittype="mask" displaytype="mask" font="normal 16px/normal &quot;Arial&quot;" readonly="true"/>
+                <Cell col="9" text="bind:SS_STATE" textAlign="center" font="normal 16px/normal &quot;Arial&quot;" readonly="true"/>
               </Band>
             </Format>
           </Formats>
@@ -61,6 +64,7 @@
     <Objects>
       <Dataset id="ds_pay_stub">
         <ColumnInfo>
+          <Column id="CHK" type="STRING" size="256"/>
           <Column id="SB_NO" type="STRING" size="256"/>
           <Column id="E_NAME" type="STRING" size="256"/>
           <Column id="D_NAME" type="STRING" size="256"/>
@@ -89,7 +93,28 @@ this.M_Pay_Stub_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
  ************************************************************************/
 this.btn_issue_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.application.gfnShowModal("popupModal", null, "SubModalFrame::M_Pay_Issue.xfdl", "", this, 550, 30, true, true, null);
+// 	let checkCount = 0;
+// 	for(let i = 0; i < this.ds_pay_stub.getRowCount(); i++){
+// 		if(this.ds_pay_stub.getColumn(i, "CHK") == 'Y'){
+// 			checkCount++;
+// 		}
+// 	}
+// 	let no_arr = new Array(checkCount);
+// 	let k = 0;
+// 	for(let j = 0; j < this.ds_pay_stub.getRowCount(); j++){
+// 		if(this.ds_pay_stub.getColumn(j, "CHK") == 'Y'){
+// 			no_arr[k] = this.ds_pay_stub.getColumn(j, "SB_NO");
+// 			k++;
+// 		}
+// 	}
+	let no_arr = new Array();
+	for(let i = 0; i < this.ds_pay_stub.getRowCount(); i++){
+		if(this.ds_pay_stub.getColumn(i, "CHK") == 'Y'){
+			no_arr.push(this.ds_pay_stub.getColumn(i, "SB_NO"));
+		}
+	}
+	let args = { "no_arr" : no_arr };
+	this.application.gfnShowModal("popupModal", args, "SubModalFrame::M_Pay_Issue.xfdl", "", this, 550, 30, true, true, null);
 };
 
 /************************************************************************
@@ -115,22 +140,84 @@ this.mps_board_load = function (){
  ************************************************************************/
 this.m_pay_stub_grid_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {	
-// 	var e_no = this.ds_pay_stub.getColumn(e.row,"E_NO");
-// 	var e_name = this.ds_pay_stub.getColumn(e.row,"E_NAME");
-// 	var d_name = this.ds_pay_stub.getColumn(e.row,"D_NAME");
-// 	var e_pos = this.ds_pay_stub.getColumn(e.row,"E_POS");
-// 	var sb_date = this.ds_pay_stub.getColumn(e.row,"SB_DATE");
-// 	var ss_basic = this.ds_pay_stub.getColumn(e.row,"SS_BASIC");
-// 	var ss_duc = this.ds_pay_stub.getColumn(e.row,"SS_DUC");
-// 	var ss_real = this.ds_pay_stub.getColumn(e.row,"SS_REAL");
-// 	var ss_state = this.ds_pay_stub.getColumn(e.row,"SS_STATE");
-	let sb_no = this.ds_pay_stub.getColumn(e.row, "SB_NO");
-// 	var paramData = { "E_NO" : e_no, "E_NAME" : e_name, "D_NAME" : d_name, "E_POS" : e_pos, "SB_DATE" : sb_date,
-// 					  "SS_BASIC" : ss_basic, "SS_DUC" : ss_duc, "SS_REAL" : ss_real, "SS_STATE" : ss_state }
-	let paramData = { "SB_NO" : sb_no };
-					  
-	this.application.gfnShowModal("popupModal", paramData, "ModalFrame::M_Pay_Sel.xfdl", "", this, 550, 30, true, true, null);
+	if(e.cell != 0){
+		let sb_no = this.ds_pay_stub.getColumn(e.row, "SB_NO");
+	// 	var paramData = { "E_NO" : e_no, "E_NAME" : e_name, "D_NAME" : d_name, "E_POS" : e_pos, "SB_DATE" : sb_date,
+	// 					  "SS_BASIC" : ss_basic, "SS_DUC" : ss_duc, "SS_REAL" : ss_real, "SS_STATE" : ss_state }
+		let paramData = { "SB_NO" : sb_no };
+						  
+		this.application.gfnShowModal("popupModal", paramData, "ModalFrame::M_Pay_Sel.xfdl", "", this, 550, 30, true, true, null);
+	}
 }
+
+
+
+this.ds_file_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid == "CHK") {
+        // 다른 이벤트가 동작하지 않도록 설정
+        obj.enableevent = false;  //false can stop event temporarily 
+        // 변경된 값이 1(체크가 된 경우)인경우
+        if(e.newvalue == '1') {
+            // 1인 경우 Dataset의 chk 값을 Y로 변경
+            obj.setColumn(e.row,"CHK",'Y');
+        } else if(e.newvalue == '0') {
+            // 0인 경우 Dataset의 chk 값을 N로 변경
+            obj.setColumn(e.row,"CHK",'N'); 
+        }
+        // 다시 이벤트가 정상 동작하도록 설정
+        obj.enableevent = true;
+    }
+};
+
+//헤더 체크박스 클릭
+this.M_Pay_Stub_grid_onheadclick = function (obj:Grid, e:GridClickEventInfo){
+	if (e.cell == 0){
+		this.gf_SetGridCheckAll(obj, e);
+	}
+};
+
+//헤더체크박스 클릭 이벤트
+
+this.gf_SetGridCheckAll = function (obj:Grid, e:GridClickEventInfo){
+	if(this.M_Pay_Stub_grid.getCellProperty("Head", 0, "text") == 'Y'){
+		for(let i = 0; i < this.ds_pay_stub.getRowCount(); i++){
+			this.ds_pay_stub.setColumn(i, "CHK", 'N');
+		}
+		this.M_Pay_Stub_grid.setCellProperty("Head", 0, "text", 'N');
+	}
+	else{
+		for(let i = 0; i < this.ds_pay_stub.getRowCount(); i++){
+			this.ds_pay_stub.setColumn(i, "CHK", 'Y');
+		}
+		this.M_Pay_Stub_grid.setCellProperty("Head", 0, "text", 'Y');
+	}
+};
+
+this.pay_grid_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.cell == 0){
+		let chk = this.ds_pay_stub.getColumn(e.row, "CHK");
+		if(chk == "Y"){
+			this.ds_pay_stub.setColumn(e.row, "CHK", "N");
+		}
+		else{
+			this.ds_pay_stub.setColumn(e.row, "CHK", "Y");
+		}
+	}
+	let checkrow = 0;
+	for(let i = 0; i < this.ds_pay_stub.getRowCount(); i++){
+		if(this.ds_pay_stub.getColumn(i, "CHK") == 'Y'){
+			checkrow++;
+		}
+	}
+	if(checkrow == this.ds_pay_stub.getRowCount()){
+		this.M_Pay_Stub_grid.setCellProperty("Head", 0, "text", 'Y');
+	}
+	else{
+		this.M_Pay_Stub_grid.setCellProperty("Head", 0, "text", 'N');
+	}
+};
 ]]></Script>
   </Form>
 </FDL>
