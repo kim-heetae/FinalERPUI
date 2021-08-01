@@ -78,10 +78,18 @@ this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let fi_no = this.DS_Vacation.getColumn(0, "FI_NO");
+	
+	/**/
+	let p_ft_type = '휴가';
+	let e_no = this.DS_Vacation.getColumn(0, "E_NO");
+	/**/
+	
+	/*svcID = 아무이름이나 넣어놔도 됨 */
 	let svcID = "HRStVacationDels" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrNoUpd.hr?no=" + svcID;
 	let data = "DS_Vacation=out_test";
-	let param = " fi_no=" + fi_no + " fi_state=반려";
+	/*let param = " fi_no=" + fi_no + " fi_state=반려";*/
+	let param = " fi_no=" + fi_no + " ft_type=" + p_ft_type + " fi_state=반려" + " p_e_no=" + e_no + " ft_type="+ p_ft_type;
 	
 	/*권한 선언*/
 	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
@@ -89,7 +97,7 @@ this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	if(login_auth < 4) {
 		alert("반려 권한이 부족합니다.");
 	} else {
-		/*권한이 4이상이면 (차장, 부장)*/
+		/*권한이 4이상이면 (차장, 부장) */
 		this.transaction(svcID, svcURL, "", data, param, "fn_close");
 	}
 };

@@ -108,10 +108,11 @@ this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let fi_no = this.HRStApprove.getColumn(0, "FI_NO");
+	let ft_type = "전자결재_인사";
 	let svcID = "getHRAccountDels" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrNoUpd.hr?no=" + svcID;
 	let data = "HRStApprove=out_test";
-	let param = " fi_no=" + fi_no + " fi_state=반려";
+	let param = " fi_no=" + fi_no + " fi_state=반려" + " ft_type=" + ft_type;
 	
 	/*로그인한 E_NO 선언*/
 	/*let login_ENO = this.application.objgdjsLoginInfo.getColumn(0, "E_NO");*/

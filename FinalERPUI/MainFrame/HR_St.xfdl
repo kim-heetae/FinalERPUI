@@ -70,13 +70,6 @@
         </Grid>
         <Static id="lb_route" taborder="4" text="인사 &gt; 신청현황" left="1438" top="40" width="365" height="49" color="#000000" font="15px/normal &quot;나눔바른펜&quot;&#9;" onclick="lb_route_onclick"/>
         <Button id="btn_sel" taborder="5" text="조회" left="1440" top="160" width="80" height="40" border="1px solid #82FA58" background="#82FA58" color="black" font="bold 18px/normal &quot;나눔바른펜&quot;" onclick="btn_sel_onclick" cursor="pointer"/>
-        <Static id="lb_left" taborder="6" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_1" taborder="7" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_2" taborder="8" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_3" taborder="9" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_4" taborder="10" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_5" taborder="11" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="lb_right" taborder="12" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -286,19 +279,19 @@ this.gr_hr_st_dbclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 	
 	let checkData = this.ds_hr_ap.getColumn(e.row,"FI_NO");
 	if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "근태사유서" && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Attend.xfdl", "HR_St_Attend_onload", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Attend.xfdl", "hr_st_att_board_load", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "연장근무" && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Overtime.xfdl", "HR_St_Attend_onload", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Overtime.xfdl", "hr_st_ott_board_load", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "전자결재"  && checkData != null){
 		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Approve.xfdl", "hr_st_ep_board_load", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "휴가"  && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Vacation.xfdl", "HR_St_Vacation_onload", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Vacation.xfdl", "hr_st_vacation_board_load", this, 550, 30, true, true, null);
 	}
 	else if(this.tb_hr_apply.tabpages[this.tb_hr_apply.tabindex].text === "퇴직"  && checkData != null){
-		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Retire.xfdl", "HR_St_Retire_onload", this, 550, 30, true, true, null);
+		this.application.gfnShowModal("popupModal", oArg, "ModalFrame::HR_St_Retire.xfdl", "hr_st_retire_board_load", this, 550, 30, true, true, null);
 	}
 };
 ]]></Script>
