@@ -128,9 +128,9 @@
         <Static id="lb_bg2_01" taborder="61" left="25" top="637" width="500" height="40" border="2px solid #000000, 0px none&#9;" text="" onclick="lb_bg2_01_onclick"/>
         <MaskEdit id="me_date" taborder="62" left="145" top="201" width="135" height="38" border="0px none" background="#f7f7f7" format="####'-'##'-'##" type="string" maskchar=" " textAlign="center"/>
         <Static id="lb_bg1_00_00" taborder="63" left="25" top="200" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="Static00" taborder="3" text="Drop Files Here" left="575" top="381" width="620" height="121" visible="true" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
-        <Button id="Button00" taborder="0" text="파일첨부" left="1205" top="356" width="120" height="167" onclick="Button00_onclick" background="#F5DF4D" border="1px solid #F5DF4D" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
-        <Grid id="Grid01" taborder="2" left="575" top="356" width="624" height="166" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" border="1px solid slategray">
+        <Static id="Static00" taborder="3" text="Drop Files Here" left="575" top="381" width="620" height="121" visible="false" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
+        <Button id="Button00" taborder="0" text="파일첨부" left="1205" top="356" width="120" height="167" onclick="Button00_onclick" background="#F5DF4D" border="1px solid #F5DF4D" font="bold 16px/normal &quot;나눔바른펜&quot;" visible="false"/>
+        <Grid id="Grid01" taborder="2" left="575" top="356" width="624" height="166" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" border="1px solid slategray" visible="false">
           <Formats>
             <Format id="default">
               <Columns>

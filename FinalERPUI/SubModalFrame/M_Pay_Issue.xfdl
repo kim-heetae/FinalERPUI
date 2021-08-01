@@ -157,6 +157,7 @@ this.M_Pay_Issue_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 
 this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 	
+	this.alert(this.ds_pay_stub.getRowCount());
 	let check = this.confirm("Excel파일의 다운로드가 진행됩니다.");
 	if(check){
  	//엑셀로 만들기
