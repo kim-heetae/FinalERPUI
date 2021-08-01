@@ -146,7 +146,7 @@ this.fn_ect_init = function(){
 	if(this.DS_MyInfo.getColumn(0, "E_GENDER") === "남"){
 		this.rd_gender.set_index(0);
 	}
-	else{
+	else if(this.DS_MyInfo.getColumn(0, "E_GENDER") === "여"){
 		this.rd_gender.set_index(1);
 	}
 }
@@ -207,7 +207,7 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	/*this.parent.setAttribute(formurl,"ModalFrame::Certification_Page1.xfdl");*/
 	let selectedNo = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
  	let arg = { "E_NO" : selectedNo };
- 	this.application.gfnShowModal("popupModal", arg, "ModalFrame::Certification_Page1.xfdl", "CertificationPage_onload", this, 550, 30, true, true, null);
+ 	this.application.gfnShowModal("popupModal", arg, "ModalFrame::Certification_Page1.xfdl", "My_Page_onload", this, 550, 30, true, true, null);
 	/*this.go("MainFrame::Certification_Page1.xfdl");*/
 };
 ]]></Script>

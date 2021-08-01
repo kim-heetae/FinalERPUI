@@ -20,7 +20,7 @@
         <Static id="lb_dept" taborder="14" text="소속부서" left="388" top="232" width="186" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1c1c1c"/>
         <Edit id="ed_empno00_00" taborder="15" left="574" top="232" width="259" height="38" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_file00" taborder="16" text="성별" left="833" top="232" width="187" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1c1c1c"/>
-        <Radio id="rd_gender" taborder="17" left="1080" top="230" width="242" height="39" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true" direction="vertical" font="20px/normal &quot;나눔바른펜&quot;" enable="false">
+        <Radio id="rd_gender" taborder="17" left="1080" top="230" width="242" height="39" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" readonly="true" direction="vertical" font="20px/normal &quot;나눔바른펜&quot;" enable="true" index="-1" text="" value="">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -29,9 +29,11 @@
             <Rows>
               <Row>
                 <Col id="datacolumn">남</Col>
+                <Col id="codecolumn">남</Col>
               </Row>
               <Row>
                 <Col id="datacolumn">여</Col>
+                <Col id="codecolumn">여</Col>
               </Row>
             </Rows>
           </Dataset>
@@ -108,7 +110,7 @@
       <BindItem id="item6" compid="me_call" propid="value" datasetid="DS_Certification" columnid="EOI_CALL"/>
       <BindItem id="item7" compid="ed_date00" propid="value" datasetid="DS_Certification" columnid="C_NAME"/>
       <BindItem id="item8" compid="ed_date" propid="value" datasetid="DS_Certification" columnid="ED_JOIN_DATE"/>
-      <BindItem id="item9" compid="rd_gender" propid="value" datasetid="DS_Certification" columnid="E_GENDER"/>
+      <!--<BindItem id="item9" compid="rd_gender" propid="value" datasetid="DS_Certification" columnid="E_GENDER"/>-->
       <BindItem id="item10" compid="me_birth" propid="value" datasetid="DS_Certification" columnid="E_BIRTH"/>
       <BindItem id="item11" compid="ed_acname" propid="value" datasetid="DS_Certification" columnid="EA_NAME"/>
       <BindItem id="item12" compid="ed_acNum" propid="value" datasetid="DS_Certification" columnid="EA_NO"/>
@@ -130,21 +132,31 @@ this.CertificationPage_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInf
 {
    this.application = nexacro.getApplication();
    let objFrame = this.getOwnerFrame();
-   this.fn_init(objFrame);
+   /*this.fn_init(objFrame);*/
+   /*this.fn_init();*/
 };
 
-this.fn_init = function(objFrame){
+this.fn_init = function(){
+	this.alert(objFrame.E_NO);
+	trace(objFrame.E_NO);
 	let objgdsLoginInfo = this.application.objgdsLoginInfo;
 	let idCount = this.application.transactionCount++;
 	let svcID = "CertificationPage" + idCount;
 	let svcURL = "SvcURL::/my/getCertification.mpg?no=" + svcID;
 	let data = "DS_Certification=out_test";
 	/*let param = " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");*/
-	let param = " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-	this.alert(this.application.objgdsLoginInfo.getColumn(0, "E_NO"));
-	this.transaction(svcID, svcURL, "", data, param, "");
+	/*let param = " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");*/
+	let param = " e_no=" + objFrame.E_NO;
+	this.transaction(svcID, svcURL, "", data, param, "fn_ect_init");
 };
-
+this.fn_ect_init = function(){
+	if(this.DS_Certification.getColumn(0, "E_GENDER") === "남"){
+		this.rd_gender.set_index(0);
+	}
+	else if(this.DS_Certification.getColumn(0, "E_GENDER") === "여"){
+		this.rd_gender.set_index(1);
+	}
+}
 /*확인버튼 클릭 시 이벤트처리*/
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
