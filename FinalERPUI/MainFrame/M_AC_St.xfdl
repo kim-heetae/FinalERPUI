@@ -128,7 +128,7 @@ this.mac_board_load = function(){
 this.btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
    /*회계 신청 모달 출력*/
-   this.application.gfnShowModal("popupModal", null, "ModalFrame::M_AC_Type.xfdl", "", this, 550, 30, true, true, null);
+   this.application.gfnShowModal("popupModal", null, "ModalFrame::M_AC_Type.xfdl", "mac_board_load", this, 550, 30, true, true, null);
 };
 
 

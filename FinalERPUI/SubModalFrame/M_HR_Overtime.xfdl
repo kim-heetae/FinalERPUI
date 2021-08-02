@@ -46,7 +46,7 @@ this.mhrOvertime = function(){
 	var svcURL = "SvcURL::/mhrst/subOTA.mpg?no=" + svcID;
 	var type = "연장근무"
 	
-	this.alert(title);
+	//this.alert(title);
 
 	
 	if(this.fn_Today <= this.cal_workDay.value){

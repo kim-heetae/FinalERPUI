@@ -157,7 +157,7 @@ this.M_Pay_Issue_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 
 this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 	
-	this.alert(this.ds_pay_stub.getRowCount());
+	//this.alert(this.ds_pay_stub.getRowCount());
 	let check = this.confirm("Excel파일의 다운로드가 진행됩니다.");
 	if(check){
  	//엑셀로 만들기
@@ -171,7 +171,7 @@ this.m_pay_issue_email_onclick = function(obj:nexacro.Button,e:nexacro.ClickEven
 };
 this.Export00_onsuccess = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
 {
-    alert("Export00_onsuccess");
+    //alert("Export00_onsuccess");
 	this.addFileList(obj);
 	let path = "pay_excel";
 	this.FileUpTransfer00.upload('http://localhost:9000/fileBox/fileUpload.jsp?PATH=' + path + "&no=" + idCount);
@@ -179,7 +179,7 @@ this.Export00_onsuccess = function(obj:ExcelExportObject, e:nexacro.ExcelExportE
 }
 this.Export00_onerror = function(obj:ExcelExportObject, e:nexacro.ExcelExportEventInfo)
 {
-    alert("Export00_onerror");
+    //alert("Export00_onerror");
 }
 
 //엑셀파일을 만들기 위해 해당사원의 모든 급여명세서를 조회

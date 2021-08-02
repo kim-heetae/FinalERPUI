@@ -65,7 +65,7 @@ this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let p_fino = this.DS_HRRetire.getColumn(0, "FI_NO");
 	let p_eno = this.DS_HRRetire.getColumn(0, "E_NO");
-	alert(p_eno);
+	//alert(p_eno);
 	let ft_type = "퇴직";
 	let svcID = "HRStHRRetireUpd" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrOkUpd.hr?no=" + svcID;

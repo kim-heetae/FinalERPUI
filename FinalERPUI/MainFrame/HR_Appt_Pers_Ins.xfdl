@@ -342,7 +342,7 @@ this.btn_Com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 	this.alert("변경 부서" + this.DS_HRUpd.getColumn(0, "EDH_DEPT_AFT").text);
 // 	this.alert("변경 직급" + this.DS_HRUpd.getColumn(0, "EDH_POS_AFT").text);
 // 	this.alert("변경 날짜" + this.DS_HRUpd.getColumn(0, "DC_DATE").value);
-        	this.alert(this.DS_HRUpd.getRowCount());
+        	//this.alert(this.DS_HRUpd.getRowCount());
 //         	for(let i = 0; i < this.DS_HRUpd.getRowCount(); i++){
 //         		if((this.DS_HRUpd.getColumn(i, "EDH_DEPT_AFT").text != " ")
 //         				&& (this.DS_HRUpd.getColumn(i, "EDH_POS_AFT").text != " ")
