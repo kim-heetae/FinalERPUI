@@ -146,8 +146,80 @@ this.gfnShowModal = function (sPopupId, arrArguments, sPopupUrl, popupCallback, 
 
 this.gfn_quote = function(key, value){
 	return " " + key + "=" + nexacro.wrapQuote(value);
-}
+};
 this.gfn_file_quote = function(key, value){
 	return "&" + key + "=" + value;
-}]]></Script>
+};
+
+/******************************************************************************************
+ * 기능 : 문자열의 위치를 대소문자 구별하여 찾는다
+ * 인자 : 1. sOrg   : 원래 문자열( 예 : "aaBBbbcc" )
+          2. sFind  : 찾고자 하는 문자열( 예 : "bb" )
+          3. nStart : 검색 시작위치 (옵션 : Default=0) ( 예 : 1 )
+ * 리턴 : 성공 = 찾고자 하는 문자열의 시작위치 ( 예 : 4 )
+          실패 = -1
+ *****************************************************************************************/
+this.gfn_Pos = function(sOrg, sFind, nStart){
+    if( this.gfn_isNull(sOrg) || this.gfn_isNull(sFind) ) { return -1;}
+    if( this.gfn_isNull(nStart) ) {nStart = 0;}
+    return sOrg.indexOf(sFind, nStart);
+};
+
+/******************************************************************************************
+ * 기능 : 문자열의 위치를 대소문자 구별없이 찾는다
+ * 인자 : 1. sOrg   : 원래 문자열( 예 : "aaBBbbcc" )
+          2. sFind  : 찾고자 하는 문자열( 예 : "bb" )
+          3. nStart : 검색 시작위치 (옵션 : Default=0) ( 예 : 1 )   
+ * 리턴 : 성공 = 찾고자 하는 문자열의 시작위치 ( 예 : 2 )
+          실패 = -1
+ *****************************************************************************************/  
+
+this.gfn_PosCase = function(sOrg, sFind, nStart){
+    if( this.gfn_isNull(sOrg) || this.gfn_isNull(sFind) )  return -1;
+    if( this.gfn_isNull(nStart) )  nStart = 0;
+    return sOrg.toLowerCase().indexOf(sFind.toLowerCase(), nStart);
+}
+
+
+/******************************************************************************************
+ * 기능 : 시작글자와 끝글자에 해당하는 글자의 사이에 있는 가운데 글자를
+          대소문자 구별없이 찾는다.
+          ( 예 : aaBBbbccdd에서 bb, dd사이의 글자 bbcc를 찾는다 )
+ * 인자 : 1. sOrg   : 원래 문자열( 예 : "aaBBbbccdd" )
+          2. sStart : 찾고자 하는 시작 문자열(옵션 : Default = "")(예 : "bb" )
+                     (만일, sStart=""이면 nStart부터 sEnd까지의 모든 문자열이 return된다.)
+          3. sEnd   : 찾고자 하는 끝 문자열 (옵션 : Default = "")( 예 : "dd" )
+                     (만일, sEnd=""이면 sStart부터 문자열의 끝까지의 모든 문자열이 return된다.)
+          4. nStart : 검색 시작위치 (옵션 : Default=0) ( 예 : 1 )
+ * 리턴 : 성공 = 가운데 글자 ( 예 : "bbcc" )
+          실패 = ""
+ *****************************************************************************************/
+this.gfn_MidCase = function(sOrg, sStart, sEnd, nStart){
+    var pos_start, pos_end, ret_str;
+    if( this.gfn_isNull(sOrg) ) { return "";}
+    if( this.gfn_isNull(sStart) ) {sStart = "";}
+    if( this.gfn_isNull(sEnd) )  {sEnd = "";}
+    if( this.gfn_isNull(nStart) ) {nStart = 0;}
+    if( sStart == "" ){
+        pos_start = nStart;
+	}
+    else{
+        pos_start = this.gfn_PosCase(sOrg, sStart, nStart);
+        if( pos_start < 0 ) {
+			return "";
+		}
+    }
+    if( sEnd == "" ){
+        pos_end = sOrg.length;
+	}
+    else {
+        pos_end = this.gfn_PosCase(sOrg, sEnd, pos_start+sStart.length, nStart);
+        if( pos_end < 0 ) {
+			return "";
+		}
+    }
+    return sOrg.substring(pos_start+sStart.length, pos_end);
+};
+
+]]></Script>
 </ADL>

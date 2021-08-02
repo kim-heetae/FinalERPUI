@@ -41,7 +41,11 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[this.application = null;
+    <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
+include "lib::lib_date.xjs";
+include "lib::lib_base.xjs";
+
+this.application = null;
 this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {	
 	this.application = nexacro.getApplication();
@@ -50,7 +54,7 @@ this.M_SC_Sel_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 };
 
 this.fn_formLoad = function(objFrame){
-	if(this.popuptype=="modify"){
+	if(objFrame.popuptype=="modify"){
 		this.scheduleId = objFrame.scheduleid;
 		this.edtTitle.set_value(objFrame.TITLE);
 		this.calSDate.set_value(objFrame.SDATE);
@@ -72,7 +76,7 @@ this.fn_formLoad = function(objFrame){
 			this.btnDel.set_visible(false);
 		}
 	}
-	else if(this.popuptype=="new"){
+	else if(objFrame.popuptype=="new"){
 		if(objFrame.SDATE){
 			this.calSDate.set_value(objFrame.SDATE);
 			this.calEDate.set_value(objFrame.SDATE);
@@ -92,32 +96,47 @@ this.fn_formLoad = function(objFrame){
 this.btnOk_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	if(this.btnOk.text == "수정"){
-		var objReturn;
-		objReturn = {
-				"popuptype" : "modify",
-				"ID" : this.scheduleId,
-				"SDATE" : this.calSDate.value,
-				"EDATE" : this.calEDate.value,
-				"TYPE" : this.cmbType.value,
-				"TITLE" : this.edtTitle.value,
-				"CONTENT" : this.teaContent.value,
-				"E_NAME" : this.edtName.value
-				};
-		this.close(JSON.stringify(objReturn, null, "\t"));
+		let check = this.confirm("수정하시겠습니까?");
+		if(check){
+			if(!this.gfn_isNull(this.edtTitle.text) && !this.gfn_isNull(this.teaContent.text)
+				&& !this.gfn_isNull(this.calSDate.value) &&!this.gfn_isNull(this.calEDate.value)){
+				var objReturn;
+				objReturn = {
+						"popuptype" : "modify",
+						"ID" : this.scheduleId,
+						"SDATE" : this.calSDate.value,
+						"EDATE" : this.calEDate.value,
+						"TYPE" : this.cmbType.value,
+						"TITLE" : this.edtTitle.value,
+						"CONTENT" : this.teaContent.value,
+						"E_NAME" : this.edtName.value
+						};
+				this.close(JSON.stringify(objReturn, null, "\t"));
+			}
+			else{
+				this.alert("제목, 내용, 시작날짜, 종료날짜를 입력해주세요.");	
+			}
+		}
 	}
 	else if(this.btnOk.text == "등록"){
-		var objReturn;
-		objReturn = {
-				"popuptype" : "new",
-				"ID" : this.scheduleId,
-				"SDATE" : this.calSDate.value,
-				"EDATE" : this.calEDate.value,
-				"TYPE" : this.cmbType.value,
-				"TITLE" : this.edtTitle.value,
-				"CONTENT" : this.teaContent.value,
-				"E_NAME" : this.edtName.value
-				};
-		this.close(JSON.stringify(objReturn, null, "\t"));
+		if(!this.gfn_isNull(this.edtTitle.text) && !this.gfn_isNull(this.teaContent.text) 
+			&& !this.gfn_isNull(this.calSDate.value) &&!this.gfn_isNull(this.calEDate.value)){
+			var objReturn;
+			objReturn = {
+					"popuptype" : "new",
+					"ID" : this.scheduleId,
+					"SDATE" : this.calSDate.value,
+					"EDATE" : this.calEDate.value,
+					"TYPE" : this.cmbType.value,
+					"TITLE" : this.edtTitle.value,
+					"CONTENT" : this.teaContent.value,
+					"E_NAME" : this.edtName.value
+					};
+			this.close(JSON.stringify(objReturn, null, "\t"));
+		}
+		else{
+			this.alert("제목, 내용, 시작날짜, 종료날짜를 입력해주세요.");	
+		}
 	}
 	else if(this.btnOk.text == "확인"){
 		this.close();
@@ -128,11 +147,14 @@ this.btnDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var objReturn;
 	if(this.btnDel.text == "삭제"){
-		objReturn = {
-				"popuptype" : "delete",
-				"ID" : this.scheduleId
-				};
-		this.close(JSON.stringify(objReturn, null, "\t"));
+		let check = this.confirm("삭제하시겠습니까?");
+		if(check){
+			objReturn = {
+					"popuptype" : "delete",
+					"ID" : this.scheduleId
+					};
+			this.close(JSON.stringify(objReturn, null, "\t"));
+		}
 	}
 	else if(this.btnDel.text == "취소"){
 		this.close();

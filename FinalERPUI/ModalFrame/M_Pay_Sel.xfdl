@@ -128,6 +128,30 @@
         <Static id="lb_bg2_01" taborder="61" left="25" top="637" width="500" height="40" border="2px solid #000000, 0px none&#9;" text="" onclick="lb_bg2_01_onclick"/>
         <MaskEdit id="me_date" taborder="62" left="145" top="201" width="135" height="38" border="0px none" background="#f7f7f7" format="####'-'##'-'##" type="string" maskchar=" " textAlign="center"/>
         <Static id="lb_bg1_00_00" taborder="63" left="25" top="200" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Static id="Static00" taborder="3" text="Drop Files Here" left="575" top="381" width="620" height="121" visible="false" background="aliceblue" color="dodgerblue" font="normal 30pt/normal &quot;Arial&quot;" textAlign="center" verticalAlign="middle"/>
+        <Button id="Button00" taborder="0" text="파일첨부" left="1205" top="356" width="120" height="167" onclick="Button00_onclick" background="#F5DF4D" border="1px solid #F5DF4D" font="bold 16px/normal &quot;나눔바른펜&quot;" visible="false"/>
+        <Grid id="Grid01" taborder="2" left="575" top="356" width="624" height="166" binddataset="Dataset00" ondragenter="Grid00_ondragenter" ondragleave="Grid00_ondragleave" ondrop="Grid00_ondrop" autofittype="col" border="1px solid slategray" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="200"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="파일명" background="#1C1C1C" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="크기" background="#1C1C1C" color="white" font="bold 12px/normal &quot;나눔바른펜&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:BNF_NAME"/>
+                <Cell col="1" text="bind:BNF_SIZE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Objects>
@@ -152,7 +176,15 @@
           <Column id="SS_REAL" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <ExcelExportObject id="ExcelExportObject00" onerror="Export00_onerror" onprogress="ExcelExportObject00_onprogress" onsuccess="ExcelExportObject00_onsuccess"/>
+      <ExcelExportObject id="ExcelExportObject00" onerror="Export00_onerror" onprogress="ExcelExportObject00_onprogress" onsuccess="ExcelExportObject00_onsuccess" exportuitype="none"/>
+      <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="BNF_NAME" type="STRING" size="256"/>
+          <Column id="BNF_SIZE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileUpTransfer id="FileUpTransfer00" onprogress="FileUpTransfer00_onprogress" onsuccess="FileUpTransfer00_onsuccess" onerror="FileUpTransfer00_onerror"/>
     </Objects>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
 include "lib::lib_date.xjs";
@@ -230,7 +262,8 @@ this.btn_ok00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	this.exportObj.set_exportfilename(this.ds_pay_stub.getColumn(0, "E_NO") + this.ds_pay_stub.getColumn(0, "SB_DATE"));
 	/*this.exportObj.set_exporturl("http://demo.nexacro.com/developer_guide/XExportImport");*/
-	this.exportObj.set_exporturl("http://localhost:9000/XExportImport");
+	/*this.exportObj.set_exporturl("http://localhost:9000/XExportImport");*/
+	this.exportObj.set_exporturl("SvcURL::/XExportImport");
 	/*this.exportObj.set_exporturl("http://192.168.0.23:9000/XExportImport");*/
 	
 	this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid00, "Sheet1!A1");
@@ -239,7 +272,7 @@ this.btn_ok00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	var intExportedItem = this.exportObj.exportData();
 	
-	trace("Number of Exported Item: " + intExportedItem);
+	/*trace("Number of Exported Item: " + intExportedItem);*/
 };
 
 

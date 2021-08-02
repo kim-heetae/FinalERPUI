@@ -68,9 +68,9 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="ed_eno" taborder="7" left="516" top="164" width="214" height="36" displaynulltext="사원번호를 입력해주세요." font="14px/normal &quot;나눔바른펜&quot;"/>
+        <Edit id="ed_eno" taborder="7" left="516" top="164" width="214" height="36" displaynulltext="사원명을 입력해주세요." font="14px/normal &quot;나눔바른펜&quot;"/>
         <Button id="btn_Sel" taborder="8" left="730" top="164" width="70" height="36" background="#82FA58" border="1px solid #82FA58" font="bold 16px/normal &quot;나눔바른펜&quot;" color="#1c1c1c" text="조회" cursor="pointer" onclick="btn_Sel_onclick"/>
-        <Grid id="gr_Ins" taborder="9" left="153" top="200" width="647" height="390" border="1px solid #c7c7c7" binddataset="DS_HRIns" autofittype="col" nodatatext="조회결과가 없습니다." fillareatype="none">
+        <Grid id="gr_Ins" taborder="9" left="153" top="200" width="647" height="390" border="1px solid #c7c7c7" binddataset="DS_HRIns" autofittype="col" nodatatext="조회결과가 없습니다." fillareatype="none" selecttype="multirow">
           <Formats>
             <Format id="default">
               <Columns>
@@ -100,7 +100,7 @@
         </Grid>
         <Button id="btn_ins" taborder="10" text="&gt;" left="820" top="287" width="55" height="90" onclick="btn_ins_onclick" background="#0000FF" color="white" font="bold 30px/normal &quot;나눔바른펜&quot;"/>
         <Button id="btn_del" taborder="11" text="&lt;" left="820" top="425" width="55" height="90" onclick="btn_del_onclick" background="#ff0000" color="white" font="bold 30px/normal &quot;나눔바른펜&quot;"/>
-        <Grid id="gr_upd" taborder="12" left="890" top="163" width="630" height="429" border="1px solid #c7c7c7" binddataset="DS_HRUpd" autofittype="col" autoupdatetype="none" nodatatext="조회결과가 없습니다." fillareatype="none">
+        <Grid id="gr_upd" taborder="12" left="890" top="163" width="630" height="429" border="1px solid #c7c7c7" binddataset="DS_HRUpd" autofittype="col" autoupdatetype="dateselect" nodatatext="조회결과가 없습니다." fillareatype="none" selecttype="multirow">
           <Formats>
             <Format id="default">
               <Columns>
@@ -126,13 +126,13 @@
                 <Cell col="6" text="변경일" font="bold 16px/normal &quot;나눔바른펜&quot;" background="#1C1C1C" color="white"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:e_no" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="1" text="bind:e_name" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="2" text="bind:edh_dept_pre" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="3" text="bind:edh_dept_aft" font="16px/normal &quot;나눔바른펜&quot;" displaytype="combocontrol" edittype="combo"/>
-                <Cell col="4" text="bind:edh_pos_pre" font="16px/normal &quot;나눔바른펜&quot;"/>
-                <Cell col="5" text="bind:edh_pos_aft" font="16px/normal &quot;나눔바른펜&quot;" displaytype="combocontrol" edittype="combo"/>
-                <Cell col="6" text="bind:dc_date" font="16px/normal &quot;나눔바른펜&quot;" displaytype="date" textAlign="center"/>
+                <Cell text="bind:E_NO" font="16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="1" text="bind:E_NAME" font="16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="2" text="bind:EDH_DEPT_PRE" font="16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="3" text="bind:EDH_DEPT_AFT" font="16px/normal &quot;나눔바른펜&quot;" displaytype="combocontrol" edittype="combo" combodataset="Dataset00" combodatacol="DEPT" combocodecol="DEPT"/>
+                <Cell col="4" text="bind:EDH_POS_PRE" font="16px/normal &quot;나눔바른펜&quot;"/>
+                <Cell col="5" text="bind:EDH_POS_AFT" font="16px/normal &quot;나눔바른펜&quot;" displaytype="combocontrol" edittype="combo" combodataset="Dataset01" combodatacol="POS" combocodecol="POS"/>
+                <Cell col="6" text="bind:DC_DATE" font="16px/normal &quot;나눔바른펜&quot;" displaytype="date" textAlign="center" edittype="date" calendardateformat="yyyy-MM-dd" calendardisplaynulltype="default"/>
               </Band>
             </Format>
           </Formats>
@@ -159,6 +159,44 @@
           <Column id="DC_DATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="DEPT" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="DEPT">인사과</Col>
+          </Row>
+          <Row>
+            <Col id="DEPT">회계과</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="Dataset01">
+        <ColumnInfo>
+          <Column id="POS" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="POS">사장</Col>
+          </Row>
+          <Row>
+            <Col id="POS">부장</Col>
+          </Row>
+          <Row>
+            <Col id="POS">차장</Col>
+          </Row>
+          <Row>
+            <Col id="POS">과장</Col>
+          </Row>
+          <Row>
+            <Col id="POS">대리</Col>
+          </Row>
+          <Row>
+            <Col id="POS">사원</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
 include "lib::lib_date.xjs";
@@ -172,6 +210,7 @@ this.HR_Appt_Pers_Ins_load = function(obj:nexacro.Form,e:nexacro.LoadEventInfo){
 };
 
 this.fn_init = function(){
+	trace(000);
 	this.DS_HRIns.clearData();
 	let idCount = this.application.transactionCount++;
 	let svcID = "hrApptInss" + idCount;
@@ -226,7 +265,7 @@ this.fn_update = function(num){
 	if(login_auth < 4) {
 		this.alert("승인 권한이 부족합니다.");
 	} else {
-		this.confirm("해당 내용을 변경하시겠습니까?", "인사발령 등록하기")
+		//this.confirm("해당 내용을 변경하시겠습니까?", "인사발령 등록하기")
 		this.transaction(svcID, svcURL, "", data, param, "");
 	}
 };
@@ -237,25 +276,58 @@ this.fn_Upd = function ()
 	for(let i = 0; i < this.DS_HRUpd.getRowCount(); i++){
 		this.fn_update(i);
 	};
-	this.fn_preMove();
+	//this.fn_preMove();
 };
 
 this.btn_ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.DS_HRUpd.clearData(); // Row 쌓임 방지
-	/*let selectedRows = this.gr_Ins.getSelectedDatasetRows();*/
-	let selectedRows = this.gr_Ins.get();
-	this.alert(selectedRows);
-	this.DS_HRUpd.copyRow(selectedRows[0],this.DS_HRIns,selectedRows[0]);
-	this.alert(selectedRows[0],this.DS_HRIns,selectedRows[0]);
+	//this.DS_HRUpd.clearData(); // Row 쌓임 방지
+	let selectedRows = this.gr_Ins.getSelectedDatasetRows();
+// 	let selectedRows = this.gr_Ins.get();
+// 	this.alert(selectedRows);
+// 	this.DS_HRUpd.copyRow(selectedRows[0],this.DS_HRIns,selectedRows[0]);
+// 	this.alert(selectedRows[0],this.DS_HRIns,selectedRows[0]);
+	
+	for (let i=0; i<selectedRows.length; i++) {
+			trace("여기여기111"+selectedRows.length);	
+        		let eno = this.DS_HRIns.getColumn(selectedRows[i], "E_NO");
+        		let name = this.DS_HRIns.getColumn(selectedRows[i], "E_NAME");
+        		let deptpre = this.DS_HRIns.getColumn(selectedRows[i], "D_NAME");
+        		/*let deptaft = this.DS_HRIns.getColumn(selectedRows[0], "EDH_DEPT_AFT");*/
+        		let deptaft = " ";
+        		let pospre = this.DS_HRIns.getColumn(selectedRows[i], "E_POS");
+        		/*let posaft = this.DS_HRIns.getColumn(selectedRows[0], "EDH_POS_AFT");*/
+        		let posaft = " ";
+        		/*let date = this.DS_HRIns.getColumn(selectedRows[0], "DC_DATE");*/
+        		let date = this.fn_curdate();
+
+        		let upd_rowcount = this.DS_HRUpd.getRowCount();
+        		let checkdata = this.DS_HRUpd.findRow("E_NO", eno);
+        		trace("asdadadada  " + checkdata);
+				if(checkdata != -1){
+        			this.DS_HRUpd.deleteRow(checkdata);
+        		}
+				
+        		let addRow = this.DS_HRUpd.addRow();
+        		this.DS_HRUpd.setColumn(addRow, "E_NO", eno);
+        		this.DS_HRUpd.setColumn(addRow, "E_NAME", name);
+        		this.DS_HRUpd.setColumn(addRow, "EDH_DEPT_PRE", deptpre);
+        		this.DS_HRUpd.setColumn(addRow, "EDH_DEPT_AFT", deptaft);
+        		this.DS_HRUpd.setColumn(addRow, "EDH_POS_PRE", pospre);
+        		this.DS_HRUpd.setColumn(addRow, "EDH_POS_AFT", posaft);
+        		this.DS_HRUpd.setColumn(addRow, "DC_DATE", date);
+				trace(this.DS_HRUpd.getColumn(0, "E_NO"));
+        	}
+	
 };
 
 this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let selectedRow = this.gr_upd.getSelectedRows();
-	for(let i = selectedRow.size(); i > 0; i--){
-		this.DS_HRUpd.deleteRow(selectedRow[i]);
-	};
+	//for(let i = selectedRow.size(); i > 0; i--){
+		//this.DS_HRUpd.deleteRow(selectedRow[i]);
+		this.DS_HRUpd.deleteMultiRows(selectedRow);
+	//};
 };
 
 this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -265,12 +337,63 @@ this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.btn_Com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.fn_Upd();
+	//this.fn_Upd();
+	let check = 0;
+// 	this.alert("변경 부서" + this.DS_HRUpd.getColumn(0, "EDH_DEPT_AFT").text);
+// 	this.alert("변경 직급" + this.DS_HRUpd.getColumn(0, "EDH_POS_AFT").text);
+// 	this.alert("변경 날짜" + this.DS_HRUpd.getColumn(0, "DC_DATE").value);
+        	this.alert(this.DS_HRUpd.getRowCount());
+//         	for(let i = 0; i < this.DS_HRUpd.getRowCount(); i++){
+//         		if((this.DS_HRUpd.getColumn(i, "EDH_DEPT_AFT").text != " ")
+//         				&& (this.DS_HRUpd.getColumn(i, "EDH_POS_AFT").text != " ")
+//         				/*&& (this.DS_HRUpd.getColumn(i, "DC_DATE").value != " ")*/ 
+// 						&& (this.DS_HRUpd.getColumn(i, "DC_DATE").value) != " ") {
+//         				//|| this.DS_HRUpd.getColumn(i, "DC_DATE").value != " "){
+//         			check = 1;
+//         		}
+//         		else{
+//         			check = 0;
+//         		}
+//         	}
+
+			this.alert("변경 부서" + this.DS_HRUpd.getColumn(0, "EDH_DEPT_AFT"));
+			this.alert("변경 직급" + this.DS_HRUpd.getColumn(0, "EDH_POS_AFT"));
+			this.alert("변경 날짜" + this.DS_HRUpd.getColumn(0, "DC_DATE"));
+			for(let i = 0; i < this.DS_HRUpd.getRowCount(); i++){
+         		if((this.DS_HRUpd.getColumn(i, "EDH_DEPT_AFT") != " ")
+					&& (this.DS_HRUpd.getColumn(i, "EDH_POS_AFT") != " ") 
+					&& (this.DS_HRUpd.getColumn(i, "DC_DATE")) != " ") {
+         			check = 1;
+         		}
+         		else{
+         			check = 0;
+         		}
+         	}
+
+        	this.alert(check);
+        	if(check == 1){
+        		this.fn_Upd();
+        		this.close();
+        	}
+        	else{
+        		this.alert("변경하실 부서, 직급, 날짜를 모두 선택해주세요.");
+        	}
 };
 
 this.fn_preMove = function ()
 {
 	this.go("MainFrame::HR_Appt_Pers_Ins.xfdl");
-};]]></Script>
+};
+
+////////////////////////////////////////// 현재 날짜 /////////////////////////////////////
+this.fn_curdate = function()
+{
+    var objDate = new nexacro.Date();
+	var mm = (objDate.getMonth() + 1).toString().padLeft(2, "0");
+	var dd = objDate.getDate().toString().padLeft(2, "0");
+	var today = objDate.getYear() + mm + dd;
+    
+	return today;
+}]]></Script>
   </Form>
 </FDL>

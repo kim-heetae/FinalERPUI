@@ -79,10 +79,18 @@ include "lib::lib_date.xjs";
 include "lib::lib_base.xjs";
 
 this.application = null;
+this.objDate = null;
+this.mm = null;
+this.dd = null;
+this.today = null;
 
 this.M_TA_Mgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.application = nexacro.getApplication();
+	this.objDate = new nexacro.Date();
+	this.mm = (this.objDate.getMonth()+1).toString().padLeft(2, "0");
+	this.dd = this.objDate.getDate().toString().padLeft(2, "0");
+	this.today = this.objDate.getYear() + "-" + this.mm + "-" + this.dd;
 	this.mta_board_load();
 	//this.fn_setSize(this.divLayout);
 	//this.fn_trans_commonCode();
@@ -113,102 +121,164 @@ this.mta_board_load = function(){
 
 //출근 시간입력하기
 this.fn_getWorkIns = function(){
-	
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var idCount = this.application.transactionCount++;
-	var svcID = "getWorkIns" + idCount;
-	this.transaction(svcID
-	,"SvcURL::/mtamgt/getWorkIns.mpg?no=" + idCount
-	,""
-	,""
-	," e_no=" + objgdsLoginInfo.getColumn(0, "E_NO")
-	,"mta_board_load");
-
+	if(this.M_TA_MGT.getColumn(0, "W_DATE") == this.today){
+		this.alert("이미 출근하셨습니다.");
+	}
+	else{
+		var objgdsLoginInfo = this.application.objgdsLoginInfo;
+		var idCount = this.application.transactionCount++;
+		var svcID = "getWorkIns" + idCount;
+		this.transaction(svcID
+		,"SvcURL::/mtamgt/getWorkIns.mpg?no=" + idCount
+		,""
+		,""
+		," e_no=" + objgdsLoginInfo.getColumn(0, "E_NO")
+		,"mta_board_load");
+	}
 }
 
 //퇴근 시간입력하기
 this.fn_getOffWorkIns = function(){
-	
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
-	var idCount = this.application.transactionCount++;
-	var svcID = "getOffWorkIns" + idCount;
-	this.transaction(svcID
-	,"SvcURL::/mtamgt/getOffWorkIns.mpg?no=" + idCount
-	,""
-	,""
-	,mtaparam
-	,"mta_board_load");
-
+	if(this.M_TA_MGT.getColumn(0, "W_DATE") != this.today){
+		this.alert("출근상태가 아닙니다.");
+	}
+	else{
+		let check = this.confirm("퇴근하시겠습니까?");
+		if(check){
+			var objgdsLoginInfo = this.application.objgdsLoginInfo;
+			var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+			var idCount = this.application.transactionCount++;
+			var svcID = "getOffWorkIns" + idCount;
+			this.transaction(svcID
+			,"SvcURL::/mtamgt/getOffWorkIns.mpg?no=" + idCount
+			,""
+			,""
+			,mtaparam
+			,"mta_board_load");
+		}
+	}
 }
 
 //외근버튼 입력하기
 
 this.fn_getOutsideIns = function(){
-	
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
-	var idCount = this.application.transactionCount++;
-	var svcID = "getOutsideIns" + idCount;
-	this.transaction(svcID
-	,"SvcURL::/mtamgt/getOutsideIns.mpg?no=" + idCount
-	,""
-	,""
-	,mtaparam
-	,"mta_board_load");
-
+	if(this.M_TA_MGT.getColumn(0, "W_DATE") != this.today){
+		this.alert("출근상태가 아닙니다.");
+	}
+	else{
+		let check = this.confirm("외근하시겠습니까?");
+		if(check){
+			var objgdsLoginInfo = this.application.objgdsLoginInfo;
+			var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+			var idCount = this.application.transactionCount++;
+			var svcID = "getOutsideIns" + idCount;
+			this.transaction(svcID
+			,"SvcURL::/mtamgt/getOutsideIns.mpg?no=" + idCount
+			,""
+			,""
+			,mtaparam
+			,"mta_board_load");
+		}
+	}
 }
 
 //외근복귀버튼 입력하기
 
 this.fn_getWorkOutIns = function(){
-	
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_work_out=" + this.M_TA_MGT.getColumn(0, "W_WORK_OUT");
-	var idCount = this.application.transactionCount++;0
-	var svcID = "getWorkOutIns" + idCount;
-	this.transaction(svcID
-	,"SvcURL::/mtamgt/getWorkOutIns.mpg?no=" + idCount
-	,""
-	,""
-	,mtaparam
-	,"mta_board_load");
-
+	if(this.M_TA_MGT.getColumn(0, "W_DATE") != this.today){
+		this.alert("출근상태가 아닙니다.");
+	}
+	else if(this.gfn_isNull(this.M_TA_MGT.getColumn(0, "W_WORK_OUT")) || this.M_TA_MGT.getColumn(0, "W_WORK_OUT") == " "){
+		this.alert("외근상태가 아닙니다.");
+	}
+	else{
+		let check = this.confirm("외근복귀하시겠습니까?");
+		if(check){
+			let w_work_out = "";
+			let outtime = this.application.gfn_PosCase(this.M_TA_MGT.getColumn(0, "W_WORK_OUT"), "~", 0);
+			if(outtime == -1){//복귀하지 않은 상태일때
+				w_work_out = this.M_TA_MGT.getColumn(0, "W_WORK_OUT");
+			}
+			else{//복귀한 상태일때
+				let checkout = this.confirm("이미 복귀하셨습니다. \n복귀시간을 변경하시겠습니까?");
+				if(checkout){
+					w_work_out = this.application.gfn_MidCase(this.M_TA_MGT.getColumn(0, "W_WORK_OUT"), "", "~", 0);
+				}
+			}
+			var objgdsLoginInfo = this.application.objgdsLoginInfo;
+			var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_work_out=" + w_work_out;
+			var idCount = this.application.transactionCount++;0
+			var svcID = "getWorkOutIns" + idCount;
+			this.transaction(svcID
+			,"SvcURL::/mtamgt/getWorkOutIns.mpg?no=" + idCount
+			,""
+			,""
+			,mtaparam
+			,"mta_board_load");
+		}
+	}
 }
 
 
 //외출버튼 입력하기
 
 this.fn_getOuttingIns = function(){
-	
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
-	var idCount = this.application.transactionCount++;
-	var svcID = "getOuttingIns" + idCount;
-	this.transaction(svcID
-	,"SvcURL::/mtamgt/getOuttingIns.mpg?no=" + idCount
-	,""
-	,""
-	,mtaparam
-	,"mta_board_load");
-
+	if(this.M_TA_MGT.getColumn(0, "W_DATE") != this.today){
+		this.alert("출근상태가 아닙니다.");
+	}
+	else{
+		let check = this.confirm("외출하시겠습니까?");
+		if(check){
+			var objgdsLoginInfo = this.application.objgdsLoginInfo;
+			var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO");
+			var idCount = this.application.transactionCount++;
+			var svcID = "getOuttingIns" + idCount;
+			this.transaction(svcID
+			,"SvcURL::/mtamgt/getOuttingIns.mpg?no=" + idCount
+			,""
+			,""
+			,mtaparam
+			,"mta_board_load");
+		}
+	}
 }
 
 //외출복귀버튼 입력하기
 
 this.fn_getOutIns = function(){
-	
-	var objgdsLoginInfo = this.application.objgdsLoginInfo;
-	var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_out=" + this.M_TA_MGT.getColumn(0, "W_OUT");
-	var idCount = this.application.transactionCount++;
-	var svcID = "getOutIns" + idCount;
-	this.transaction(svcID
-	,"SvcURL::/mtamgt/getOutIns.mpg?no=" + idCount
-	,""
-	,""
-	,mtaparam
-	,"mta_board_load");
-
+	if(this.M_TA_MGT.getColumn(0, "W_DATE") != this.today){
+		this.alert("출근상태가 아닙니다.");
+	}
+	else if(this.gfn_isNull(this.M_TA_MGT.getColumn(0, "W_OUT")) || this.M_TA_MGT.getColumn(0, "W_OUT") == " "){
+		this.alert("외출상태가 아닙니다.");
+	}
+	else{
+		let check = this.confirm("외출복귀하시겠습니까?");
+		if(check){
+			let w_out = "";
+			let outtime = this.application.gfn_PosCase(this.M_TA_MGT.getColumn(0, "W_OUT"), "~", 0);
+			if(outtime == -1){//복귀하지 않은 상태일때
+				w_out = this.M_TA_MGT.getColumn(0, "W_OUT");
+			}
+			else{//복귀한 상태일때
+				let checkout = this.confirm("이미 복귀하셨습니다. \n복귀시간을 변경하시겠습니까?");
+				if(checkout){
+					w_out = this.application.gfn_MidCase(this.M_TA_MGT.getColumn(0, "W_OUT"), "", "~", 0);
+				}
+			}
+			var objgdsLoginInfo = this.application.objgdsLoginInfo;
+			/*var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_out=" + this.M_TA_MGT.getColumn(0, "W_OUT")*/;
+			var mtaparam = " e_no=" + objgdsLoginInfo.getColumn(0,"E_NO") + " w_out=" + w_out;
+			var idCount = this.application.transactionCount++;
+			var svcID = "getOutIns" + idCount;
+			this.transaction(svcID
+				,"SvcURL::/mtamgt/getOutIns.mpg?no=" + idCount
+				,""
+				,""
+				,mtaparam
+				,"mta_board_load");
+		}
+	}
 }
 
 

@@ -13,7 +13,7 @@
         <Edit id="ed_password_check" taborder="9" left="1020" top="194" width="300" height="36" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" textAlign="center"/>
         <Static id="lb_file" taborder="20" text="비밀번호 확인" left="833" top="192" width="187" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C"/>
         <Button id="btn_cancel" taborder="13" left="1239" top="630" width="80" height="40" background="#ff0000" border="1px solid #ff0000" font="bold 20px/normal &quot;나눔바른펜&quot;" color="white" text="취소" cursor="pointer" onclick="btn_cancel_onclick"/>
-        <Button id="btn_confirm" taborder="12" left="1017" top="630" width="80" height="40" background="#0000FF" border="1px solid #0000FF" font="bold 20px/normal &quot;나눔바른펜&quot;" color="white" text="발급" cursor="pointer"/>
+        <Button id="btn_confirm" taborder="12" left="1017" top="630" width="80" height="40" background="#0000FF" border="1px solid #0000FF" font="bold 20px/normal &quot;나눔바른펜&quot;" color="white" text="발급" cursor="pointer" onclick="btn_confirm_onclick"/>
         <Static id="lb_bg2_00" taborder="21" left="389" top="231" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;" text=""/>
         <Edit id="ed_password" taborder="8" left="1020" top="154" width="300" height="36" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" textAlign="center"/>
         <Edit id="ed_ename" taborder="22" left="574" top="193" width="259" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="false" textAlign="center"/>
@@ -52,7 +52,7 @@
         <Edit id="ed_acNum" taborder="10" left="1019" top="349" width="301" height="39" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true" textAlign="center"/>
         <Static id="lb_bg2_01_00_00_00" taborder="36" left="385" top="388" width="931" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept01_00_00_00" taborder="37" text="사내전화" left="388" top="389" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1C1C1C"/>
-        <Static id="lb_file01_00_00_00" taborder="38" text="주민등록번호" left="831" top="389" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C"/>
+        <Static id="lb_file01_00_00_00" taborder="38" text="주민등록번호" left="833" top="389" width="186" height="38" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" background="#1C1C1C"/>
         <Static id="lb_bg2_01_00_00_00_00" taborder="39" left="385" top="429" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_dept01_00_00_00_00" taborder="40" text="주민등록&#13;&#10;거주지" left="387" top="430" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1C1C1C"/>
         <Edit id="ed_loc_postcode" taborder="41" left="574" top="431" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true" textAlign="left"/>
@@ -60,7 +60,7 @@
         <Edit id="ed_loc_detail" taborder="5" left="574" top="470" width="746" height="38" font="16px/normal &quot;나눔바른펜&quot;" border="1px solid #999999" enable="true" displaynulltext="상세주소를 입력해주세요" textAlign="left"/>
         <ImageViewer id="iv_search" taborder="4" left="789" top="432" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search_onclick" text=""/>
         <Static id="lb_bg2_01_00_00_00_00_00" taborder="43" left="384" top="508" width="930" height="81" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_dept01_00_00_00_00_00" taborder="44" text="실 거주지" left="385" top="509" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1C1C1C"/>
+        <Static id="lb_dept01_00_00_00_00_00" taborder="44" text="실 거주지" left="387" top="509" width="186" height="79" font="bold 16px/normal &quot;나눔바른펜&quot;&#9;" color="white" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#1C1C1C"/>
         <Edit id="ed_realloc_postcode" taborder="45" left="575" top="510" width="257" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" enable="true" readonly="true" onchanged="ed_realloc_find_onchanged" textAlign="left"/>
         <Edit id="ed_realloc_findresult" taborder="46" left="832" top="510" width="489" height="38" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true" textAlign="left"/>
         <ImageViewer id="iv_search00" taborder="6" left="791" top="511" width="40" height="35" image="url('imagerc::img_WF_search01.png')" cursor="pointer" onclick="iv_search00_onclick"/>
@@ -146,7 +146,7 @@ this.fn_ect_init = function(){
 	if(this.DS_MyInfo.getColumn(0, "E_GENDER") === "남"){
 		this.rd_gender.set_index(0);
 	}
-	else{
+	else if(this.DS_MyInfo.getColumn(0, "E_GENDER") === "여"){
 		this.rd_gender.set_index(1);
 	}
 }
@@ -178,24 +178,40 @@ this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		alert("비밀번호를 확인해주세요");
 	}
 	if(check == 2){
-		phone = this.application.gfn_quote("e_phone", phone);
-		ed_email = this.application.gfn_quote("e_email", e_email);
-		loc_address = this.application.gfn_quote("e_loc", loc_address);
-		loc_postcode = this.application.gfn_quote("e_postcode", loc_postcode);
-		loc_detail = this.application.gfn_quote("e_loc_detail", loc_detail);
-		loc_real_address = this.application.gfn_quote("e_real_loc", loc_real_address);
-		loc_real_postcode = this.application.gfn_quote("e_real_postcode", loc_real_postcode);
-		loc_real_detail = this.application.gfn_quote("e_real_detail", loc_real_detail);
-		let svcID = "getmyPageUpd" + this.application.transactionCount++;
-		let svcURL = "SvcURL::/my/getmyPageUpd.mpg?no=" + svcID;
-		let param = phone + ed_email + loc_address + loc_postcode + loc_detail 
-				+ loc_real_address + loc_real_postcode + loc_real_detail
-				+ " e_no=" + ed_empno + " e_pw=" + ed_password;
-		this.transaction(svcID, svcURL, "", "", param, "");
-		alert("수정되었습니다");
+		let checkupd = this.confirm("수정하시겠습니까?");
+/*		this.alert("============" + checkupd);*/
+		if(checkupd){
+// 			phone = this.application.gfn_quote("e_phone", phone);
+// 			ed_email = this.application.gfn_quote("e_email", e_email);
+// 			loc_address = this.application.gfn_quote("e_loc", loc_address);
+// 			loc_postcode = this.application.gfn_quote("e_postcode", loc_postcode);
+// 			loc_detail = this.application.gfn_quote("e_loc_detail", loc_detail);
+// 			loc_real_address = this.application.gfn_quote("e_real_loc", loc_real_address);
+// 			loc_real_postcode = this.application.gfn_quote("e_real_postcode", loc_real_postcode);
+// 			loc_real_detail = this.application.gfn_quote("e_real_detail", loc_real_detail);
+			let svcID = "getmyPageUpd" + this.application.transactionCount++;
+			let svcURL = "SvcURL::/my/getmyPageUpd.mpg?no=" + svcID;
+			this.alert(ed_password);
+			let param = " e_phone=" + phone + " e_email=" + ed_email + " e_loc=" + loc_address + " e_postcode=" + loc_postcode + " e_loc_detail=" + loc_detail 
+					+ " e_real_loc=" + loc_real_address + " e_real_postcode=" + loc_real_postcode + " e_real_detail=" + loc_real_detail
+					+ " e_no=" + ed_empno + " e_pw=" + ed_password;
+			this.transaction(svcID, svcURL, "", "", param, "");
+			this.alert("수정되었습니다");
+		}
 	}
 };
 
+
+this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.alert("증명서를 출력합니다.");
+	/*this.application.WorkFrame.set_formurl("ModalFrame::Certification_Page1.xfdl");*/
+	/*this.parent.setAttribute(formurl,"ModalFrame::Certification_Page1.xfdl");*/
+	let selectedNo = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
+ 	let arg = { "E_NO" : selectedNo };
+ 	this.application.gfnShowModal("popupModal", arg, "ModalFrame::Certification_Page1.xfdl", "My_Page_onload", this, 550, 30, true, true, null);
+	/*this.go("MainFrame::Certification_Page1.xfdl");*/
+};
 ]]></Script>
     <Objects>
       <Dataset id="DS_MyInfo">
@@ -219,6 +235,8 @@ this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="E_REAL_POSTCODE" type="STRING" size="256"/>
           <Column id="E_LOC_DETAIL" type="STRING" size="256"/>
           <Column id="E_REAL_DETAIL" type="STRING" size="256"/>
+          <Column id="C_NAME" type="STRING" size="256"/>
+          <Column id="ED_JOIN_DATE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

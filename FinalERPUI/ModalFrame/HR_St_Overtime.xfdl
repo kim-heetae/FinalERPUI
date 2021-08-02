@@ -78,10 +78,11 @@ this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	let fi_no = this.DS_HROvertime.getColumn(0, "FI_NO");
+	let ft_type = "연장근무"
 	let svcID = "HRStOvertimeDels" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrNoUpd.hr?no=" + svcID;
 	let data = "DS_HROvertime=out_test";
-	let param = " fi_no=" + fi_no + " fi_state=반려";
+	let param = " fi_no=" + fi_no + " fi_state=반려" + " ft_type=" + ft_type;
 	
 	/*권한 선언*/
 	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");

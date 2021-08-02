@@ -459,11 +459,11 @@ this.fnPopupCallBack = function(sFormId, sArg)
 				nRow = this.dsSchedule.findRow("ID", objRtn.ID);
 				
 				//일정 정보 변경
-// 				this.dsSchedule.setColumn(nRow, "TITLE", objRtn.TITLE);
-// 				this.dsSchedule.setColumn(nRow, "SDATE", objRtn.SDATE);
-// 				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
-// 				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
-// 				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
+				this.dsSchedule.setColumn(nRow, "TITLE", objRtn.TITLE);
+				this.dsSchedule.setColumn(nRow, "SDATE", objRtn.SDATE);
+				this.dsSchedule.setColumn(nRow, "EDATE", objRtn.EDATE);
+				this.dsSchedule.setColumn(nRow, "TYPE", objRtn.TYPE);
+				this.dsSchedule.setColumn(nRow, "CONTENT", objRtn.CONTENT);
 				var sch_date = this.dsSchedule.getColumn(nRow, "SDATE");
 				var sch_no = this.dsSchedule.getColumn(nRow, "SCH_NO");
 				var e_no = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
