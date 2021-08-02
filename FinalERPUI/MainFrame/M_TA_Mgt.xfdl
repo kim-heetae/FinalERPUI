@@ -51,13 +51,6 @@
         <Button id="btn_workoutIn" taborder="6" left="1437" top="630" width="80" height="40" background="#2E64FE" border="1px solid #2E64FE" font="bold 20px/normal &quot;나눔바른펜&quot;" color="white" text="외근복귀" cursor="pointer" onclick="btn_workoutIn_onclick"/>
         <Button id="btn_workOut" taborder="7" left="1337" top="630" width="80" height="40" background="#0000FF" border="1px solid #0000FF" font="bold 20px/normal &quot;나눔바른펜&quot;" color="white" text="외근" cursor="pointer" onclick="btn_workOut_onclick"/>
         <Static id="lb_M_TA_Mgt" taborder="8" text="마이페이지 &gt; 근태관리" left="1369" top="49" width="160" height="19" font="15px/normal &quot;나눔바른펜&quot;" textAlign="right"/>
-        <Static id="Static00" taborder="9" text="&lt;" left="630" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
-        <Static id="Static00_00" taborder="10" text="1" left="695" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
-        <Static id="Static00_00_00" taborder="11" text="2" left="760" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
-        <Static id="Static00_00_00_00" taborder="12" text="3" left="825" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
-        <Static id="Static00_00_00_00_00" taborder="13" text="4" left="890" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
-        <Static id="Static00_00_00_00_00_00" taborder="14" text="5" left="955" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
-        <Static id="Static00_00_00_00_00_00_00" taborder="15" text="&gt;" left="1020" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer" visible="false"/>
       </Layout>
     </Layouts>
     <Objects>
