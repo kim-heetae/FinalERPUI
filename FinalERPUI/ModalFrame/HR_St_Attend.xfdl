@@ -100,11 +100,12 @@ this.btn_approve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 /*반려버튼 클릭 시 반려 UPD*/
 this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	let fi_no = this.HRStApprove.getColumn(0, "FI_NO");
+	let fi_no = this.DS_HRAttend.getColumn(0, "FI_NO");
+	let ft_type = "근태사유서";
 	let svcID = "HRStAttendDels" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrst/hrNoUpd.hr?no=" + svcID;
 	let data = "DS_HRAttend=out_test";
-	let param = " fi_no=" + fi_no + " fi_state=반려";
+	let param = " fi_no=" + fi_no + " fi_state=반려" + " ft_type=" + ft_type;
 	
 	/*권한 선언*/
 	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");

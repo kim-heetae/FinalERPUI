@@ -67,7 +67,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="ed_eno" taborder="6" left="930" top="164" width="507" height="36" displaynulltext="사원번호를 입력해주세요." font="16px/normal &quot;나눔바른펜&quot;"/>
+        <Edit id="ed_eno" taborder="6" left="930" top="164" width="507" height="36" displaynulltext="사원명을 입력해주세요." font="16px/normal &quot;나눔바른펜&quot;"/>
         <Button id="btn_Sel" taborder="7" left="1437" top="164" width="80" height="36" background="#82FA58" border="1px solid #82FA58" font="bold 16px/normal &quot;나눔바른펜&quot;" color="#1c1c1c" text="조회" cursor="pointer" onclick="btn_Sel_onclick" textAlign="center"/>
         <Button id="btn_Ins" taborder="8" left="1300" top="630" width="80" height="40" background="#0000FF" border="1px solid #0000FF" font="bold 16px/normal &quot;나눔바른펜&quot;" color="white" text="발령" cursor="pointer" onclick="btn_Ins_onclick"/>
         <Button id="btn_Del" taborder="9" left="1437" top="630" width="80" height="40" border="1px solid #ff0000" font="bold 16px/normal &quot;나눔바른펜&quot;" text="삭제" cursor="pointer" onclick="btn_Del_onclick" background="#ff0000" color="white"/>
@@ -157,11 +157,13 @@ this.hrApptSearch_load = function(){
 	let ename = this.ed_eno.text;
 	//선택한 부서가 전체일때
 	if(dname != "전체"){
-		param += " d_name=" + dname;
+		//param += " d_name=" + dname;
+		param += " edh_dept_aft=" + dname;
 	}
-	//선택한 직급이 전체일때
+	//선택한 직급이 전체일때 
 	if(pos != "전체"){
-		param += " e_pos=" + pos;
+		//param += " e_pos=" + pos;
+		param += " edh_pos_aft=" + pos;
 	}
 	//입력한 사원명이 없을때
 	if(!this.gfn_isNull(ename) || ename != " "){
@@ -174,7 +176,8 @@ this.hrApptSearch_load = function(){
 this.hrApptDel_load = function() {
 	let svcID = "hrApptDel" + this.application.transactionCount++;
 	let svcURL = "SvcURL::/hrappt/hrApptDel.hr?no=" + svcID;
-	let param = " p_e_no=" + this.DS_HR_Appt_Pers.getColumn(0, "E_NO");
+	let param = " p_e_no=" + this.DS_HR_Appt_Pers.getColumn(0, "E_NO")
+					+ " p_date=" + this.DS_HR_Appt_Pers.getColumn(0, "DC_DATE");
 	/*권한 선언*/
 	let login_auth = this.application.objgdsLoginInfo.getColumn(0, "PA_AUTH");
 	/*권한이 4이하라면 (사원, 대리, 과장)*/
@@ -185,6 +188,8 @@ this.hrApptDel_load = function() {
 		/*권한이 4이상이면 (차장, 부장)*/
 		this.transaction(svcID, svcURL, "", "", param, "fn_refresh");
 	}
+	this.DS_HR_Appt_Pers.clearData();
+	this.hrApptSel_load();
 };
 
 this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -196,7 +201,7 @@ this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_Ins_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	trace(this.parent.id);
-	this.application.gfnShowModal("popupModal", null, "MainFrame::HR_Appt_Pers_Ins.xfdl", "", this, 550, 30, true, true, null);
+	this.application.gfnShowModal("popupModal", null, "MainFrame::HR_Appt_Pers_Ins.xfdl", "hrApptSel_load", this, 550, 30, true, true, null);
 	/*this.parent.set_url("MainFrame::HR_Appt_Pers_Ins.xfdl");*/
 	/*this.go("MainFrame::HR_Appt_Pers_Ins.xfdl");*/
 };

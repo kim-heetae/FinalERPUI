@@ -69,11 +69,78 @@
         <Edit id="ed_acname" taborder="48" left="770" top="364" width="300" height="41" readonly="true" font="16pt/normal &quot;Arial&quot;" textAlign="center"/>
         <Edit id="ed_acNum" taborder="49" left="769" top="404" width="301" height="39" font="16pt/normal &quot;Arial&quot;" border="1px solid #999999" readonly="true" textAlign="center"/>
         <MaskEdit id="me_socialnum" taborder="50" left="770" top="445" width="302" height="37" readonly="true" maskchar=" " format="###### '-' #{######}" type="string" font="16pt/normal &quot;Arial&quot;" textAlign="center"/>
+        <Grid id="Grid00" taborder="51" left="60" top="845" width="741" height="270" binddataset="DS_Certification" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="회사명"/>
+                <Cell col="1" text="사원번호"/>
+                <Cell col="2" text="부서명"/>
+                <Cell col="3" text="입사일"/>
+                <Cell col="4" text="전화번호"/>
+                <Cell col="5" text="성별"/>
+                <Cell col="6" text="은행명"/>
+                <Cell col="7" text="거주지"/>
+                <Cell col="8" text="거주지 우편번호"/>
+                <Cell col="9" text="거주지 상세주소"/>
+                <Cell row="1" col="1" text="사원명"/>
+                <Cell row="1" col="2" text="직급"/>
+                <Cell row="1" col="3" text="이메일"/>
+                <Cell row="1" col="4" text="사내번호"/>
+                <Cell row="1" col="5" text="주민등록번호"/>
+                <Cell row="1" col="6" text="계좌번호"/>
+                <Cell row="1" col="7" text="실거주지"/>
+                <Cell row="1" col="8" text="실거주지 우편번호"/>
+                <Cell row="1" col="9" text="실거주지 상세주소"/>
+              </Band>
+              <Band id="body">
+                <Cell rowspan="2" text="bind:C_NAME"/>
+                <Cell col="1" text="bind:E_NO"/>
+                <Cell col="2" text="bind:D_NAME"/>
+                <Cell col="3" text="bind:ED_JOIN_DATE"/>
+                <Cell col="4" text="bind:E_PHONE"/>
+                <Cell col="5" text="bind:E_GENDER"/>
+                <Cell col="6" text="bind:EA_NAME"/>
+                <Cell col="7" text="bind:E_LOC"/>
+                <Cell col="8" text="bind:E_POSTCODE"/>
+                <Cell col="9" text="bind:E_LOC_DETAIL"/>
+                <Cell row="1" col="1" text="bind:E_NAME"/>
+                <Cell row="1" col="2" text="bind:E_POS"/>
+                <Cell row="1" col="3" text="bind:E_EMAIL"/>
+                <Cell row="1" col="4" text="bind:EOI_CALL"/>
+                <Cell row="1" col="5" text="bind:E_SOCIAL_NO"/>
+                <Cell row="1" col="6" text="bind:EA_NO"/>
+                <Cell row="1" col="7" text="bind:E_REAL_LOC"/>
+                <Cell row="1" col="8" text="bind:E_REAL_POSTCODE"/>
+                <Cell row="1" col="9" text="bind:E_REAL_DETAIL"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Objects>
       <Dataset id="DS_Certification">
         <ColumnInfo>
+          <Column id="C_NAME" type="STRING" size="256"/>
           <Column id="E_NO" type="STRING" size="256"/>
           <Column id="E_NAME" type="STRING" size="256"/>
           <Column id="D_NAME" type="STRING" size="256"/>
@@ -83,13 +150,11 @@
           <Column id="EOI_CALL" type="STRING" size="256"/>
           <Column id="E_LOC" type="STRING" size="256"/>
           <Column id="E_REAL_LOC" type="STRING" size="256"/>
-          <Column id="E_PW" type="STRING" size="256"/>
           <Column id="E_GENDER" type="STRING" size="256"/>
           <Column id="E_BIRTH" type="STRING" size="256"/>
           <Column id="EA_NAME" type="STRING" size="256"/>
           <Column id="EA_NO" type="STRING" size="256"/>
           <Column id="E_SOCIAL_NO" type="STRING" size="256"/>
-          <Column id="C_NAME" type="STRING" size="256"/>
           <Column id="ED_JOIN_DATE" type="STRING" size="256"/>
           <Column id="E_POSTCODE" type="STRING" size="256"/>
           <Column id="E_REAL_POSTCODE" type="STRING" size="256"/>
@@ -141,12 +206,28 @@ this.fn_init = function(objFrame){
 	let data = "DS_Certification=out_test";
 	/*let param = " e_no=" + objgdsLoginInfo.getColumn(0, "E_NO");*/
 	let param = " e_no=" + this.application.objgdsLoginInfo.getColumn(0, "E_NO");
-	this.transaction(svcID, svcURL, "", data, param, "");
+	this.transaction(svcID, svcURL, "", data, param, "fn_ect_init");
 };
-
+this.fn_ect_init = function(){
+	if(this.DS_Certification.getColumn(0, "E_GENDER") === "남"){
+		this.rd_gender.set_index(0);
+	}
+	else if(this.DS_Certification.getColumn(0, "E_GENDER") === "여"){
+		this.rd_gender.set_index(1);
+	}
+}
 /*확인버튼 클릭 시 이벤트처리*/
 this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	let check = this.confirm("증명서를 출력하시겠습니까?");
+	if(check){
+ 	//엑셀로 만들기
+		this.exportObj = new ExcelExportObject("Export00", this);
+		this.exportObj.set_exportfilename(this.DS_Certification.getColumn(0, "E_NO") + "_재직증명서");
+		this.exportObj.set_exporturl("SvcURL::/XExportImport");
+		this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid00, "Sheet1!A1");
+		this.exportObj.exportData();
+	}
 	this.alert("발급이 완료되었습니다.");
 	this.close();
 };

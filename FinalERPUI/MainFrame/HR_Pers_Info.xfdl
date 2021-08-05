@@ -73,14 +73,7 @@
           </Dataset>
         </Combo>
         <Button id="btn_Sel" taborder="9" left="1437" top="164" width="80" height="36" background="#82FA58" border="1px solid #82FA58" font="bold 20px/normal &quot;나눔바른펜&quot;" color="#1c1c1c" text="조회" cursor="pointer" onclick="btn_Sel_onclick"/>
-        <Static id="Static00" taborder="10" text="&lt;" left="638" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00" taborder="11" text="1" left="703" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00" taborder="12" text="2" left="768" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00_00" taborder="13" text="3" left="833" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00_00_00" taborder="14" text="4" left="898" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00_00_00_00" taborder="15" text="5" left="963" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Static id="Static00_00_00_00_00_00_00" taborder="16" text="&gt;" left="1028" top="630" width="40" height="40" font="bold 20px/normal &quot;나눔바른펜&quot;" textAlign="center" border="1px solid #999999" verticalAlign="middle" cursor="pointer"/>
-        <Combo id="cb_pos" taborder="17" text="" left="783" top="164" width="230" height="36" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_pos_onitemchanged" font="16px/normal &quot;나눔바른펜&quot;">
+        <Combo id="cb_pos" taborder="10" text="" left="783" top="164" width="230" height="36" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="cb_pos_onitemchanged" font="16px/normal &quot;나눔바른펜&quot;">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -111,7 +104,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Edit id="ed_ename" taborder="18" left="987" top="164" width="450" height="36" displaynulltext="사원명을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;" onchanged="ed_ename_onchanged"/>
+        <Edit id="ed_ename" taborder="11" left="987" top="164" width="450" height="36" displaynulltext="사원명을 입력해주세요." font="20px/normal &quot;나눔바른펜&quot;" onchanged="ed_ename_onchanged"/>
       </Layout>
     </Layouts>
     <Objects>

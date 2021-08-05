@@ -16,7 +16,7 @@ this.application = null;
 
 this.HR_Pers_Insert_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.alert("123");
+	//this.alert("123");
 	this.application = nexacro.getApplication();
 	/*let objFrame = this.getOwnerFrame();*/
 	/*this.hrpersIns(objFrame);*/
@@ -113,7 +113,7 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 //취소 버튼 클릭
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.alert("qwe");
+	//this.alert("qwe");
 	this.close();
 };
 

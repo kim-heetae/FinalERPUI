@@ -34,9 +34,9 @@
         <Static id="lb_content" taborder="11" text="내용" left="25" top="218" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Button id="btn_ok" taborder="12" left="449" top="489" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" onclick="btn_ok_onclick"/>
         <Static id="lb_bg3" taborder="13" left="25" top="374" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;" background="#f7f7f7"/>
-        <Static id="lb_contact" taborder="14" text="연락처" left="25" top="375" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_contact" taborder="14" text="연락처" left="25" top="375" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" visible="false"/>
         <Static id="lb_content00" taborder="15" left="144" top="218" width="381" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Combo id="cb_contact_first" taborder="16" text="" left="144" top="376" width="106" height="36" onitemchanged="Combo00_onitemchanged" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" color="#000000" displaynulltext="010" enable="false">
+        <Combo id="cb_contact_first" taborder="16" text="" left="144" top="376" width="106" height="36" onitemchanged="Combo00_onitemchanged" value="" index="-1" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" color="#000000" displaynulltext="010" enable="false" visible="false">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -118,10 +118,10 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Static id="Static00" taborder="17" text="-" left="263" top="377" width="14" height="35" textAlign="center"/>
-        <Edit id="ed_contact_middle" taborder="18" left="288" top="376" width="100" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36"/>
-        <Static id="Static00_00" taborder="19" text="-" left="400" top="377" width="14" height="35" textAlign="center"/>
-        <Edit id="ed_contact_last" taborder="20" left="425" top="376" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36" width="100"/>
+        <Static id="Static00" taborder="17" text="-" left="263" top="377" width="14" height="35" textAlign="center" visible="false"/>
+        <Edit id="ed_contact_middle" taborder="18" left="288" top="376" width="100" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36" visible="false"/>
+        <Static id="Static00_00" taborder="19" text="-" left="400" top="377" width="14" height="35" textAlign="center" visible="false"/>
+        <Edit id="ed_contact_last" taborder="20" left="425" top="376" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36" width="100" visible="false"/>
         <Static id="lb_bg3_00" taborder="21" left="25" top="413" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
         <Static id="lb_state" taborder="22" text="상태" left="300" top="414" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_state" taborder="23" left="419" top="415" width="106" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false" height="36"/>

@@ -146,7 +146,7 @@ this.fn_ect_init = function(){
 	if(this.DS_MyInfo.getColumn(0, "E_GENDER") === "남"){
 		this.rd_gender.set_index(0);
 	}
-	else{
+	else if(this.DS_MyInfo.getColumn(0, "E_GENDER") === "여"){
 		this.rd_gender.set_index(1);
 	}
 }
@@ -179,22 +179,24 @@ this.btn_com_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 	if(check == 2){
 		let checkupd = this.confirm("수정하시겠습니까?");
+/*		this.alert("============" + checkupd);*/
 		if(checkupd){
-			phone = this.application.gfn_quote("e_phone", phone);
-			ed_email = this.application.gfn_quote("e_email", e_email);
-			loc_address = this.application.gfn_quote("e_loc", loc_address);
-			loc_postcode = this.application.gfn_quote("e_postcode", loc_postcode);
-			loc_detail = this.application.gfn_quote("e_loc_detail", loc_detail);
-			loc_real_address = this.application.gfn_quote("e_real_loc", loc_real_address);
-			loc_real_postcode = this.application.gfn_quote("e_real_postcode", loc_real_postcode);
-			loc_real_detail = this.application.gfn_quote("e_real_detail", loc_real_detail);
+// 			phone = this.application.gfn_quote("e_phone", phone);
+// 			ed_email = this.application.gfn_quote("e_email", e_email);
+// 			loc_address = this.application.gfn_quote("e_loc", loc_address);
+// 			loc_postcode = this.application.gfn_quote("e_postcode", loc_postcode);
+// 			loc_detail = this.application.gfn_quote("e_loc_detail", loc_detail);
+// 			loc_real_address = this.application.gfn_quote("e_real_loc", loc_real_address);
+// 			loc_real_postcode = this.application.gfn_quote("e_real_postcode", loc_real_postcode);
+// 			loc_real_detail = this.application.gfn_quote("e_real_detail", loc_real_detail);
 			let svcID = "getmyPageUpd" + this.application.transactionCount++;
 			let svcURL = "SvcURL::/my/getmyPageUpd.mpg?no=" + svcID;
-			let param = phone + ed_email + loc_address + loc_postcode + loc_detail 
-					+ loc_real_address + loc_real_postcode + loc_real_detail
+			//this.alert(ed_password);
+			let param = " e_phone=" + phone + " e_email=" + ed_email + " e_loc=" + loc_address + " e_postcode=" + loc_postcode + " e_loc_detail=" + loc_detail 
+					+ " e_real_loc=" + loc_real_address + " e_real_postcode=" + loc_real_postcode + " e_real_detail=" + loc_real_detail
 					+ " e_no=" + ed_empno + " e_pw=" + ed_password;
 			this.transaction(svcID, svcURL, "", "", param, "");
-			alert("수정되었습니다");
+			this.alert("수정되었습니다");
 		}
 	}
 };
@@ -207,7 +209,7 @@ this.btn_confirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	/*this.parent.setAttribute(formurl,"ModalFrame::Certification_Page1.xfdl");*/
 	let selectedNo = this.application.objgdsLoginInfo.getColumn(0, "E_NO");
  	let arg = { "E_NO" : selectedNo };
- 	this.application.gfnShowModal("popupModal", arg, "ModalFrame::Certification_Page1.xfdl", "CertificationPage_onload", this, 550, 30, true, true, null);
+ 	this.application.gfnShowModal("popupModal", arg, "ModalFrame::Certification_Page1.xfdl", "My_Page_onload", this, 550, 30, true, true, null);
 	/*this.go("MainFrame::Certification_Page1.xfdl");*/
 };
 ]]></Script>

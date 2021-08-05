@@ -110,7 +110,7 @@ this.fn_text_init = function(){
 		this.ta_content.set_readonly(true);
 		this.btn_delete.set_visible(false);
 		this.btn_edit.set_visible(false);
-		this.file_upload.set_visible(false);
+		//this.file_upload.set_visible(false);
 	}
 	this.fn_file_init();
 };
@@ -204,7 +204,7 @@ this.ds_file_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSCo
 };
 
 this.fn_allchk = function(){
-	this.alert(123);
+	//this.alert(123);
 }
 
 //헤더 체크박스 클릭
