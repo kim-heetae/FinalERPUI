@@ -195,7 +195,7 @@ this.btn_update_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
 	let email = this.ed_mail.text;
 	let param = " p_eno=" + eno + " p_dname" + dname + " p_epos=" + pos + " p_ename=" + ename + " p_eemail=" + email;
 	
-	alert("p_ename : " + ename);
+	//alert("p_ename : " + ename);
 	
 	if(dname != "전체"){//선택한 부서가 전체가 아니라면
 		param += " p_dname=" + dname;

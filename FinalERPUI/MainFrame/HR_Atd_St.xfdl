@@ -175,12 +175,12 @@ this.hrAtdSel_load = function ()
 	/*선택한 부서가 전체일때*/
 	if(dname != "전체"){
 		param += " d_name=" + dname;
-		this.alert("dname" + param);
+		//this.alert("dname" + param);
 	}
 	//선택한 직급이 전체일때
 	if(pos != "전체"){
 		param += " e_pos=" + pos;
-		this.alert("pos" + param);
+		//this.alert("pos" + param);
 	}
 	/*일자를 선택했을 때(이거 물어보기)*/
 	/*if(!this.gfn_isNull(date) || date != " "){*/
@@ -188,16 +188,16 @@ this.hrAtdSel_load = function ()
 	if(!this.gfn_isNull(date) && date != " "){
 		//this.alert(date);
 		param += " w_date=" + date;
-		this.alert("date" + param);
+		//this.alert("date" + param);
 	}
 	//입력한 사원명이 없을때
 	if(!this.gfn_isNull(ename) && ename != " "){
 	//if(new String(ename).valueOf() != "undefined"){
 		param += " e_name=" + ename;
-		this.alert("e_name" + param);
+		//this.alert("e_name" + param);
 	}
 	trace(param);
-	this.alert("param12"+param);
+	//this.alert("param12"+param);
 	this.transaction(svcID, svcURL, "", data, param, "");
 };
 
@@ -231,8 +231,8 @@ this.btn_Sel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	  //this.alert(this.HR_TA_Mgt.getColumn(0, "W_VACATION"));
 	  //this.alert("12121212" + this.HR_TA_Mgt.getColumn(2, "W_ATTEND"));
 	this.hrAtdSel_load();
-	this.alert("출근 한 시간" + this.HR_TA_Mgt.getColumn(0, "W_ATTEND"));
-	this.alert("조퇴 한 시간" + this.HR_TA_Mgt.getColumn(0, "W_EALRY_LEAVE"));
+	//this.alert("출근 한 시간" + this.HR_TA_Mgt.getColumn(0, "W_ATTEND"));
+	//this.alert("조퇴 한 시간" + this.HR_TA_Mgt.getColumn(0, "W_EALRY_LEAVE"));
 };
 
 this.btn_upd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)

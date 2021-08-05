@@ -114,7 +114,7 @@ this.btn_reject_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		let svcID = "acStNoUpd" + count;
 		let svcURL = "SvcURL::/acst/acStNo.ac?no=" + count;
 		let data = "";
-		this.alert(this.fi_no);
+		//this.alert(this.fi_no);
 		let param = " fi_state=반려" + " fi_no=" + this.fi_no + " ft_type=경조비";
 		this.transaction(svcID, svcURL, "", data, param, "fn_close");
 	}

@@ -7,15 +7,13 @@
         <Static id="lb_empno" taborder="1" text="사원번호" left="25" top="102" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
         <Edit id="ed_empno" taborder="2" left="144" top="103" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_bg2" taborder="3" left="25" top="179" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Static id="lb_dept" taborder="4" text="상태" left="25" top="180" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
-        <Static id="lb_file" taborder="5" text="첨부파일" left="269" top="180" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Button id="btn_ok" taborder="6" left="449" top="720" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
-        <Static id="lb_bg2_00" taborder="7" left="270" top="254" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
-        <Edit id="ed_title" taborder="8" left="144" top="220" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
-        <TextArea id="ta_content" taborder="9" left="25" top="293" width="500" height="250" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
-        <Static id="lb_content" taborder="10" text="내용" left="25" top="255" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
-        <Static id="lb_title" taborder="11" text="제목" left="25" top="218" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
-        <Static id="lb_content00" taborder="12" left="145" top="256" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Button id="btn_ok" taborder="5" left="449" top="720" width="76" height="36" background="#ffffff" border="1px solid #c7c7c7" font="15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" text="확인" cursor="pointer" onclick="btn_ok_onclick"/>
+        <Static id="lb_bg2_00" taborder="6" left="270" top="254" width="255" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
+        <Edit id="ed_title" taborder="7" left="144" top="220" width="381" height="36" border="1px solid #999999" displaynulltext="제목을 입력해주세요" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" enable="false"/>
+        <TextArea id="ta_content" taborder="8" left="25" top="293" width="500" height="250" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;&#9;" onchanged="Common_onchanged" displaynulltext="내용을 입력해주세요" enable="false"/>
+        <Static id="lb_content" taborder="9" text="내용" left="25" top="255" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick"/>
+        <Static id="lb_title" taborder="10" text="제목" left="25" top="218" width="119" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
+        <Static id="lb_content00" taborder="11" left="145" top="256" width="1" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7" onclick="Static02_onclick" border="1px solid #c7c7c7, 0px none"/>
         <Static id="lb_file00_00" taborder="13" left="144" top="256" width="381" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Static id="lb_title_m" taborder="14" text="계좌정보변경 신청내역" left="135" top="28" width="292" height="42" color="#000000" font="bold 25px/normal &quot;나눔바른펜&quot;" textAlign="center"/>
         <Static id="lb_bg1_00" taborder="15" left="25" top="140" width="500" height="40" border="1px solid #c7c7c7, 0px none&#9;"/>
@@ -23,11 +21,9 @@
         <Edit id="ed_bank" taborder="17" left="144" top="142" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
         <Static id="lb_account" taborder="18" text="계좌번호" left="269" top="141" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
         <Edit id="ed_account" taborder="19" left="390" top="142" width="135" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <Edit id="ed_state" taborder="20" left="144" top="181" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
-        <FileUpload id="file_upload" taborder="21" left="390" top="181" width="135" height="36" itemheight="36" buttontext="+" buttonsize="36" enable="false" font="15px/normal &quot;나눔바른펜&quot;&#9;"/>
-        <Static id="lb_date" taborder="22" text="해당일자" left="269" top="102" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
-        <Calendar id="cal_date" taborder="23" left="390" top="104" width="135" height="36" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
-        <Grid id="Grid00" taborder="5" left="25" top="550" width="420" height="146" autofittype="col" binddataset="ds_file" onheadclick="Grid00_onheadclick" readonly="false" border="1px solid slategray">
+        <Static id="lb_date" taborder="20" text="해당일자" left="269" top="102" width="121" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Calendar id="cal_date" taborder="21" left="390" top="104" width="135" height="36" border="1px solid #999999" font="15px/normal &quot;나눔바른펜&quot;" enable="false"/>
+        <Grid id="Grid00" taborder="4" left="25" top="550" width="420" height="146" autofittype="col" binddataset="ds_file" onheadclick="Grid00_onheadclick" readonly="false" border="1px solid slategray">
           <Formats>
             <Format id="default">
               <Columns>
@@ -53,6 +49,9 @@
           </Formats>
         </Grid>
         <FileDownload id="FileDownload00" taborder="12" text="다운로드" left="449" top="550" width="76" height="146" onclick="FileDownload00_onclick" enable="true" border="1px solid #82FA58" background="#82FA58" font="bold 16px/normal &quot;나눔바른펜&quot;"/>
+        <Static id="lb_file00_00_00" taborder="22" left="29" top="180" width="496" height="37" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" background="#f7f7f7"/>
+        <Static id="lb_dept" taborder="23" text="상태" left="25" top="180" width="120" height="38" font="bold 15px/normal &quot;나눔바른펜&quot;&#9;" color="#000000" textAlign="center" onclick="Static02_00_00_onclick" verticalAlign="middle" background="#f7f7f7"/>
+        <Edit id="ed_state" taborder="24" left="144" top="181" width="125" height="36" font="15px/normal &quot;나눔바른펜&quot;&#9;" border="1px solid #999999" enable="false"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "lib::libCommon.xjs";
@@ -176,10 +175,9 @@ this.gf_SetGridCheckAll = function (obj:Grid, e:GridClickEventInfo){
       <BindItem id="item1" compid="cal_date" propid="value" datasetid="macAccountSel" columnid="FI_DATE"/>
       <BindItem id="item2" compid="ed_bank" propid="value" datasetid="macAccountSel" columnid="FAC_BANK"/>
       <BindItem id="item3" compid="ed_account" propid="value" datasetid="macAccountSel" columnid="FAC_ACCOUNT"/>
-      <BindItem id="item4" compid="ed_state" propid="value" datasetid="macAccountSel" columnid="FI_STATE"/>
-      <BindItem id="item5" compid="file_upload" propid="accessibilityaction" datasetid="macAccountSel" columnid="FF_NAME"/>
       <BindItem id="item6" compid="ed_title" propid="value" datasetid="macAccountSel" columnid="FI_NAME"/>
       <BindItem id="item7" compid="ta_content" propid="value" datasetid="macAccountSel" columnid="FAC_CONTENT"/>
+      <BindItem id="item4" compid="ed_state" propid="value" datasetid="macAccountSel" columnid="FI_STATE"/>
     </Bind>
   </Form>
 </FDL>
